@@ -1,0 +1,56 @@
+<section id="skills" class="section">
+  <div class="container">
+    <div class="section-title" data-i18n="skills.title">Skills</div>
+    <div class="section-subtitle" data-i18n="skills.subtitle">What I Bring</div>
+    <div class="skills-grid">
+      <div class="skill-group fade-in">
+        <h3 class="skill-group-title" data-i18n="skills.management">Management</h3>
+        <div class="skill-tags" data-i18n="skills.management_items"></div>
+      </div>
+      <div class="skill-group fade-in">
+        <h3 class="skill-group-title" data-i18n="skills.technical">Technical</h3>
+        <div class="skill-tags" data-i18n="skills.technical_items"></div>
+      </div>
+      <div class="skill-group fade-in">
+        <h3 class="skill-group-title" data-i18n="skills.languages">Languages</h3>
+        <div class="skill-tags">
+          <span class="tag" data-i18n="skills.lang.en"></span>
+          <span class="tag" data-i18n="skills.lang.id"></span>
+          <span class="tag" data-i18n="skills.lang.nl"></span>
+          <span class="tag" data-i18n="skills.lang.zh"></span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .skills-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 2rem;
+  }
+
+  .skill-group-title {
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: var(--primary);
+    margin-bottom: 1rem;
+  }
+
+  .skill-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+  }
+
+  .tag {
+    background: var(--bg-alt);
+    color: var(--text);
+    padding: 0.4rem 0.85rem;
+    border-radius: 20px;
+    font-size: 0.85rem;
+    font-weight: 500;
+    border: 1px solid var(--border);
+  }
+</style>
