@@ -25,20 +25,12 @@ const navItems = [
         <button class="lang-btn" data-lang="id">ID</button>
         <button class="lang-btn" data-lang="zh">ZH</button>
       </div>
-      <button id="themeToggle" class="theme-btn" aria-label="Toggle theme">🌙</button>
       <button id="menuToggle" class="menu-btn" aria-label="Toggle menu">☰</button>
     </div>
   </div>
 </header>
 
 <script is:inline>
-  document.getElementById('themeToggle').addEventListener('click', function() {
-    var html = document.documentElement;
-    var next = html.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
-    html.setAttribute('data-theme', next);
-    localStorage.setItem('theme', next);
-    document.getElementById('themeToggle').textContent = next === 'dark' ? '\u2600\uFE0F' : '\uD83C\uDF19';
-  });
   document.getElementById('menuToggle').addEventListener('click', function() {
     document.getElementById('nav').classList.toggle('open');
   });
@@ -132,15 +124,12 @@ const navItems = [
     border-color: var(--primary);
   }
 
-  .theme-btn, .menu-btn {
+  .menu-btn {
     background: none;
     border: none;
     font-size: 1.2rem;
     cursor: pointer;
     padding: 0.25rem;
-  }
-
-  .menu-btn {
     display: none;
   }
 
