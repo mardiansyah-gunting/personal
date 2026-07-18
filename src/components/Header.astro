@@ -44,6 +44,8 @@ const navItems = [
     const next = current === 'dark' ? 'light' : 'dark';
     html.setAttribute('data-theme', next);
     localStorage.setItem('theme', next);
+    const btn = document.getElementById('themeToggle');
+    btn.textContent = next === 'dark' ? '\u2600\uFE0F' : '\uD83C\uDF19';
   });
 
   document.getElementById('menuToggle').addEventListener('click', () => {
@@ -131,6 +133,12 @@ const navItems = [
 
   .lang-btn:hover {
     color: var(--primary);
+    border-color: var(--primary);
+  }
+
+  .lang-btn.active {
+    background: var(--primary);
+    color: #fff;
     border-color: var(--primary);
   }
 

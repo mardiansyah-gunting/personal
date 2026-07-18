@@ -4,23 +4,25 @@
     <div class="section-subtitle" data-i18n="contact.subtitle">Let's Connect</div>
     <div class="contact-grid">
       <div class="contact-form fade-in">
-        <input type="text" class="input" data-i18n-placeholder="contact.name" placeholder="Name" />
-        <input type="email" class="input" data-i18n-placeholder="contact.email" placeholder="Email" />
-        <textarea class="input textarea" rows="5" data-i18n-placeholder="contact.message" placeholder="Message"></textarea>
-        <button class="btn btn-primary" data-i18n="contact.send">Send Message</button>
+        <form onsubmit="return false">
+          <input type="text" class="input" data-i18n-placeholder="contact.name" placeholder="Name" />
+          <input type="email" class="input" data-i18n-placeholder="contact.email" placeholder="Email" />
+          <textarea class="input textarea" rows="5" data-i18n-placeholder="contact.message" placeholder="Message"></textarea>
+          <button type="submit" class="btn btn-primary" data-i18n="contact.send">Send Message</button>
+        </form>
       </div>
       <div class="contact-info fade-in">
         <h3 class="contact-info-title" data-i18n="contact.info_title">Contact Info</h3>
         <div class="contact-item">
-          <strong>Email:</strong>
+          <strong data-i18n="contact.email_label">Email:</strong>
           <span data-i18n="contact.email_addr"></span>
         </div>
         <div class="contact-item">
-          <strong>Phone:</strong>
+          <strong data-i18n="contact.phone_label">Phone:</strong>
           <span data-i18n="contact.phone"></span>
         </div>
         <div class="contact-item">
-          <strong>Location:</strong>
+          <strong data-i18n="contact.location_label">Location:</strong>
           <span data-i18n="contact.location"></span>
         </div>
         <h3 class="contact-ref-title" data-i18n="contact.ref_title">References</h3>
