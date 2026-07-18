@@ -11,7 +11,7 @@ const navItems = [
 
 <header class="header">
   <div class="header-inner container">
-    <a href="#home" class="logo" data-i18n="hero.name">Mardiansyah Gunting</a>
+    <div></div>
     <nav class="nav" id="nav">
       <ul class="nav-list">
         {navItems.map(item => (
@@ -23,7 +23,7 @@ const navItems = [
       <div class="lang-switch">
         <button class="lang-btn" data-lang="en">EN</button>
         <button class="lang-btn" data-lang="id">ID</button>
-        <button class="lang-btn" data-lang="zh">中文</button>
+        <button class="lang-btn" data-lang="zh">ZH</button>
       </div>
       <button id="themeToggle" class="theme-btn" aria-label="Toggle theme">🌙</button>
       <button id="menuToggle" class="menu-btn" aria-label="Toggle menu">☰</button>
@@ -31,29 +31,19 @@ const navItems = [
   </div>
 </header>
 
-<script>
-  document.querySelectorAll('.lang-btn').forEach(btn => {
-    btn.addEventListener('click', () => {
-      window.__setLanguage(btn.dataset.lang);
-    });
-  });
-
-  document.getElementById('themeToggle').addEventListener('click', () => {
-    const html = document.documentElement;
-    const current = html.getAttribute('data-theme');
-    const next = current === 'dark' ? 'light' : 'dark';
+<script is:inline>
+  document.getElementById('themeToggle').addEventListener('click', function() {
+    var html = document.documentElement;
+    var next = html.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
     html.setAttribute('data-theme', next);
     localStorage.setItem('theme', next);
-    const btn = document.getElementById('themeToggle');
-    btn.textContent = next === 'dark' ? '\u2600\uFE0F' : '\uD83C\uDF19';
+    document.getElementById('themeToggle').textContent = next === 'dark' ? '\u2600\uFE0F' : '\uD83C\uDF19';
   });
-
-  document.getElementById('menuToggle').addEventListener('click', () => {
+  document.getElementById('menuToggle').addEventListener('click', function() {
     document.getElementById('nav').classList.toggle('open');
   });
-
-  document.querySelectorAll('.nav-link').forEach(link => {
-    link.addEventListener('click', () => {
+  document.querySelectorAll('.nav-link').forEach(function(link) {
+    link.addEventListener('click', function() {
       document.getElementById('nav').classList.remove('open');
     });
   });

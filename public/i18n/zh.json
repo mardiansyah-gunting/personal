@@ -7,12 +7,12 @@
   "nav.contact": "联系",
   "hero.name": "Mardiansyah Gunting",
   "hero.tagline": "可靠的任务管理者 | 勤奋的学习者",
-  "hero.subtitle": "项目管理 · AI · 运营卓越",
+  "hero.subtitle": "项目管理 · Vibe Coder · 运营卓越",
   "hero.cta_contact": "联系我",
   "hero.cta_cv": "下载简历",
   "about.title": "关于我",
   "about.subtitle": "我是谁",
-  "about.body": "我是一位以结果为导向的专业人士，拥有坚实的项目管理基础和对人工智能日益增长的热情。我在运营、技术和战略的交汇点上崭露头角——连接团队、简化流程、驱动可衡量的成果。凭借在初创企业、国际非政府组织和政府机构的经历，我在每个岗位上都带来适应能力、跨文化交流和持续改进的思维。我相信未来属于那些能将专业领域与新兴技术连接起来的人，我致力于站在这一前沿。",
+  "about.body": "我是一位以结果为导向的专业人士，拥有坚实的项目管理基础和对Vibe Coder方法论的专业掌握。我在运营、技术和战略的交汇点上崭露头角——连接团队、简化流程、驱动可衡量的成果。凭借在初创企业、国际非政府组织和政府机构的经历，我在每个岗位上都带来适应能力、跨文化交流和持续改进的思维。我相信未来属于那些能将专业领域与新兴技术连接起来的人，我致力于站在这一前沿。",
   "experience.title": "经历",
   "experience.subtitle": "我的职业旅程",
   "exp.0.role": "运营经理",
@@ -86,7 +86,7 @@
   "contact.ref1_phone": "+491733713510",
   "contact.ref2": "Owen James – 投资顾问, Austrade",
   "contact.ref2_phone": "+61450961522",
-  "footer.copyright": "© 2024 Mardiansyah Gunting. 版权所有。",
+  "footer.copyright": "© {year} Mardiansyah Gunting. 版权所有。",
   "theme.light": "清亮",
   "theme.dark": "深色"
 }

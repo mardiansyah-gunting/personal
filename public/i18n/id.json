@@ -7,12 +7,12 @@
   "nav.contact": "Kontak",
   "hero.name": "Mardiansyah Gunting",
   "hero.tagline": "Manajer Tugas Andal | Pembelajar Tekun",
-  "hero.subtitle": "Manajemen Proyek · AI · Keunggulan Operasional",
+  "hero.subtitle": "Manajemen Proyek · Vibe Coder · Keunggulan Operasional",
   "hero.cta_contact": "Hubungi Saya",
   "hero.cta_cv": "Unduh CV",
   "about.title": "Tentang Saya",
   "about.subtitle": "Siapa Saya",
-  "about.body": "Saya seorang profesional berorientasi hasil dengan fondasi kuat di Manajemen Proyek dan minat yang berkembang terhadap Kecerdasan Buatan. Saya berkembang di persimpangan antara operasional, teknologi, dan strategi — menjembatani tim, menyederhanakan proses, dan mendorong hasil yang terukur. Dengan pengalaman meliputi startup, NGO internasional, dan institusi pemerintah, saya membawa kemampuan adaptasi, komunikasi lintas budaya, dan pola pikir perbaikan berkelanjutan ke setiap peran. Saya percaya masa depan milik mereka yang dapat menghubungkan keahlian domain dengan teknologi yang berkembang, dan saya berkomitmen untuk berada di garda terdepan.",
+  "about.body": "Saya seorang profesional berorientasi hasil dengan fondasi kuat di Manajemen Proyek dan spesialisasi dalam metodologi Vibe Coder. Saya berkembang di persimpangan antara operasional, teknologi, dan strategi — menjembatani tim, menyederhanakan proses, dan mendorong hasil yang terukur. Dengan pengalaman meliputi startup, NGO internasional, dan institusi pemerintah, saya membawa kemampuan adaptasi, komunikasi lintas budaya, dan pola pikir perbaikan berkelanjutan ke setiap peran. Saya percaya masa depan milik mereka yang dapat menghubungkan keahlian domain dengan teknologi yang berkembang, dan saya berkomitmen untuk berada di garda terdepan.",
   "experience.title": "Pengalaman",
   "experience.subtitle": "Perjalanan Profesional Saya",
   "exp.0.role": "Operation Manager",
@@ -86,7 +86,7 @@
   "contact.ref1_phone": "+491733713510",
   "contact.ref2": "Owen James – Penasihat Investasi, Austrade",
   "contact.ref2_phone": "+61450961522",
-  "footer.copyright": "© 2024 Mardiansyah Gunting. Hak cipta dilindungi.",
+  "footer.copyright": "© {year} Mardiansyah Gunting. Hak cipta dilindungi.",
   "theme.light": "Terang",
   "theme.dark": "Gelap"
 }

@@ -7,12 +7,12 @@
   "nav.contact": "Contact",
   "hero.name": "Mardiansyah Gunting",
   "hero.tagline": "Dependable Task Manager | Eager Learner",
-  "hero.subtitle": "Project Management · AI · Operational Excellence",
+  "hero.subtitle": "Project Management · Vibe Coder · Operational Excellence",
   "hero.cta_contact": "Get in Touch",
   "hero.cta_cv": "Download CV",
   "about.title": "About Me",
   "about.subtitle": "Who I Am",
-  "about.body": "I am a result-driven professional with a strong foundation in Project Management and a growing passion for Artificial Intelligence. I thrive at the intersection of operations, technology, and strategy — bridging teams, streamlining processes, and driving measurable outcomes. With experience spanning startups, international NGOs, and government institutions, I bring adaptability, cross-cultural communication, and a continuous improvement mindset to every role. I believe the future belongs to those who can connect domain expertise with emerging technology, and I am committed to being at that frontier.",
+  "about.body": "I am a result-driven professional with a strong foundation in Project Management and a specialization in Vibe Coder methodology. I thrive at the intersection of operations, technology, and strategy — bridging teams, streamlining processes, and driving measurable outcomes. With experience spanning startups, international NGOs, and government institutions, I bring adaptability, cross-cultural communication, and a continuous improvement mindset to every role. I believe the future belongs to those who can connect domain expertise with emerging technology, and I am committed to being at that frontier.",
   "experience.title": "Experience",
   "experience.subtitle": "My Professional Journey",
   "exp.0.role": "Operation Manager",
@@ -86,7 +86,7 @@
   "contact.ref1_phone": "+491733713510",
   "contact.ref2": "Owen James – Investment Adviser, Austrade",
   "contact.ref2_phone": "+61450961522",
-  "footer.copyright": "© 2024 Mardiansyah Gunting. All rights reserved.",
+  "footer.copyright": "© {year} Mardiansyah Gunting. All rights reserved.",
   "theme.light": "Light",
   "theme.dark": "Dark"
 }
