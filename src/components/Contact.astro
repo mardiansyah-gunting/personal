@@ -1,7 +1,6 @@
 <section id="contact" class="section">
   <div class="container">
-    <div class="section-title" data-i18n="contact.title">Contact</div>
-    <div class="section-subtitle" data-i18n="contact.subtitle">Let's Connect</div>
+    <h2 class="section-title" data-i18n="contact.subtitle">Let's Connect</h2>
     <div class="contact-grid">
       <div class="contact-form fade-in">
         <form onsubmit="return false">
@@ -24,15 +23,6 @@
         <div class="contact-item">
           <strong data-i18n="contact.location_label">Location:</strong>
           <span data-i18n="contact.location"></span>
-        </div>
-        <h3 class="contact-ref-title" data-i18n="contact.ref_title">References</h3>
-        <div class="contact-item">
-          <span data-i18n="contact.ref1"></span><br/>
-          <small data-i18n="contact.ref1_phone"></small>
-        </div>
-        <div class="contact-item">
-          <span data-i18n="contact.ref2"></span><br/>
-          <small data-i18n="contact.ref2_phone"></small>
         </div>
       </div>
     </div>
@@ -73,15 +63,11 @@
     min-height: 120px;
   }
 
-  .contact-info-title, .contact-ref-title {
+  .contact-info-title {
     font-size: 1.1rem;
     font-weight: 700;
     color: var(--primary);
     margin-bottom: 1rem;
-  }
-
-  .contact-ref-title {
-    margin-top: 2rem;
   }
 
   .contact-item {

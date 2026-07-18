@@ -1,10 +1,9 @@
 <section id="about" class="section">
   <div class="container">
-    <div class="section-title" data-i18n="about.title">About Me</div>
-    <div class="section-subtitle" data-i18n="about.subtitle">Who I Am</div>
+    <h2 class="section-title" data-i18n="about.subtitle">Who I Am</h2>
     <div class="about-grid">
       <div class="about-avatar">
-        <div class="avatar-placeholder">MG</div>
+        <img src="/profile.jpg" alt="Mardiansyah Gunting" class="avatar-img" />
       </div>
       <div>
         <p class="about-text" data-i18n="about.body">
@@ -23,17 +22,11 @@
     align-items: center;
   }
 
-  .avatar-placeholder {
+  .avatar-img {
     width: 200px;
     height: 200px;
     border-radius: 50%;
-    background: var(--primary);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 3rem;
-    font-weight: 700;
-    color: #fff;
+    object-fit: cover;
   }
 
   .about-text {
@@ -48,7 +41,7 @@
       text-align: center;
     }
 
-    .avatar-placeholder {
+    .avatar-img {
       margin: 0 auto;
     }
   }
