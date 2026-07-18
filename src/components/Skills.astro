@@ -2,20 +2,31 @@
   <div class="container">
     <h2 class="fade-in section-title" data-i18n="skills.subtitle">What I Bring</h2>
     <div class="skills-grid">
-      <div class="skill-group fade-in">
+      <div class="skill-group skill-group-mgmt fade-in">
         <h3 class="skill-group-title" data-i18n="skills.management">Management</h3>
-        <div class="skill-tags" data-i18n-tags="skills.management_items"></div>
+        <div class="skill-tags">
+          <span class="tag tag-mgmt">Management</span>
+          <span class="tag tag-mgmt">Problem-solving</span>
+          <span class="tag tag-mgmt">Communication</span>
+          <span class="tag tag-mgmt">Leadership</span>
+        </div>
       </div>
-      <div class="skill-group fade-in">
+      <div class="skill-group skill-group-tech fade-in">
         <h3 class="skill-group-title" data-i18n="skills.technical">Technical</h3>
-        <div class="skill-tags" data-i18n-tags="skills.technical_items"></div>
+        <div class="skill-tags">
+          <span class="tag tag-tech">Mobile Software Development</span>
+          <span class="tag tag-tech">Basic GIS</span>
+          <span class="tag tag-tech">Web Development</span>
+          <span class="tag tag-tech">Data Analysis</span>
+          <span class="tag tag-tech">Software Automation</span>
+        </div>
       </div>
-      <div class="skill-group fade-in">
+      <div class="skill-group skill-group-lang fade-in">
         <h3 class="skill-group-title" data-i18n="skills.languages">Languages</h3>
         <div class="skill-tags">
-          <span class="tag" data-i18n="skills.lang.en">English (Professional)</span>
-          <span class="tag" data-i18n="skills.lang.id">Indonesian (Native)</span>
-          <span class="tag" data-i18n="skills.lang.zh">Mandarin (Beginner)</span>
+          <span class="tag tag-lang" data-i18n="skills.lang.en">English (Professional)</span>
+          <span class="tag tag-lang" data-i18n="skills.lang.id">Indonesian (Native)</span>
+          <span class="tag tag-lang" data-i18n="skills.lang.zh">Mandarin (Beginner)</span>
         </div>
       </div>
     </div>
@@ -27,6 +38,27 @@
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
     gap: 2rem;
+  }
+
+  .skill-group {
+    background: var(--bg);
+    border-radius: var(--radius);
+    padding: 1.5rem;
+    border: 1px solid var(--border);
+    box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+    border-top: 4px solid var(--border);
+  }
+
+  .skill-group-mgmt {
+    border-top-color: #3b82f6;
+  }
+
+  .skill-group-tech {
+    border-top-color: #10b981;
+  }
+
+  .skill-group-lang {
+    border-top-color: #8b5cf6;
   }
 
   .skill-group-title {
@@ -43,12 +75,33 @@
   }
 
   .tag {
-    background: var(--bg-alt);
-    color: var(--text);
     padding: 0.4rem 0.85rem;
     border-radius: 20px;
     font-size: 0.85rem;
     font-weight: 500;
-    border: 1px solid var(--border);
+    transition: transform 0.2s, box-shadow 0.2s;
+  }
+
+  .tag:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  }
+
+  .tag-mgmt {
+    background: #eff6ff;
+    color: #1e40af;
+    border: 1px solid #bfdbfe;
+  }
+
+  .tag-tech {
+    background: #ecfdf5;
+    color: #065f46;
+    border: 1px solid #a7f3d0;
+  }
+
+  .tag-lang {
+    background: #f5f3ff;
+    color: #5b21b6;
+    border: 1px solid #ddd6fe;
   }
 </style>

@@ -25,11 +25,9 @@ import Footer from '../components/Footer.astro';
   <script>
     const observer = new IntersectionObserver((entries) => {
       entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('visible');
-        }
+        entry.target.classList.toggle('visible', entry.isIntersecting);
       });
-    }, { threshold: 0.1 });
+    }, { threshold: 0.15 });
 
     document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
   </script>
