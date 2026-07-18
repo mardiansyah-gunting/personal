@@ -1,12 +1,12 @@
 ---
 const experiences = [
-  { index: 0 },
-  { index: 1 },
-  { index: 2 },
-  { index: 3 },
-  { index: 4 },
-  { index: 5 },
-  { index: 6 },
+  { index: 0, period: "May 2024 – Present", role: "Operation Manager", company: "Fairventures Digital GmbH", desc: "Designed and implemented new SOPs across departments, eliminating bottlenecks. Pioneered customer-centric operational frameworks. Led cross-functional projects for operational excellence. Established KPI dashboards for data-driven decision-making." },
+  { index: 1, period: "May 2023 – May 2024", role: "Customer Success Engineer", company: "Fairventures Digital GmbH", desc: "Conducted field visits assessing TREEO technology user experience. Monitored daily activities on TREEO cloud. Enhanced UI/UX of TREEO Apps. Provided comprehensive user support and training." },
+  { index: 2, period: "Oct 2022 – Apr 2023", role: "Junior Android Developer", company: "CV Kusuma Wijaya", desc: "Built Android apps using Android Studio with Kotlin and Java. Created mobile and web app mockups." },
+  { index: 3, period: "Feb 2022 – Mar 2023", role: "HPPS Project Coordinator Assistant", company: "Fairventures Worldwide gGmbH", desc: "Prepared data flow and safety materials. Managed data collection and processing. Ensured safety procedures compliance across all staff." },
+  { index: 4, period: "Oct 2019 – Feb 2022", role: "General Affairs Officer", company: "Fairventures Worldwide gGmbH", desc: "Managed office contracts and asset handovers. Coordinated security and driver operations. Maintained fleet of four vehicles. Tracked all company assets." },
+  { index: 5, period: "Jul 2019 – Sep 2019", role: "Demonstration Officer", company: "CV Karya Hidup Sentosa", desc: "Handled B2B communication. Demonstrated Quick Tractor product to oil palm plantations across Sumatra, Sulawesi, and Borneo." },
+  { index: 6, period: "Jul 2018 – Dec 2018", role: "Intern", company: "Badan Pusat Statistik", desc: "Designed the cover for the annual book report. Created posters and vector graphics for the Annual Book." },
 ];
 ---
 
@@ -18,10 +18,10 @@ const experiences = [
         <div class="timeline-item fade-in">
           <div class="timeline-dot"></div>
           <div class="timeline-card">
-            <div class="timeline-period" data-i18n={`exp.${exp.index}.period`}></div>
-            <h3 class="timeline-role" data-i18n={`exp.${exp.index}.role`}></h3>
-            <div class="timeline-company" data-i18n={`exp.${exp.index}.company`}></div>
-            <p class="timeline-desc" data-i18n={`exp.${exp.index}.desc`}></p>
+            <div class="timeline-period" data-i18n={`exp.${exp.index}.period`}>{exp.period}</div>
+            <h3 class="timeline-role" data-i18n={`exp.${exp.index}.role`}>{exp.role}</h3>
+            <div class="timeline-company" data-i18n={`exp.${exp.index}.company`}>{exp.company}</div>
+            <p class="timeline-desc" data-i18n={`exp.${exp.index}.desc`}>{exp.desc}</p>
           </div>
         </div>
       ))}

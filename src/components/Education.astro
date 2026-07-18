@@ -1,9 +1,9 @@
 ---
 const eduItems = [
-  { index: 0 },
-  { index: 1 },
-  { index: 2 },
-  { index: 3 },
+  { index: 0, period: "Jun 2023 – Nov 2023", school: "Binar Academy", major: "Data Science Bootcamp" },
+  { index: 1, period: "Dec 2022 – May 2023", school: "Binar Academy", major: "Mobile Software Engineering Bootcamp" },
+  { index: 2, period: "2020 – Present", school: "Universitas Terbuka", major: "Business Management (Undergraduate)" },
+  { index: 3, period: "Jul 2017 – Aug 2019", school: "SMKN 1 Sampit", major: "Information Technology Engineering" },
 ];
 ---
 
@@ -13,9 +13,9 @@ const eduItems = [
     <div class="edu-grid">
       {eduItems.map(item => (
         <div class="edu-card fade-in">
-          <div class="edu-period" data-i18n={`edu.${item.index}.period`}></div>
-          <h3 class="edu-school" data-i18n={`edu.${item.index}.school`}></h3>
-          <div class="edu-major" data-i18n={`edu.${item.index}.major`}></div>
+          <div class="edu-period" data-i18n={`edu.${item.index}.period`}>{item.period}</div>
+          <h3 class="edu-school" data-i18n={`edu.${item.index}.school`}>{item.school}</h3>
+          <div class="edu-major" data-i18n={`edu.${item.index}.major`}>{item.major}</div>
         </div>
       ))}
     </div>

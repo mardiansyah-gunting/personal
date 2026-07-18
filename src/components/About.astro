@@ -1,9 +1,12 @@
+---
+const baseUrl = import.meta.env.BASE_URL.replace(/\/$/, '');
+---
 <section id="about" class="section">
   <div class="container">
     <h2 class="section-title" data-i18n="about.subtitle">Who I Am</h2>
     <div class="about-grid">
       <div class="about-avatar">
-        <img src="/profile.jpg" alt="Mardiansyah Gunting" class="avatar-img" />
+        <img src={`${baseUrl}/profile.jpg`} alt="Mardiansyah Gunting" class="avatar-img" />
       </div>
       <div>
         <p class="about-text" data-i18n="about.body">

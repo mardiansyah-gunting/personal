@@ -39,7 +39,8 @@ const { title = "Mardiansyah Gunting" } = Astro.props;
     async function _loadLang(lang) {
       if (_trans[lang]) return;
       try {
-        var r = await fetch('i18n/' + lang + '.json');
+        var basePath = location.pathname.replace(/\/[^/]*$/, '').replace(/\/?$/, '/');
+        var r = await fetch(basePath + 'i18n/' + lang + '.json');
         if (!r.ok) throw Error('fail');
         _trans[lang] = await r.json();
       } catch(e) { console.warn('i18n err', lang, e); }
@@ -91,7 +92,7 @@ const { title = "Mardiansyah Gunting" } = Astro.props;
       btn.addEventListener('click', function() { _setLang(btn.dataset.lang); });
     });
 
-    if (_currentLang !== 'en') document.addEventListener('DOMContentLoaded', function() { _setLang(_currentLang); });
+    document.addEventListener('DOMContentLoaded', function() { _setLang(_currentLang); });
     _activeLang(_currentLang);
     _themeIcon();
   </script>
