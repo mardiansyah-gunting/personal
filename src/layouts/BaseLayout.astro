@@ -6,10 +6,11 @@ export interface Props {
 }
 
 const { title = "Mardiansyah Gunting" } = Astro.props;
+const baseUrl = import.meta.env.BASE_URL.replace(/\/?$/, '/');
 ---
 
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-base={baseUrl}>
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -35,7 +36,7 @@ const { title = "Mardiansyah Gunting" } = Astro.props;
     async function _loadLang(lang) {
       if (_trans[lang]) return;
       try {
-        var basePath = location.pathname.replace(/\/[^/]*$/, '').replace(/\/?$/, '/');
+        var basePath = document.documentElement.getAttribute('data-base') || '/';
         var r = await fetch(basePath + 'i18n/' + lang + '.json');
         if (!r.ok) throw Error('fail');
         _trans[lang] = await r.json();

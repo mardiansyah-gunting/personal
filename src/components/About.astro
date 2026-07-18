@@ -3,10 +3,33 @@ const baseUrl = import.meta.env.BASE_URL.replace(/\/$/, '');
 ---
 <section id="about" class="section">
   <div class="container">
+    <div class="about-deco" aria-hidden="true">
+      <svg viewBox="0 0 200 200" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <rect x="10" y="10" width="180" height="180" rx="20" stroke="currentColor" stroke-width="1" opacity="0.06"/>
+        <rect x="30" y="30" width="140" height="140" rx="12" stroke="currentColor" stroke-width="1" opacity="0.04"/>
+        <circle cx="100" cy="100" r="40" fill="currentColor" opacity="0.03"/>
+      </svg>
+    </div>
+    <div class="about-tech-deco" aria-hidden="true">
+      <svg viewBox="0 0 180 180" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <circle cx="90" cy="90" r="85" stroke="currentColor" stroke-width="1" opacity="0.08"/>
+        <circle cx="90" cy="90" r="65" stroke="currentColor" stroke-width="0.5" opacity="0.06"/>
+        <rect x="55" y="55" width="70" height="50" rx="8" stroke="currentColor" stroke-width="1.5" fill="currentColor" fill-opacity="0.04" opacity="0.15"/>
+        <rect x="62" y="65" width="20" height="4" rx="2" fill="currentColor" opacity="0.2"/>
+        <rect x="62" y="74" width="30" height="4" rx="2" fill="currentColor" opacity="0.12"/>
+        <rect x="62" y="83" width="15" height="4" rx="2" fill="currentColor" opacity="0.2"/>
+        <circle cx="140" cy="45" r="8" fill="currentColor" opacity="0.06"/>
+        <circle cx="40" cy="140" r="6" fill="currentColor" opacity="0.08"/>
+        <circle cx="130" cy="130" r="4" fill="currentColor" opacity="0.1"/>
+        <path d="M90 105 l15 20 M90 105 l-15 20" stroke="currentColor" stroke-width="1.2" opacity="0.12"/>
+      </svg>
+    </div>
     <h2 class="fade-in section-title" data-i18n="about.subtitle">Who I Am</h2>
     <div class="about-grid">
       <div class="fade-in about-avatar">
-        <img src={`${baseUrl}/profile.jpg`} alt="Mardiansyah Gunting" class="avatar-img" />
+        <div class="avatar-wrapper">
+          <img src={`${baseUrl}/profile.jpg`} alt="Mardiansyah Gunting" class="avatar-img" />
+        </div>
       </div>
       <div class="fade-in">
         <p class="about-text" data-i18n="about.body">
@@ -18,6 +41,32 @@ const baseUrl = import.meta.env.BASE_URL.replace(/\/$/, '');
 </section>
 
 <style>
+  .about-deco {
+    position: absolute;
+    right: -20px;
+    top: -20px;
+    width: 200px;
+    height: 200px;
+    color: var(--primary);
+    pointer-events: none;
+    opacity: 0.6;
+  }
+  .about-tech-deco {
+    position: absolute;
+    left: -30px;
+    bottom: -30px;
+    width: 180px;
+    height: 180px;
+    color: var(--accent);
+    pointer-events: none;
+    opacity: 0.5;
+  }
+
+  .section:has(.about-deco) {
+    position: relative;
+    overflow: hidden;
+  }
+
   .about-grid {
     display: grid;
     grid-template-columns: 200px 1fr;
@@ -25,11 +74,27 @@ const baseUrl = import.meta.env.BASE_URL.replace(/\/$/, '');
     align-items: center;
   }
 
+  .avatar-wrapper {
+    position: relative;
+    display: inline-block;
+  }
+
+  .avatar-wrapper::after {
+    content: '';
+    position: absolute;
+    inset: -4px;
+    border-radius: 50%;
+    border: 2px solid var(--accent);
+    opacity: 0.2;
+  }
+
   .avatar-img {
     width: 200px;
     height: 200px;
     border-radius: 50%;
     object-fit: cover;
+    position: relative;
+    z-index: 1;
   }
 
   .about-text {
@@ -46,6 +111,13 @@ const baseUrl = import.meta.env.BASE_URL.replace(/\/$/, '');
 
     .avatar-img {
       margin: 0 auto;
+    }
+
+    .about-deco {
+      display: none;
+    }
+    .about-tech-deco {
+      display: none;
     }
   }
 </style>

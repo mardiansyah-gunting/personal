@@ -22,13 +22,133 @@ import Footer from '../components/Footer.astro';
   </main>
   <Footer />
 
+  <div class="section-indicator" id="sectionIndicator">
+    <div class="si-track">
+      <div class="si-line"></div>
+      {['home', 'about', 'experience', 'skills', 'education', 'contact'].map(id => (
+        <a href={`#${id}`} class="si-dot" data-section={id}></a>
+      ))}
+    </div>
+  </div>
+
+  <style>
+    .section-indicator {
+      position: fixed;
+      right: 1rem;
+      top: 50%;
+      transform: translateY(-50%);
+      z-index: 90;
+      pointer-events: none;
+    }
+
+    .si-track {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0.5rem;
+      position: relative;
+      pointer-events: auto;
+    }
+
+    .si-line {
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      left: 50%;
+      width: 1px;
+      background: var(--border);
+      transform: translateX(-50%);
+    }
+
+    .si-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: var(--border);
+      border: 2px solid var(--bg);
+      transition: all 0.3s;
+      position: relative;
+      z-index: 1;
+      flex-shrink: 0;
+    }
+
+    .si-dot.active {
+      width: 10px;
+      height: 10px;
+      background: var(--primary);
+      border-color: var(--primary);
+      box-shadow: 0 0 0 3px rgba(15, 43, 76, 0.15);
+    }
+
+    @media (max-width: 768px) {
+      .section-indicator {
+        right: 0.5rem;
+      }
+    }
+  </style>
+
   <script>
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
+    var fadeObserver = new IntersectionObserver(function(entries) {
+      entries.forEach(function(entry) {
         entry.target.classList.toggle('visible', entry.isIntersecting);
       });
     }, { threshold: 0.15 });
+    document.querySelectorAll('.fade-in').forEach(function(el) { fadeObserver.observe(el); });
 
-    document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+    var sectionIds = ['home', 'about', 'experience', 'skills', 'education', 'contact'];
+    var dots = {};
+    sectionIds.forEach(function(id) {
+      var el = document.querySelector('.si-dot[data-section="' + id + '"]');
+      if (el) dots[id] = el;
+    });
+
+    var activeIndex = 0;
+    var sectionObserver = new IntersectionObserver(function(entries) {
+      entries.forEach(function(entry) {
+        if (entry.isIntersecting) {
+          var id = entry.target.id;
+          var idx = sectionIds.indexOf(id);
+          if (idx >= 0 && idx !== activeIndex) {
+            if (dots[sectionIds[activeIndex]]) dots[sectionIds[activeIndex]].classList.remove('active');
+            activeIndex = idx;
+            if (dots[id]) dots[id].classList.add('active');
+          }
+        }
+      });
+    }, { rootMargin: '-40% 0px -40% 0px', threshold: 0 });
+    sectionIds.forEach(function(id) {
+      var el = document.getElementById(id);
+      if (el) sectionObserver.observe(el);
+    });
+
+    function initTimeline(tlId) {
+      var tl = document.getElementById(tlId);
+      if (!tl) return;
+      var track = tl.querySelector('.tl-track');
+      var items = tl.querySelectorAll('.tl-item');
+      if (!items.length) return;
+
+      function updateFill() {
+        var activeCount = tl.querySelectorAll('.tl-item.active').length;
+        var pct = Math.min(100, Math.round((activeCount / items.length) * 100));
+        track.style.setProperty('--fill', pct + '%');
+      }
+
+      var observer = new IntersectionObserver(function(entries) {
+        entries.forEach(function(entry) {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('active');
+            var dot = entry.target.querySelector('.tl-dot');
+            if (dot) dot.classList.add('active');
+          }
+        });
+        updateFill();
+      }, { threshold: 0.25, rootMargin: '0px 0px -40px 0px' });
+
+      items.forEach(function(item) { observer.observe(item); });
+      updateFill();
+    }
+
+    initTimeline('timelineEdu');
   </script>
 </BaseLayout>

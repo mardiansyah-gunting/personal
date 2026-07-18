@@ -21,6 +21,19 @@
         </script>
       </div>
       <div class="contact-info fade-in">
+        <div class="contact-illo" aria-hidden="true">
+          <svg viewBox="0 0 200 200" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <rect x="30" y="55" width="140" height="100" rx="12" stroke="currentColor" stroke-width="1.5" fill="currentColor" fill-opacity="0.04" opacity="0.12"/>
+            <path d="M35 65 l65 50 65-50" stroke="currentColor" stroke-width="1.5" opacity="0.15"/>
+            <circle cx="100" cy="120" r="40" stroke="currentColor" stroke-width="1" opacity="0.08"/>
+            <path d="M85 110 l10 10 15-18" stroke="currentColor" stroke-width="2" opacity="0.15" stroke-linecap="round" stroke-linejoin="round"/>
+            <circle cx="55" cy="85" r="4" fill="currentColor" opacity="0.08"/>
+            <circle cx="145" cy="85" r="4" fill="currentColor" opacity="0.08"/>
+            <circle cx="100" cy="85" r="4" fill="currentColor" opacity="0.08"/>
+            <circle cx="85" cy="145" r="3" fill="currentColor" opacity="0.06"/>
+            <circle cx="115" cy="145" r="3" fill="currentColor" opacity="0.06"/>
+          </svg>
+        </div>
         <h3 class="contact-info-title" data-i18n="contact.info_title">Contact Info</h3>
         <div class="contact-item">
           <strong data-i18n="contact.email_label">Email:</strong>
@@ -33,6 +46,14 @@
         <div class="contact-item">
           <strong data-i18n="contact.location_label">Location:</strong>
           <span data-i18n="contact.location">Palangka Raya, Indonesia</span>
+        </div>
+        <div class="contact-item contact-social-item">
+          <strong>Chat:</strong>
+          <span>
+            <a href="https://wa.me/628213105752" target="_blank" rel="noopener noreferrer" class="contact-social-link">WhatsApp</a>
+            <span class="contact-social-sep">·</span>
+            <a href="weixin://dl/chat?wxid_f4jlf94gw5p22" class="contact-social-link" id="contactWechat">WeChat</a>
+          </span>
         </div>
       </div>
     </div>
@@ -50,9 +71,9 @@
   .contact-form {
     display: flex;
     flex-direction: column;
-    gap: 1rem;
+    gap: 1.25rem;
     background: var(--bg);
-    padding: 2rem;
+    padding: 2.5rem;
     border-radius: var(--radius);
     border: 1px solid var(--border);
     box-shadow: 0 2px 8px rgba(0,0,0,0.04);
@@ -60,7 +81,7 @@
 
   .input {
     width: 100%;
-    padding: 0.85rem 1rem;
+    padding: 1rem 1.15rem;
     border: 1px solid var(--border);
     border-radius: var(--radius);
     font-family: var(--font-sans);
@@ -103,6 +124,18 @@
     border-radius: var(--radius);
     border: 1px solid var(--border);
     box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+    position: relative;
+    overflow: hidden;
+  }
+  .contact-illo {
+    position: absolute;
+    right: -20px;
+    top: -10px;
+    width: 200px;
+    height: 200px;
+    pointer-events: none;
+    color: var(--accent);
+    opacity: 0.5;
   }
 
   .contact-item {
@@ -125,6 +158,20 @@
   .contact-item small {
     color: var(--text-muted);
   }
+  .contact-social-item strong {
+    min-width: 55px;
+  }
+  .contact-social-link {
+    color: var(--accent);
+    font-weight: 600;
+  }
+  .contact-social-link:hover {
+    text-decoration: underline;
+  }
+  .contact-social-sep {
+    margin: 0 0.4rem;
+    color: var(--border);
+  }
 
   @media (max-width: 768px) {
     .contact-grid {
@@ -134,7 +181,29 @@
 
     .contact-form,
     .contact-info {
-      padding: 1.25rem;
+      padding: 1.5rem;
+    }
+    .contact-form {
+      gap: 1rem;
+    }
+    .input {
+      padding: 0.9rem 1rem;
     }
   }
 </style>
+
+<script>
+  function wechatFallback(e) {
+    var id = 'wxid_f4jlf94gw5p22';
+    if (navigator.clipboard && navigator.clipboard.writeText) {
+      navigator.clipboard.writeText(id);
+      alert('WeChat ID copied: ' + id);
+    } else {
+      prompt('WeChat ID — copy to search in WeChat:', id);
+    }
+  }
+  ['contactWechat', 'wechatLink', 'footerWechatLink'].forEach(function(id) {
+    var el = document.getElementById(id);
+    if (el) el.addEventListener('click', wechatFallback);
+  });
+</script>
