@@ -210,86 +210,65 @@ const items = [
     line-height: 1.65;
   }
   .tl-gallery {
-    column-count: 3;
-    column-gap: 0.5rem;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 6px;
     padding-top: 0.75rem;
     border-top: 1px solid var(--border);
     flex-shrink: 0;
     max-height: 30vh;
-    overflow-y: auto;
-    overflow-x: hidden;
-    -webkit-overflow-scrolling: touch;
+    overflow: hidden;
   }
   .tl-gallery-img {
     width: 100%;
-    height: auto;
+    height: 80px;
+    object-fit: cover;
     display: block;
     border-radius: 8px;
     border: 1px solid var(--border);
     cursor: pointer;
     transition: transform 0.2s, box-shadow 0.2s;
-    break-inside: avoid;
-    margin-bottom: 0.5rem;
   }
   .tl-gallery-img:hover {
-    transform: scale(1.02);
+    transform: scale(1.05);
     box-shadow: 0 4px 16px rgba(0,0,0,0.12);
   }
 
   @media (max-width: 768px) {
+    .hs-wrap {
+      height: auto !important;
+    }
+    .hs-sticky {
+      position: relative;
+      overflow: visible;
+      height: auto !important;
+    }
     .hs-top {
       padding: 4.5rem 1rem 0;
     }
     .hs-stage {
-      padding: 0 1rem 1rem;
-      overflow-x: auto;
-      overflow-y: hidden;
-      -webkit-overflow-scrolling: touch;
-      scroll-snap-type: x mandatory;
-      position: relative;
+      padding: 0 1rem 2rem;
+      overflow: visible;
+      height: auto;
     }
     .swipe-hint {
-      display: flex;
-      position: absolute;
-      right: 0.75rem;
-      top: 50%;
-      transform: translateY(-50%);
-      width: 40px;
-      height: 40px;
-      border-radius: 50%;
-      background: var(--bg);
-      border: 1px solid var(--border);
-      box-shadow: 0 2px 12px rgba(0,0,0,0.12);
-      color: var(--accent);
-      align-items: center;
-      justify-content: center;
-      pointer-events: none;
-      animation: swipePulse 1.5s ease-in-out infinite;
-      z-index: 10;
-      opacity: 1;
-    }
-    .swipe-hint svg {
-      width: 22px;
-      height: 22px;
-    }
-    @keyframes swipePulse {
-      0%, 100% { transform: translateY(-50%) translateX(0); opacity: 1; }
-      50% { transform: translateY(-50%) translateX(8px); opacity: 0.5; }
+      display: none !important;
     }
     .timeline {
-      gap: 0;
-      width: auto;
+      flex-direction: column;
+      gap: 1rem;
+      width: 100%;
       transform: none !important;
       transition: none;
     }
     .tl-item {
-      width: calc(100vw - 2rem);
+      width: 100%;
       max-width: none;
-      padding: 1rem 1rem;
-      margin-right: 1rem;
-      max-height: 75vh;
-      align-self: stretch;
-      scroll-snap-align: start;
+      max-height: none;
+      padding: 1rem;
+      margin-right: 0;
+      opacity: 1;
+      align-self: auto;
     }
     .tl-header {
       gap: 0.5rem;
@@ -316,20 +295,28 @@ const items = [
     .tl-desc {
       font-size: 0.82rem;
     }
+    .tl-body {
+      flex: 0 1 auto;
+      overflow-y: visible;
+      padding-bottom: 0;
+    }
     .tl-gallery {
-      column-count: 2;
-      max-height: 22vh;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 4px;
+      padding-top: 0.35rem;
+      border-top: 1px solid var(--border);
+      max-height: none;
     }
     .tl-gallery-img {
+      height: 60px;
       border-radius: 6px;
-      margin-bottom: 0.35rem;
     }
   }
 
   @media (max-width: 480px) {
     .tl-item {
       padding: 0.75rem 0.85rem;
-      max-height: 80vh;
+      max-height: none;
     }
     .tl-header {
       gap: 0.35rem;
@@ -345,14 +332,21 @@ const items = [
       font-size: 0.78rem;
       line-height: 1.5;
     }
+    .tl-body {
+      flex: 0 1 auto;
+      overflow-y: visible;
+      padding-bottom: 0;
+    }
     .tl-gallery {
-      column-count: 2;
-      max-height: 18vh;
-      gap: 0.3rem;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 3px;
+      padding-top: 0.35rem;
+      border-top: 1px solid var(--border);
+      max-height: none;
     }
     .tl-gallery-img {
+      height: 50px;
       border-radius: 4px;
-      margin-bottom: 0.25rem;
     }
     .tl-step {
       font-size: 0.65rem;
@@ -458,9 +452,14 @@ const items = [
   function setHeights() {
     var vh = window.innerHeight;
     var mobile = window.innerWidth <= 768;
+    if (mobile) {
+      if (sticky) sticky.style.height = '';
+      if (wrap) wrap.style.height = '';
+      return 0;
+    }
     if (sticky) sticky.style.height = vh + 'px';
     if (wrap) {
-      wrap.style.height = (mobile ? 1 : itemCount) * vh + 'px';
+      wrap.style.height = itemCount * vh + 'px';
       return wrap.offsetHeight - vh;
     }
     return 0;
@@ -496,28 +495,12 @@ const items = [
   }
 
   function setupMobile() {
-    timeline.style.transform = 'none';
-    timeline.style.transition = 'none';
+    timeline.style.transform = '';
+    timeline.style.transition = '';
     window.removeEventListener('scroll', updateDesktop);
-    if (mobileObserver) mobileObserver.disconnect();
-    mobileObserver = new IntersectionObserver(function(entries) {
-      entries.forEach(function(entry) {
-        if (entry.isIntersecting) {
-          setSlide(parseInt(entry.target.dataset.index, 10));
-        }
-      });
-    }, { root: stage, threshold: 0.5 });
-    items.forEach(function(it) { mobileObserver.observe(it); });
-    var hint = document.querySelector('.swipe-hint');
-    if (hint) {
-      hint.style.display = 'flex';
-      var hideHint = function() {
-        hint.style.transition = 'opacity 0.6s';
-        hint.style.opacity = '0';
-        setTimeout(function() { hint.style.display = 'none'; }, 600);
-      };
-      stage.addEventListener('scroll', hideHint, { once: true });
-      setTimeout(hideHint, 5000);
+    if (mobileObserver) {
+      mobileObserver.disconnect();
+      mobileObserver = null;
     }
   }
 
@@ -545,8 +528,12 @@ const items = [
   window.addEventListener('resize', function() {
     maxScroll = setHeights();
     var mobile = window.innerWidth <= 768;
+    window.removeEventListener('scroll', updateDesktop);
+    if (mobileObserver) {
+      mobileObserver.disconnect();
+      mobileObserver = null;
+    }
     if (mobile) {
-      window.removeEventListener('scroll', updateDesktop);
       setupMobile();
     } else {
       setupDesktop();

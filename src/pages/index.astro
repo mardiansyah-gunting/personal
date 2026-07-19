@@ -26,7 +26,9 @@ import Footer from '../components/Footer.astro';
     <div class="si-track">
       <div class="si-line"></div>
       {['home', 'about', 'experience', 'skills', 'education', 'contact'].map(id => (
-        <a href={`#${id}`} class="si-dot" data-section={id}></a>
+        <a href={`#${id}`} class="si-dot" data-section={id}>
+          <span class="si-label" data-i18n={`nav.${id}`}>{id}</span>
+        </a>
       ))}
     </div>
   </div>
@@ -80,9 +82,41 @@ import Footer from '../components/Footer.astro';
       box-shadow: 0 0 0 3px rgba(15, 43, 76, 0.15);
     }
 
+    .si-label {
+      display: none;
+      position: absolute;
+      right: calc(100% + 10px);
+      top: 50%;
+      transform: translateY(-50%);
+      font-size: 0.65rem;
+      font-weight: 700;
+      color: #fff;
+      background: var(--primary);
+      padding: 0.15rem 0.5rem;
+      border-radius: 100px;
+      border: none;
+      box-shadow: 0 2px 8px rgba(15, 43, 76, 0.15);
+      white-space: nowrap;
+      pointer-events: none;
+      text-transform: capitalize;
+      letter-spacing: 0.02em;
+      opacity: 0;
+      transition: opacity 0.3s ease;
+    }
+
+    .si-label.show {
+      opacity: 1;
+    }
+
     @media (max-width: 768px) {
       .section-indicator {
         right: 0.5rem;
+      }
+
+      .si-label {
+        display: block;
+        font-size: 0.65rem;
+        padding: 0.15rem 0.4rem;
       }
     }
   </style>
@@ -102,24 +136,70 @@ import Footer from '../components/Footer.astro';
       if (el) dots[id] = el;
     });
 
+    function showLabelBriefly(dot) {
+      if (!dot) return;
+      var label = dot.querySelector('.si-label');
+      if (!label) return;
+      label.classList.remove('show');
+      void label.offsetWidth;
+      label.classList.add('show');
+      clearTimeout(label._hide);
+      label._hide = setTimeout(function() {
+        label.classList.remove('show');
+      }, 1400);
+    }
+
     var activeIndex = 0;
-    var sectionObserver = new IntersectionObserver(function(entries) {
-      entries.forEach(function(entry) {
-        if (entry.isIntersecting) {
-          var id = entry.target.id;
-          var idx = sectionIds.indexOf(id);
-          if (idx >= 0 && idx !== activeIndex) {
-            if (dots[sectionIds[activeIndex]]) dots[sectionIds[activeIndex]].classList.remove('active');
-            activeIndex = idx;
-            if (dots[id]) dots[id].classList.add('active');
-          }
+    var ticking = false;
+
+    function updateActiveSection() {
+      var bestId = null;
+      var bestDist = Infinity;
+      var viewCenter = window.innerHeight / 2;
+
+      sectionIds.forEach(function(id) {
+        var el = document.getElementById(id);
+        if (!el) return;
+        var rect = el.getBoundingClientRect();
+        var elCenter = rect.top + rect.height / 2;
+        var dist = Math.abs(elCenter - viewCenter);
+        if (dist < bestDist) {
+          bestDist = dist;
+          bestId = id;
         }
       });
-    }, { rootMargin: '-40% 0px -40% 0px', threshold: 0 });
+
+      if (bestId) {
+        var idx = sectionIds.indexOf(bestId);
+        if (idx >= 0 && idx !== activeIndex) {
+          if (dots[sectionIds[activeIndex]]) dots[sectionIds[activeIndex]].classList.remove('active');
+          activeIndex = idx;
+          if (dots[bestId]) dots[bestId].classList.add('active');
+        }
+      }
+    }
+
+    window.addEventListener('scroll', function() {
+      if (!ticking) {
+        requestAnimationFrame(function() {
+          updateActiveSection();
+          ticking = false;
+        });
+        ticking = true;
+      }
+    }, { passive: true });
+
+    updateActiveSection();
+
     sectionIds.forEach(function(id) {
-      var el = document.getElementById(id);
-      if (el) sectionObserver.observe(el);
+      var dot = dots[id];
+      if (dot) {
+        dot.addEventListener('mouseenter', function() { showLabelBriefly(dot); });
+        dot.addEventListener('touchstart', function() { showLabelBriefly(dot); }, { passive: true });
+      }
     });
+
+
 
     function initTimeline(tlId) {
       var tl = document.getElementById(tlId);
