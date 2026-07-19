@@ -19,24 +19,24 @@ import Footer from '../components/Footer.astro';
     <Skills />
     <Education />
     <Contact />
+
+    <div class="section-indicator" id="sectionIndicator">
+      <div class="si-track">
+        <div class="si-line"></div>
+        {['home', 'about', 'experience', 'skills', 'education', 'contact'].map(id => (
+          <a href={`#${id}`} class="si-dot" data-section={id}>
+            <span class="si-label" data-i18n={`nav.${id}`}>{id}</span>
+          </a>
+        ))}
+      </div>
+    </div>
   </main>
   <Footer />
-
-  <div class="section-indicator" id="sectionIndicator">
-    <div class="si-track">
-      <div class="si-line"></div>
-      {['home', 'about', 'experience', 'skills', 'education', 'contact'].map(id => (
-        <a href={`#${id}`} class="si-dot" data-section={id}>
-          <span class="si-label" data-i18n={`nav.${id}`}>{id}</span>
-        </a>
-      ))}
-    </div>
-  </div>
 
   <style>
     .section-indicator {
       position: fixed;
-      right: 1rem;
+      right: 1.5rem;
       top: 50%;
       transform: translateY(-50%);
       z-index: 90;
@@ -109,10 +109,6 @@ import Footer from '../components/Footer.astro';
     }
 
     @media (max-width: 768px) {
-      .section-indicator {
-        right: 0.5rem;
-      }
-
       .si-label {
         display: block;
         font-size: 0.65rem;
