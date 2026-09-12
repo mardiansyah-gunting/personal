@@ -76,6 +76,10 @@ const baseUrl = import.meta.env.BASE_URL.replace(/\/?$/, '/');
         var k = el.dataset.i18nPlaceholder;
         if (t[k]) el.placeholder = t[k];
       });
+      document.querySelectorAll('[data-i18n-tooltip]').forEach(function(el) {
+        var k = el.dataset.i18nTooltip;
+        if (t[k]) el.dataset.tooltip = t[k];
+      });
       _activeLang(lang);
     }
     window.__setLang = _setLang;
