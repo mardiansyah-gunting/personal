@@ -1,6 +1,37 @@
+---
+const totalRoles = 9;
+const skillBars = [
+  { key: "communication", label: "Communication & Stakeholder Relations", detail: "TPP & partner relations, user support, stakeholder collaboration, B2B communication, cross-team coordination", count: 7 },
+  { key: "fieldops", label: "Field Visits & On-site Operations", detail: "Field visits assessing user experience, on-the-ground TPP operations", count: 4 },
+  { key: "datamonitoring", label: "Data Monitoring, Quality & Reporting", detail: "Cloud activity monitoring, data quality & reporting, data collection & processing", count: 4 },
+  { key: "training", label: "Training & User Documentation", detail: "User training, onboarding, and documentation", count: 3 },
+  { key: "uiux", label: "UI/UX & Product Design", detail: "UI/UX enhancement, wireframes and high-fidelity mockups", count: 3 },
+  { key: "opsmgmt", label: "Operations & Process Management", detail: "Daily operations, asset/office management, compliance procedures", count: 3 },
+];
+---
+
 <section id="skills" class="section">
   <div class="container">
     <h2 class="fade-in section-title" data-i18n="skills.subtitle">What I Bring</h2>
+    <div class="skills-chart fade-in">
+      <p class="skills-chart-subtitle" data-i18n="skills.chart_subtitle">Based on how often each skill shows up across my 9 roles since 2018</p>
+      <ul class="skill-bars">
+        {skillBars.map((s, i) => (
+          <li
+            class={`skill-bar-row${i === 0 ? " skill-bar-top" : ""}`}
+            data-tooltip={s.detail}
+            data-i18n-tooltip={`skills.bar.${s.key}.detail`}
+            tabindex="0"
+          >
+            <span class="skill-bar-label" data-i18n={`skills.bar.${s.key}.label`}>{s.label}</span>
+            <span class="skill-bar-track">
+              <span class="skill-bar-fill" style={`width:${Math.round((s.count / totalRoles) * 100)}%`}></span>
+            </span>
+            <span class="skill-bar-value">{s.count}/{totalRoles}</span>
+          </li>
+        ))}
+      </ul>
+    </div>
     <div class="skills-grid">
       <div class="skill-group skill-group-mgmt fade-in">
         <div class="skill-illo" aria-hidden="true">
