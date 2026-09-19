@@ -177,9 +177,7 @@ import Footer from '../components/Footer.astro';
     }
 
     function anchorY(id) {
-      if (id === 'home' || id === 'about') {
-        return 0;
-      }
+      if (id === 'home') return 0;
       var el = document.getElementById(id);
       return el ? el.offsetTop + el.offsetHeight / 2 : Infinity;
     }
@@ -194,20 +192,21 @@ import Footer from '../components/Footer.astro';
       var pinTop = pin ? pin.offsetTop : 0;
       var pinH = pin ? pin.offsetHeight : 0;
       var travel = Math.round(vh * 0.9);
-      var homeEnd = pinTop + Math.round(travel * 0.35);
-      var aboutEnd = pinTop + Math.round(pinH - vh + vh * 0.3);
+      var pinIsShort = (pinH - vh) < Math.round(travel * 0.5);
+      var aboutY = pinTop + (pinIsShort ? Math.round(pinH / 2) : Math.round(pinH - vh + vh * 0.3));
+      var homeEnd = pinTop + (pinIsShort ? Math.round(vh * 0.4) : Math.round(travel * 0.35));
       var bestId;
 
       if (y < pinTop || y <= homeEnd) {
         bestId = 'home';
-      } else if (y < aboutEnd) {
+      } else if (y < aboutY) {
         bestId = 'about';
       } else {
         var center = y + vh / 2;
         var ids = [ 'about', 'experience', 'projects', 'skills', 'education', 'contact' ];
         var bestD = Infinity;
         ids.forEach(function(id) {
-          var ay = (id === 'about') ? aboutEnd : anchorY(id);
+          var ay = (id === 'about') ? aboutY : anchorY(id);
           var d = Math.abs(ay - center);
           if (d < bestD) { bestD = d; bestId = id; }
         });
