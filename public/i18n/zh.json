@@ -57,7 +57,6 @@
   "skills.title": "技能",
   "skills.subtitle": "我的专长",
   "skills.top": "核心技能",
-  "skills.top_subtitle": "我的五项核心能力，源自我在每个岗位上的实战历练并不断精进——也是团队最仰赖的能力。",
   "skills.cat.eng": "软件工程",
   "skills.cat.css": "客户成功与客户关系",
   "skills.cat.ops": "运营与项目管理",
@@ -142,5 +141,19 @@
   "footer.copyright": "© {year} Mardiansyah Gunting. 版权所有。",
   "theme.light": "浅色",
   "theme.dark": "深色",
-  "projects.automation.tools_label": "使用工具"
+  "projects.automation.tools_label": "使用工具",
+  "skills.chart_title": "各技能在岗位中的使用频率",
+  "skills.chart_subtitle": "每项优势在我 9 段职业经历中的出现频率——从上到下，由最常见到最少见排列。",
+  "skills.bar.communication.label": "沟通与利益相关方关系",
+  "skills.bar.communication.detail": "TPP 及合作伙伴关系、用户支持、利益相关方协作、B2B 沟通、跨团队协调",
+  "skills.bar.fieldops.label": "实地考察与现场运营",
+  "skills.bar.fieldops.detail": "实地走访评估用户体验、TPP 现场运营",
+  "skills.bar.datamonitoring.label": "数据监测、质量与报告",
+  "skills.bar.datamonitoring.detail": "云端活动监测、数据质量与报告、数据收集与处理",
+  "skills.bar.training.label": "培训与用户文档",
+  "skills.bar.training.detail": "用户培训、入职引导与文档编写",
+  "skills.bar.uiux.label": "UI/UX 与产品设计",
+  "skills.bar.uiux.detail": "UI/UX 优化、线框稿与高保真原型",
+  "skills.bar.opsmgmt.label": "运营与流程管理",
+  "skills.bar.opsmgmt.detail": "日常运营、资产/办公室管理、合规流程"
 }
