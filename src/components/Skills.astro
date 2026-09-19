@@ -1,87 +1,188 @@
 ---
-const totalRoles = 9;
-const skillBars = [
-  { key: "communication", label: "Communication & Stakeholder Relations", detail: "TPP & partner relations, user support, stakeholder collaboration, B2B communication, cross-team coordination", count: 7 },
-  { key: "fieldops", label: "Field Visits & On-site Operations", detail: "Field visits assessing user experience, on-the-ground TPP operations", count: 4 },
-  { key: "datamonitoring", label: "Data Monitoring, Quality & Reporting", detail: "Cloud activity monitoring, data quality & reporting, data collection & processing", count: 4 },
-  { key: "training", label: "Training & User Documentation", detail: "User training, onboarding, and documentation", count: 3 },
-  { key: "uiux", label: "UI/UX & Product Design", detail: "UI/UX enhancement, wireframes and high-fidelity mockups", count: 3 },
-  { key: "opsmgmt", label: "Operations & Process Management", detail: "Daily operations, asset/office management, compliance procedures", count: 3 },
+const skillValues = [
+  { name: "Python", value: 5, lines: ["Python"] },
+  { name: "Communication", value: 5, lines: ["Communication"] },
+  { name: "Technical Support", value: 4, lines: ["Technical", "Support"] },
+  { name: "Management", value: 4, lines: ["Management"] },
+  { name: "Client Onboarding", value: 4, lines: ["Client", "Onboarding"] },
+];
+
+const N = skillValues.length;
+const CX = 230;
+const CY = 168;
+const R = 102;
+const ACCENT = "#3b82f6";
+
+function radarPoint(i, r) {
+  const a = ((i * (360 / N)) - 90) * Math.PI / 180;
+  return [CX + r * Math.cos(a), CY + r * Math.sin(a)];
+}
+
+const ringPolygons = [1, 2, 3, 4, 5].map(lvl =>
+  Array.from({ length: N }, (_, i) => radarPoint(i, (R * lvl) / 5).join(",")).join(" ")
+);
+const spokes = Array.from({ length: N }, (_, i) => radarPoint(i, R));
+const valuePoints = skillValues.map((s, i) => radarPoint(i, (R * s.value) / 5));
+const valuePolygon = valuePoints.map(p => p.join(",")).join(" ");
+
+const labels = skillValues.map((s, i) => {
+  const p = radarPoint(i, R);
+  const anchor = Math.abs(p[0] - CX) < 26 ? "middle" : p[0] > CX ? "start" : "end";
+  const dx = anchor === "start" ? 24 : anchor === "end" ? -24 : 0;
+  const x = p[0] + dx;
+  const y = anchor === "middle" ? p[1] - 18 : p[1];
+  return { ...s, anchor, x, y };
+});
+
+const skillGroups = [
+  {
+    key: "eng",
+    color: "#3b82f6",
+    title: "Software Engineering",
+    tags: ["Python", "Kotlin", "Java", "Android Development", "Android Studio", "Debugging & Troubleshooting", "Scripting & Automation", "Data Pipeline & Processing", "Database & Data Validation"],
+  },
+  {
+    key: "css",
+    color: "#10b981",
+    title: "Customer Success & Client Relations",
+    tags: ["Communication", "Client Onboarding", "Customer Relationship Management", "Field Visits & Feedback", "User Training & Documentation", "Product & Process Improvement", "B2B Communication", "Technical Support"],
+  },
+  {
+    key: "ops",
+    color: "#f59e0b",
+    title: "Operations & Project Management",
+    tags: ["Project Management", "Operations Management", "Partner Relationship Management", "Program Planning & Scheduling", "Stakeholder Coordination", "Data Quality & Reporting", "Time Management", "Team Leadership"],
+  },
+  {
+    key: "field",
+    color: "#14b8a6",
+    title: "Field, Research & Data",
+    tags: ["Field Research", "Data Collection & Processing", "Statistical Data Processing", "Data Management", "Agroforestry & Reforestation", "Safety Compliance", "Project Reporting"],
+  },
+  {
+    key: "log",
+    color: "#64748b",
+    title: "Logistics & General Affairs",
+    tags: ["Logistics Management", "Procurement", "Contract & Office Administration", "Asset Management", "Facility Management", "Office Operations Coordination"],
+  },
 ];
 ---
 
 <section id="skills" class="section">
   <div class="container">
     <h2 class="fade-in section-title" data-i18n="skills.subtitle">What I Bring</h2>
-    <div class="skills-chart fade-in">
-      <p class="skills-chart-subtitle" data-i18n="skills.chart_subtitle">Based on how often each skill shows up across my 9 roles since 2018</p>
-      <ul class="skill-bars">
-        {skillBars.map((s, i) => (
-          <li
-            class={`skill-bar-row${i === 0 ? " skill-bar-top" : ""}`}
-            data-tooltip={s.detail}
-            data-i18n-tooltip={`skills.bar.${s.key}.detail`}
-            tabindex="0"
-          >
-            <span class="skill-bar-label" data-i18n={`skills.bar.${s.key}.label`}>{s.label}</span>
-            <span class="skill-bar-track">
-              <span class="skill-bar-fill" style={`width:${Math.round((s.count / totalRoles) * 100)}%`}></span>
-            </span>
-            <span class="skill-bar-value">{s.count}/{totalRoles}</span>
-          </li>
-        ))}
-      </ul>
+
+    <div class="skills-top fade-in">
+      <h3 class="skill-group-title">
+        <svg class="skill-icon" viewBox="0 0 24 24" fill="none" stroke="#0f2b4c" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+        <span data-i18n="skills.top">Top Skills</span>
+      </h3>
+      <p class="skills-top-sub" data-i18n="skills.top_subtitle">My five core strengths, built and refined through hands-on experience across every role in my career.</p>
+      <div class="radar-wrap">
+        <svg class="radar" viewBox="0 0 460 340" role="img" aria-label="Top 5 skills radar chart">
+          <defs>
+            <linearGradient id="radarGrad" x1="0" y1="0" x2="1" y2="1">
+              <stop offset="0%" stop-color={ACCENT} stop-opacity="0.28"/>
+              <stop offset="100%" stop-color={ACCENT} stop-opacity="0.04"/>
+            </linearGradient>
+          </defs>
+          {ringPolygons.map((poly, lvl) => (
+            <polygon points={poly} class={lvl === 4 ? "radar-ring radar-ring-outer" : "radar-ring"} />
+          ))}
+          {spokes.map((p, i) => (
+            <line x1={CX} y1={CY} x2={p[0]} y2={p[1]} class="radar-spoke" />
+          ))}
+          <polygon points={valuePolygon} fill="url(#radarGrad)" stroke={ACCENT} stroke-width="2.5" stroke-linejoin="round" class="radar-value" />
+          {valuePoints.map((p, i) => (
+            <g key={i}>
+              <circle cx={p[0]} cy={p[1]} r="13" fill="#fff" stroke={ACCENT} stroke-width="1.5" />
+              <text x={p[0]} y={p[1] + 4} text-anchor="middle" class="radar-score">{skillValues[i].value}</text>
+            </g>
+          ))}
+          {labels.map((l, i) => (
+            <text key={i} x={l.x} y={l.y} text-anchor={l.anchor} class="radar-label">
+              {l.lines.map((ln, j) => (
+                <tspan key={j} x={l.x} dy={j === 0 ? 0 : 14}>{ln}</tspan>
+              ))}
+            </text>
+          ))}
+        </svg>
+      </div>
     </div>
+
     <div class="skills-grid">
-      <div class="skill-group skill-group-mgmt fade-in">
-        <div class="skill-illo" aria-hidden="true">
-          <svg viewBox="0 0 120 120" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <circle cx="45" cy="45" r="25" stroke="currentColor" stroke-width="1.5" opacity="0.12"/>
-            <circle cx="75" cy="75" r="25" stroke="currentColor" stroke-width="1.5" opacity="0.12"/>
-            <circle cx="45" cy="45" r="10" fill="currentColor" opacity="0.08"/>
-            <circle cx="75" cy="75" r="10" fill="currentColor" opacity="0.08"/>
-            <rect x="38" y="70" width="14" height="14" rx="3" stroke="currentColor" stroke-width="1.2" opacity="0.15"/>
-          </svg>
+      {skillGroups.map(g => (
+        <div class="skill-group fade-in" style={`--sg: ${g.color}`}>
+          <div class="skill-illo" aria-hidden="true">
+            <svg viewBox="0 0 120 120" fill="none" xmlns="http://www.w3.org/2000/svg">
+              {g.key === 'eng' && (
+                <>
+                  <rect x="30" y="28" width="60" height="44" rx="5" stroke="currentColor" stroke-width="1.5" fill="currentColor" fill-opacity="0.04" opacity="0.15"/>
+                  <path d="M40 38 l-8 12 8 12 M60 38 l8 12 -8 12" stroke="currentColor" stroke-width="2" opacity="0.25" stroke-linecap="round" stroke-linejoin="round"/>
+                  <rect x="52" y="56" width="16" height="5" rx="2" fill="currentColor" opacity="0.25"/>
+                  <circle cx="88" cy="40" r="8" fill="currentColor" opacity="0.06"/>
+                  <circle cx="32" cy="72" r="5" fill="currentColor" opacity="0.08"/>
+                  <circle cx="85" cy="78" r="3" fill="currentColor" opacity="0.12"/>
+                </>
+              )}
+              {g.key === 'css' && (
+                <>
+                  <g transform="translate(12,12) scale(4)" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M2.5 12 6 8.5 9 11m12.5 1L18 8.5 15 11m-6 0 3 2.5 3-2.5"/>
+                    <path d="m6 8.5 3.5 3a1.5 1.5 0 0 0 2 0l.5-.5a1.5 1.5 0 0 1 2 0l.5.5a1.5 1.5 0 0 0 2 0l3.5-3"/>
+                  </g>
+                </>
+              )}
+              {g.key === 'ops' && (
+                <>
+                  <rect x="28" y="34" width="64" height="48" rx="5" stroke="currentColor" stroke-width="1.5" opacity="0.2" fill="currentColor" fill-opacity="0.04"/>
+                  <path d="M38 46 l4 4 8 -8 M58 46 l4 4 8 -8 M38 64 l4 4 8 -8 M58 64 l4 4 8 -8" stroke="currentColor" stroke-width="1.5" opacity="0.28" stroke-linecap="round" stroke-linejoin="round"/>
+                  <rect x="84" y="36" width="10" height="10" rx="2" stroke="currentColor" stroke-width="1" opacity="0.15"/>
+                  <path d="M40 92 l6 -8 M46 84 l-4 0 M40 84 l4 8" stroke="currentColor" stroke-width="1.2" opacity="0.3" stroke-linecap="round" stroke-linejoin="round"/>
+                </>
+              )}
+              {g.key === 'field' && (
+                <>
+                  <circle cx="60" cy="54" r="18" stroke="currentColor" stroke-width="1.5" opacity="0.25"/>
+                  <path d="M60 36 v36 M42 54 h36" stroke="currentColor" stroke-width="1.2" opacity="0.15"/>
+                  <path d="M60 86 l8 -12 M60 74 l-6 5 M60 74 l6 5" stroke="currentColor" stroke-width="1.5" opacity="0.35" stroke-linecap="round" stroke-linejoin="round"/>
+                  <circle cx="60" cy="54" r="4" fill="currentColor" opacity="0.3"/>
+                  <circle cx="36" cy="32" r="5" fill="currentColor" opacity="0.08"/>
+                  <circle cx="86" cy="84" r="3" fill="currentColor" opacity="0.12"/>
+                </>
+              )}
+              {g.key === 'log' && (
+                <>
+                  <path d="M26 46 h52 l10 12 v26 h-62 z" stroke="currentColor" stroke-width="1.5" opacity="0.25" fill="currentColor" fill-opacity="0.04"/>
+                  <path d="M26 58 h62" stroke="currentColor" stroke-width="1.2" opacity="0.15"/>
+                  <rect x="34" y="70" width="10" height="10" rx="2" stroke="currentColor" stroke-width="1" opacity="0.18"/>
+                  <rect x="52" y="70" width="10" height="10" rx="2" stroke="currentColor" stroke-width="1" opacity="0.18"/>
+                  <circle cx="44" cy="86" r="4" stroke="currentColor" stroke-width="1.2" opacity="0.25"/>
+                  <circle cx="94" cy="86" r="4" stroke="currentColor" stroke-width="1.2" opacity="0.25"/>
+                  <path d="M38 88 a2 2 0 0 0 4 0" stroke="currentColor" stroke-width="1" opacity="0.2"/>
+                </>
+              )}
+            </svg>
+          </div>
+          <h3 class="skill-group-title">
+            <svg class="skill-icon" viewBox="0 0 24 24" fill="none" stroke={g.color} stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              {g.key === 'eng' && <><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></>}
+              {g.key === 'css' && <><path d="M2.5 12 6 8.5 9 11m12.5 1L18 8.5 15 11m-6 0 3 2.5 3-2.5"/><path d="m6 8.5 3.5 3a1.5 1.5 0 0 0 2 0l.5-.5a1.5 1.5 0 0 1 2 0l.5.5a1.5 1.5 0 0 0 2 0l3.5-3"/></>}
+              {g.key === 'ops' && <><path d="M4 6h16M4 12h10M4 18h7"/><path d="M16 16l2 2 4-4"/></>}
+              {g.key === 'field' && <><circle cx="12" cy="12" r="10"/><path d="M12 8v5l3 3"/></>}
+              {g.key === 'log' && <><rect x="2" y="7" width="20" height="12" rx="2"/><path d="M2 7l10 6L22 7"/><path d="M2 13v5M22 13v5"/></>}
+            </svg>
+            <span data-i18n={`skills.cat.${g.key}`}>{g.title}</span>
+          </h3>
+          <div class="skill-tags">
+            {g.tags.map(tag => (
+              <span class="tag" style={`--sg: ${g.color}`}>{tag}</span>
+            ))}
+          </div>
         </div>
-        <h3 class="skill-group-title">
-          <svg class="skill-icon" viewBox="0 0 24 24" fill="none" stroke="#3b82f6" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg>
-          <span data-i18n="skills.management">Management</span>
-        </h3>
-        <div class="skill-tags">
-          <a href="https://en.wikipedia.org/wiki/Management" target="_blank" rel="noopener noreferrer" class="tag tag-mgmt">Management</a>
-          <a href="https://en.wikipedia.org/wiki/Problem_solving" target="_blank" rel="noopener noreferrer" class="tag tag-mgmt">Problem-solving</a>
-          <a href="https://en.wikipedia.org/wiki/Communication" target="_blank" rel="noopener noreferrer" class="tag tag-mgmt">Communication</a>
-          <a href="https://en.wikipedia.org/wiki/Leadership" target="_blank" rel="noopener noreferrer" class="tag tag-mgmt">Leadership</a>
-        </div>
-      </div>
-      <div class="skill-group skill-group-tech fade-in">
-        <div class="skill-illo" aria-hidden="true">
-          <svg viewBox="0 0 120 120" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <rect x="35" y="30" width="50" height="38" rx="5" stroke="currentColor" stroke-width="1.5" fill="currentColor" fill-opacity="0.04" opacity="0.15"/>
-            <rect x="40" y="38" width="16" height="4" rx="2" fill="currentColor" opacity="0.2"/>
-            <rect x="40" y="46" width="22" height="4" rx="2" fill="currentColor" opacity="0.12"/>
-            <rect x="40" y="54" width="12" height="4" rx="2" fill="currentColor" opacity="0.2"/>
-            <rect x="53" y="68" width="14" height="10" rx="1.5" fill="currentColor" opacity="0.1"/>
-            <rect x="48" y="78" width="24" height="4" rx="2" fill="currentColor" opacity="0.08"/>
-            <circle cx="88" cy="42" r="8" fill="currentColor" opacity="0.06"/>
-            <circle cx="32" cy="70" r="5" fill="currentColor" opacity="0.08"/>
-            <circle cx="85" cy="72" r="3" fill="currentColor" opacity="0.1"/>
-          </svg>
-        </div>
-        <h3 class="skill-group-title">
-          <svg class="skill-icon" viewBox="0 0 24 24" fill="none" stroke="#10b981" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="14" rx="2" ry="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
-          <span data-i18n="skills.technical">Technical</span>
-        </h3>
-        <div class="skill-tags">
-          <a href="https://en.wikipedia.org/wiki/Mobile_app_development" target="_blank" rel="noopener noreferrer" class="tag tag-tech">Mobile App Development</a>
-          <a href="https://en.wikipedia.org/wiki/Geographic_information_system" target="_blank" rel="noopener noreferrer" class="tag tag-tech">Geographic Information System</a>
-          <a href="https://en.wikipedia.org/wiki/Remote_sensing" target="_blank" rel="noopener noreferrer" class="tag tag-tech">Remote Sensing Analyst</a>
-          <a href="https://en.wikipedia.org/wiki/Web_development" target="_blank" rel="noopener noreferrer" class="tag tag-tech">Web Development</a>
-          <a href="https://en.wikipedia.org/wiki/Data_analysis" target="_blank" rel="noopener noreferrer" class="tag tag-tech">Data Analysis</a>
-          <a href="https://en.wikipedia.org/wiki/Software_automation" target="_blank" rel="noopener noreferrer" class="tag tag-tech">Software Automation</a>
-        </div>
-      </div>
-      <div class="skill-group skill-group-lang fade-in">
+      ))}
+
+      <div class="skill-group skill-group-lang fade-in" style="--sg: #8b5cf6">
         <div class="skill-illo" aria-hidden="true">
           <svg viewBox="0 0 120 120" fill="none" xmlns="http://www.w3.org/2000/svg">
             <circle cx="60" cy="60" r="30" stroke="currentColor" stroke-width="1.5" opacity="0.12"/>
@@ -108,10 +209,113 @@ const skillBars = [
 </section>
 
 <style>
+  .skills-top {
+    background: var(--bg);
+    border-radius: var(--radius);
+    padding: 1.5rem;
+    border: 1px solid var(--border);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+    margin-bottom: 2rem;
+  }
+
+  .skills-top-sub {
+    font-size: 0.9rem;
+    color: var(--text-muted);
+    margin-bottom: 1rem;
+  }
+
+  .top-skills {
+    list-style: none;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.6rem;
+    margin: 0;
+    padding: 0;
+  }
+
+  .top-skill {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.5rem 1rem;
+    border-radius: 100px;
+    background: var(--bg-alt);
+    border: 1px solid var(--border);
+    font-weight: 600;
+    font-size: 0.9rem;
+    color: var(--primary);
+    transition: transform 0.2s, box-shadow 0.2s, border-color 0.2s;
+  }
+
+  .top-skill:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+    border-color: var(--accent);
+  }
+
+  .top-rank {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 22px;
+    height: 22px;
+    border-radius: 50%;
+    background: var(--primary);
+    color: #fff;
+    font-size: 0.72rem;
+    font-weight: 700;
+    flex-shrink: 0;
+  }
+
+  .radar-wrap {
+    display: flex;
+    justify-content: center;
+    padding: 0.5rem 0 0.25rem;
+  }
+
+  .radar {
+    width: 100%;
+    max-width: 520px;
+    height: auto;
+    display: block;
+  }
+
+  .radar-ring {
+    fill: none;
+    stroke: #e2e8f0;
+    stroke-width: 1;
+  }
+
+  .radar-ring-outer {
+    stroke: #cbd5e1;
+  }
+
+  .radar-spoke {
+    stroke: #e2e8f0;
+    stroke-width: 1;
+  }
+
+  .radar-value {
+    transition: opacity 0.3s;
+  }
+
+  .radar-score {
+    font-size: 12px;
+    font-weight: 700;
+    fill: #0f2b4c;
+  }
+
+  .radar-label {
+    font-size: 13px;
+    font-weight: 600;
+    fill: #0f2b4c;
+    letter-spacing: 0.01em;
+  }
+
   .skills-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-    gap: 2rem;
+    grid-template-columns: repeat(auto-fit, minmax(290px, 1fr));
+    gap: 1.5rem;
   }
 
   .skill-group {
@@ -119,11 +323,16 @@ const skillBars = [
     border-radius: var(--radius);
     padding: 1.5rem;
     border: 1px solid var(--border);
-    box-shadow: 0 2px 8px rgba(0,0,0,0.04);
-    border-top: 4px solid var(--border);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+    border-top: 4px solid var(--sg);
     position: relative;
     overflow: hidden;
   }
+
+  .skill-group-lang {
+    border-top-color: #8b5cf6;
+  }
+
   .skill-illo {
     position: absolute;
     right: -10px;
@@ -131,32 +340,21 @@ const skillBars = [
     width: 120px;
     height: 120px;
     pointer-events: none;
+    color: var(--sg);
     opacity: 0.6;
   }
-  .skill-group-mgmt .skill-illo { color: #3b82f6; }
-  .skill-group-tech .skill-illo { color: #10b981; }
+
   .skill-group-lang .skill-illo { color: #8b5cf6; }
-
-  .skill-group-mgmt {
-    border-top-color: #3b82f6;
-  }
-
-  .skill-group-tech {
-    border-top-color: #10b981;
-  }
-
-  .skill-group-lang {
-    border-top-color: #8b5cf6;
-  }
 
   .skill-group-title {
     font-size: 1.1rem;
     font-weight: 700;
     color: var(--primary);
-    margin-bottom: 1rem;
+    margin-bottom: 0.75rem;
     display: flex;
     align-items: center;
     gap: 0.5rem;
+    padding-right: 110px;
   }
 
   .skill-icon {
@@ -174,143 +372,30 @@ const skillBars = [
   .tag {
     padding: 0.4rem 0.85rem;
     border-radius: 20px;
-    font-size: 0.85rem;
+    font-size: 0.83rem;
     font-weight: 500;
-    transition: transform 0.2s, box-shadow 0.2s;
-    text-decoration: none;
+    background: color-mix(in srgb, var(--sg, #3b82f6) 10%, #ffffff);
+    color: var(--sg, #1e40af);
+    border: 1px solid color-mix(in srgb, var(--sg, #3b82f6) 30%, transparent);
     display: inline-block;
   }
 
-  a.tag:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-    text-decoration: none;
-  }
-
-  .tag-mgmt {
-    background: #eff6ff;
-    color: #1e40af;
-    border: 1px solid #bfdbfe;
-  }
-
-  .tag-tech {
-    background: #ecfdf5;
-    color: #065f46;
-    border: 1px solid #a7f3d0;
-  }
-
   .tag-lang {
+    --sg: #8b5cf6;
     background: #f5f3ff;
     color: #5b21b6;
     border: 1px solid #ddd6fe;
   }
 
-  .skills-chart {
-    margin-bottom: 2.5rem;
-  }
-
-  .skills-chart-subtitle {
-    font-size: 0.95rem;
-    color: var(--text-muted);
-    margin-bottom: 1.25rem;
-  }
-
-  .skill-bars {
-    list-style: none;
-    display: flex;
-    flex-direction: column;
-    gap: 0.65rem;
-  }
-
-  .skill-bar-row {
-    display: grid;
-    grid-template-columns: minmax(160px, 260px) 1fr auto;
-    grid-template-areas: "label track value";
-    align-items: center;
-    gap: 0.85rem;
-    position: relative;
-  }
-
-  .skill-bar-label {
-    grid-area: label;
-    font-size: 0.9rem;
-    font-weight: 600;
-    color: var(--text);
-  }
-
-  .skill-bar-track {
-    grid-area: track;
-    height: 20px;
-    background: var(--bg-alt);
-    border-radius: 4px;
-    overflow: hidden;
-  }
-
-  .skill-bar-fill {
-    display: block;
-    height: 100%;
-    border-radius: 0 4px 4px 0;
-    background: #bfdbfe;
-  }
-
-  .skill-bar-top .skill-bar-fill {
-    background: var(--accent);
-  }
-
-  .skill-bar-value {
-    grid-area: value;
-    font-size: 0.85rem;
-    font-weight: 700;
-    color: var(--primary);
-    min-width: 2.5rem;
-    text-align: right;
-  }
-
-  .skill-bar-row::after {
-    content: attr(data-tooltip);
-    position: absolute;
-    left: 0;
-    bottom: calc(100% + 8px);
-    max-width: 320px;
-    width: max-content;
-    background: var(--primary);
-    color: #fff;
-    font-size: 0.78rem;
-    font-weight: 500;
-    line-height: 1.4;
-    padding: 0.5rem 0.75rem;
-    border-radius: 6px;
-    opacity: 0;
-    pointer-events: none;
-    transform: translateY(4px);
-    transition: opacity 0.2s, transform 0.2s;
-    z-index: 5;
-    box-shadow: 0 4px 16px rgba(0,0,0,0.15);
-  }
-
-  .skill-bar-row:hover::after,
-  .skill-bar-row:focus::after,
-  .skill-bar-row:focus-visible::after {
-    opacity: 1;
-    transform: translateY(0);
-  }
-
-  .skill-bar-row:focus {
-    outline: 2px solid var(--accent);
-    outline-offset: 2px;
-    border-radius: 4px;
-  }
-
   @media (max-width: 768px) {
-    .skill-bar-row {
-      grid-template-columns: 1fr auto;
-      grid-template-areas:
-        "label label"
-        "track value";
-      row-gap: 0.4rem;
+    .skill-group-title {
+      padding-right: 0;
     }
-    .skill-bar-row::after {
-      max-width: calc(100vw - 4rem);
+    .skill-illo {
+      opacity: 0.35;
+    }
+    .radar-label {
+      font-size: 11px;
     }
   }
 </style>

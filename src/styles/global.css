@@ -28,6 +28,7 @@ body {
   background: var(--bg);
   color: var(--text);
   line-height: 1.6;
+  overflow-x: hidden;
   transition: background 0.3s, color 0.3s;
 }
 
@@ -123,3 +124,15 @@ img {
 .fade-in:nth-child(4) { transition-delay: 0.3s; }
 .fade-in:nth-child(5) { transition-delay: 0.4s; }
 .fade-in:nth-child(6) { transition-delay: 0.5s; }
+
+@media (max-width: 768px) {
+  .section {
+    padding: 3.5rem 0;
+  }
+  .container {
+    padding: 0 1.1rem;
+  }
+  .section-subtitle {
+    margin-bottom: 2rem;
+  }
+}

@@ -32,6 +32,8 @@ const baseUrl = import.meta.env.BASE_URL.replace(/\/?$/, '/');
   <script is:inline>
     var _currentLang = localStorage.getItem('lang') || 'en';
     var _trans = {};
+    window.__trans = _trans;
+    window.__lang = _currentLang;
 
     async function _loadLang(lang) {
       if (_trans[lang]) return;
@@ -56,6 +58,7 @@ const baseUrl = import.meta.env.BASE_URL.replace(/\/?$/, '/');
       if (!t) return;
       document.documentElement.lang = lang;
       _currentLang = lang;
+      window.__lang = lang;
       document.querySelectorAll('[data-i18n]').forEach(function(el) {
         var k = el.dataset.i18n;
         if (t[k]) el.textContent = t[k].replace('{year}', new Date().getFullYear());
