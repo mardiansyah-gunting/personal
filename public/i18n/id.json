@@ -141,5 +141,6 @@
   "contact.wechat_prompt": "ID WeChat — salin untuk dicari di WeChat:",
   "footer.copyright": "© {year} Mardiansyah Gunting. Hak cipta dilindungi.",
   "theme.light": "Terang",
-  "theme.dark": "Gelap"
+  "theme.dark": "Gelap",
+  "projects.automation.tools_label": "Dibangun dengan"
 }

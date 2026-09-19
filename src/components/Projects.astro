@@ -131,19 +131,37 @@ const projects = [
             <span class="tag-proj">Data Pipeline</span>
             <span class="tag-proj">Productivity</span>
           </div>
+          <div class="project-tools">
+            <span class="project-tools-label" data-i18n="projects.automation.tools_label">Built with</span>
+            <div class="project-tools-chips">
+              <span class="tool-chip">pandas</span>
+              <span class="tool-chip">openpyxl</span>
+              <span class="tool-chip">python-dotenv</span>
+              <span class="tool-chip">schedule</span>
+              <span class="tool-chip">logging</span>
+            </div>
+          </div>
         </div>
         <div class="automation-flow">
           <button type="button" class="auto-zoom-btn" id="autoZoomBtn" aria-label="Open the workflow diagram to zoom in">
             <svg viewBox="0 0 840 320" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-                <circle cx="45" cy="42" r="3" fill="currentColor" opacity="0.12"/>
-                <circle cx="130" cy="300" r="3" fill="currentColor" opacity="0.1"/>
-                <circle cx="330" cy="22" r="3" fill="currentColor" opacity="0.1"/>
-                <circle cx="790" cy="30" r="3" fill="currentColor" opacity="0.12"/>
-                <circle cx="820" cy="310" r="3" fill="currentColor" opacity="0.1"/>
-                <circle cx="700" cy="292" r="3" fill="currentColor" opacity="0.1"/>
-                <circle cx="60" cy="170" r="3" fill="currentColor" opacity="0.1"/>
-                <circle cx="60" cy="220" r="3" fill="currentColor" opacity="0.08"/>
-                <circle cx="790" cy="160" r="3" fill="currentColor" opacity="0.08"/>
+                <defs>
+                  <marker id="awArrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+                    <path d="M0 1 L9 5 L0 9 z" fill="currentColor" opacity="0.5"/>
+                  </marker>
+                  <marker id="awArrowHi" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+                    <path d="M0 1 L9 5 L0 9 z" fill="currentColor" opacity="0.7"/>
+                  </marker>
+                  <pattern id="awGrid" width="40" height="40" patternUnits="userSpaceOnUse">
+                    <path d="M40 0 H0 V40" fill="none" stroke="currentColor" stroke-width="1" opacity="0.05"/>
+                  </pattern>
+                </defs>
+                <rect x="0" y="0" width="840" height="320" fill="url(#awGrid)"/>
+
+                <g>
+                  <rect x="20" y="12" width="118" height="20" rx="10" stroke="currentColor" stroke-width="1" fill="currentColor" fill-opacity="0.08" opacity="0.8"/>
+                  <text x="79" y="26" text-anchor="middle" font-size="10" font-weight="800" fill="currentColor" opacity="0.9" letter-spacing="0.12em">01 · SOURCE</text>
+                </g>
 
                 <rect x="20" y="18" width="230" height="86" rx="12" stroke="currentColor" stroke-width="1.4" opacity="0.5" fill="currentColor" fill-opacity="0.05"/>
                 <text x="38" y="42" font-size="13" font-weight="700" fill="currentColor" opacity="0.9">Source Data</text>
@@ -162,6 +180,11 @@ const projects = [
                 <text x="40" y="160" font-size="11" fill="currentColor" opacity="0.85">on a timer</text>
                 <text x="40" y="176" font-size="11" fill="currentColor" opacity="0.85">on file upload</text>
 
+                <g>
+                  <rect x="300" y="12" width="122" height="20" rx="10" stroke="currentColor" stroke-width="1" fill="currentColor" fill-opacity="0.08" opacity="0.8"/>
+                  <text x="361" y="26" text-anchor="middle" font-size="10" font-weight="800" fill="currentColor" opacity="0.9" letter-spacing="0.12em">02 · VALIDATE</text>
+                </g>
+
                 <rect x="300" y="18" width="170" height="86" rx="12" stroke="currentColor" stroke-width="1.4" opacity="0.5" fill="currentColor" fill-opacity="0.05"/>
                 <text x="318" y="42" font-size="13" font-weight="700" fill="currentColor" opacity="0.9">Validation</text>
                 <path d="M318 48 h134" stroke="currentColor" stroke-width="1" opacity="0.14"/>
@@ -171,6 +194,11 @@ const projects = [
                 <text x="340" y="80" font-size="11" fill="currentColor" opacity="0.85">Duplicate scan</text>
                 <path d="M324 92 l3.5 3.5 6 -7" stroke="currentColor" stroke-width="1.6" opacity="0.65" stroke-linecap="round" stroke-linejoin="round"/>
                 <text x="340" y="96" font-size="11" fill="currentColor" opacity="0.85">Rules enforced</text>
+
+                <g>
+                  <rect x="300" y="112" width="124" height="20" rx="10" stroke="currentColor" stroke-width="1" fill="currentColor" fill-opacity="0.08" opacity="0.8"/>
+                  <text x="362" y="126" text-anchor="middle" font-size="10" font-weight="800" fill="currentColor" opacity="0.9" letter-spacing="0.12em">03 · PROCESS</text>
+                </g>
 
                 <rect x="300" y="118" width="170" height="86" rx="14" stroke="currentColor" stroke-width="1.4" opacity="0.55" fill="currentColor" fill-opacity="0.05"/>
                 <g class="aw-gear">
@@ -194,6 +222,11 @@ const projects = [
                 <rect x="314" y="178" width="132" height="16" rx="8" fill="currentColor" fill-opacity="0.05" stroke="currentColor" stroke-width="1" opacity="0.5"/>
                 <text x="380" y="190" text-anchor="middle" font-size="9.5" fill="currentColor" opacity="0.7">repeatable · logged</text>
 
+                <g>
+                  <rect x="520" y="12" width="120" height="20" rx="10" stroke="currentColor" stroke-width="1" fill="currentColor" fill-opacity="0.08" opacity="0.8"/>
+                  <text x="580" y="26" text-anchor="middle" font-size="10" font-weight="800" fill="currentColor" opacity="0.9" letter-spacing="0.12em">04 · DELIVER</text>
+                </g>
+
                 <rect x="520" y="18" width="250" height="86" rx="12" stroke="currentColor" stroke-width="1.4" opacity="0.5" fill="currentColor" fill-opacity="0.05"/>
                 <text x="538" y="40" font-size="13" font-weight="700" fill="currentColor" opacity="0.9">Delivered Output</text>
                 <rect x="700" y="25" width="52" height="20" rx="10" stroke="currentColor" stroke-width="1.2" opacity="0.7" fill="currentColor" fill-opacity="0.08"/>
@@ -208,18 +241,12 @@ const projects = [
 
                 <path d="M538 150 h180" stroke="currentColor" stroke-width="1" opacity="0.14"/>
 
-                <path d="M248 64 H293" stroke="currentColor" stroke-width="1.8" opacity="0.5" stroke-linecap="round"/>
-                <path d="M285 60.5 L294 64 L285 67.5 Z" fill="currentColor" opacity="0.5"/>
-                <path d="M248 162 H293" stroke="currentColor" stroke-width="1.8" opacity="0.5" stroke-linecap="round"/>
-                <path d="M285 158.5 L294 162 L285 165.5 Z" fill="currentColor" opacity="0.5"/>
-                <path class="aw-flow" d="M385 106 V114" stroke="currentColor" stroke-width="1.8" opacity="0.55" stroke-linecap="round"/>
-                <path d="M381.5 114 L385 106.5 L388.5 114 Z" fill="currentColor" opacity="0.55"/>
-                <path class="aw-flow" d="M472 78 C 495 78, 503 62, 515 62" stroke="currentColor" stroke-width="1.8" opacity="0.55" stroke-linecap="round"/>
-                <path d="M507 58.5 L516 62 L507 65.5 Z" fill="currentColor" opacity="0.55"/>
-                <path class="aw-flow" d="M472 162 C 495 162, 503 158, 515 158" stroke="currentColor" stroke-width="1.8" opacity="0.55" stroke-linecap="round"/>
-                <path d="M507 154.5 L516 158 L507 161.5 Z" fill="currentColor" opacity="0.55"/>
-                <path class="aw-return" d="M560 106 C 560 268, 216 270, 216 194" stroke="currentColor" stroke-width="1.4" opacity="0.25" stroke-dasharray="6 6" stroke-linecap="round"/>
-                <path d="M212 200 L216 192 L220 200 Z" fill="currentColor" opacity="0.25"/>
+                <path d="M248 64 H284" stroke="currentColor" stroke-width="1.8" opacity="0.5" stroke-linecap="round" marker-end="url(#awArrow)"/>
+                <path d="M248 162 H284" stroke="currentColor" stroke-width="1.8" opacity="0.5" stroke-linecap="round" marker-end="url(#awArrow)"/>
+                <path class="aw-flow" d="M385 106 V108" stroke="currentColor" stroke-width="1.8" opacity="0.55" stroke-linecap="round" marker-end="url(#awArrowHi)"/>
+                <path class="aw-flow" d="M472 78 C 495 78, 503 62, 512 62" stroke="currentColor" stroke-width="1.8" opacity="0.55" stroke-linecap="round" marker-end="url(#awArrow)"/>
+                <path class="aw-flow" d="M472 162 C 495 162, 503 158, 512 158" stroke="currentColor" stroke-width="1.8" opacity="0.55" stroke-linecap="round" marker-end="url(#awArrow)"/>
+                <path class="aw-return" d="M560 106 C 560 268, 216 270, 216 192" stroke="currentColor" stroke-width="1.4" opacity="0.25" stroke-dasharray="6 6" stroke-linecap="round" marker-end="url(#awArrow)"/>
 
                 <text x="420" y="300" text-anchor="middle" font-size="12" fill="currentColor" opacity="0.55">You ask once — the script repeats the work for you.</text>
               </svg>
@@ -850,7 +877,44 @@ const projects = [
   }
 
   @media (max-width: 860px) {
-    .project-automation {
+.project-tools {
+    margin-top: 0.9rem;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 0.6rem 0.8rem;
+    padding: 0.7rem 0.85rem;
+    border-radius: 12px;
+    background: var(--bg-alt);
+    border: 1px solid var(--border);
+  }
+
+  .project-tools-label {
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--text-muted);
+  }
+
+  .project-tools-chips {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.4rem;
+  }
+
+  .tool-chip {
+    font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+    font-size: 0.74rem;
+    font-weight: 600;
+    padding: 0.24rem 0.55rem;
+    border-radius: 6px;
+    background: var(--bg);
+    border: 1px solid color-mix(in srgb, var(--pc) 25%, transparent);
+    color: var(--pc);
+  }
+
+  .project-automation {
       grid-template-columns: 1fr;
     }
   }
@@ -876,6 +940,18 @@ const projects = [
     }
     .automation-flow {
       margin-top: 0.25rem;
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .aw-flow {
+      animation: none;
+    }
+    .aw-gear {
+      animation: none;
+    }
+    .aw-pulse {
+      animation: none;
     }
   }
 </style>

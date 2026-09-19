@@ -141,5 +141,6 @@
   "contact.wechat_prompt": "微信 ID — 复制后在微信中搜索：",
   "footer.copyright": "© {year} Mardiansyah Gunting. 版权所有。",
   "theme.light": "浅色",
-  "theme.dark": "深色"
+  "theme.dark": "深色",
+  "projects.automation.tools_label": "使用工具"
 }
