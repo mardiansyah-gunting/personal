@@ -1,0 +1,979 @@
+---
+const projects = [
+  {
+    index: 0,
+    color: "#10b981",
+    private: true,
+    title: "DMRV",
+    link: null,
+    desc: "Internal application for TREEO Indonesia that digitizes the Measurement, Reporting & Verification (MRV) of field tree-planting data. Built end-to-end, in daily production use, and maintained over time — proof that I can build applications that stay sustainable and reliable.",
+    tags: ["Python", "Data Pipeline", "Production"],
+  },
+  {
+    index: 1,
+    color: "#3b82f6",
+    private: true,
+    title: "TREEO Indonesia Website",
+    link: null,
+    desc: "Enhanced the TREEO Indonesia website — fixed and improved the animations and built a responsive mobile layout so the site works smoothly on phones.",
+    tags: ["Web Development", "Animation", "Responsive Design"],
+  },
+  {
+    index: 2,
+    color: "#f59e0b",
+    title: "Bakul",
+    link: "https://github.com/mardiansyah-gunting/Bakul",
+    desc: "Financial recording app to track income and expenses with full transaction history and monthly reports. Prototype first designed in Figma.",
+    tags: ["Kotlin", "Android Studio", "Figma"],
+  },
+  {
+    index: 3,
+    color: "#22c55e",
+    title: "Counter",
+    link: "https://github.com/mardiansyah-gunting/Counter",
+    desc: "Seedling counting tool for nurseries — built during coffee breaks to support agroforestry work in the field.",
+    tags: ["Kotlin", "Android"],
+  },
+  {
+    index: 4,
+    color: "#6366f1",
+    title: "CAD Converter",
+    link: "https://github.com/mardiansyah-gunting/CAD-converter",
+    desc: "Python utility that converts AutoCAD DWG/DXF files into Esri Shapefile or GeoJSON using GDAL and GeoPandas, ready for GIS analysis and API integration.",
+    tags: ["Python", "GDAL", "GeoPandas", "GIS"],
+  },
+  {
+    index: 5,
+    color: "#14b8a6",
+    title: "Tree Monitoring",
+    link: "https://github.com/mardiansyah-gunting/tree-monitoring",
+    desc: "Native Android app for farmers and field officers: identify plant species, assess tree health, record DBH measurements, and plot land with GPS walk. Bilingual (ID/EN).",
+    tags: ["Kotlin", "Jetpack Compose", "Material 3", "GPS"],
+  },
+  {
+    index: 6,
+    color: "#8b5cf6",
+    title: "WA Broadcast",
+    link: "https://github.com/mardiansyah-gunting/wa-broadcast",
+    desc: "Python tool to send bulk WhatsApp messages in one go.",
+    tags: ["Python", "Bulk Messaging"],
+  },
+  {
+    index: 7,
+    color: "#ef4444",
+    title: "YouTube Downloader",
+    link: "https://github.com/mardiansyah-gunting/youtube-downloader",
+    desc: "Python tool for downloading media from YouTube.",
+    tags: ["Python", "Download Tool"],
+  },
+  {
+    index: 8,
+    color: "#06b6d4",
+    title: "TechMentoring",
+    link: "https://github.com/mardiansyah-gunting/TechMentoring",
+    desc: "Structured mentoring materials and hands-on exercises for technical sessions — Python, data handling, and security log analysis.",
+    tags: ["Python", "Mentoring", "Teaching"],
+  },
+  {
+    index: 9,
+    color: "#f97316",
+    title: "Nulis",
+    link: "https://github.com/mardiansyah-gunting/Nulis",
+    desc: "Note-taking Android app built with Kotlin — a simple place to jot things down.",
+    tags: ["Kotlin", "Android"],
+  },
+  {
+    index: 10,
+    color: "#64748b",
+    title: "Folder Mover",
+    link: "https://github.com/mardiansyah-gunting/folder-mover",
+    desc: "Safe folder consolidation utility — merges and organizes folders (like Google Takeout) without overwriting existing files, then cleans up empty directories.",
+    tags: ["Python", "File Management", "Backup"],
+  },
+  {
+    index: 11,
+    color: "#a855f7",
+    title: "Suit Game Terminal",
+    link: "https://github.com/mardiansyah-gunting/SuitGameTerminal",
+    desc: "Rock-paper-scissors game playable directly in the command line, built in Kotlin.",
+    tags: ["Kotlin", "CLI Game"],
+  },
+  {
+    index: 12,
+    color: "#ec4899",
+    title: "Kertas Batu Gunting",
+    link: "https://github.com/mardiansyah-gunting/kertas-batu-gunting",
+    desc: "Playful rock-paper-scissors game with a dark theme, best-of-5 scoring, smooth animations, and 3-language support (ID/EN/ZH).",
+    tags: ["Kotlin", "Android", "Game"],
+  },
+];
+---
+
+<section id="projects" class="section">
+  <div class="container">
+    <h2 class="fade-in section-title" data-i18n="projects.subtitle">Things I've Built</h2>
+    <p class="fade-in section-subtitle project-intro" data-i18n="projects.intro">
+      A selection of applications and tools I've built — plus internal work at TREEO Indonesia that I can't publish publicly.
+    </p>
+    <div class="projects-grid">
+      <article class="project-card project-automation fade-in" style="--pc: #6366f1">
+        <div class="automation-body">
+          <div class="automation-head">
+            <h3 class="project-title" data-i18n="projects.automation.title">Workflow Automation</h3>
+            <span class="project-badge" data-i18n="projects.internal_badge">Internal</span>
+          </div>
+          <p class="project-desc" data-i18n="projects.automation.desc">
+            At Fairventures Digital GmbH I built internal Python scripts that turn raw data into exactly what the team needs — extracted, transformed, or patched into the format they ask for, on demand. Confidential and in daily use, so the source never leaves the company.
+          </p>
+          <div class="project-tags">
+            <span class="tag-proj">Python</span>
+            <span class="tag-proj">Automation</span>
+            <span class="tag-proj">Data Pipeline</span>
+            <span class="tag-proj">Productivity</span>
+          </div>
+        </div>
+        <div class="automation-flow">
+          <button type="button" class="auto-zoom-btn" id="autoZoomBtn" aria-label="Open the workflow diagram to zoom in">
+            <svg viewBox="0 0 840 320" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                <circle cx="45" cy="42" r="3" fill="currentColor" opacity="0.12"/>
+                <circle cx="130" cy="300" r="3" fill="currentColor" opacity="0.1"/>
+                <circle cx="330" cy="22" r="3" fill="currentColor" opacity="0.1"/>
+                <circle cx="790" cy="30" r="3" fill="currentColor" opacity="0.12"/>
+                <circle cx="820" cy="310" r="3" fill="currentColor" opacity="0.1"/>
+                <circle cx="700" cy="292" r="3" fill="currentColor" opacity="0.1"/>
+                <circle cx="60" cy="170" r="3" fill="currentColor" opacity="0.1"/>
+                <circle cx="60" cy="220" r="3" fill="currentColor" opacity="0.08"/>
+                <circle cx="790" cy="160" r="3" fill="currentColor" opacity="0.08"/>
+
+                <rect x="20" y="18" width="230" height="86" rx="12" stroke="currentColor" stroke-width="1.4" opacity="0.5" fill="currentColor" fill-opacity="0.05"/>
+                <text x="38" y="42" font-size="13" font-weight="700" fill="currentColor" opacity="0.9">Source Data</text>
+                <path d="M38 48 h210" stroke="currentColor" stroke-width="1" opacity="0.14"/>
+                <rect x="40" y="54" width="10" height="12" rx="2" stroke="currentColor" stroke-width="1.3" opacity="0.55"/>
+                <text x="58" y="64" font-size="11" fill="currentColor" opacity="0.85">Spreadsheets</text>
+                <path d="M40 72 h10 M41 75 h8" stroke="currentColor" stroke-width="1.3" opacity="0.4" stroke-linecap="round"/>
+                <text x="58" y="80" font-size="11" fill="currentColor" opacity="0.85">Cloud exports</text>
+                <circle cx="45" cy="88" r="4.5" fill="none" stroke="currentColor" stroke-width="1.3" opacity="0.5"/>
+                <text x="58" y="92" font-size="11" fill="currentColor" opacity="0.85">Partner logs</text>
+
+                <rect x="20" y="118" width="230" height="66" rx="12" stroke="currentColor" stroke-width="1.4" opacity="0.5" fill="currentColor" fill-opacity="0.05"/>
+                <rect x="40" y="127" width="20" height="16" rx="3" stroke="currentColor" stroke-width="1.3" opacity="0.6"/>
+                <path d="M40 131 h20" stroke="currentColor" stroke-width="1.3" opacity="0.6"/>
+                <text x="70" y="140" font-size="12" font-weight="700" fill="currentColor" opacity="0.9">Schedule / Event</text>
+                <text x="40" y="160" font-size="11" fill="currentColor" opacity="0.85">on a timer</text>
+                <text x="40" y="176" font-size="11" fill="currentColor" opacity="0.85">on file upload</text>
+
+                <rect x="300" y="18" width="170" height="86" rx="12" stroke="currentColor" stroke-width="1.4" opacity="0.5" fill="currentColor" fill-opacity="0.05"/>
+                <text x="318" y="42" font-size="13" font-weight="700" fill="currentColor" opacity="0.9">Validation</text>
+                <path d="M318 48 h134" stroke="currentColor" stroke-width="1" opacity="0.14"/>
+                <path d="M324 60 l3.5 3.5 6 -7" stroke="currentColor" stroke-width="1.6" opacity="0.65" stroke-linecap="round" stroke-linejoin="round"/>
+                <text x="340" y="64" font-size="11" fill="currentColor" opacity="0.85">Format check</text>
+                <path d="M324 76 l3.5 3.5 6 -7" stroke="currentColor" stroke-width="1.6" opacity="0.65" stroke-linecap="round" stroke-linejoin="round"/>
+                <text x="340" y="80" font-size="11" fill="currentColor" opacity="0.85">Duplicate scan</text>
+                <path d="M324 92 l3.5 3.5 6 -7" stroke="currentColor" stroke-width="1.6" opacity="0.65" stroke-linecap="round" stroke-linejoin="round"/>
+                <text x="340" y="96" font-size="11" fill="currentColor" opacity="0.85">Rules enforced</text>
+
+                <rect x="300" y="118" width="170" height="86" rx="14" stroke="currentColor" stroke-width="1.4" opacity="0.55" fill="currentColor" fill-opacity="0.05"/>
+                <g class="aw-gear">
+                  <circle cx="440" cy="150" r="13" fill="none" stroke="currentColor" stroke-width="1.5" opacity="0.65"/>
+                  <circle cx="440" cy="150" r="6" fill="none" stroke="currentColor" stroke-width="1.5" opacity="0.5"/>
+                  <circle cx="440" cy="150" r="2.2" fill="currentColor" opacity="0.7"/>
+                  <g fill="currentColor" opacity="0.45">
+                    <rect x="437" y="137" width="6" height="7" rx="2"/>
+                    <rect x="437" y="137" width="6" height="7" rx="2" transform="rotate(45 440 150)"/>
+                    <rect x="437" y="137" width="6" height="7" rx="2" transform="rotate(90 440 150)"/>
+                    <rect x="437" y="137" width="6" height="7" rx="2" transform="rotate(135 440 150)"/>
+                    <rect x="437" y="137" width="6" height="7" rx="2" transform="rotate(180 440 150)"/>
+                    <rect x="437" y="137" width="6" height="7" rx="2" transform="rotate(225 440 150)"/>
+                    <rect x="437" y="137" width="6" height="7" rx="2" transform="rotate(270 440 150)"/>
+                    <rect x="437" y="137" width="6" height="7" rx="2" transform="rotate(315 440 150)"/>
+                  </g>
+                </g>
+                <circle class="aw-pulse" cx="452" cy="126" r="3" fill="currentColor"/>
+                <text x="314" y="140" font-size="13.5" font-weight="800" fill="currentColor" opacity="0.95">Python Script</text>
+                <text x="314" y="158" font-size="10" fill="currentColor" opacity="0.6">Extract · Transform · Patch</text>
+                <rect x="314" y="178" width="132" height="16" rx="8" fill="currentColor" fill-opacity="0.05" stroke="currentColor" stroke-width="1" opacity="0.5"/>
+                <text x="380" y="190" text-anchor="middle" font-size="9.5" fill="currentColor" opacity="0.7">repeatable · logged</text>
+
+                <rect x="520" y="18" width="250" height="86" rx="12" stroke="currentColor" stroke-width="1.4" opacity="0.5" fill="currentColor" fill-opacity="0.05"/>
+                <text x="538" y="40" font-size="13" font-weight="700" fill="currentColor" opacity="0.9">Delivered Output</text>
+                <rect x="700" y="25" width="52" height="20" rx="10" stroke="currentColor" stroke-width="1.2" opacity="0.7" fill="currentColor" fill-opacity="0.08"/>
+                <text x="726" y="40" text-anchor="middle" font-size="10" font-weight="800" fill="currentColor" opacity="0.9">Done</text>
+                <path d="M538 47 h194" stroke="currentColor" stroke-width="1" opacity="0.14"/>
+                <path d="M542 59 l3.5 3.5 6 -7" stroke="currentColor" stroke-width="1.6" opacity="0.65" stroke-linecap="round" stroke-linejoin="round"/>
+                <text x="560" y="63" font-size="11" fill="currentColor" opacity="0.85">Formatted reports</text>
+                <path d="M542 75 l3.5 3.5 6 -7" stroke="currentColor" stroke-width="1.6" opacity="0.65" stroke-linecap="round" stroke-linejoin="round"/>
+                <text x="560" y="79" font-size="11" fill="currentColor" opacity="0.85">Patched records</text>
+                <path d="M542 91 l3.5 3.5 6 -7" stroke="currentColor" stroke-width="1.6" opacity="0.65" stroke-linecap="round" stroke-linejoin="round"/>
+                <text x="560" y="95" font-size="11" fill="currentColor" opacity="0.85">Actionable files</text>
+
+                <path d="M538 150 h180" stroke="currentColor" stroke-width="1" opacity="0.14"/>
+
+                <path d="M248 64 H293" stroke="currentColor" stroke-width="1.8" opacity="0.5" stroke-linecap="round"/>
+                <path d="M285 60.5 L294 64 L285 67.5 Z" fill="currentColor" opacity="0.5"/>
+                <path d="M248 162 H293" stroke="currentColor" stroke-width="1.8" opacity="0.5" stroke-linecap="round"/>
+                <path d="M285 158.5 L294 162 L285 165.5 Z" fill="currentColor" opacity="0.5"/>
+                <path class="aw-flow" d="M385 106 V114" stroke="currentColor" stroke-width="1.8" opacity="0.55" stroke-linecap="round"/>
+                <path d="M381.5 114 L385 106.5 L388.5 114 Z" fill="currentColor" opacity="0.55"/>
+                <path class="aw-flow" d="M472 78 C 495 78, 503 62, 515 62" stroke="currentColor" stroke-width="1.8" opacity="0.55" stroke-linecap="round"/>
+                <path d="M507 58.5 L516 62 L507 65.5 Z" fill="currentColor" opacity="0.55"/>
+                <path class="aw-flow" d="M472 162 C 495 162, 503 158, 515 158" stroke="currentColor" stroke-width="1.8" opacity="0.55" stroke-linecap="round"/>
+                <path d="M507 154.5 L516 158 L507 161.5 Z" fill="currentColor" opacity="0.55"/>
+                <path class="aw-return" d="M560 106 C 560 268, 216 270, 216 194" stroke="currentColor" stroke-width="1.4" opacity="0.25" stroke-dasharray="6 6" stroke-linecap="round"/>
+                <path d="M212 200 L216 192 L220 200 Z" fill="currentColor" opacity="0.25"/>
+
+                <text x="420" y="300" text-anchor="middle" font-size="12" fill="currentColor" opacity="0.55">You ask once — the script repeats the work for you.</text>
+              </svg>
+            <span class="auto-zoom-hint">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3M11 8v6M8 11h6"/></svg>
+              <span data-i18n="projects.automation.zoom_hint">Click to zoom</span>
+            </span>
+          </button>
+        </div>
+      </article>
+      {projects.map(p => (
+        <article
+          class="project-card fade-in"
+          style={`--pc: ${p.color}`}
+          data-project={p.index}
+        >
+          <div class="project-illo" aria-hidden="true">
+            <svg viewBox="0 0 120 120" fill="none" xmlns="http://www.w3.org/2000/svg">
+              {p.index === 0 && (
+                <>
+                  <circle cx="60" cy="60" r="44" stroke="currentColor" stroke-width="1.5" opacity="0.1"/>
+                  <path d="M60 78 V 44" stroke="currentColor" stroke-width="1.5" opacity="0.25" stroke-linecap="round"/>
+                  <path d="M60 44 C 46 44, 38 52, 43 59 C 38 64, 45 72, 52 70 C 55 76, 65 76, 68 70 C 75 72, 82 64, 77 59 C 82 52, 74 44, 60 44 Z" fill="currentColor" fill-opacity="0.1" stroke="currentColor" stroke-width="1.2" opacity="0.6" stroke-linecap="round" stroke-linejoin="round"/>
+                  <path d="M30 30 a1 1 0 0 1 1-1 h8 a1 1 0 0 1 1 1 v8 a1 1 0 0 1-1 1 h-8 a1 1 0 0 1-1-1 z" stroke="currentColor" stroke-width="1.1" opacity="0.25"/>
+                  <circle cx="40" cy="30" r="3" fill="currentColor" opacity="0.2"/>
+                  <circle cx="84" cy="34" r="3" fill="currentColor" opacity="0.2"/>
+                  <circle cx="78" cy="84" r="3" fill="currentColor" opacity="0.2"/>
+                  <rect x="36" y="74" width="10" height="10" rx="2" stroke="currentColor" stroke-width="1.1" opacity="0.18"/>
+                  <circle cx="41" cy="79" r="1.6" fill="currentColor" opacity="0.4"/>
+                  <circle cx="52" cy="91" r="1.6" fill="currentColor" opacity="0.25"/>
+                  <circle cx="66" cy="95" r="1.6" fill="currentColor" opacity="0.18"/>
+                </>
+              )}
+              {p.index === 1 && (
+                <>
+                  <rect x="20" y="30" width="80" height="52" rx="6" stroke="currentColor" stroke-width="1.5" opacity="0.4" fill="currentColor" fill-opacity="0.04"/>
+                  <path d="M20 40 h80" stroke="currentColor" stroke-width="1.5" opacity="0.25"/>
+                  <circle cx="28" cy="35" r="2" fill="currentColor" opacity="0.4"/>
+                  <circle cx="35" cy="35" r="2" fill="currentColor" opacity="0.25"/>
+                  <circle cx="42" cy="35" r="2" fill="currentColor" opacity="0.15"/>
+                  <rect x="30" y="48" width="46" height="5" rx="2.5" fill="currentColor" opacity="0.2"/>
+                  <rect x="30" y="58" width="60" height="5" rx="2.5" fill="currentColor" opacity="0.12"/>
+                  <path d="M64 66 l8-5 -8-5 z" fill="currentColor" opacity="0.3"/>
+                  <rect x="84" y="66" width="14" height="18" rx="2.5" stroke="currentColor" stroke-width="1.2" opacity="0.35"/>
+                  <path d="M90 70 v4" stroke="currentColor" stroke-width="1.4" opacity="0.4" stroke-linecap="round"/>
+                  <circle cx="90" cy="78" r="1.6" fill="currentColor" opacity="0.4"/>
+                  <path d="M88 54 l5 -8 5 8 z" stroke="currentColor" stroke-width="1.2" opacity="0.3"/>
+                </>
+              )}
+              {p.index === 2 && (
+                <>
+                  <rect x="24" y="34" width="72" height="52" rx="8" stroke="currentColor" stroke-width="1.5" opacity="0.4" fill="currentColor" fill-opacity="0.04"/>
+                  <path d="M24 46 h72" stroke="currentColor" stroke-width="1.1" opacity="0.2"/>
+                  <path d="M54 58 h-14 M54 66 h-14" stroke="currentColor" stroke-width="1.3" opacity="0.3" stroke-linecap="round"/>
+                  <circle cx="78" cy="50" r="3" fill="currentColor" opacity="0.35"/>
+                  <circle cx="78" cy="62" r="3" fill="currentColor" opacity="0.25"/>
+                  <circle cx="78" cy="74" r="3" fill="currentColor" opacity="0.15"/>
+                  <circle cx="34" cy="92" r="4" fill="currentColor" opacity="0.2"/>
+                  <circle cx="86" cy="92" r="4" fill="currentColor" opacity="0.2"/>
+                  <path d="M38 88 l4 4 8-10" stroke="currentColor" stroke-width="1.6" opacity="0.45" stroke-linecap="round" stroke-linejoin="round"/>
+                </>
+              )}
+              {p.index === 3 && (
+                <>
+                  <path d="M60 84 V 56 M60 56 C 48 56, 42 62, 46 68 C 42 72, 48 78, 53 76 C 55 81, 65 81, 67 76 C 72 78, 78 72, 74 68 C 78 62, 72 56, 60 56 Z" fill="currentColor" fill-opacity="0.1" stroke="currentColor" stroke-width="1.2" opacity="0.55" stroke-linecap="round" stroke-linejoin="round"/>
+                  <path d="M44 32 l6 -10 6 10 z" stroke="currentColor" stroke-width="1.2" opacity="0.3" stroke-linejoin="round"/>
+                  <circle cx="50" cy="34" r="2.5" fill="currentColor" opacity="0.35"/>
+                  <circle cx="44" cy="22" r="3" fill="currentColor" opacity="0.2"/>
+                  <circle cx="82" cy="30" r="3" fill="currentColor" opacity="0.2"/>
+                  <circle cx="84" cy="76" r="3" fill="currentColor" opacity="0.2"/>
+                  <rect x="28" y="70" width="14" height="9" rx="2" stroke="currentColor" stroke-width="1.1" opacity="0.25"/>
+                  <path d="M62 60 v-18 M62 42 l-6 5 M62 42 l6 5" stroke="currentColor" stroke-width="1.4" opacity="0.4" stroke-linecap="round" stroke-linejoin="round"/>
+                </>
+              )}
+              {p.index === 4 && (
+                <>
+                  <rect x="22" y="28" width="76" height="64" rx="6" stroke="currentColor" stroke-width="1.5" opacity="0.4" fill="currentColor" fill-opacity="0.04"/>
+                  <path d="M22 54 h20 m0 0 l8 -10 8 14 10 -9 8 6 h18" stroke="currentColor" stroke-width="2" opacity="0.4" stroke-linecap="round" stroke-linejoin="round"/>
+                  <path d="M40 58 v12 m8 0 v-14 m6 10 v16 m8 -12 v9 m10 -6 v11" stroke="currentColor" stroke-width="1.2" opacity="0.22" stroke-linecap="round"/>
+                  <circle cx="60" cy="60" r="18" stroke="currentColor" stroke-width="1" opacity="0.12"/>
+                  <path d="M60 42 v36 M42 60 h36" stroke="currentColor" stroke-width="1" opacity="0.12"/>
+                  <rect x="82" y="76" width="16" height="12" rx="2" stroke="currentColor" stroke-width="1.1" opacity="0.3"/>
+                  <path d="M90 80 l3 3 -3 5" stroke="currentColor" stroke-width="1.2" opacity="0.4" stroke-linecap="round" stroke-linejoin="round"/>
+                </>
+              )}
+              {p.index === 5 && (
+                <>
+                  <rect x="54" y="26" width="22" height="64" rx="4" stroke="currentColor" stroke-width="1.3" opacity="0.35"/>
+                  <rect x="60" y="32" width="10" height="52" rx="2" fill="currentColor" fill-opacity="0.05" opacity="0.25"/>
+                  <path d="M65 90 V 56 M65 56 C 55 56, 50 61, 53 66 C 50 70, 55 75, 59 73 C 61 78, 69 78, 71 73 C 75 75, 80 70, 77 66 C 80 61, 75 56, 65 56 Z" fill="currentColor" fill-opacity="0.12" stroke="currentColor" stroke-width="1.2" opacity="0.65" stroke-linecap="round" stroke-linejoin="round"/>
+                  <circle cx="38" cy="30" r="10" fill="currentColor" fill-opacity="0.08" stroke="currentColor" stroke-width="1.2" opacity="0.3"/>
+                  <path d="M38 25 v10 M33 30 h10" stroke="currentColor" stroke-width="1.3" opacity="0.4" stroke-linecap="round"/>
+                  <circle cx="84" cy="34" r="3" fill="currentColor" opacity="0.2"/>
+                  <circle cx="40" cy="84" r="3" fill="currentColor" opacity="0.2"/>
+                  <circle cx="86" cy="82" r="3" fill="currentColor" opacity="0.2"/>
+                  <path d="M78 92 a1 1 0 0 1 1-1 h9 a1 1 0 0 1 1 1 v9 a1 1 0 0 1-1 1 h-9 a1 1 0 0 1-1-1 z m5.5 4.5 v4 l3 -2" stroke="currentColor" stroke-width="1.1" opacity="0.3" stroke-linecap="round" stroke-linejoin="round"/>
+                </>
+              )}
+              {p.index === 6 && (
+                <>
+                  <rect x="28" y="30" width="56" height="44" rx="10" stroke="currentColor" stroke-width="1.5" opacity="0.4" fill="currentColor" fill-opacity="0.04"/>
+                  <path d="M72 52 h14 a2 2 0 0 1 2 2 v8 a2 2 0 0 1-2 2 h-8 l-6 4 v-4 h-6" stroke="currentColor" stroke-width="1.3" opacity="0.4" stroke-linecap="round" stroke-linejoin="round"/>
+                  <circle cx="42" cy="44" r="2.2" fill="currentColor" opacity="0.45"/>
+                  <circle cx="54" cy="44" r="2.2" fill="currentColor" opacity="0.3"/>
+                  <circle cx="66" cy="44" r="2.2" fill="currentColor" opacity="0.15"/>
+                  <circle cx="42" cy="54" r="2.2" fill="currentColor" opacity="0.3"/>
+                  <circle cx="54" cy="54" r="2.2" fill="currentColor" opacity="0.15"/>
+                  <path d="M30 86 l5 -8 5 8 z" stroke="currentColor" stroke-width="1.2" opacity="0.3" stroke-linejoin="round"/>
+                  <circle cx="82" cy="86" r="3" fill="currentColor" opacity="0.2"/>
+                </>
+              )}
+              {p.index === 7 && (
+                <>
+                  <rect x="36" y="28" width="48" height="34" rx="8" stroke="currentColor" stroke-width="1.5" opacity="0.4"/>
+                  <path d="M51 36 l14 9 -14 9 z" fill="currentColor" opacity="0.45"/>
+                  <circle cx="60" cy="62" r="14" stroke="currentColor" stroke-width="1.2" opacity="0.3"/>
+                  <path d="M60 76 v10 M55 81 l5 5 5-5" stroke="currentColor" stroke-width="1.5" opacity="0.45" stroke-linecap="round" stroke-linejoin="round"/>
+                  <rect x="52" y="86" width="16" height="4" rx="2" fill="currentColor" opacity="0.2"/>
+                  <circle cx="38" cy="84" r="3" fill="currentColor" opacity="0.2"/>
+                  <circle cx="84" cy="82" r="3" fill="currentColor" opacity="0.2"/>
+                </>
+              )}
+              {p.index === 8 && (
+                <>
+                  <rect x="30" y="32" width="60" height="46" rx="6" stroke="currentColor" stroke-width="1.5" opacity="0.4" fill="currentColor" fill-opacity="0.04"/>
+                  <path d="M36 34 l9 -8 h34 a2 2 0 0 1 2 2 v4 h-24 l-9 8 h-14 a2 2 0 0 1-2-2 z" fill="currentColor" fill-opacity="0.1" opacity="0.35"/>
+                  <rect x="40" y="44" width="28" height="4" rx="2" fill="currentColor" opacity="0.3"/>
+                  <rect x="40" y="53" width="40" height="4" rx="2" fill="currentColor" opacity="0.18"/>
+                  <rect x="40" y="62" width="22" height="4" rx="2" fill="currentColor" opacity="0.3"/>
+                  <path d="M78 62 l8 -14 8 14 h-3.5 l-4.5 -8 -4.5 8 z" fill="currentColor" opacity="0.35"/>
+                  <circle cx="86" cy="44" r="3" fill="currentColor" opacity="0.2"/>
+                  <circle cx="34" cy="82" r="3" fill="currentColor" opacity="0.2"/>
+                  <circle cx="86" cy="84" r="3" fill="currentColor" opacity="0.2"/>
+                </>
+              )}
+              {p.index === 9 && (
+                <>
+                  <rect x="34" y="22" width="52" height="72" rx="6" stroke="currentColor" stroke-width="1.5" opacity="0.4" fill="currentColor" fill-opacity="0.04"/>
+                  <rect x="30" y="26" width="60" height="64" rx="4" stroke="currentColor" stroke-width="1.1" opacity="0.18"/>
+                  <path d="M40 40 h34 M40 49 h42 M40 58 h28 M40 67 h36 M40 76 h24" stroke="currentColor" stroke-width="2" opacity="0.28" stroke-linecap="round"/>
+                  <path d="M84 24 l-14 14 M82 20 l4 4 M86 24 l4 4" stroke="currentColor" stroke-width="1.6" opacity="0.4" stroke-linecap="round"/>
+                  <circle cx="38" cy="90" r="3" fill="currentColor" opacity="0.2"/>
+                  <circle cx="84" cy="90" r="3" fill="currentColor" opacity="0.2"/>
+                </>
+              )}
+              {p.index === 10 && (
+                <>
+                  <path d="M24 54 h26 l8 -8 h34 v40 a4 4 0 0 1-4 4 H28 a4 4 0 0 1-4-4 z" stroke="currentColor" stroke-width="1.4" opacity="0.45" fill="currentColor" fill-opacity="0.05"/>
+                  <path d="M70 76 h-34 v-6" stroke="currentColor" stroke-width="1.4" opacity="0.3" fill="none"/>
+                  <path d="M64 78 h-28" stroke="currentColor" stroke-width="1.4" opacity="0.22"/>
+                  <path d="M54 50 h38 v16" stroke="currentColor" stroke-width="1.5" opacity="0.45" stroke-linecap="round" fill="none"/>
+                  <path d="M88 60 l-5 -3.5 v7 z" fill="currentColor" opacity="0.45"/>
+                  <circle cx="40" cy="84" r="3" fill="currentColor" opacity="0.2"/>
+                  <circle cx="86" cy="90" r="3" fill="currentColor" opacity="0.2"/>
+                </>
+              )}
+              {p.index === 11 && (
+                <>
+                  <rect x="24" y="30" width="72" height="50" rx="6" stroke="currentColor" stroke-width="1.5" opacity="0.45" fill="currentColor" fill-opacity="0.04"/>
+                  <circle cx="32" cy="37" r="2.5" fill="currentColor" opacity="0.4"/>
+                  <circle cx="40" cy="37" r="2.5" fill="currentColor" opacity="0.25"/>
+                  <circle cx="48" cy="37" r="2.5" fill="currentColor" opacity="0.15"/>
+                  <path d="M32 46 l28 4 -28 4 M66 47 h22 M66 54 h18" stroke="currentColor" stroke-width="1.6" opacity="0.3" stroke-linecap="round"/>
+                  <path d="M36 70 c4 -2 8 -2 12 0 M36 76 c4 -2 8 -2 12 0" stroke="currentColor" stroke-width="1.3" opacity="0.3" stroke-linecap="round"/>
+                  <circle cx="84" cy="72" r="8" fill="currentColor" fill-opacity="0.08" stroke="currentColor" stroke-width="1.2" opacity="0.4"/>
+                  <path d="M84 68 v8 M80 72 h8" stroke="currentColor" stroke-width="1.4" opacity="0.45" stroke-linecap="round"/>
+                </>
+              )}
+              {p.index === 12 && (
+                <>
+                  <circle cx="32" cy="76" r="9" fill="currentColor" fill-opacity="0.1" stroke="currentColor" stroke-width="1.4" opacity="0.5"/>
+                  <circle cx="88" cy="76" r="9" fill="currentColor" fill-opacity="0.1" stroke="currentColor" stroke-width="1.4" opacity="0.5"/>
+                  <path d="M84 44 l-2 2 M88 40 l-2 2 M80 48 l4 -4 M84 36 l4 -4" stroke="currentColor" stroke-width="1.4" opacity="0.3" stroke-linecap="round"/>
+                  <circle cx="86" cy="40" r="10" stroke="currentColor" stroke-width="1.3" opacity="0.4"/>
+                  <circle cx="62" cy="62" r="4" fill="currentColor" opacity="0.2"/>
+                  <circle cx="50" cy="60" r="3" fill="currentColor" opacity="0.15"/>
+                  <circle cx="70" cy="54" r="3" fill="currentColor" opacity="0.15"/>
+                  <circle cx="42" cy="92" r="3" fill="currentColor" opacity="0.2"/>
+                  <rect x="78" y="88" width="18" height="10" rx="2" stroke="currentColor" stroke-width="1.1" opacity="0.35"/>
+                </>
+              )}
+            </svg>
+          </div>
+          <div class="project-head">
+            <h3 class="project-title" data-i18n={`projects.${p.index}.title`}>{p.title}</h3>
+            {p.private && <span class="project-badge" data-i18n="projects.internal_badge">Internal</span>}
+          </div>
+          <p class="project-desc" data-i18n={`projects.${p.index}.desc`}>{p.desc}</p>
+          <div class="project-tags">
+            {p.tags.map(tag => <span class="tag-proj">{tag}</span>)}
+          </div>
+          <div class="project-foot">
+            {p.link ? (
+              <a href={p.link} target="_blank" rel="noopener noreferrer" class="project-link">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="project-github"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg>
+                <span data-i18n="projects.view_github">View on GitHub</span>
+              </a>
+            ) : (
+              <span class="project-note">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="project-lock"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+                <span data-i18n="projects.private_note">Source is private — proof of sustainable, production-ready software.</span>
+              </span>
+            )}
+          </div>
+        </article>
+      ))}
+    </div>
+  </div>
+</section>
+
+<div class="auto-mz-overlay" id="autoMz" aria-hidden="true">
+  <div class="auto-mz-card">
+    <div class="auto-mz-head">
+      <span class="auto-mz-title" data-i18n="projects.automation.modal_title">How the automation works</span>
+      <div class="auto-mz-controls">
+        <button type="button" id="autoMzOut" aria-label="Zoom out">−</button>
+        <span class="auto-mz-pct" id="autoMzPct">100%</span>
+        <button type="button" id="autoMzIn" aria-label="Zoom in">+</button>
+        <button type="button" id="autoMzReset" aria-label="Reset zoom">⟳</button>
+      </div>
+      <button type="button" class="auto-mz-close" id="autoMzClose" aria-label="Close">&times;</button>
+    </div>
+    <div class="auto-mz-viewport" id="autoMzViewport">
+      <div class="auto-mz-canvas" id="autoMzCanvas"></div>
+    </div>
+    <div class="auto-mz-foot">Drag to pan · scroll to zoom</div>
+  </div>
+</div>
+
+<style>
+  .project-intro {
+    max-width: 720px;
+    line-height: 1.6;
+  }
+
+  .projects-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+    gap: 1.5rem;
+  }
+
+  .project-card {
+    background: var(--bg);
+    border-radius: var(--radius);
+    padding: 1.5rem;
+    border: 1px solid var(--border);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+    border-top: 4px solid var(--pc);
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    transition: transform 0.2s, box-shadow 0.2s;
+  }
+
+  .project-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+  }
+
+  .project-illo {
+    position: absolute;
+    right: -12px;
+    top: -14px;
+    width: 120px;
+    height: 120px;
+    pointer-events: none;
+    color: var(--pc);
+    opacity: 0.55;
+  }
+
+  .project-head {
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+    margin-bottom: 0.5rem;
+    padding-right: 110px;
+  }
+
+  .project-title {
+    font-size: 1.15rem;
+    font-weight: 800;
+    color: var(--primary);
+  }
+
+  .project-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.3rem;
+    font-size: 0.68rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    padding: 0.22rem 0.55rem;
+    border-radius: 100px;
+    background: rgba(100, 116, 139, 0.12);
+    color: #475569;
+    border: 1px solid rgba(100, 116, 139, 0.25);
+    white-space: nowrap;
+    flex-shrink: 0;
+  }
+
+  .project-desc {
+    font-size: 0.92rem;
+    color: var(--text);
+    line-height: 1.7;
+    flex: 1;
+  }
+
+  .project-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.45rem;
+    margin-top: 1rem;
+  }
+
+  .tag-proj {
+    font-size: 0.75rem;
+    font-weight: 600;
+    padding: 0.28rem 0.7rem;
+    border-radius: 20px;
+    background: color-mix(in srgb, var(--pc) 10%, #ffffff);
+    color: var(--pc);
+    border: 1px solid color-mix(in srgb, var(--pc) 30%, transparent);
+  }
+
+  .project-foot {
+    margin-top: 1.25rem;
+    padding-top: 1rem;
+    border-top: 1px solid var(--border);
+  }
+
+  .project-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.45rem;
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: var(--pc);
+    border: 1.5px solid color-mix(in srgb, var(--pc) 40%, transparent);
+    border-radius: 8px;
+    padding: 0.45rem 0.85rem;
+    transition: all 0.2s;
+  }
+
+  .project-link:hover {
+    background: var(--pc);
+    color: #fff;
+    text-decoration: none;
+    box-shadow: 0 4px 14px color-mix(in srgb, var(--pc) 35%, transparent);
+  }
+
+  .project-github {
+    width: 15px;
+    height: 15px;
+  }
+
+  .project-note {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.4rem;
+    font-size: 0.8rem;
+    color: var(--text-muted);
+    line-height: 1.5;
+  }
+
+  .project-lock {
+    width: 14px;
+    height: 14px;
+    flex-shrink: 0;
+    margin-top: 2px;
+  }
+
+  .project-automation {
+    grid-column: 1 / -1;
+    display: grid;
+    grid-template-columns: minmax(280px, 1fr) 1.3fr;
+    gap: 1.5rem;
+    align-items: center;
+  }
+
+  .automation-head {
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+    margin-bottom: 0.5rem;
+  }
+
+  .automation-flow {
+    color: var(--pc);
+    min-width: 0;
+  }
+
+  .automation-flow svg {
+    width: 100%;
+    height: auto;
+    display: block;
+  }
+
+  .auto-zoom-btn {
+    position: relative;
+    display: block;
+    width: 100%;
+    padding: 0;
+    border: none;
+    background: none;
+    cursor: zoom-in;
+    border-radius: 14px;
+  }
+
+  .auto-zoom-btn:focus-visible {
+    outline: 2px solid var(--pc);
+    outline-offset: 3px;
+  }
+
+  .automation-flow svg text,
+  .auto-mz-canvas svg text {
+    font-family: inherit;
+  }
+
+  .auto-zoom-hint {
+    position: absolute;
+    right: 10px;
+    bottom: 10px;
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: 0.02em;
+    padding: 0.32rem 0.6rem;
+    border-radius: 100px;
+    background: var(--bg);
+    border: 1px solid color-mix(in srgb, var(--pc) 40%, transparent);
+    color: var(--pc);
+    opacity: 0.9;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+    transition: opacity 0.2s, background 0.2s, color 0.2s;
+    pointer-events: none;
+  }
+
+  .auto-zoom-hint svg {
+    width: 12px;
+    height: 12px;
+  }
+
+  .automation-flow:hover .auto-zoom-hint {
+    opacity: 1;
+    background: var(--pc);
+    color: #fff;
+  }
+
+  .aw-flow {
+    stroke-dasharray: 7 9;
+    animation: aw-dash 1.5s linear infinite;
+  }
+
+  @keyframes aw-dash {
+    to { stroke-dashoffset: -32; }
+  }
+
+  .aw-gear {
+    transform-box: view-box;
+    transform-origin: 440px 150px;
+    animation: aw-spin 9s linear infinite;
+  }
+
+  @keyframes aw-spin {
+    to { transform: rotate(360deg); }
+  }
+
+  .aw-pulse {
+    transform-box: fill-box;
+    transform-origin: center;
+    animation: aw-pulse 1.4s ease-in-out infinite;
+  }
+
+  @keyframes aw-pulse {
+    0%, 100% { opacity: 0.25; }
+    50% { opacity: 0.85; }
+  }
+
+  .auto-mz-overlay {
+    position: fixed;
+    inset: 0;
+    z-index: 200;
+    display: flex;
+    align-items: stretch;
+    justify-content: center;
+    padding: 0;
+    background: rgba(10, 12, 20, 0.9);
+    backdrop-filter: blur(6px);
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.22s;
+  }
+
+  .auto-mz-overlay.open {
+    opacity: 1;
+    pointer-events: auto;
+  }
+
+  .auto-mz-card {
+    width: 100vw;
+    height: 100vh;
+    max-height: 100vh;
+    background: var(--bg);
+    border: none;
+    border-radius: 0;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    box-shadow: 0 24px 64px rgba(0, 0, 0, 0.35);
+    transform: translateY(8px) scale(0.99);
+    transition: transform 0.22s;
+  }
+
+  .auto-mz-overlay.open .auto-mz-card {
+    transform: none;
+  }
+
+  .auto-mz-head {
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+    padding: 0.8rem 1rem;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .auto-mz-title {
+    font-weight: 800;
+    color: var(--primary);
+    font-size: 0.95rem;
+  }
+
+  .auto-mz-controls {
+    margin-left: auto;
+    display: flex;
+    align-items: center;
+    gap: 0.3rem;
+  }
+
+  .auto-mz-controls button {
+    width: 34px;
+    height: 34px;
+    border-radius: 8px;
+    border: 1px solid var(--border);
+    background: var(--bg);
+    color: var(--text);
+    font-size: 1.05rem;
+    font-weight: 700;
+    cursor: pointer;
+    display: grid;
+    place-items: center;
+    transition: background 0.15s, color 0.15s, border-color 0.15s;
+  }
+
+  .auto-mz-controls button:hover {
+    background: #6366f1;
+    color: #fff;
+    border-color: #6366f1;
+  }
+
+  .auto-mz-pct {
+    min-width: 48px;
+    text-align: center;
+    font-size: 0.78rem;
+    font-weight: 700;
+    color: var(--text-muted);
+  }
+
+  .auto-mz-close {
+    width: 36px;
+    height: 36px;
+    border-radius: 8px;
+    border: 1px solid transparent;
+    background: transparent;
+    color: var(--text);
+    font-size: 1.4rem;
+    line-height: 1;
+    cursor: pointer;
+    display: grid;
+    place-items: center;
+    transition: background 0.15s, color 0.15s;
+  }
+
+  .auto-mz-close:hover {
+    background: rgba(239, 68, 68, 0.12);
+    color: #ef4444;
+  }
+
+  .auto-mz-viewport {
+    flex: 1;
+    overflow: hidden;
+    position: relative;
+    height: auto;
+    min-height: 0;
+    cursor: grab;
+    touch-action: none;
+    user-select: none;
+    -webkit-user-select: none;
+  }
+
+  .auto-mz-viewport.grabbing {
+    cursor: grabbing;
+  }
+
+  .auto-mz-canvas {
+    position: absolute;
+    inset: 0;
+    transform-origin: 0 0;
+    will-change: transform;
+  }
+
+  .auto-mz-canvas svg {
+    width: 100%;
+    height: 100%;
+    display: block;
+    max-width: none;
+  }
+
+  .auto-mz-foot {
+    padding: 0.5rem 1rem;
+    font-size: 0.72rem;
+    color: var(--text-muted);
+    border-top: 1px solid var(--border);
+    text-align: center;
+  }
+
+  @media (max-width: 860px) {
+    .project-automation {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  @media (max-width: 768px) {
+    .projects-grid {
+      grid-template-columns: 1fr;
+      gap: 1rem;
+    }
+    .project-head {
+      padding-right: 96px;
+    }
+    .project-illo {
+      width: 100px;
+      height: 100px;
+      opacity: 0.4;
+    }
+  }
+
+  @media (max-width: 480px) {
+    .project-card {
+      padding: 1.15rem;
+    }
+    .automation-flow {
+      margin-top: 0.25rem;
+    }
+  }
+</style>
+
+<script>
+(function () {
+  var btn = document.getElementById('autoZoomBtn');
+  var ov = document.getElementById('autoMz');
+  var vp = document.getElementById('autoMzViewport');
+  var cv = document.getElementById('autoMzCanvas');
+  var pct = document.getElementById('autoMzPct');
+  if (!btn || !ov || !vp || !cv || !pct) return;
+  var src = btn.querySelector('svg');
+  var s = 1, tx = 0, ty = 0;
+  var MIN = 0.6, MAX = 2;
+
+  function apply() {
+    cv.style.transform = 'translate(' + tx + 'px,' + ty + 'px) scale(' + s + ')';
+    pct.textContent = Math.round(s * 100) + '%';
+  }
+
+  function zoomTo(ns, cx, cy) {
+    ns = Math.min(MAX, Math.max(MIN, ns));
+    if (cx !== undefined && cy !== undefined) {
+      tx = cx - (cx - tx) * (ns / s);
+      ty = cy - (cy - ty) * (ns / s);
+    }
+    s = ns;
+    apply();
+  }
+
+  function reset() {
+    s = 1; tx = 0; ty = 0;
+    apply();
+  }
+
+  function open() {
+    if (!src) return;
+    cv.innerHTML = '';
+    cv.appendChild(src.cloneNode(true));
+    reset();
+    ov.classList.add('open');
+    document.body.style.overflow = 'hidden';
+  }
+
+  function close() {
+    ov.classList.remove('open');
+    cv.innerHTML = '';
+    document.body.style.overflow = '';
+  }
+
+  btn.addEventListener('click', open);
+  document.getElementById('autoMzClose').addEventListener('click', close);
+  ov.addEventListener('click', function (e) {
+    if (e.target === ov) close();
+  });
+
+  document.getElementById('autoMzOut').addEventListener('click', function () {
+    var r = vp.getBoundingClientRect();
+    zoomTo(s - 0.25, r.left + r.width / 2, r.top + r.height / 2);
+  });
+  document.getElementById('autoMzIn').addEventListener('click', function () {
+    var r = vp.getBoundingClientRect();
+    zoomTo(s + 0.25, r.left + r.width / 2, r.top + r.height / 2);
+  });
+  document.getElementById('autoMzReset').addEventListener('click', reset);
+
+  vp.addEventListener('wheel', function (e) {
+    e.preventDefault();
+    var r = vp.getBoundingClientRect();
+    var f = e.deltaY < 0 ? 1.12 : 1 / 1.12;
+    zoomTo(s * f, e.clientX - r.left, e.clientY - r.top);
+  }, { passive: false });
+
+  var dragging = false, startX = 0, startY = 0, ox = 0, oy = 0;
+  vp.addEventListener('pointerdown', function (e) {
+    if (e.button !== 0 && e.pointerType === 'mouse') return;
+    dragging = true;
+    startX = e.clientX; startY = e.clientY;
+    ox = tx; oy = ty;
+    vp.classList.add('grabbing');
+    try { vp.setPointerCapture(e.pointerId); } catch (err) {}
+  });
+  vp.addEventListener('pointermove', function (e) {
+    if (!dragging) return;
+    tx = ox + (e.clientX - startX);
+    ty = oy + (e.clientY - startY);
+    apply();
+  });
+  function stopDrag() {
+    dragging = false;
+    vp.classList.remove('grabbing');
+  }
+  vp.addEventListener('pointerup', stopDrag);
+  vp.addEventListener('pointercancel', stopDrag);
+
+  document.addEventListener('keydown', function (e) {
+    if (ov.classList.contains('open') && e.key === 'Escape') close();
+  });
+})();
+</script>

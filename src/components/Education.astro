@@ -1,9 +1,10 @@
 ---
+const baseUrl = import.meta.env.BASE_URL.replace(/\/$/, '');
 const eduItems = [
-  { index: 0, period: "2023 – Present", school: "Universitas Terbuka", major: "Business Management (Undergraduate)" },
-  { index: 1, period: "Jun 2023 – Nov 2023", school: "Binar Academy", major: "Data Science Bootcamp" },
-  { index: 2, period: "Dec 2022 – May 2023", school: "Binar Academy", major: "Mobile Development Bootcamp" },
-  { index: 3, period: "Jul 2017 – Aug 2019", school: "SMKN 1 Sampit", major: "Information Technology Engineering" },
+  { index: 0, period: "2024 – Present", school: "Universitas Terbuka", major: "Business Management (Undergraduate)", logo: `${baseUrl}/images/schools/ut.png` },
+  { index: 1, period: "Jun 2023 – Nov 2023", school: "Binar Academy", major: "Data Science Bootcamp", logo: `${baseUrl}/images/schools/binar.png` },
+  { index: 2, period: "Dec 2022 – May 2023", school: "Binar Academy", major: "Mobile Development Bootcamp", logo: `${baseUrl}/images/schools/binar.png` },
+  { index: 3, period: "Jul 2017 – Aug 2019", school: "SMKN 1 Sampit", major: "Information Technology Engineering", logo: `${baseUrl}/images/schools/smkn1.png` },
 ];
 ---
 
@@ -16,9 +17,12 @@ const eduItems = [
         <div class="tl-item" data-index={item.index}>
           <div class="tl-dot" data-index={item.index}></div>
           <div class="tl-card edu-card">
-            <div class="tl-period" data-i18n={`edu.${item.index}.period`}>{item.period}</div>
-            <h3 class="tl-role edu-school" data-i18n={`edu.${item.index}.school`}>{item.school}</h3>
-            <div class="tl-company edu-major" data-i18n={`edu.${item.index}.major`}>{item.major}</div>
+            <img src={item.logo} alt={item.school} class="edu-logo" loading="lazy" />
+            <div class="edu-card-body">
+              <div class="tl-period" data-i18n={`edu.${item.index}.period`}>{item.period}</div>
+              <h3 class="tl-role edu-school" data-i18n={`edu.${item.index}.school`}>{item.school}</h3>
+              <div class="tl-company edu-major" data-i18n={`edu.${item.index}.major`}>{item.major}</div>
+            </div>
           </div>
         </div>
       ))}
@@ -29,6 +33,24 @@ const eduItems = [
 <style>
   .edu-timeline .tl-card {
     padding: 1rem 1.5rem;
+    display: flex;
+    align-items: flex-start;
+    gap: 1rem;
+  }
+
+  .edu-logo {
+    width: 44px;
+    height: 44px;
+    object-fit: cover;
+    border-radius: 12px;
+    border: 1px solid var(--border);
+    background: #fff;
+    flex-shrink: 0;
+    padding: 4px;
+  }
+
+  .edu-card-body {
+    min-width: 0;
   }
 
   .edu-timeline .tl-role {

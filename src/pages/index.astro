@@ -2,8 +2,8 @@
 import BaseLayout from '../layouts/BaseLayout.astro';
 import Header from '../components/Header.astro';
 import Hero from '../components/Hero.astro';
-import About from '../components/About.astro';
 import Experience from '../components/Experience.astro';
+import Projects from '../components/Projects.astro';
 import Skills from '../components/Skills.astro';
 import Education from '../components/Education.astro';
 import Contact from '../components/Contact.astro';
@@ -13,9 +13,12 @@ import Footer from '../components/Footer.astro';
 <BaseLayout>
   <Header />
   <main>
-    <Hero />
-    <About />
+    <div class="hero-pin">
+      <Hero />
+      <span id="about" class="hero-pin-anchor" aria-hidden="true"></span>
+    </div>
     <Experience />
+    <Projects />
     <Skills />
     <Education />
     <Contact />
@@ -23,7 +26,7 @@ import Footer from '../components/Footer.astro';
     <div class="section-indicator" id="sectionIndicator">
       <div class="si-track">
         <div class="si-line"></div>
-        {['home', 'about', 'experience', 'skills', 'education', 'contact'].map(id => (
+        {['home', 'about', 'experience', 'projects', 'skills', 'education', 'contact'].map(id => (
           <a href={`#${id}`} class="si-dot" data-section={id}>
             <span class="si-label" data-i18n={`nav.${id}`}>{id}</span>
           </a>
@@ -34,6 +37,19 @@ import Footer from '../components/Footer.astro';
   <Footer />
 
   <style>
+    .hero-pin {
+      position: relative;
+      height: 240vh;
+    }
+
+    .hero-pin-anchor {
+      position: absolute;
+      top: 70vh;
+      left: 0;
+      width: 1px;
+      height: 1px;
+    }
+
     .section-indicator {
       position: fixed;
       right: 1.5rem;
@@ -115,6 +131,18 @@ import Footer from '../components/Footer.astro';
         padding: 0.15rem 0.4rem;
       }
     }
+
+    @media (max-width: 560px) {
+      .section-indicator {
+        display: none;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) and (max-width: 768px) {
+      .hero-pin {
+        height: auto;
+      }
+    }
   </style>
 
   <script>
@@ -125,7 +153,7 @@ import Footer from '../components/Footer.astro';
     }, { threshold: 0.15 });
     document.querySelectorAll('.fade-in').forEach(function(el) { fadeObserver.observe(el); });
 
-    var sectionIds = ['home', 'about', 'experience', 'skills', 'education', 'contact'];
+    var sectionIds = ['home', 'about', 'experience', 'projects', 'skills', 'education', 'contact'];
     var dots = {};
     sectionIds.forEach(function(id) {
       var el = document.querySelector('.si-dot[data-section="' + id + '"]');
@@ -145,34 +173,52 @@ import Footer from '../components/Footer.astro';
       }, 1400);
     }
 
-    var activeIndex = 0;
+    function anchorY(id) {
+      if (id === 'home' || id === 'about') {
+        return 0;
+      }
+      var el = document.getElementById(id);
+      return el ? el.offsetTop + el.offsetHeight / 2 : Infinity;
+    }
+
+    var activeIndex = -1;
     var ticking = false;
 
     function updateActiveSection() {
-      var bestId = null;
-      var bestDist = Infinity;
-      var viewCenter = window.innerHeight / 2;
+      var vh = window.innerHeight;
+      var y = window.pageYOffset;
+      var pin = document.querySelector('.hero-pin');
+      var pinTop = pin ? pin.offsetTop : 0;
+      var pinH = pin ? pin.offsetHeight : 0;
+      var travel = Math.round(vh * 0.9);
+      var homeEnd = pinTop + Math.round(travel * 0.35);
+      var aboutEnd = pinTop + Math.round(pinH - vh + vh * 0.3);
+      var bestId;
 
-      sectionIds.forEach(function(id) {
-        var el = document.getElementById(id);
-        if (!el) return;
-        var rect = el.getBoundingClientRect();
-        var elCenter = rect.top + rect.height / 2;
-        var dist = Math.abs(elCenter - viewCenter);
-        if (dist < bestDist) {
-          bestDist = dist;
-          bestId = id;
-        }
-      });
-
-      if (bestId) {
-        var idx = sectionIds.indexOf(bestId);
-        if (idx >= 0 && idx !== activeIndex) {
-          if (dots[sectionIds[activeIndex]]) dots[sectionIds[activeIndex]].classList.remove('active');
-          activeIndex = idx;
-          if (dots[bestId]) dots[bestId].classList.add('active');
-        }
+      if (y < pinTop || y <= homeEnd) {
+        bestId = 'home';
+      } else if (y < aboutEnd) {
+        bestId = 'about';
+      } else {
+        var center = y + vh / 2;
+        var ids = [ 'about', 'experience', 'projects', 'skills', 'education', 'contact' ];
+        var bestD = Infinity;
+        ids.forEach(function(id) {
+          var ay = (id === 'about') ? aboutEnd : anchorY(id);
+          var d = Math.abs(ay - center);
+          if (d < bestD) { bestD = d; bestId = id; }
+        });
       }
+
+      if (!bestId) return;
+      document.dispatchEvent(new CustomEvent('sectionchange', { detail: { id: bestId } }));
+      var idx = sectionIds.indexOf(bestId);
+      if (idx === activeIndex) return;
+      if (activeIndex >= 0 && dots[sectionIds[activeIndex]]) {
+        dots[sectionIds[activeIndex]].classList.remove('active');
+      }
+      activeIndex = idx;
+      if (dots[bestId]) dots[bestId].classList.add('active');
     }
 
     window.addEventListener('scroll', function() {
