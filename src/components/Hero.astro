@@ -55,7 +55,7 @@ const baseUrl = import.meta.env.BASE_URL.replace(/\/$/, '');
       </div>
     </div>
     <div class="hero-photo-wrap">
-      <img src={`${baseUrl}/profile.jpg`} alt="Mardiansyah Gunting" class="hero-photo-img" data-zoom />
+      <img src={`${baseUrl}/profile.jpg`} alt="Mardiansyah Gunting" class="hero-photo-img" width="220" height="220" fetchpriority="high" data-zoom />
     </div>
     <div class="hero-desc">
       <span class="hero-desc-label" data-i18n="about.subtitle">Who I Am</span>
@@ -177,11 +177,24 @@ const baseUrl = import.meta.env.BASE_URL.replace(/\/$/, '');
   }
 
   .hero-desc {
-    order: 6;
+    order: 4;
     width: 100%;
     max-width: 760px;
     text-align: left;
-    will-change: transform, opacity;
+    max-height: 0;
+    opacity: 0;
+    overflow: hidden;
+    padding: 0;
+    border-width: 0;
+    transition: max-height 0.7s ease, opacity 0.7s ease, transform 0.7s ease;
+  }
+  .hero-stage.is-revealed .hero-desc {
+    max-height: 1200px;
+    opacity: 1;
+  }
+  .hero-stage.is-revealed .hero-actions,
+  .hero-stage.is-revealed .hero-social {
+    display: none;
   }
   .hero-desc-label,
   .hero-desc-text {
@@ -206,6 +219,37 @@ const baseUrl = import.meta.env.BASE_URL.replace(/\/$/, '');
     line-height: 1.8;
     color: var(--text-muted);
     margin: 0;
+  }
+
+  @media (min-width: 769px) {
+    .hero-desc {
+      background: var(--bg-alt);
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      box-shadow: 0 18px 44px rgba(15, 43, 76, 0.06);
+    }
+    .hero-stage.is-revealed .hero-desc {
+      padding: 1.8rem 1.9rem;
+    }
+    .hero-desc-label,
+    .hero-desc-text {
+      display: block;
+    }
+    .hero-about-mobile {
+      display: none;
+    }
+    .hero-desc-label {
+      font-size: 1.15rem;
+      font-weight: 800;
+      color: var(--primary);
+      margin-bottom: 0.5rem;
+    }
+    .hero-desc-text {
+      font-size: 0.98rem;
+      line-height: 1.8;
+      color: var(--text-muted);
+      margin: 0;
+    }
   }
 
   .hero-lb-overlay {
@@ -310,14 +354,14 @@ const baseUrl = import.meta.env.BASE_URL.replace(/\/$/, '');
   }
 
   .hero-actions {
-    order: 4;
+    order: 5;
     display: flex;
     gap: 1rem;
     justify-content: center;
     flex-wrap: wrap;
   }
   .hero-social {
-    order: 5;
+    order: 6;
     display: flex;
     gap: 1rem;
     justify-content: center;
@@ -380,6 +424,24 @@ const baseUrl = import.meta.env.BASE_URL.replace(/\/$/, '');
     }
   }
 
+  @media (max-height: 800px) and (min-width: 769px) {
+    .hero-stage {
+      gap: 1rem;
+      padding-top: 4.5rem;
+      padding-bottom: 3rem;
+    }
+    .hero-photo-wrap {
+      width: min(160px, 20vw);
+    }
+    .hero-desc-label,
+    .hero-desc-text {
+      display: none;
+    }
+    .hero-about-mobile {
+      display: block;
+    }
+  }
+
   @media (max-height: 640px) and (max-width: 768px) {
     .hero-stage {
       gap: 0.75rem;
@@ -404,6 +466,7 @@ const baseUrl = import.meta.env.BASE_URL.replace(/\/$/, '');
     }
     .hero-desc {
       opacity: 1 !important;
+      max-height: none !important;
     }
   }
 </style>
@@ -422,10 +485,8 @@ const baseUrl = import.meta.env.BASE_URL.replace(/\/$/, '');
     if (mq && mq.matches) return;
 
     var photo = hero.querySelector('.hero-photo-wrap');
-    var desc = hero.querySelector('.hero-desc');
-    if (!photo || !desc) return;
-
-    desc.style.opacity = '0';
+    var stage = hero.querySelector('.hero-stage');
+    if (!photo || !stage) return;
 
     var ticking = false;
 
@@ -448,8 +509,7 @@ const baseUrl = import.meta.env.BASE_URL.replace(/\/$/, '');
       photo.style.transform = 'translateY(' + (-14 * ep) + 'px)';
 
       var dE = smooth(clamp((p - 0.55) / 0.18, 0, 1));
-      desc.style.opacity = String(dE);
-      desc.style.transform = 'translateY(' + (40 * (1 - dE)) + 'px)';
+      stage.classList.toggle('is-revealed', dE >= 0.5);
     }
 
     function onScroll() {
