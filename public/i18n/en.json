@@ -141,5 +141,6 @@
   "contact.wechat_prompt": "WeChat ID — copy to search in WeChat:",
   "footer.copyright": "© {year} Mardiansyah Gunting. All rights reserved.",
   "theme.light": "Light",
-  "theme.dark": "Dark"
+  "theme.dark": "Dark",
+  "projects.automation.tools_label": "Built with"
 }
