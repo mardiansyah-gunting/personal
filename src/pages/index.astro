@@ -138,9 +138,12 @@ import Footer from '../components/Footer.astro';
       }
     }
 
-    @media (prefers-reduced-motion: reduce) and (max-width: 768px) {
+    @media (prefers-reduced-motion: reduce) {
       .hero-pin {
         height: auto;
+      }
+      .hero-pin-anchor {
+        top: 0;
       }
     }
   </style>
