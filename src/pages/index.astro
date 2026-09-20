@@ -39,12 +39,12 @@ import Footer from '../components/Footer.astro';
   <style>
     .hero-pin {
       position: relative;
-      height: 240vh;
+      height: 300vh;
     }
 
     .hero-pin-anchor {
       position: absolute;
-      top: 70vh;
+      top: 0;
       left: 0;
       width: 1px;
       height: 1px;
@@ -191,22 +191,20 @@ import Footer from '../components/Footer.astro';
       var pin = document.querySelector('.hero-pin');
       var pinTop = pin ? pin.offsetTop : 0;
       var pinH = pin ? pin.offsetHeight : 0;
-      var travel = Math.round(vh * 0.9);
-      var pinIsShort = (pinH - vh) < Math.round(travel * 0.5);
-      var aboutY = pinTop + (pinIsShort ? Math.round(pinH / 2) : Math.round(pinH - vh + vh * 0.3));
-      var homeEnd = pinTop + (pinIsShort ? Math.round(vh * 0.4) : Math.round(travel * 0.35));
+      var pinEnd = pinTop + pinH - vh;
+      var morphEnd = pinTop + (pinH - vh) * 0.58;
       var bestId;
 
-      if (y < pinTop || y <= homeEnd) {
+      if (y <= morphEnd) {
         bestId = 'home';
-      } else if (y < aboutY) {
+      } else if (y < pinEnd) {
         bestId = 'about';
       } else {
         var center = y + vh / 2;
-        var ids = [ 'about', 'experience', 'projects', 'skills', 'education', 'contact' ];
+        var ids = [ 'experience', 'projects', 'skills', 'education', 'contact' ];
         var bestD = Infinity;
         ids.forEach(function(id) {
-          var ay = (id === 'about') ? aboutY : anchorY(id);
+          var ay = anchorY(id);
           var d = Math.abs(ay - center);
           if (d < bestD) { bestD = d; bestId = id; }
         });

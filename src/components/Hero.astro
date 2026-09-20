@@ -129,12 +129,12 @@ const baseUrl = import.meta.env.BASE_URL.replace(/\/$/, '');
   }
 
   @keyframes heroFloat {
-    0%, 100% { transform: translateY(0) rotate(0deg); }
-    50% { transform: translateY(-20px) rotate(2deg); }
+    0%, 100% { transform: translateY(0) translateY(var(--px, 0px)) rotate(0deg); }
+    50% { transform: translateY(-20px) translateY(var(--px, 0px)) rotate(2deg); }
   }
 
   .hero-stage {
-    max-width: 760px;
+    max-width: 900px;
     width: 100%;
     margin: auto;
     position: relative;
@@ -153,7 +153,9 @@ const baseUrl = import.meta.env.BASE_URL.replace(/\/$/, '');
     order: 3;
     position: relative;
     width: min(220px, 22vw);
+    aspect-ratio: 1;
     margin: 0;
+    flex: 0 0 auto;
     will-change: transform;
   }
 
@@ -223,32 +225,37 @@ const baseUrl = import.meta.env.BASE_URL.replace(/\/$/, '');
 
   @media (min-width: 769px) {
     .hero-desc {
+      position: absolute;
+      right: 0;
+      top: 50%;
+      width: min(440px, 42vw);
       background: var(--bg-alt);
       border: 1px solid var(--border);
       border-radius: 20px;
       box-shadow: 0 18px 44px rgba(15, 43, 76, 0.06);
-    }
-    .hero-stage.is-revealed .hero-desc {
       padding: 1.8rem 1.9rem;
-    }
-    .hero-desc-label,
-    .hero-desc-text {
-      display: block;
+      max-height: none;
+      opacity: 0;
+      transform: translateX(60px) translateY(-50%);
+      pointer-events: none;
+      will-change: transform, opacity;
     }
     .hero-about-mobile {
       display: none;
     }
     .hero-desc-label {
+      display: block;
       font-size: 1.15rem;
       font-weight: 800;
       color: var(--primary);
       margin-bottom: 0.5rem;
     }
     .hero-desc-text {
+      display: block;
+      margin: 0;
       font-size: 0.98rem;
       line-height: 1.8;
       color: var(--text-muted);
-      margin: 0;
     }
   }
 
@@ -296,11 +303,13 @@ const baseUrl = import.meta.env.BASE_URL.replace(/\/$/, '');
   .hero-lb-close:hover { background: rgba(255, 255, 255, 0.25); }
 
   .hero-photo-img {
+    position: absolute;
+    inset: 0;
     width: 100%;
-    aspect-ratio: 1;
+    height: 100%;
+    aspect-ratio: 1 / 1;
     border-radius: 50%;
     object-fit: cover;
-    position: relative;
     z-index: 1;
     box-shadow: 0 18px 44px rgba(15, 43, 76, 0.2);
     border: 4px solid #fff;
@@ -465,8 +474,11 @@ const baseUrl = import.meta.env.BASE_URL.replace(/\/$/, '');
       overflow: visible;
     }
     .hero-desc {
+      position: static !important;
       opacity: 1 !important;
       max-height: none !important;
+      transform: none !important;
+      padding: 1.8rem 1.9rem !important;
     }
   }
 </style>
@@ -486,9 +498,12 @@ const baseUrl = import.meta.env.BASE_URL.replace(/\/$/, '');
 
     var photo = hero.querySelector('.hero-photo-wrap');
     var stage = hero.querySelector('.hero-stage');
-    if (!photo || !stage) return;
+    var desc = hero.querySelector('.hero-desc');
+    if (!photo || !stage || !desc) return;
 
+    var isMobile = window.matchMedia && window.matchMedia('(max-width: 768px)');
     var ticking = false;
+    var scrollStarted = false;
 
     function clamp(v, a, b) { return v < a ? a : v > b ? b : v; }
     function smooth(t) { return t * t * (3 - 2 * t); }
@@ -497,22 +512,55 @@ const baseUrl = import.meta.env.BASE_URL.replace(/\/$/, '');
       ticking = false;
       var vh = window.innerHeight;
       var pinTop = pin.offsetTop;
-      var travel = Math.max(1, Math.round(vh * 0.9));
+      var travel = Math.max(1, pin.offsetHeight - vh);
       var p = clamp((window.pageYOffset - pinTop) / travel, 0, 1);
-
       var ep = smooth(p);
-      var iO = clamp(ep / 0.3, 0, 1);
-      var mO = String(1 - iO);
-      [].forEach.call(hero.querySelectorAll('.hero-badge, .hero-name, .hero-subtitle, .hero-actions, .hero-social'), function (el) {
-        el.style.opacity = mO;
-      });
-      photo.style.transform = 'translateY(' + (-14 * ep) + 'px)';
 
-      var dE = smooth(clamp((p - 0.55) / 0.18, 0, 1));
-      stage.classList.toggle('is-revealed', dE >= 0.5);
+      var introEls = hero.querySelectorAll('.hero-badge, .hero-name, .hero-subtitle, .hero-social');
+      var actions = hero.querySelector('.hero-actions');
+
+      var blob1 = hero.querySelector('.hero-blob-1');
+      var blob2 = hero.querySelector('.hero-blob-2');
+      var blob3 = hero.querySelector('.hero-blob-3');
+      var dots = hero.querySelector('.hero-dots');
+
+      if (isMobile && isMobile.matches) {
+        var mO = String(1 - clamp(ep / 0.3, 0, 1));
+        [].forEach.call(introEls, function (el) { el.style.opacity = mO; });
+        if (actions) actions.style.opacity = mO;
+        photo.style.transform = 'translateY(' + (-14 * ep) + 'px)';
+
+        var dE = smooth(clamp((p - 0.55) / 0.18, 0, 1));
+        stage.classList.toggle('is-revealed', dE >= 0.5);
+        if (blob1) blob1.style.setProperty('--px', (-20 * ep) + 'px');
+        if (blob2) blob2.style.setProperty('--px', (30 * ep) + 'px');
+        if (blob3) blob3.style.setProperty('--px', (-35 * ep) + 'px');
+        if (dots) dots.style.setProperty('--px', (25 * ep) + 'px');
+      } else {
+        var m = smooth(clamp(p / 0.58, 0, 1));
+        var iO = clamp(m * 1.5, 0, 1);
+        var mD = String(1 - iO);
+        [].forEach.call(introEls, function (el) { el.style.opacity = mD; });
+        if (actions) { actions.style.opacity = mD; actions.style.transform = 'translateY(' + (14 * m) + 'px)'; }
+
+        photo.style.transform = 'translate(' + (-190 * m) + 'px, ' + (-14 * m) + 'px) scale(' + (1 - 0.04 * m) + ')';
+        desc.style.opacity = m;
+        desc.style.transform = 'translateX(' + (46 * (1 - m)) + 'px) translateY(-50%)';
+        stage.classList.remove('is-revealed');
+        if (blob1) blob1.style.setProperty('--px', (-30 * ep) + 'px');
+        if (blob2) blob2.style.setProperty('--px', (40 * ep) + 'px');
+        if (blob3) blob3.style.setProperty('--px', (-50 * ep) + 'px');
+        if (dots) dots.style.setProperty('--px', (60 * ep) + 'px');
+      }
     }
 
     function onScroll() {
+      if (!scrollStarted) {
+        scrollStarted = true;
+        [].forEach.call(hero.querySelectorAll('.hero-intro .fade-in'), function (el) {
+          el.style.transition = 'none';
+        });
+      }
       if (!ticking) {
         ticking = true;
         requestAnimationFrame(update);
@@ -521,6 +569,9 @@ const baseUrl = import.meta.env.BASE_URL.replace(/\/$/, '');
 
     window.addEventListener('scroll', onScroll, { passive: true });
     window.addEventListener('resize', onScroll, { passive: true });
+    if (isMobile && isMobile.addEventListener) {
+      isMobile.addEventListener('change', function () { onScroll(); });
+    }
     update();
 
     var lb = document.getElementById('heroLightbox');
