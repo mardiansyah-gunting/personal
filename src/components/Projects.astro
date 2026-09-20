@@ -1,4 +1,5 @@
 ---
+const baseUrl = import.meta.env.BASE_URL.replace(/\/$/, '');
 const projects = [
   {
     index: 0,
@@ -144,112 +145,7 @@ const projects = [
         </div>
         <div class="automation-flow">
           <button type="button" class="auto-zoom-btn" id="autoZoomBtn" aria-label="Open the workflow diagram to zoom in">
-            <svg viewBox="0 0 840 320" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-                <defs>
-                  <marker id="awArrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
-                    <path d="M0 1 L9 5 L0 9 z" fill="currentColor" opacity="0.5"/>
-                  </marker>
-                  <marker id="awArrowHi" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
-                    <path d="M0 1 L9 5 L0 9 z" fill="currentColor" opacity="0.7"/>
-                  </marker>
-                  <pattern id="awGrid" width="40" height="40" patternUnits="userSpaceOnUse">
-                    <path d="M40 0 H0 V40" fill="none" stroke="currentColor" stroke-width="1" opacity="0.05"/>
-                  </pattern>
-                </defs>
-                <rect x="0" y="0" width="840" height="320" fill="url(#awGrid)"/>
-
-                <g>
-                  <rect x="20" y="12" width="118" height="20" rx="10" stroke="currentColor" stroke-width="1" fill="currentColor" fill-opacity="0.08" opacity="0.8"/>
-                  <text x="79" y="26" text-anchor="middle" font-size="10" font-weight="800" fill="currentColor" opacity="0.9" letter-spacing="0.12em">01 · SOURCE</text>
-                </g>
-
-                <rect x="20" y="18" width="230" height="86" rx="12" stroke="currentColor" stroke-width="1.4" opacity="0.5" fill="currentColor" fill-opacity="0.05"/>
-                <text x="38" y="42" font-size="13" font-weight="700" fill="currentColor" opacity="0.9">Source Data</text>
-                <path d="M38 48 h210" stroke="currentColor" stroke-width="1" opacity="0.14"/>
-                <rect x="40" y="54" width="10" height="12" rx="2" stroke="currentColor" stroke-width="1.3" opacity="0.55"/>
-                <text x="58" y="64" font-size="11" fill="currentColor" opacity="0.85">Spreadsheets</text>
-                <path d="M40 72 h10 M41 75 h8" stroke="currentColor" stroke-width="1.3" opacity="0.4" stroke-linecap="round"/>
-                <text x="58" y="80" font-size="11" fill="currentColor" opacity="0.85">Cloud exports</text>
-                <circle cx="45" cy="88" r="4.5" fill="none" stroke="currentColor" stroke-width="1.3" opacity="0.5"/>
-                <text x="58" y="92" font-size="11" fill="currentColor" opacity="0.85">Partner logs</text>
-
-                <rect x="20" y="118" width="230" height="66" rx="12" stroke="currentColor" stroke-width="1.4" opacity="0.5" fill="currentColor" fill-opacity="0.05"/>
-                <rect x="40" y="127" width="20" height="16" rx="3" stroke="currentColor" stroke-width="1.3" opacity="0.6"/>
-                <path d="M40 131 h20" stroke="currentColor" stroke-width="1.3" opacity="0.6"/>
-                <text x="70" y="140" font-size="12" font-weight="700" fill="currentColor" opacity="0.9">Schedule / Event</text>
-                <text x="40" y="160" font-size="11" fill="currentColor" opacity="0.85">on a timer</text>
-                <text x="40" y="176" font-size="11" fill="currentColor" opacity="0.85">on file upload</text>
-
-                <g>
-                  <rect x="300" y="12" width="122" height="20" rx="10" stroke="currentColor" stroke-width="1" fill="currentColor" fill-opacity="0.08" opacity="0.8"/>
-                  <text x="361" y="26" text-anchor="middle" font-size="10" font-weight="800" fill="currentColor" opacity="0.9" letter-spacing="0.12em">02 · VALIDATE</text>
-                </g>
-
-                <rect x="300" y="18" width="170" height="86" rx="12" stroke="currentColor" stroke-width="1.4" opacity="0.5" fill="currentColor" fill-opacity="0.05"/>
-                <text x="318" y="42" font-size="13" font-weight="700" fill="currentColor" opacity="0.9">Validation</text>
-                <path d="M318 48 h134" stroke="currentColor" stroke-width="1" opacity="0.14"/>
-                <path d="M324 60 l3.5 3.5 6 -7" stroke="currentColor" stroke-width="1.6" opacity="0.65" stroke-linecap="round" stroke-linejoin="round"/>
-                <text x="340" y="64" font-size="11" fill="currentColor" opacity="0.85">Format check</text>
-                <path d="M324 76 l3.5 3.5 6 -7" stroke="currentColor" stroke-width="1.6" opacity="0.65" stroke-linecap="round" stroke-linejoin="round"/>
-                <text x="340" y="80" font-size="11" fill="currentColor" opacity="0.85">Duplicate scan</text>
-                <path d="M324 92 l3.5 3.5 6 -7" stroke="currentColor" stroke-width="1.6" opacity="0.65" stroke-linecap="round" stroke-linejoin="round"/>
-                <text x="340" y="96" font-size="11" fill="currentColor" opacity="0.85">Rules enforced</text>
-
-                <g>
-                  <rect x="300" y="112" width="124" height="20" rx="10" stroke="currentColor" stroke-width="1" fill="currentColor" fill-opacity="0.08" opacity="0.8"/>
-                  <text x="362" y="126" text-anchor="middle" font-size="10" font-weight="800" fill="currentColor" opacity="0.9" letter-spacing="0.12em">03 · PROCESS</text>
-                </g>
-
-                <rect x="300" y="118" width="170" height="86" rx="14" stroke="currentColor" stroke-width="1.4" opacity="0.55" fill="currentColor" fill-opacity="0.05"/>
-                <g class="aw-gear">
-                  <circle cx="440" cy="150" r="13" fill="none" stroke="currentColor" stroke-width="1.5" opacity="0.65"/>
-                  <circle cx="440" cy="150" r="6" fill="none" stroke="currentColor" stroke-width="1.5" opacity="0.5"/>
-                  <circle cx="440" cy="150" r="2.2" fill="currentColor" opacity="0.7"/>
-                  <g fill="currentColor" opacity="0.45">
-                    <rect x="437" y="137" width="6" height="7" rx="2"/>
-                    <rect x="437" y="137" width="6" height="7" rx="2" transform="rotate(45 440 150)"/>
-                    <rect x="437" y="137" width="6" height="7" rx="2" transform="rotate(90 440 150)"/>
-                    <rect x="437" y="137" width="6" height="7" rx="2" transform="rotate(135 440 150)"/>
-                    <rect x="437" y="137" width="6" height="7" rx="2" transform="rotate(180 440 150)"/>
-                    <rect x="437" y="137" width="6" height="7" rx="2" transform="rotate(225 440 150)"/>
-                    <rect x="437" y="137" width="6" height="7" rx="2" transform="rotate(270 440 150)"/>
-                    <rect x="437" y="137" width="6" height="7" rx="2" transform="rotate(315 440 150)"/>
-                  </g>
-                </g>
-                <circle class="aw-pulse" cx="452" cy="126" r="3" fill="currentColor"/>
-                <text x="314" y="140" font-size="13.5" font-weight="800" fill="currentColor" opacity="0.95">Python Script</text>
-                <text x="314" y="158" font-size="10" fill="currentColor" opacity="0.6">Extract · Transform · Patch</text>
-                <rect x="314" y="178" width="132" height="16" rx="8" fill="currentColor" fill-opacity="0.05" stroke="currentColor" stroke-width="1" opacity="0.5"/>
-                <text x="380" y="190" text-anchor="middle" font-size="9.5" fill="currentColor" opacity="0.7">repeatable · logged</text>
-
-                <g>
-                  <rect x="520" y="12" width="120" height="20" rx="10" stroke="currentColor" stroke-width="1" fill="currentColor" fill-opacity="0.08" opacity="0.8"/>
-                  <text x="580" y="26" text-anchor="middle" font-size="10" font-weight="800" fill="currentColor" opacity="0.9" letter-spacing="0.12em">04 · DELIVER</text>
-                </g>
-
-                <rect x="520" y="18" width="250" height="86" rx="12" stroke="currentColor" stroke-width="1.4" opacity="0.5" fill="currentColor" fill-opacity="0.05"/>
-                <text x="538" y="40" font-size="13" font-weight="700" fill="currentColor" opacity="0.9">Delivered Output</text>
-                <rect x="700" y="25" width="52" height="20" rx="10" stroke="currentColor" stroke-width="1.2" opacity="0.7" fill="currentColor" fill-opacity="0.08"/>
-                <text x="726" y="40" text-anchor="middle" font-size="10" font-weight="800" fill="currentColor" opacity="0.9">Done</text>
-                <path d="M538 47 h194" stroke="currentColor" stroke-width="1" opacity="0.14"/>
-                <path d="M542 59 l3.5 3.5 6 -7" stroke="currentColor" stroke-width="1.6" opacity="0.65" stroke-linecap="round" stroke-linejoin="round"/>
-                <text x="560" y="63" font-size="11" fill="currentColor" opacity="0.85">Formatted reports</text>
-                <path d="M542 75 l3.5 3.5 6 -7" stroke="currentColor" stroke-width="1.6" opacity="0.65" stroke-linecap="round" stroke-linejoin="round"/>
-                <text x="560" y="79" font-size="11" fill="currentColor" opacity="0.85">Patched records</text>
-                <path d="M542 91 l3.5 3.5 6 -7" stroke="currentColor" stroke-width="1.6" opacity="0.65" stroke-linecap="round" stroke-linejoin="round"/>
-                <text x="560" y="95" font-size="11" fill="currentColor" opacity="0.85">Actionable files</text>
-
-                <path d="M538 150 h180" stroke="currentColor" stroke-width="1" opacity="0.14"/>
-
-                <path d="M248 64 H284" stroke="currentColor" stroke-width="1.8" opacity="0.5" stroke-linecap="round" marker-end="url(#awArrow)"/>
-                <path d="M248 162 H284" stroke="currentColor" stroke-width="1.8" opacity="0.5" stroke-linecap="round" marker-end="url(#awArrow)"/>
-                <path class="aw-flow" d="M385 106 V108" stroke="currentColor" stroke-width="1.8" opacity="0.55" stroke-linecap="round" marker-end="url(#awArrowHi)"/>
-                <path class="aw-flow" d="M472 78 C 495 78, 503 62, 512 62" stroke="currentColor" stroke-width="1.8" opacity="0.55" stroke-linecap="round" marker-end="url(#awArrow)"/>
-                <path class="aw-flow" d="M472 162 C 495 162, 503 158, 512 158" stroke="currentColor" stroke-width="1.8" opacity="0.55" stroke-linecap="round" marker-end="url(#awArrow)"/>
-                <path class="aw-return" d="M560 106 C 560 268, 216 270, 216 192" stroke="currentColor" stroke-width="1.4" opacity="0.25" stroke-dasharray="6 6" stroke-linecap="round" marker-end="url(#awArrow)"/>
-
-                <text x="420" y="300" text-anchor="middle" font-size="12" fill="currentColor" opacity="0.55">You ask once — the script repeats the work for you.</text>
-              </svg>
+            <img src={`${baseUrl}/images/automation-flow.png`} alt="How the automation works" class="auto-flow-img" width="840" height="330" loading="lazy" />
             <span class="auto-zoom-hint">
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3M11 8v6M8 11h6"/></svg>
               <span data-i18n="projects.automation.zoom_hint">Click to zoom</span>
@@ -640,10 +536,15 @@ const projects = [
     min-width: 0;
   }
 
-  .automation-flow svg {
+  .automation-flow svg,
+  .automation-flow img {
     width: 100%;
     height: auto;
     display: block;
+  }
+
+  .auto-flow-img {
+    border-radius: 14px;
   }
 
   .auto-zoom-btn {
@@ -660,11 +561,6 @@ const projects = [
   .auto-zoom-btn:focus-visible {
     outline: 2px solid var(--pc);
     outline-offset: 3px;
-  }
-
-  .automation-flow svg text,
-  .auto-mz-canvas svg text {
-    font-family: inherit;
   }
 
   .auto-zoom-hint {
@@ -697,36 +593,6 @@ const projects = [
     opacity: 1;
     background: var(--pc);
     color: #fff;
-  }
-
-  .aw-flow {
-    stroke-dasharray: 7 9;
-    animation: aw-dash 1.5s linear infinite;
-  }
-
-  @keyframes aw-dash {
-    to { stroke-dashoffset: -32; }
-  }
-
-  .aw-gear {
-    transform-box: view-box;
-    transform-origin: 440px 150px;
-    animation: aw-spin 9s linear infinite;
-  }
-
-  @keyframes aw-spin {
-    to { transform: rotate(360deg); }
-  }
-
-  .aw-pulse {
-    transform-box: fill-box;
-    transform-origin: center;
-    animation: aw-pulse 1.4s ease-in-out infinite;
-  }
-
-  @keyframes aw-pulse {
-    0%, 100% { opacity: 0.25; }
-    50% { opacity: 0.85; }
   }
 
   .auto-mz-overlay {
@@ -861,11 +727,12 @@ const projects = [
     will-change: transform;
   }
 
-  .auto-mz-canvas svg {
+  .auto-mz-canvas img {
     width: 100%;
     height: 100%;
     display: block;
     max-width: none;
+    object-fit: contain;
   }
 
   .auto-mz-foot {
@@ -942,18 +809,6 @@ const projects = [
       margin-top: 0.25rem;
     }
   }
-
-  @media (prefers-reduced-motion: reduce) {
-    .aw-flow {
-      animation: none;
-    }
-    .aw-gear {
-      animation: none;
-    }
-    .aw-pulse {
-      animation: none;
-    }
-  }
 </style>
 
 <script>
@@ -964,7 +819,7 @@ const projects = [
   var cv = document.getElementById('autoMzCanvas');
   var pct = document.getElementById('autoMzPct');
   if (!btn || !ov || !vp || !cv || !pct) return;
-  var src = btn.querySelector('svg');
+  var src = btn.querySelector('img');
   var s = 1, tx = 0, ty = 0;
   var MIN = 0.6, MAX = 2;
 

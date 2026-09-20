@@ -1,0 +1,95 @@
+<svg viewBox="0 0 840 330" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <style>
+    svg {
+      font-family: Inter, -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif;
+    }
+  </style>
+  <defs>
+    <pattern id="awGrid" width="40" height="40" patternUnits="userSpaceOnUse">
+      <path d="M40 0 H0 V40" fill="none" stroke="#6366f1" stroke-width="1" opacity="0.05"/>
+    </pattern>
+  </defs>
+  <rect x="0" y="0" width="840" height="330" fill="url(#awGrid)"/>
+
+  <!-- Row 1 header pills -->
+  <g>
+    <rect x="20" y="12" width="118" height="20" rx="10" fill="#6366f1"/>
+    <text x="79" y="26" text-anchor="middle" font-size="10" font-weight="800" fill="#ffffff" letter-spacing="0.12em">01 · SOURCE</text>
+  </g>
+  <g>
+    <rect x="300" y="12" width="122" height="20" rx="10" fill="#6366f1"/>
+    <text x="361" y="26" text-anchor="middle" font-size="10" font-weight="800" fill="#ffffff" letter-spacing="0.12em">02 · VALIDATE</text>
+  </g>
+  <g>
+    <rect x="520" y="12" width="120" height="20" rx="10" fill="#6366f1"/>
+    <text x="580" y="26" text-anchor="middle" font-size="10" font-weight="800" fill="#ffffff" letter-spacing="0.12em">04 · DELIVER</text>
+  </g>
+
+  <!-- Row 1 boxes -->
+  <rect x="20" y="18" width="230" height="86" rx="12" stroke="#6366f1" stroke-width="1.4" opacity="0.5" fill="#6366f1" fill-opacity="0.05"/>
+  <text x="38" y="42" font-size="13" font-weight="700" fill="#6366f1" opacity="0.95">Source Data</text>
+  <path d="M38 48 h210" stroke="#6366f1" stroke-width="1" opacity="0.14"/>
+  <text x="40" y="76" font-size="11" fill="#6366f1" opacity="0.85">Spreadsheets</text>
+  <text x="40" y="92" font-size="11" fill="#6366f1" opacity="0.85">Cloud exports</text>
+  <text x="40" y="108" font-size="11" fill="#6366f1" opacity="0.85">Partner logs</text>
+
+  <rect x="300" y="18" width="170" height="86" rx="12" stroke="#6366f1" stroke-width="1.4" opacity="0.5" fill="#6366f1" fill-opacity="0.05"/>
+  <text x="318" y="42" font-size="13" font-weight="700" fill="#6366f1" opacity="0.95">Validation</text>
+  <path d="M318 48 h134" stroke="#6366f1" stroke-width="1" opacity="0.14"/>
+  <text x="320" y="76" font-size="11" fill="#6366f1" opacity="0.85">Format check</text>
+  <text x="320" y="92" font-size="11" fill="#6366f1" opacity="0.85">Duplicate scan</text>
+  <text x="320" y="108" font-size="11" fill="#6366f1" opacity="0.85">Rules enforced</text>
+
+  <rect x="520" y="18" width="250" height="86" rx="12" stroke="#6366f1" stroke-width="1.4" opacity="0.5" fill="#6366f1" fill-opacity="0.05"/>
+  <text x="538" y="42" font-size="13" font-weight="700" fill="#6366f1" opacity="0.95">Delivered Output</text>
+  <rect x="700" y="25" width="52" height="20" rx="10" fill="#6366f1"/>
+  <text x="726" y="39" text-anchor="middle" font-size="10" font-weight="800" fill="#ffffff" opacity="0.95">DONE</text>
+  <path d="M538 50 h180" stroke="#6366f1" stroke-width="1" opacity="0.14"/>
+  <text x="538" y="76" font-size="11" fill="#6366f1" opacity="0.85">Formatted reports</text>
+  <text x="538" y="92" font-size="11" fill="#6366f1" opacity="0.85">Patched records</text>
+  <text x="538" y="108" font-size="11" fill="#6366f1" opacity="0.85">Actionable files</text>
+
+  <!-- Row 2 header pill (03 PROCESS) -->
+  <g>
+    <rect x="300" y="112" width="124" height="20" rx="10" fill="#6366f1"/>
+    <text x="362" y="126" text-anchor="middle" font-size="10" font-weight="800" fill="#ffffff" letter-spacing="0.12em">03 · PROCESS</text>
+  </g>
+  <rect x="20" y="118" width="230" height="66" rx="12" stroke="#6366f1" stroke-width="1.4" opacity="0.5" fill="#6366f1" fill-opacity="0.05"/>
+  <text x="38" y="142" font-size="13" font-weight="700" fill="#6366f1" opacity="0.95">Schedule / Event</text>
+  <path d="M38 148 h210" stroke="#6366f1" stroke-width="1" opacity="0.14"/>
+  <text x="40" y="166" font-size="11" fill="#6366f1" opacity="0.85">on a timer</text>
+  <text x="40" y="182" font-size="11" fill="#6366f1" opacity="0.85">on file upload</text>
+
+  <rect x="300" y="118" width="170" height="86" rx="12" stroke="#6366f1" stroke-width="1.4" opacity="0.5" fill="#6366f1" fill-opacity="0.05"/>
+  <text x="318" y="142" font-size="13" font-weight="700" fill="#6366f1" opacity="0.95">Python Script</text>
+  <path d="M318 148 h134" stroke="#6366f1" stroke-width="1" opacity="0.14"/>
+  <text x="340" y="170" font-size="11" fill="#6366f1" opacity="0.85">Extract · Transform · Patch</text>
+  <rect x="318" y="178" width="132" height="16" rx="8" fill="#6366f1" fill-opacity="0.12"/>
+  <text x="384" y="190" text-anchor="middle" font-size="9.5" font-weight="800" fill="#6366f1" opacity="0.9">repeatable · logged</text>
+
+  <!-- Row 1 horizontal arrows -->
+  <path d="M250 64 H284" stroke="#6366f1" stroke-width="1.8" opacity="0.5" stroke-linecap="round"/>
+  <path d="M284 60 L290 64 L284 68 Z" fill="#6366f1" opacity="0.5"/>
+
+  <!-- Validate -> Deliver (top) -->
+  <path d="M470 64 H508" stroke="#6366f1" stroke-width="1.8" opacity="0.5" stroke-linecap="round"/>
+  <path d="M508 60 L514 64 L508 68 Z" fill="#6366f1" opacity="0.5"/>
+
+  <!-- Validate -> Process (down) -->
+  <path d="M440 114 V138" stroke="#6366f1" stroke-width="1.8" opacity="0.55" stroke-linecap="round"/>
+  <path d="M436 134 L440 140 L444 134 Z" fill="#6366f1" opacity="0.55"/>
+
+  <!-- Schedule -> Process -->
+  <path d="M250 168 H284" stroke="#6366f1" stroke-width="1.8" opacity="0.5" stroke-linecap="round"/>
+  <path d="M284 164 L290 168 L284 172 Z" fill="#6366f1" opacity="0.5"/>
+
+  <!-- Process -> Deliver (curve up) -->
+  <path d="M470 186 C 495 186, 500 92, 512 90" stroke="#6366f1" stroke-width="1.8" opacity="0.55" fill="none" stroke-linecap="round"/>
+  <path d="M508 86 L514 90 L508 94 Z" fill="#6366f1" opacity="0.55"/>
+
+  <!-- Return loop -->
+  <path d="M548 117 C 548 273, 216 273, 216 196" stroke="#6366f1" stroke-width="1.4" opacity="0.25" stroke-dasharray="6 6" stroke-linecap="round" fill="none"/>
+  <path d="M212 200 L216 192 L220 200 Z" fill="#6366f1" opacity="0.25"/>
+
+  <text x="420" y="312" text-anchor="middle" font-size="12" fill="#6366f1" opacity="0.55">You ask once — the script repeats the work for you.</text>
+</svg>
