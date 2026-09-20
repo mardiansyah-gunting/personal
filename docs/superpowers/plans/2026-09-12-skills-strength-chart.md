@@ -28,12 +28,12 @@
 **Interfaces:**
 - Produces: any element with both `data-tooltip="<default text>"` and `data-i18n-tooltip="<translation key>"` will have its `data-tooltip` value replaced with `t[key]` whenever `_setLang(lang)` runs. Later tasks (Task 3) rely on this exact attribute pair.
 
-- [ ] **Step 1: Read the current handler block to confirm the exact insertion point**
+- [x] **Step 1: Read the current handler block to confirm the exact insertion point**
 
 Run: `grep -n "data-i18n-placeholder" src/layouts/BaseLayout.astro`
 Expected: one match around line 75-78, showing the `forEach` block for `data-i18n-placeholder`. Insert the new block immediately after this `forEach`'s closing `});` and before `_activeLang(lang);`.
 
-- [ ] **Step 2: Add the new `data-i18n-tooltip` handler**
+- [x] **Step 2: Add the new `data-i18n-tooltip` handler**
 
 Insert this block right after the existing `data-i18n-placeholder` `forEach` (still inside `async function _setLang(lang) { ... }`, before the `_activeLang(lang);` line):
 
@@ -44,12 +44,12 @@ Insert this block right after the existing `data-i18n-placeholder` `forEach` (st
       });
 ```
 
-- [ ] **Step 3: Verify the file still parses as valid Astro/JS**
+- [x] **Step 3: Verify the file still parses as valid Astro/JS**
 
 Run: `npx astro check 2>&1 | tail -20`
 Expected: no new errors referencing `BaseLayout.astro` (pre-existing unrelated warnings, if any, are fine — just confirm no syntax error was introduced at the edited lines).
 
-- [ ] **Step 4: Commit**
+- [x] **Step 4: Commit**
 
 ```bash
 git add src/layouts/BaseLayout.astro
@@ -68,7 +68,7 @@ git commit -m "feat: support translating tooltip text via data-i18n-tooltip"
 **Interfaces:**
 - Produces: the translation keys `skills.chart_subtitle`, `skills.bar.<key>.label`, `skills.bar.<key>.detail` for `<key>` in `communication`, `fieldops`, `datamonitoring`, `training`, `uiux`, `opsmgmt` — Task 3's markup references these exact key strings.
 
-- [ ] **Step 1: Add the English keys**
+- [x] **Step 1: Add the English keys**
 
 In `public/i18n/en.json`, insert after the `"skills.lang.zh": "Mandarin (Beginner)",` line:
 
@@ -88,7 +88,7 @@ In `public/i18n/en.json`, insert after the `"skills.lang.zh": "Mandarin (Beginne
   "skills.bar.opsmgmt.detail": "Daily operations, asset/office management, compliance procedures",
 ```
 
-- [ ] **Step 2: Add the Indonesian keys**
+- [x] **Step 2: Add the Indonesian keys**
 
 In `public/i18n/id.json`, insert after the `"skills.lang.zh": "Mandarin (Pemula)",` line:
 
@@ -108,7 +108,7 @@ In `public/i18n/id.json`, insert after the `"skills.lang.zh": "Mandarin (Pemula)
   "skills.bar.opsmgmt.detail": "Operasional harian, manajemen aset/kantor, prosedur kepatuhan",
 ```
 
-- [ ] **Step 3: Add the Mandarin keys**
+- [x] **Step 3: Add the Mandarin keys**
 
 In `public/i18n/zh.json`, insert after the `"skills.lang.zh": "中文（初级）",` line:
 
@@ -128,17 +128,17 @@ In `public/i18n/zh.json`, insert after the `"skills.lang.zh": "中文（初级�
   "skills.bar.opsmgmt.detail": "日常运营、资产/办公室管理、合规流程",
 ```
 
-- [ ] **Step 4: Verify all three files are still valid JSON**
+- [x] **Step 4: Verify all three files are still valid JSON**
 
 Run: `for f in public/i18n/en.json public/i18n/id.json public/i18n/zh.json; do python3 -m json.tool "$f" > /dev/null && echo "$f OK"; done`
 Expected: `public/i18n/en.json OK`, `public/i18n/id.json OK`, `public/i18n/zh.json OK`
 
-- [ ] **Step 5: Verify key parity across the three files (same key set)**
+- [x] **Step 5: Verify key parity across the three files (same key set)**
 
 Run: `for f in en id zh; do python3 -c "import json; print(sorted(json.load(open('public/i18n/$f.json')).keys()))" > /tmp/keys_$f.txt; done; diff /tmp/keys_en.txt /tmp/keys_id.txt && diff /tmp/keys_en.txt /tmp/keys_zh.txt && echo "KEYS MATCH"`
 Expected: `KEYS MATCH` (empty diffs)
 
-- [ ] **Step 6: Commit**
+- [x] **Step 6: Commit**
 
 ```bash
 git add public/i18n/en.json public/i18n/id.json public/i18n/zh.json
@@ -156,7 +156,7 @@ git commit -m "feat: add i18n keys for skills strength chart"
 - Consumes: `data-i18n-tooltip` attribute behavior from Task 1; translation keys from Task 2.
 - Produces: DOM structure `ul.skill-bars > li.skill-bar-row[.skill-bar-top] > (span.skill-bar-label, span.skill-bar-track > span.skill-bar-fill, span.skill-bar-value)` that Task 4's CSS selectors target.
 
-- [ ] **Step 1: Add the frontmatter data array**
+- [x] **Step 1: Add the frontmatter data array**
 
 At the top of `src/components/Skills.astro`, before the closing `---` of the frontmatter fence (the file currently starts directly with `<section id="skills" ...>` and has no frontmatter fence yet — add one):
 
@@ -174,7 +174,7 @@ const skillBars = [
 ---
 ```
 
-- [ ] **Step 2: Insert the chart markup between the section title and the existing `.skills-grid`**
+- [x] **Step 2: Insert the chart markup between the section title and the existing `.skills-grid`**
 
 Find this existing line in `src/components/Skills.astro`:
 
@@ -209,7 +209,7 @@ Replace it with:
     <div class="skills-grid">
 ```
 
-- [ ] **Step 3: Start the dev server and confirm the markup renders**
+- [x] **Step 3: Start the dev server and confirm the markup renders**
 
 Run:
 ```bash
@@ -221,7 +221,7 @@ curl -s http://localhost:4321/portfolio-web | grep -o '[0-9]/9' | sort | uniq -c
 ```
 Expected: `6` total `skill-bar-row` elements (one line showing `1 ... skill-bar-row skill-bar-top`, five showing plain `skill-bar-row`), and the value fractions `7/9`, `4/9` (×2), `3/9` (×3) each present.
 
-- [ ] **Step 4: Commit**
+- [x] **Step 4: Commit**
 
 ```bash
 git add src/components/Skills.astro
@@ -238,7 +238,7 @@ git commit -m "feat: render skills strength chart markup"
 **Interfaces:**
 - Consumes: the exact class names produced by Task 3 (`skills-chart`, `skills-chart-subtitle`, `skill-bars`, `skill-bar-row`, `skill-bar-top`, `skill-bar-label`, `skill-bar-track`, `skill-bar-fill`, `skill-bar-value`) and the `data-tooltip` attribute.
 
-- [ ] **Step 1: Append the chart CSS**
+- [x] **Step 1: Append the chart CSS**
 
 Add this block inside the existing `<style>` section of `src/components/Skills.astro` (after the last rule, `.tag-lang { ... }`):
 
@@ -353,7 +353,7 @@ Add this block inside the existing `<style>` section of `src/components/Skills.a
   }
 ```
 
-- [ ] **Step 2: Screenshot the section on desktop and mobile widths**
+- [x] **Step 2: Screenshot the section on desktop and mobile widths**
 
 Run (adjust the port/path if the dev server from Task 3 is no longer running — restart with the same `npm run dev` command first):
 ```bash
@@ -385,7 +385,7 @@ rm ./scratch-shot.cjs
 ```
 Expected: `DONE` printed, three PNG files created at the paths above with no errors.
 
-- [ ] **Step 3: Visually review the three screenshots**
+- [x] **Step 3: Visually review the three screenshots**
 
 Read each of `/tmp/skills-chart-desktop.png`, `/tmp/skills-chart-tooltip.png`, `/tmp/skills-chart-mobile.png`. Confirm:
 - Desktop: 6 rows, top row's bar is solid accent blue and visibly the shortest-to-full-color one (others lighter blue), bars roughly proportional (7/9 longest, three 3/9 bars shortest and equal length to each other).
@@ -394,7 +394,7 @@ Read each of `/tmp/skills-chart-desktop.png`, `/tmp/skills-chart-tooltip.png`, `
 
 If any check fails, fix the CSS in Step 1 and re-run Step 2 before proceeding.
 
-- [ ] **Step 4: Commit**
+- [x] **Step 4: Commit**
 
 ```bash
 git add src/components/Skills.astro
@@ -409,7 +409,7 @@ git commit -m "style: add bar, emphasis-color, and tooltip styling for skills ch
 
 **Interfaces:** none
 
-- [ ] **Step 1: Confirm the Indonesian translation renders after switching language**
+- [x] **Step 1: Confirm the Indonesian translation renders after switching language**
 
 With the dev server from Task 3/4 still running:
 ```bash
@@ -436,17 +436,17 @@ rm ./scratch-lang.cjs
 ```
 Expected: `LABEL: Komunikasi & Hubungan Stakeholder` and `TOOLTIP: Hubungan dengan TPP & mitra, dukungan pengguna, kolaborasi stakeholder, komunikasi B2B, koordinasi lintas tim` (the Indonesian detail text from Task 2), confirming `data-i18n-tooltip` (Task 1) is wired correctly.
 
-- [ ] **Step 2: Confirm the production build succeeds**
+- [x] **Step 2: Confirm the production build succeeds**
 
 Run: `npm run build 2>&1 | tail -30`
 Expected: build completes with no errors (Astro prints a success summary, e.g. "X page(s) built").
 
-- [ ] **Step 3: Stop the dev server**
+- [x] **Step 3: Stop the dev server**
 
 Run: `pkill -f "astro dev" 2>/dev/null; echo done`
 Expected: `done`
 
-- [ ] **Step 4: Final review commit (only if Steps 1-2 caught something that needed fixing)**
+- [x] **Step 4: Final review commit (only if Steps 1-2 caught something that needed fixing)**
 
 If no fixes were needed in this task, skip this step — Task 4's commit already covers the working state. If a fix was needed:
 ```bash
