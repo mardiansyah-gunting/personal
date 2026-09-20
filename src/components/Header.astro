@@ -245,6 +245,7 @@ const navItems = [
     inset: 0;
     z-index: 95;
     background: var(--bg);
+    pointer-events: auto;
     opacity: 0;
     visibility: hidden;
     transition: opacity 0.35s ease, visibility 0.35s ease;
@@ -458,6 +459,7 @@ const navItems = [
       var behavior = reduce ? 'auto' : 'smooth';
       var vh = window.innerHeight;
       var pin = document.querySelector('.hero-pin');
+      var isNarrow = window.matchMedia && window.matchMedia('(max-width: 768px)');
       if (id === 'home') {
         window.scrollTo({ top: 0, behavior: behavior });
         return;
@@ -470,7 +472,8 @@ const navItems = [
       if (id === 'about' && pin && !reduce) {
         var pinTop = pin.offsetTop;
         var travel = pin.offsetHeight - vh;
-        y = pinTop + travel * 0.58;
+        var revealP = isNarrow && isNarrow.matches ? 0.72 : 0.58;
+        y = pinTop + travel * revealP;
       } else {
         y = el.getBoundingClientRect().top + window.pageYOffset - headerH;
       }

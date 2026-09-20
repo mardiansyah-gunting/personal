@@ -1,5 +1,10 @@
 ---
 const baseUrl = import.meta.env.BASE_URL.replace(/\/$/, '');
+const cv = {
+  en: 'https://ap.wps.com/cms/docs/d/cbPaes8mwZdX9lII',
+  id: 'https://ap.wps.com/cms/docs/d/cbPaeocVk7PaNV6q',
+  zh: 'https://ap.wps.com/cms/docs/d/cbPaedq51hh7xth3',
+};
 ---
 <section id="home" class="hero">
   <div class="hero-bg" aria-hidden="true">
@@ -37,7 +42,17 @@ const baseUrl = import.meta.env.BASE_URL.replace(/\/$/, '');
       <p class="fade-in hero-subtitle" data-i18n="hero.subtitle">Project Management · Data Automation · Operational Excellence</p>
       <div class="fade-in hero-actions">
         <a href="#contact" class="btn btn-primary" data-i18n="hero.cta_contact">Get in Touch</a>
-        <a href="https://ap.wps.com/cms/docs/d/cbPaeaeNPN9wxWMG" target="_blank" rel="noopener noreferrer" class="btn btn-outline" data-i18n="hero.cta_cv">Download CV</a>
+        <div class="cv-dropdown" id="cvDropdown">
+          <button type="button" class="btn btn-outline cv-btn" id="cvBtn" aria-haspopup="menu" aria-expanded="false">
+            <span data-i18n="hero.cta_cv">Download CV</span>
+            <svg class="cv-caret" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
+          </button>
+          <div class="cv-menu" id="cvMenu" role="menu">
+            <a role="menuitem" href={cv.en} target="_blank" rel="noopener noreferrer">English</a>
+            <a role="menuitem" href={cv.id} target="_blank" rel="noopener noreferrer">Indonesia</a>
+            <a role="menuitem" href={cv.zh} target="_blank" rel="noopener noreferrer">中文</a>
+          </div>
+        </div>
       </div>
       <div class="fade-in hero-social">
         <a href="https://github.com/mardiansyah-gunting" target="_blank" rel="noopener noreferrer" class="social-link" aria-label="GitHub">
@@ -77,6 +92,7 @@ const baseUrl = import.meta.env.BASE_URL.replace(/\/$/, '');
     text-align: center;
     display: flex;
     flex-direction: column;
+    background: var(--bg);
   }
 
   .hero-bg {
@@ -364,10 +380,68 @@ const baseUrl = import.meta.env.BASE_URL.replace(/\/$/, '');
 
   .hero-actions {
     order: 5;
+    position: relative;
+    z-index: 40;
     display: flex;
     gap: 1rem;
     justify-content: center;
     flex-wrap: wrap;
+  }
+  .cv-dropdown {
+    position: relative;
+  }
+  .cv-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.45rem;
+  }
+  .cv-caret {
+    width: 14px;
+    height: 14px;
+    transition: transform 0.2s;
+  }
+  .cv-dropdown.open .cv-caret {
+    transform: rotate(180deg);
+  }
+  .cv-menu {
+    position: absolute;
+    top: calc(100% + 8px);
+    left: 50%;
+    min-width: clamp(180px, 82vw, 220px);
+    background: var(--bg);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    box-shadow: 0 12px 32px rgba(15, 43, 76, 0.12);
+    padding: 0.4rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.15rem;
+    z-index: 50;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateX(-50%) translateY(-4px);
+    transition: opacity 0.18s, transform 0.18s, visibility 0.18s;
+  }
+  .cv-dropdown.open .cv-menu {
+    opacity: 1;
+    visibility: visible;
+    transform: translateX(-50%) translateY(0);
+  }
+  .cv-menu a {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.5rem 0.75rem;
+    border-radius: 8px;
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: var(--text);
+    transition: background 0.15s, color 0.15s;
+  }
+  .cv-menu a:hover {
+    background: var(--bg-alt);
+    color: var(--accent);
+    text-decoration: none;
   }
   .hero-social {
     order: 6;
@@ -603,6 +677,27 @@ const baseUrl = import.meta.env.BASE_URL.replace(/\/$/, '');
           document.body.style.overflow = '';
         }
       });
+    }
+  var cvDrop = document.getElementById('cvDropdown');
+    var cvBtn = document.getElementById('cvBtn');
+    if (cvDrop && cvBtn) {
+      function closeCv() {
+        cvDrop.classList.remove('open');
+        cvBtn.setAttribute('aria-expanded', 'false');
+      }
+      cvBtn.addEventListener('click', function (e) {
+        e.preventDefault();
+        e.stopPropagation();
+        var open = cvDrop.classList.toggle('open');
+        cvBtn.setAttribute('aria-expanded', open ? 'true' : 'false');
+      });
+      document.addEventListener('click', function (e) {
+        if (!cvDrop.contains(e.target)) closeCv();
+      });
+      document.addEventListener('keydown', function (e) {
+        if (e.key === 'Escape' && cvDrop.classList.contains('open')) closeCv();
+      });
+      window.addEventListener('scroll', closeCv, { passive: true });
     }
   })();
 </script>

@@ -743,8 +743,7 @@ const projects = [
     text-align: center;
   }
 
-  @media (max-width: 860px) {
-.project-tools {
+  .project-tools {
     margin-top: 0.9rem;
     display: flex;
     flex-wrap: wrap;
@@ -781,7 +780,8 @@ const projects = [
     color: var(--pc);
   }
 
-  .project-automation {
+  @media (max-width: 860px) {
+    .project-automation {
       grid-template-columns: 1fr;
     }
   }

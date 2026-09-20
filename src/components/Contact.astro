@@ -22,15 +22,66 @@
             <textarea id="contactMessage" class="input textarea" rows="5" data-i18n-placeholder="contact.message" placeholder="Message"></textarea>
           </div>
           <button type="submit" class="btn btn-primary btn-send" data-i18n="contact.send">Send Message</button>
+          <input type="text" name="_honey" id="honeyPot" class="honeypot" tabindex="-1" autocomplete="off" aria-hidden="true" />
+          <p id="contactStatus" class="contact-status" role="status" aria-live="polite" data-i18n-dynamic="en"></p>
         </form>
         <script>
-          document.getElementById('contactForm').addEventListener('submit', function(e) {
+          var form = document.getElementById('contactForm');
+          var statusEl = document.getElementById('contactStatus');
+          var sendBtn = document.querySelector('.btn-send');
+          var base = document.documentElement.getAttribute('data-base') || '/';
+          var endpoint = 'https://formsubmit.co/ajax/mardiansyah.gunting@yahoo.com';
+
+          function t(key, fallback) {
+            try {
+              var dict = (window.__trans && window.__trans[window.__lang]) || {};
+              return dict[key] || fallback;
+            } catch (e) {
+              return fallback;
+            }
+          }
+
+          form.addEventListener('submit', function(e) {
             e.preventDefault();
-            var name = document.getElementById('contactName').value;
-            var email = document.getElementById('contactEmail').value;
-            var message = document.getElementById('contactMessage').value;
-            var body = 'Name: ' + name + '%0D%0AEmail: ' + email + '%0D%0A%0D%0A' + message;
-            window.location.href = 'mailto:mardiansyah.gunting@yahoo.com?subject=Portfolio%20Contact&body=' + body;
+            var name = document.getElementById('contactName').value.trim();
+            var email = document.getElementById('contactEmail').value.trim();
+            var message = document.getElementById('contactMessage').value.trim();
+            var honey = document.getElementById('honeyPot').value;
+            var okLabel = sendBtn.textContent;
+
+            if (honey) return;
+            if (!name || !email || !message) {
+              statusEl.textContent = t('contact.incomplete', 'Please fill in all fields.');
+              statusEl.className = 'contact-status error visible';
+              return;
+            }
+
+            sendBtn.disabled = true;
+            sendBtn.textContent = t('contact.sending', 'Sending…');
+            statusEl.textContent = '';
+            statusEl.className = 'contact-status';
+
+            fetch(endpoint, {
+              method: 'POST',
+              headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+              body: JSON.stringify({ name: name, email: email, message: message })
+            }).then(function(resp) {
+              return resp.json();
+            }).then(function(data) {
+              if (data && data.success === 'true') {
+                form.reset();
+                statusEl.textContent = t('contact.sent', 'Message sent — thank you!');
+                statusEl.className = 'contact-status ok visible';
+              } else {
+                throw new Error('fail');
+              }
+            }).catch(function() {
+              statusEl.textContent = t('contact.error', 'Failed to send. Try again or email me directly.');
+              statusEl.className = 'contact-status error visible';
+            }).finally(function() {
+              sendBtn.disabled = false;
+              sendBtn.textContent = okLabel;
+            });
           });
         </script>
       </div>
@@ -244,6 +295,38 @@
 
   .btn-send:hover::after {
     transform: translateX(3px);
+  }
+
+  .honeypot {
+    position: absolute;
+    left: -9999px;
+    opacity: 0;
+    height: 0;
+    width: 0;
+    pointer-events: none;
+  }
+
+  .contact-status {
+    display: none;
+    margin: 0.6rem 0 0;
+    padding: 0.6rem 0.85rem;
+    border-radius: 10px;
+    font-size: 0.85rem;
+    font-weight: 600;
+  }
+
+  .contact-status.visible {
+    display: block;
+  }
+
+  .contact-status.ok {
+    background: rgba(16, 185, 129, 0.12);
+    color: #059669;
+  }
+
+  .contact-status.error {
+    background: rgba(239, 68, 68, 0.1);
+    color: #dc2626;
   }
 
   .contact-items {
