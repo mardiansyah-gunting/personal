@@ -37,7 +37,6 @@ const items = [
       <div class="exp-head-text">
         <span class="exp-eyebrow" data-i18n="experience.title">Experience</span>
         <h2 class="exp-title" data-i18n="experience.subtitle">My Professional Journey</h2>
-        <p class="exp-hint" data-i18n="experience.scroll_hint">Scroll to explore</p>
       </div>
       <div class="exp-count" aria-hidden="true">
         <span id="expCur">01</span>
@@ -132,22 +131,6 @@ const items = [
     color: var(--primary);
     margin: 0.4rem 0 0.25rem;
     line-height: 1.15;
-  }
-
-  .exp-hint {
-    margin: 0;
-    font-size: 0.95rem;
-    color: var(--text-muted);
-    display: flex;
-    align-items: center;
-    gap: 0.5rem;
-  }
-
-  .exp-hint::before {
-    content: '';
-    width: 22px;
-    height: 1px;
-    background: var(--accent);
   }
 
   .exp-count {
@@ -418,11 +401,7 @@ const items = [
     }
   }
 
-  @media (max-width: 480px) {
-    .exp-hint {
-      display: none;
-    }
-  }
+  
 
   .lb-overlay {
     position: fixed;
