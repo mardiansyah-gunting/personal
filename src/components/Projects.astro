@@ -7,7 +7,7 @@ const projects = [
     private: true,
     title: "DMRV",
     link: null,
-    desc: "Internal application for TREEO Indonesia that digitizes the Measurement, Reporting & Verification (MRV) of field tree-planting data. Built end-to-end, in daily production use, and maintained over time — proof that I can build applications that stay sustainable and reliable.",
+    desc: "Internal application for TREEO Indonesia that digitizes the Measurement, Reporting & Verification (MRV) of field tree-planting data. Built end-to-end, in daily production use, and maintained over time — scheduled for release in Q1 2027.",
     tags: ["Python", "Data Pipeline", "Production"],
   },
   {
@@ -16,7 +16,8 @@ const projects = [
     private: true,
     title: "TREEO Indonesia Website",
     link: null,
-    desc: "Enhanced the TREEO Indonesia website — fixed and improved the animations and built a responsive mobile layout so the site works smoothly on phones.",
+    website: "https://treeo.id",
+    desc: "I helped improve the TREEO Indonesia website — fixed and improved the animations and built a responsive mobile layout so the site works smoothly on phones.",
     tags: ["Web Development", "Animation", "Responsive Design"],
   },
   {
@@ -339,6 +340,11 @@ const projects = [
               <a href={p.link} target="_blank" rel="noopener noreferrer" class="project-link">
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="project-github"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg>
                 <span data-i18n="projects.view_github">View on GitHub</span>
+              </a>
+            ) : p.website ? (
+              <a href={p.website} target="_blank" rel="noopener noreferrer" class="project-link">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="project-github"><circle cx="12" cy="12" r="10"/><path d="M12 2a14.5 14.5 0 0 0 0 20 14.5 14.5 0 0 0 0-20"/><path d="M2 12h20"/></svg>
+                <span data-i18n="projects.view_website">Visit website</span>
               </a>
             ) : (
               <span class="project-note">
