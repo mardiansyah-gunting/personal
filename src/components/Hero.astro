@@ -75,9 +75,25 @@ const cv = {
     <div class="hero-desc">
       <span class="hero-desc-label" data-i18n="about.subtitle">Who I Am</span>
       <p class="hero-desc-text" data-i18n="about.body">I'm a results-driven professional who lives where operations, technology, and strategy meet. My career has been about bridging teams, building tools, and eliminating the repetitive work that quietly slows a business down — from automating data requests with Python scripts to digitizing reporting workflows that used to live in spreadsheets. Whether I'm coordinating tree-planting programs across Indonesia or shipping an Android app, I aim for the same outcome: measurable, lasting impact. I've worked across startups, international NGOs, and government institutions, and every role has deepened my ability to adapt fast and communicate across cultures. I believe the future belongs to people who connect real domain expertise with emerging technology — and I'm committed to being at that frontier. I'm currently open to new roles and collaborations: if you're looking for someone who will make your team measurably more productive, I'd love to talk.</p>
+      <div class="hero-desc-highlights">
+        <h3 class="hero-desc-hl-heading" data-i18n="about.highlights_title">Key Skills & Achievements</h3>
+        <ul class="hero-desc-list">
+          <li data-i18n="about.highlight.0">Automation & Digitalization: Automating data request workflows with Python and moving manual spreadsheet reporting into digitized systems.</li>
+          <li data-i18n="about.highlight.1">Cross-Sector Project Management: Experience managing national programs (NGO/government) and leading Android app development and launch.</li>
+          <li data-i18n="about.highlight.2">Adaptability & Communication: Comfortable across startups, international NGOs, and government institutions, with strong cross-cultural communication skills.</li>
+        </ul>
+      </div>
       <div class="hero-about-mobile">
         <h2 class="hero-about-title" data-i18n="about.title">About Me</h2>
         <p class="hero-about-intro" data-i18n="about.intro">Results-driven professional at the intersection of operations, technology, and strategy — bridging teams, building tools, and removing the repetitive work that slows businesses down. From coordinating tree-planting programs across Indonesia to shipping Android apps, I work toward one outcome: measurable, lasting impact. Adaptable across startups, international NGOs, and government institutions, I connect hands-on domain expertise with emerging technology.</p>
+        <div class="hero-about-highlights">
+          <h3 class="hero-desc-hl-heading" data-i18n="about.highlights_title">Key Skills & Achievements</h3>
+          <ul class="hero-desc-list">
+            <li data-i18n="about.highlight.0">Automation & Digitalization: Automating data request workflows with Python and moving manual spreadsheet reporting into digitized systems.</li>
+            <li data-i18n="about.highlight.1">Cross-Sector Project Management: Experience managing national programs (NGO/government) and leading Android app development and launch.</li>
+            <li data-i18n="about.highlight.2">Adaptability & Communication: Comfortable across startups, international NGOs, and government institutions, with strong cross-cultural communication skills.</li>
+          </ul>
+        </div>
       </div>
     </div>
   </div>
@@ -215,8 +231,44 @@ const cv = {
     display: none;
   }
   .hero-desc-label,
-  .hero-desc-text {
+  .hero-desc-text,
+  .hero-desc-highlights {
     display: none;
+  }
+  .hero-desc-hl-heading {
+    font-size: 0.78rem;
+    font-weight: 700;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--primary);
+    margin: 0 0 0.55rem;
+  }
+  .hero-desc-list {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 0.45rem;
+  }
+  .hero-desc-list li {
+    position: relative;
+    padding-left: 1rem;
+    font-size: 0.9rem;
+    line-height: 1.65;
+    color: var(--text-muted);
+  }
+  .hero-desc-list li::before {
+    content: '•';
+    position: absolute;
+    left: 0;
+    color: var(--accent);
+    font-weight: 700;
+  }
+  .hero-about-highlights {
+    margin-top: 0.9rem;
+    padding-top: 0.9rem;
+    border-top: 1px solid var(--border);
   }
   .hero-about-mobile {
     display: block;
@@ -272,6 +324,12 @@ const cv = {
       font-size: 0.98rem;
       line-height: 1.8;
       color: var(--text-muted);
+    }
+    .hero-desc-highlights {
+      display: block;
+      margin-top: 1rem;
+      padding-top: 1rem;
+      border-top: 1px solid var(--border);
     }
   }
 
@@ -517,7 +575,8 @@ const cv = {
       width: min(160px, 20vw);
     }
     .hero-desc-label,
-    .hero-desc-text {
+    .hero-desc-text,
+    .hero-desc-highlights {
       display: none;
     }
     .hero-about-mobile {
