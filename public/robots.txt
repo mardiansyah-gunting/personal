@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://mardiansyah-gunting.github.io/personal/sitemap.xml
