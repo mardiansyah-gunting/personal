@@ -68,7 +68,7 @@
   "skills.lang.zh": "中文（初级）",
   "projects.title": "项目",
   "projects.subtitle": "我的作品",
-  "projects.intro": "下面是我多年来构建的一些应用与工具——从 Fairventures Digital GmbH 的内部自动化与数据工具，到任何人都能使用的开源安卓应用。",
+  "projects.intro": "下面是我多年来构建的部分应用与工具：Fairventures Digital GmbH 的内部自动化与数据工具，以及我独立开发的开源安卓应用。",
   "projects.internal_badge": "内部项目",
   "projects.private_note": "源码为保密——每天在 TREEO Indonesia 生产环境中使用。",
   "projects.view_github": "在 GitHub 查看",
