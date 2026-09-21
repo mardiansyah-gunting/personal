@@ -70,7 +70,7 @@
   "projects.subtitle": "Yang Pernah Saya Bangun",
   "projects.intro": "Aplikasi, tools, dan automasi yang pernah saya buat — dari workflow Python internal di Fairventures Worldwide hingga aplikasi Android open-source yang bisa dipakai siapa saja.",
   "projects.internal_badge": "Internal",
-  "projects.private_note": "Source bersifat rahasia — dibangun untuk produksi dan dipakai setiap hari. Bukti saya mampu menghadirkan software yang andal di tengah tekanan dunia nyata.",
+  "projects.private_note": "Source bersifat rahasia — dipakai setiap hari di produksi TREEO Indonesia.",
   "projects.view_github": "Lihat di GitHub",
   "projects.automation.title": "Automasi Workflow",
   "projects.automation.desc": "Di Fairventures Digital GmbH saya membuat script Python internal yang mengubah data mentah menjadi persis seperti yang dibutuhkan tim — diekstrak, diubah, atau dipatch ke dalam format yang mereka minta, kapan pun diperlukan. Bersifat rahasia dan dipakai setiap hari, jadi source-nya tidak pernah keluar dari perusahaan.",

@@ -70,7 +70,7 @@
   "projects.subtitle": "Things I've Built",
   "projects.intro": "Applications, tools, and automation I've built — from internal Python workflows at Fairventures Worldwide to open-source Android apps anyone can use.",
   "projects.internal_badge": "Internal",
-  "projects.private_note": "Source is confidential — built in production and used daily. Proof I ship software that stays reliable under real-world pressure.",
+  "projects.private_note": "Source is confidential — in daily production use at TREEO Indonesia.",
   "projects.view_github": "View on GitHub",
   "projects.automation.title": "Workflow Automation",
   "projects.automation.desc": "At Fairventures Digital GmbH I built internal Python scripts that turn raw data into exactly what the team needs — extracted, transformed, or patched into the format they ask for, on demand. Confidential and in daily use, so the source never leaves the company.",

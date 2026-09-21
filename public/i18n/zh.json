@@ -70,7 +70,7 @@
   "projects.subtitle": "我的作品",
   "projects.intro": "我构建的应用程序、工具与自动化——从 Fairventures Worldwide 的内部 Python 工作流，到任何人都能使用的开源 Android 应用。",
   "projects.internal_badge": "内部项目",
-  "projects.private_note": "源码为保密——已在生产环境构建并每天使用。证明我能够在真实压力下交付稳定可靠的软件。",
+  "projects.private_note": "源码为保密——每天在 TREEO Indonesia 生产环境中使用。",
   "projects.view_github": "在 GitHub 查看",
   "projects.automation.title": "工作流自动化",
   "projects.automation.desc": "在 Fairventures Digital GmbH，我构建了内部 Python 脚本，将原始数据转化为团队真正需要的形式——按需提取、转换或修补成他们要求的格式。这些脚本保密且每天都在使用，源码从未离开公司。",
