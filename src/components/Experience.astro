@@ -19,7 +19,7 @@ function getJobImages(slug) {
 }
 
 const items = [
-  { date: "May 2026 – Present", company: "Fairventures Digital GmbH", slug: "customer-success-manager-2026", logo: "fairventures-digital.png", role: "Customer Success Manager", desc: "Conduct field visits to assess customer needs. Monitor daily activities on the TREEO cloud. Enhance UI/UX design of TREEO Apps. Provide training and user documentation." },
+  { date: "May 2026 – Present", company: "PT Solusi Hutan Digital", url: "https://treeo.id/", slug: "customer-success-manager-2026", logo: "treeo.svg", role: "Technology & Customer Success Manager", desc: "Conduct field visits to assess customer needs. Monitor daily activities on the TREEO cloud. Enhance UI/UX design of TREEO Apps. Provide training and user documentation." },
   { date: "May 2025 – May 2026", company: "Fairventures Digital GmbH", slug: "operations-manager", logo: "fairventures-digital.png", role: "Operations Manager", desc: "Managed daily operations with 5 Tree Planting Partners. Planned and tracked tree-planting programs. Served as main contact for TPPs. Monitored data quality and reporting." },
   { date: "May 2024 – May 2025", company: "Fairventures Digital GmbH", slug: "customer-success-manager", logo: "fairventures-digital.png", role: "Customer Success Manager", desc: "Managed relationships with tree-planting partners. Conducted field visits to evaluate user experience. Coordinated with the global Technology team. Delivered training and user documentation." },
   { date: "May 2023 – May 2024", company: "Fairventures Digital GmbH", slug: "customer-success-engineer", logo: "fairventures-digital.png", role: "Customer Success Engineer", desc: "Conducted field visits assessing TREEO technology user experience. Monitored daily activities on TREEO cloud. Enhanced UI/UX of TREEO Apps. Provided comprehensive user support and training." },
@@ -54,7 +54,11 @@ const items = [
                 <span class="exp-num" aria-hidden="true">{String(i + 1).padStart(2, "0")}</span>
                 <img src={`${baseUrl}/images/logos/${item.logo}`} alt="" class="exp-logo" loading="lazy" />
                 <div class="exp-id">
-                  <h3 class="exp-company" data-i18n={`exp.${i}.company`}>{item.company}</h3>
+                  {item.url ? (
+                    <h3 class="exp-company"><a href={item.url} target="_blank" rel="noopener noreferrer" data-i18n={`exp.${i}.company`}>{item.company}</a></h3>
+                  ) : (
+                    <h3 class="exp-company" data-i18n={`exp.${i}.company`}>{item.company}</h3>
+                  )}
                   <span class="exp-period" data-i18n={`exp.${i}.period`}>{item.date}</span>
                 </div>
               </div>
@@ -122,7 +126,8 @@ const items = [
     font-weight: 700;
     letter-spacing: 0.14em;
     text-transform: uppercase;
-    color: var(--accent);
+    /* main green is under 4.5:1 on the sage band; the deeper brand green passes */
+    color: var(--primary-light);
   }
 
   .exp-title {
@@ -176,7 +181,7 @@ const items = [
     background: var(--bg);
     border: 1px solid var(--border);
     border-radius: 24px;
-    box-shadow: 0 12px 32px rgba(15, 43, 76, 0.08);
+    box-shadow: 0 12px 32px rgba(0, 51, 41, 0.08);
     padding: clamp(1.4rem, 2.4vw, 2.2rem);
     display: flex;
     flex-direction: column;
@@ -202,7 +207,7 @@ const items = [
     font-weight: 800;
     font-size: 0.82rem;
     border-radius: 50%;
-    box-shadow: 0 0 0 5px rgba(59, 130, 246, 0.12);
+    box-shadow: 0 0 0 5px rgba(0, 128, 43, 0.12);
   }
 
   .exp-logo {
@@ -229,6 +234,17 @@ const items = [
     color: var(--primary);
     margin: 0;
     line-height: 1.2;
+  }
+  .exp-company a {
+    color: inherit;
+    text-decoration: underline;
+    text-decoration-color: rgba(0, 128, 43, 0.3);
+    text-underline-offset: 3px;
+    transition: color 0.2s, text-decoration-color 0.2s;
+  }
+  .exp-company a:hover {
+    color: var(--accent);
+    text-decoration-color: currentColor;
   }
 
   .exp-period {
@@ -323,7 +339,7 @@ const items = [
   .exp-media-empty {
     align-items: center;
     justify-content: center;
-    background: linear-gradient(135deg, #f8fafc, #eef2f7);
+    background: linear-gradient(135deg, #f6fbf9, #deebe0);
     border: 1px dashed var(--border);
     border-radius: 16px;
     gap: 0.9rem;
@@ -342,7 +358,7 @@ const items = [
     right: 0;
     bottom: 0;
     height: 4px;
-    background: rgba(226, 232, 240, 0.95);
+    background: rgba(220, 236, 230, 0.95);
   }
 
   .exp-progress-fill {

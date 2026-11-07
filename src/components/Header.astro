@@ -67,10 +67,6 @@ const navItems = [
           <a href="https://github.com/mardiansyah-gunting" target="_blank" rel="noopener noreferrer">GitHub</a>
           <span class="mm-sep">·</span>
           <a href="https://linkedin.com/in/mardiansyah-gunting" target="_blank" rel="noopener noreferrer">LinkedIn</a>
-          <span class="mm-sep">·</span>
-          <a href="https://wa.me/628213105752" target="_blank" rel="noopener noreferrer">WhatsApp</a>
-          <span class="mm-sep">·</span>
-          <a href="weixin://dl/chat?wxid_f4jlf94gw5p22">WeChat</a>
         </div>
         <a href="mailto:mardiansyah.gunting@yahoo.com" class="mm-email">mardiansyah.gunting@yahoo.com</a>
       </div>
@@ -97,7 +93,7 @@ const navItems = [
     background: rgba(255, 255, 255, 0.85);
     backdrop-filter: blur(16px);
     -webkit-backdrop-filter: blur(16px);
-    border: 1px solid rgba(226, 232, 240, 0.8);
+    border: 1px solid rgba(220, 236, 230, 0.8);
     border-radius: 100px;
     padding: 0.5rem 1rem;
     box-shadow: 0 4px 24px rgba(0, 0, 0, 0.06);
@@ -156,7 +152,7 @@ const navItems = [
 
   .nav-link.active {
     color: var(--accent);
-    background: rgba(59, 130, 246, 0.08);
+    background: rgba(0, 128, 43, 0.08);
   }
 
   .nav-divider {
@@ -292,7 +288,7 @@ const navItems = [
     border-radius: 50%;
     object-fit: cover;
     border: 2px solid var(--accent);
-    box-shadow: 0 0 0 4px rgba(59, 130, 246, 0.12);
+    box-shadow: 0 0 0 4px rgba(0, 128, 43, 0.12);
     flex-shrink: 0;
   }
 
@@ -345,7 +341,7 @@ const navItems = [
   .mm-link:hover {
     text-decoration: none;
     color: var(--accent);
-    background: rgba(59, 130, 246, 0.06);
+    background: rgba(0, 128, 43, 0.06);
   }
 
   .mm-link.active {
@@ -457,9 +453,7 @@ const navItems = [
     function scrollToSection(id) {
       var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
       var behavior = reduce ? 'auto' : 'smooth';
-      var vh = window.innerHeight;
       var pin = document.querySelector('.hero-pin');
-      var isNarrow = window.matchMedia && window.matchMedia('(max-width: 768px)');
       if (id === 'home') {
         window.scrollTo({ top: 0, behavior: behavior });
         return;
@@ -470,17 +464,20 @@ const navItems = [
       if (!el) return;
       var y;
       if (id === 'about' && pin && !reduce) {
-        var pinTop = pin.offsetTop;
-        var travel = pin.offsetHeight - vh;
-        var revealP = isNarrow && isNarrow.matches ? 0.72 : 0.58;
-        y = pinTop + travel * revealP;
+        // #about sits inside the pinned hero at the point where About is fully
+        // revealed (index.astro owns that position). Land on it exactly: no header
+        // offset, and safely past the Home/About boundary used by the nav highlight.
+        y = el.getBoundingClientRect().top + window.pageYOffset;
       } else {
-        y = el.getBoundingClientRect().top + window.pageYOffset - headerH;
+        // reduced motion: the hero is not pinned and About is a static card inside it
+        var target = (id === 'about' && reduce && document.querySelector('.hero-desc')) || el;
+        y = target.getBoundingClientRect().top + window.pageYOffset - headerH;
       }
       window.scrollTo({ top: Math.max(0, y), behavior: behavior });
     }
 
-    document.querySelectorAll('.nav-link, .mm-link').forEach(function(link) {
+    // .si-dot = section rail in index.astro; same scroll rules as the menu
+    document.querySelectorAll('.nav-link, .mm-link, .si-dot').forEach(function(link) {
       link.addEventListener('click', function(e) {
         var href = link.getAttribute('href');
         if (href && href.charAt(0) === '#') {

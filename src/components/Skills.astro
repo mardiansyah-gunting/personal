@@ -13,31 +13,31 @@ const strengthBars = [
 const skillGroups = [
   {
     key: "eng",
-    color: "#3b82f6",
+    color: "#00802b",
     title: "Software Engineering",
     tags: ["Python", "Kotlin", "Java", "Android Development", "Android Studio", "Debugging & Troubleshooting", "Scripting & Automation", "Data Pipeline & Processing", "Database & Data Validation"],
   },
   {
     key: "css",
-    color: "#10b981",
+    color: "#1a6f53",
     title: "Customer Success & Client Relations",
     tags: ["Communication", "Client Onboarding", "Customer Relationship Management", "Field Visits & Feedback", "User Training & Documentation", "Product & Process Improvement", "B2B Communication", "Technical Support"],
   },
   {
     key: "ops",
-    color: "#f59e0b",
+    color: "#8a5a10",
     title: "Operations & Project Management",
     tags: ["Project Management", "Operations Management", "Partner Relationship Management", "Program Planning & Scheduling", "Stakeholder Coordination", "Data Quality & Reporting", "Time Management", "Team Leadership"],
   },
   {
     key: "field",
-    color: "#14b8a6",
+    color: "#2a7c5c",
     title: "Field, Research & Data",
     tags: ["Field Research", "Data Collection & Processing", "Statistical Data Processing", "Data Management", "Agroforestry & Reforestation", "Safety Compliance", "Project Reporting"],
   },
   {
     key: "log",
-    color: "#64748b",
+    color: "#406356",
     title: "Logistics & General Affairs",
     tags: ["Logistics Management", "Procurement", "Contract & Office Administration", "Asset Management", "Facility Management", "Office Operations Coordination"],
   },
@@ -50,7 +50,7 @@ const skillGroups = [
 
     <div class="skills-top fade-in">
       <h3 class="skill-group-title">
-        <svg class="skill-icon" viewBox="0 0 24 24" fill="none" stroke="#0f2b4c" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+        <svg class="skill-icon" viewBox="0 0 24 24" fill="none" stroke="#003329" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
         <span data-i18n="skills.top">Top Skills</span>
       </h3>
       <p class="skills-top-sub" data-i18n="skills.chart_subtitle">How often each strength shows up across my 9 professional roles — top to bottom, most to least used.</p>
@@ -143,7 +143,7 @@ const skillGroups = [
         </div>
       ))}
 
-      <div class="skill-group skill-group-lang fade-in" style="--sg: #8b5cf6">
+      <div class="skill-group skill-group-lang fade-in" style="--sg: #0f5c45">
         <div class="skill-illo" aria-hidden="true">
           <svg viewBox="0 0 120 120" fill="none" xmlns="http://www.w3.org/2000/svg">
             <circle cx="60" cy="60" r="30" stroke="currentColor" stroke-width="1.5" opacity="0.12"/>
@@ -156,7 +156,7 @@ const skillGroups = [
           </svg>
         </div>
         <h3 class="skill-group-title">
-          <svg class="skill-icon" viewBox="0 0 24 24" fill="none" stroke="#8b5cf6" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 014 10 15.3 15.3 0 01-4 10 15.3 15.3 0 01-4-10 15.3 15.3 0 014-10z"/></svg>
+          <svg class="skill-icon" viewBox="0 0 24 24" fill="none" stroke="#0f5c45" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 014 10 15.3 15.3 0 01-4 10 15.3 15.3 0 01-4-10 15.3 15.3 0 014-10z"/></svg>
           <span data-i18n="skills.languages">Languages</span>
         </h3>
         <div class="skill-tags">
@@ -273,7 +273,7 @@ const skillGroups = [
     display: block;
     position: relative;
     height: 100%;
-    background: #eff6ff;
+    background: #e9fced;
     border-radius: 0 4px 4px 0;
     overflow: hidden;
   }
@@ -283,7 +283,7 @@ const skillGroups = [
     position: absolute;
     inset: 0 auto 0 0;
     border-radius: 0 4px 4px 0;
-    background: #bfdbfe;
+    background: #c6edcc;
   }
 
   .strength-row.top .strength-fill {
@@ -344,7 +344,7 @@ const skillGroups = [
   }
 
   .skill-group-lang {
-    border-top-color: #8b5cf6;
+    border-top-color: #0f5c45;
   }
 
   .skill-illo {
@@ -358,7 +358,7 @@ const skillGroups = [
     opacity: 0.6;
   }
 
-  .skill-group-lang .skill-illo { color: #8b5cf6; }
+  .skill-group-lang .skill-illo { color: #0f5c45; }
 
   .skill-group-title {
     font-size: 1.1rem;
@@ -388,17 +388,17 @@ const skillGroups = [
     border-radius: 20px;
     font-size: 0.83rem;
     font-weight: 500;
-    background: color-mix(in srgb, var(--sg, #3b82f6) 10%, #ffffff);
-    color: var(--sg, #1e40af);
-    border: 1px solid color-mix(in srgb, var(--sg, #3b82f6) 30%, transparent);
+    background: color-mix(in srgb, var(--sg, #00802b) 10%, #ffffff);
+    color: var(--sg, #0f5c45);
+    border: 1px solid color-mix(in srgb, var(--sg, #00802b) 30%, transparent);
     display: inline-block;
   }
 
   .tag-lang {
-    --sg: #8b5cf6;
-    background: #f5f3ff;
-    color: #5b21b6;
-    border: 1px solid #ddd6fe;
+    --sg: #0f5c45;
+    background: #e9fced;
+    color: #003329;
+    border: 1px solid #c6edcc;
   }
 
   @media (max-width: 768px) {
