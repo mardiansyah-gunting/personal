@@ -67,8 +67,8 @@ export function Footer() {
           <img src={asset("/profile.jpg")} alt={SIGNATURE} width={160} height={200} loading="lazy" className="h-full w-full object-cover grayscale-[15%]" />
         </div>
 
-        <div data-board="signature" className="mt-10 h-[72px]">
-          <span className="signature block text-[64px] text-ink" lang="en">
+        <div data-board="signature" className="mt-10 flex h-[72px] items-center">
+          <span className="signature block whitespace-nowrap text-[clamp(34px,10vw,64px)] text-ink" lang="en">
             {SIGNATURE}
           </span>
         </div>

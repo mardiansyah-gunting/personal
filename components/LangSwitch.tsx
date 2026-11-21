@@ -8,7 +8,7 @@ import { useSite } from "./SiteProvider";
 export function LangSwitch({ className = "" }: { className?: string }) {
   const { lang, ui } = useSite();
   return (
-    <nav aria-label={ui.language} className={`flex items-center gap-1.5 text-[15px] text-muted ${className}`}>
+    <nav aria-label={ui.language} className={`flex items-center gap-1.5 whitespace-nowrap text-[15px] text-muted ${className}`}>
       {LANGS.map((l, i) => (
         <Fragment key={l}>
           {i > 0 && <span aria-hidden>·</span>}

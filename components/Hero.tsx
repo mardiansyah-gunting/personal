@@ -16,7 +16,7 @@ export function Hero() {
           <span className="block leading-[1.35] text-muted">{role}</span>
         </div>
 
-        <div className="flex flex-col items-end gap-2">
+        <div className="flex shrink-0 flex-col items-end gap-2">
           <button
             type="button"
             onClick={toNow}
