@@ -1,13 +1,14 @@
 import { getSite } from "@/content";
 import type { Lang } from "@/content/types";
 import { DiveGallery } from "./DiveGallery";
+import { Education } from "./Education";
 import { Fog } from "./Fog";
 import { Footer } from "./Footer";
 import { Hero } from "./Hero";
 import { Intro } from "./Intro";
 import { Projects } from "./Projects";
-import { Services } from "./Services";
 import { SheetProvider } from "./SheetProvider";
+import { Skills } from "./Skills";
 import { SiteProvider } from "./SiteProvider";
 import { BoardLayer } from "./board/BoardLayer";
 import { BoardProvider } from "./board/BoardProvider";
@@ -24,7 +25,8 @@ export function HomePage({ lang }: { lang: Lang }) {
             <Hero />
             <Intro />
             <Projects />
-            <Services />
+            <Skills />
+            <Education />
             <DiveGallery />
             <Footer />
             <BoardLayer />
