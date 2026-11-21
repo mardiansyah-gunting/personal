@@ -7,7 +7,7 @@ test("field-notes gallery holds every job photo and opens a lightbox", async ({ 
   await page.goto("/personal/");
   const items = page.locator("#gallery [data-dive]");
   await expect(items).toHaveCount(total);
-  await expect(page.locator("#gallery h2")).toHaveText("Field notes");
+  await expect(page.locator("#gallery h2")).toHaveCount(0);
   await page.locator("#gallery").scrollIntoViewIfNeeded();
   await page.evaluate(() => scrollBy(0, innerHeight * 0.6));
   await page.waitForTimeout(800);
@@ -27,7 +27,6 @@ test.describe("reduced motion", () => {
   test("gallery is still visible", async ({ page }) => {
     await page.goto("/personal/id/");
     await page.locator("#gallery").scrollIntoViewIfNeeded();
-    await expect(page.locator("#gallery h2")).toHaveText("Catatan lapangan");
     await page.waitForTimeout(300);
     const shown = await page.locator("#gallery [data-dive]").evaluateAll((els) => els.filter((el) => Number(getComputedStyle(el).opacity) > 0.5).length);
     expect(shown).toBeGreaterThan(0);

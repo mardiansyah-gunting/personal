@@ -132,15 +132,12 @@ export function DiveGallery() {
   return (
     <section id="gallery" ref={sectionRef} className="section-gap relative" style={{ height: `${N * 16 + 120}vh` }} aria-label={ui.sections.gallery}>
       <div ref={stageRef} className="sticky top-0 h-[100svh] overflow-hidden" style={{ isolation: "isolate" }}>
-        <div className="content-width pointer-events-none absolute inset-x-0 top-24 z-0">
-          <h2 className="text-[18px] text-muted">{ui.sections.gallery}</h2>
-        </div>
         {items.map((it, i) => (
           <button key={i} type="button" data-dive className="dive-item" aria-label={`${it.title} — ${it.kind}`} onClick={() => setLightbox(i)}>
             <Visual visual={it.visual} />
           </button>
         ))}
-        <p ref={hintRef} className="pointer-events-none absolute inset-x-0 bottom-8 z-[1100] text-center text-[15px] text-muted transition-opacity duration-500">
+        <p ref={hintRef} className="dive-hint pointer-events-none absolute inset-x-0 bottom-8 z-[1100] text-center text-[15px] text-muted transition-opacity duration-500">
           {ui.galleryHint}
         </p>
       </div>

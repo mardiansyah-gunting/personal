@@ -11,18 +11,14 @@ import { Projects } from "./Projects";
 import { SheetProvider } from "./SheetProvider";
 import { Skills } from "./Skills";
 import { SiteProvider } from "./SiteProvider";
-import { BoardLayer } from "./board/BoardLayer";
-import { BoardProvider } from "./board/BoardProvider";
 
 /** The one-page site for a language. Server component: content never ships as a module to the client. */
 export function HomePage({ lang }: { lang: Lang }) {
   return (
     <SiteProvider site={getSite(lang)}>
       <SheetProvider>
-        <BoardProvider>
           <Fog />
-          {/* #board-root: everything the draw mode can touch lives in here */}
-          <main id="board-root" className="relative">
+                    <main id="page" className="relative">
             <Hero />
             <Intro />
             <Projects />
@@ -31,9 +27,7 @@ export function HomePage({ lang }: { lang: Lang }) {
             <Education />
             <DiveGallery />
             <Footer buildYear={new Date().getFullYear()} />
-            <BoardLayer />
           </main>
-        </BoardProvider>
       </SheetProvider>
     </SiteProvider>
   );

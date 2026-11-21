@@ -11,7 +11,7 @@ export function Hero() {
   return (
     <section id="about" className="content-width pt-24 sm:pt-32">
       <div className="flex items-start justify-between gap-6">
-        <div data-board="identity" className="stagger-in">
+        <div className="stagger-in">
           <h1 className="text-[18px] leading-[1.35]">{name}</h1>
           <span className="block leading-[1.35] text-muted">{role}</span>
         </div>
@@ -20,7 +20,7 @@ export function Hero() {
           <button
             type="button"
             onClick={toNow}
-            data-board="status"
+           
             className="group stagger-in relative flex items-center gap-2 text-[16px] leading-[1.35]"
             style={{ animationDelay: "80ms" }}
             aria-label={`${status.label} — ${status.note}`}
@@ -35,7 +35,7 @@ export function Hero() {
         </div>
       </div>
 
-      <div data-board="statement" className="hero-fog mt-20 sm:mt-24">
+      <div className="hero-fog mt-20 sm:mt-24">
         <p className="max-w-[540px] text-[26px] leading-[1.25] sm:text-[30px]">
           <RichText segs={hero} animate />
         </p>

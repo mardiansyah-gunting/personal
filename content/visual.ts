@@ -5,4 +5,4 @@
  */
 export type Visual =
   | { kind: "image"; src: string; alt: string; fit?: "cover" | "contain" }
-  | { kind: "phone" | "browser" | "darkapp" | "pipeline" | "transcript"; tone?: string; label?: string };
+  | { kind: "phone" | "browser" | "darkapp" | "pipeline" | "transcript" | "flow" | "notebook" | "map"; tone?: string; label?: string };

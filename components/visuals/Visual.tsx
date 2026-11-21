@@ -30,6 +30,12 @@ function render(v: VisualT, bare: boolean): ReactNode {
       return <Pipeline bare={bare} />;
     case "transcript":
       return <Transcript bare={bare} />;
+    case "flow":
+      return <Flow bare={bare} />;
+    case "notebook":
+      return <Notebook bare={bare} />;
+    case "map":
+      return <GisMap bare={bare} />;
   }
 }
 
@@ -346,6 +352,225 @@ function Transcript({ bare }: { bare: boolean }) {
             <Line key={i} w={`${w}%`} h={0.9} c="#d9d9d6" />
           ))}
         </Card>
+      </div>
+    </Stage>
+  );
+}
+
+/* ───────────── flow: how the automation works ───────────── */
+
+function Box({ x, y, w, h, badge, title, items, done }: { x: number; y: number; w: number; h: number; badge?: string; title: string; items: string[]; done?: boolean }) {
+  return (
+    <g>
+      <rect x={x} y={y} width={w} height={h} rx={10} fill="#fff" stroke="#bdbdb9" strokeWidth={1.2} />
+      {badge && (
+        <g>
+          <rect x={x + 12} y={y - 9} width={badge.length * 7.4 + 22} height={19} rx={9.5} fill="#181818" />
+          <text x={x + 23} y={y + 4.5} fontSize={10.5} fill="#fff" fontWeight={700} letterSpacing={0.6}>
+            {badge}
+          </text>
+        </g>
+      )}
+      <text x={x + 14} y={y + 27} fontSize={15} fontWeight={700} fill="#181818">
+        {title}
+      </text>
+      {done && (
+        <g>
+          <rect x={x + w - 64} y={y + 13} width={50} height={19} rx={9.5} fill={GREEN} />
+          <text x={x + w - 39} y={y + 26.5} fontSize={10.5} fill="#fff" fontWeight={700} textAnchor="middle">
+            DONE
+          </text>
+        </g>
+      )}
+      <line x1={x + 14} x2={x + w - 14} y1={y + 37} y2={y + 37} stroke="#ececea" />
+      {items.map((t, i) => (
+        <text key={t} x={x + 14} y={y + 56 + i * 17} fontSize={12.5} fill="#5c5c58">
+          {t}
+        </text>
+      ))}
+    </g>
+  );
+}
+
+function Flow({ bare }: { bare: boolean }) {
+  return (
+    <Stage bare={bare} bg="#efefec">
+      <svg viewBox="0 0 860 360" style={{ width: "94cqw", height: "88cqh" }} role="img" aria-label="How the automation works: source data, validation, Python script, delivered output, on a schedule">
+        <defs>
+          <pattern id="flow-grid" width="20" height="20" patternUnits="userSpaceOnUse">
+            <path d="M20 0H0V20" fill="none" stroke="#e6e6e3" strokeWidth={0.8} />
+          </pattern>
+          <marker id="flow-arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+            <path d="M0 0 10 5 0 10z" fill="#6f6f6c" />
+          </marker>
+        </defs>
+        <rect width="860" height="360" fill="url(#flow-grid)" opacity={bare ? 0 : 0.9} />
+
+        <Box x={24} y={28} w={230} h={112} badge="01 · SOURCE" title="Source Data" items={["Spreadsheets", "Cloud exports", "Partner logs"]} />
+        <Box x={314} y={28} w={230} h={112} badge="02 · VALIDATE" title="Validation" items={["Format check", "Duplicate scan", "Rules enforced"]} />
+        <Box x={604} y={28} w={232} h={112} badge="04 · DELIVER" title="Delivered Output" items={["Formatted reports", "Patched records", "Actionable files"]} done />
+        <Box x={24} y={176} w={230} h={86} title="Schedule / Event" items={["on a timer", "on file upload"]} />
+        <g>
+          <Box x={314} y={176} w={230} h={104} badge="03 · PROCESS" title="Python Script" items={["Extract · Transform · Patch"]} />
+          <rect x={330} y={246} width={198} height={22} rx={11} fill="#e4ede1" />
+          <text x={429} y={261} fontSize={11.5} fill="#36603a" fontWeight={700} textAnchor="middle">
+            repeatable · logged
+          </text>
+        </g>
+
+        <g fill="none" stroke="#6f6f6c" strokeWidth={1.6} markerEnd="url(#flow-arrow)">
+          <path d="M256 84H310" />
+          <path d="M546 84H600" />
+          <path d="M429 142V172" />
+          <path d="M256 219H310" />
+          <path d="M546 236C590 236 572 120 600 112" />
+          <path d="M720 142C716 330 160 330 139 266" strokeDasharray="6 6" stroke="#a3a3a0" />
+        </g>
+        <text x="430" y="346" fontSize={14} fill="#6f6f6c" textAnchor="middle">
+          You ask once — the script repeats the work for you.
+        </text>
+      </svg>
+    </Stage>
+  );
+}
+
+/* ───────────── notebook: running the transcriber in Jupyter ───────────── */
+
+function Notebook({ bare }: { bare: boolean }) {
+  const cell = (n: number, code: ReactNode, out?: ReactNode) => (
+    <div style={{ display: "grid", gridTemplateColumns: "9cqmin 1fr", gap: "1.6cqmin", alignItems: "start" }}>
+      <span style={{ color: "#2b6cb0", fontSize: "1.9cqmin", paddingTop: "0.9cqmin" }}>[{n}]:</span>
+      <div style={{ display: "grid", gap: "0.8cqmin" }}>
+        <div style={{ background: "#f6f6f4", border: "0.2cqmin solid #e6e6e3", borderRadius: "0.8cqmin", padding: "1cqmin 1.4cqmin", fontSize: "2cqmin" }}>{code}</div>
+        {out && <div style={{ fontSize: "1.9cqmin", color: "#5c5c58", padding: "0 1.4cqmin", display: "grid", gap: "0.4cqmin" }}>{out}</div>}
+      </div>
+    </div>
+  );
+  const kw = (t: string) => <span style={{ color: "#8a3ffc" }}>{t}</span>;
+  const str = (t: string) => <span style={{ color: "#1f7a4a" }}>{t}</span>;
+  return (
+    <Stage bare={bare} bg="#e9ecef">
+      <div
+        style={{
+          width: "86cqw",
+          height: "82cqh",
+          background: "#fff",
+          borderRadius: "1.6cqmin",
+          boxShadow: "0 0 0 0.2cqmin rgb(0 0 0 / .06), 0 3cqmin 8cqmin -2cqmin rgb(0 0 0 / .2)",
+          display: "grid",
+          gridTemplateRows: "auto auto 1fr",
+          overflow: "hidden",
+          color: "#181818",
+        }}
+      >
+        <div style={{ display: "flex", alignItems: "center", gap: "1.4cqmin", padding: "1.4cqmin 2cqmin", borderBottom: "0.2cqmin solid #efefed", fontSize: "2.1cqmin" }}>
+          <i style={{ width: "2.6cqmin", height: "2.6cqmin", borderRadius: 99, border: "0.5cqmin solid #f37726" }} />
+          <span style={{ fontWeight: 700 }}>audio_transkript.ipynb</span>
+          <span style={{ marginLeft: "auto", color: "#8a8a86", fontSize: "1.8cqmin" }}>Python 3 · ● idle</span>
+        </div>
+        <div style={{ display: "flex", gap: "2cqmin", padding: "0.8cqmin 2cqmin", borderBottom: "0.2cqmin solid #f3f3f1", color: "#8a8a86", fontSize: "1.8cqmin" }}>
+          {["File", "Edit", "View", "Run", "Kernel"].map((t) => (
+            <span key={t}>{t}</span>
+          ))}
+          <span style={{ marginLeft: "auto" }}>▶ Run all</span>
+        </div>
+        <div style={{ padding: "2cqmin 2.4cqmin", display: "grid", gap: "1.8cqmin", alignContent: "start", overflow: "hidden" }}>
+          {cell(1, <>{kw("!pip install")} -r requirements.txt</>, <span>Successfully installed SpeechRecognition pydub python-docx</span>)}
+          {cell(
+            2,
+            <>
+              {kw("!python")} code/main.py {str("audio_input/meeting.m4a")} {str("output/meeting.docx")} --language {str("id-ID")}
+            </>,
+            <>
+              <span>Loading audio… split into 45 s chunks: 4</span>
+              {[1, 2, 3, 4].map((n) => (
+                <span key={n} style={{ display: "flex", alignItems: "center", gap: "1.2cqmin" }}>
+                  chunk {n}/4
+                  <i style={{ flex: 1, maxWidth: "26cqmin", height: "0.8cqmin", background: "#e6e6e3", borderRadius: 99, overflow: "hidden" }}>
+                    <b style={{ display: "block", height: "100%", width: "100%", background: GREEN }} />
+                  </i>
+                  <span style={{ color: GREEN }}>✓</span>
+                </span>
+              ))}
+              <span style={{ color: "#181818" }}>Saved → output/meeting.docx</span>
+            </>,
+          )}
+          {cell(3, <span style={{ color: "#9a9a96" }}> </span>)}
+        </div>
+      </div>
+    </Stage>
+  );
+}
+
+/* ───────────── map: converted layers in a GIS view ───────────── */
+
+function GisMap({ bare }: { bare: boolean }) {
+  const layers: [string, string, boolean][] = [
+    ["parcels.shp", "#c9a15a", true],
+    ["roads.geojson", "#6f6f6c", true],
+    ["boundary.shp", "#c0392b", true],
+    ["site_plan.geojson", GREEN, true],
+    ["basemap", "#cfe3d4", false],
+  ];
+  return (
+    <Stage bare={bare} bg="#e6ebe7">
+      <div
+        style={{
+          width: "88cqw",
+          height: "82cqh",
+          background: "#fff",
+          borderRadius: "1.6cqmin",
+          boxShadow: "0 0 0 0.2cqmin rgb(0 0 0 / .06), 0 3cqmin 8cqmin -2cqmin rgb(0 0 0 / .2)",
+          display: "grid",
+          gridTemplateRows: "auto 1fr",
+          overflow: "hidden",
+          color: "#181818",
+        }}
+      >
+        <div style={{ display: "flex", alignItems: "center", gap: "1.4cqmin", padding: "1.3cqmin 2cqmin", borderBottom: "0.2cqmin solid #efefed", fontSize: "2cqmin" }}>
+          <span style={{ fontWeight: 700 }}>GIS · converted layers</span>
+          <span style={{ marginLeft: "auto", color: "#8a8a86", fontSize: "1.8cqmin" }}>EPSG:4326</span>
+        </div>
+        <div style={{ display: "grid", gridTemplateColumns: "26% 1fr", minHeight: 0 }}>
+          <div style={{ borderRight: "0.2cqmin solid #f0f0ee", padding: "2cqmin", display: "grid", gap: "1.4cqmin", alignContent: "start", fontSize: "1.9cqmin" }}>
+            <span style={{ color: "#8a8a86" }}>Layers</span>
+            {layers.map(([n, c, on]) => (
+              <span key={n} style={{ display: "flex", alignItems: "center", gap: "1cqmin", color: on ? "#181818" : "#a3a3a0" }}>
+                <i style={{ width: "2cqmin", height: "2cqmin", borderRadius: "0.4cqmin", border: "0.25cqmin solid #181818", display: "grid", placeItems: "center", fontStyle: "normal", fontSize: "1.5cqmin" }}>{on ? "✓" : ""}</i>
+                <i style={{ width: "2cqmin", height: "1.2cqmin", background: c, borderRadius: "0.3cqmin" }} />
+                {n}
+              </span>
+            ))}
+          </div>
+          <div style={{ position: "relative", background: "#eef4ef" }}>
+            <svg viewBox="0 0 400 260" preserveAspectRatio="xMidYMid slice" style={{ position: "absolute", inset: 0, width: "100%", height: "100%" }} aria-hidden>
+              <path d="M0 200C80 180 120 230 200 210S330 150 400 170V260H0Z" fill="#dbe9df" />
+              <path d="M0 40C60 60 90 20 160 34" fill="none" stroke="#b9d3e6" strokeWidth={9} strokeLinecap="round" />
+              <g fill="#f3e3c2" stroke="#c9a15a" strokeWidth={1.2}>
+                <path d="M70 70L150 62 156 120 76 128Z" />
+                <path d="M156 62L232 58 236 112 156 120Z" />
+                <path d="M76 128L156 120 160 182 82 190Z" />
+                <path d="M160 120L236 112 244 170 160 182Z" />
+                <path d="M236 58L300 66 306 120 236 112Z" />
+                <path d="M244 170L306 120 330 176 252 214Z" />
+              </g>
+              <path d="M150 62 160 182M236 58 244 170M70 70 300 66" fill="none" stroke="#6f6f6c" strokeWidth={1.6} />
+              <path d="M20 150C90 140 180 150 250 140S360 110 392 96" fill="none" stroke="#6f6f6c" strokeWidth={3} />
+              <path d="M20 150C90 140 180 150 250 140S360 110 392 96" fill="none" stroke="#fff" strokeWidth={1} strokeDasharray="6 5" />
+              <path d="M56 54 316 50 344 190 70 206Z" fill="none" stroke="#c0392b" strokeWidth={1.8} strokeDasharray="7 5" />
+              <path d="M180 86 214 84 216 104 182 106Z" fill={GREEN} fillOpacity={0.8} />
+              <circle cx={198} cy={95} r={3} fill="#fff" />
+            </svg>
+            <div style={{ position: "absolute", right: "2cqmin", top: "2cqmin", display: "grid", placeItems: "center", width: "5cqmin", height: "6cqmin", fontSize: "1.8cqmin", fontWeight: 700 }}>
+              <span>▲</span>
+              <span>N</span>
+            </div>
+            <div style={{ position: "absolute", left: "2cqmin", bottom: "2cqmin", display: "flex", alignItems: "center", gap: "1cqmin", fontSize: "1.6cqmin", background: "rgb(255 255 255 / .8)", padding: "0.6cqmin 1cqmin", borderRadius: "0.6cqmin" }}>
+              <i style={{ width: "10cqmin", height: "0.8cqmin", background: "linear-gradient(90deg,#181818 50%,#fff 50%)", border: "0.2cqmin solid #181818" }} />
+              0 — 200 m
+            </div>
+          </div>
+        </div>
       </div>
     </Stage>
   );

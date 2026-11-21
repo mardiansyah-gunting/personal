@@ -6,7 +6,6 @@ import { IconSocial } from "./Icons";
 import { LangSwitch } from "./LangSwitch";
 import { useSheet } from "./SheetProvider";
 import { useSite } from "./SiteProvider";
-import { useBoard } from "./board/BoardProvider";
 
 /** The signature face has Latin glyphs only, so it always writes the Latin name. */
 const SIGNATURE = "Mardiansyah Gunting";
@@ -23,22 +22,25 @@ export function Footer({ buildYear }: { buildYear: number }) {
   useEffect(() => setYear(new Date().getFullYear()), []);
   const ref = useRef<HTMLElement>(null);
   const [copied, setCopied] = useState(false);
-  const { toggle } = useBoard();
   const { open } = useSheet();
 
   useEffect(() => {
     const el = ref.current!;
+    let timer = 0;
     const io = new IntersectionObserver(
       ([e]) => {
         const on = e.intersectionRatio > 0.3;
         document.documentElement.classList.toggle("is-inverted", on);
-        if (on) el.classList.add("footer-on");
+        clearTimeout(timer);
+        // let the page finish turning dark (700ms colour transition) before the portrait and name appear
+        if (on) timer = window.setTimeout(() => el.classList.add("footer-on"), 750);
       },
       { threshold: [0, 0.15, 0.3, 0.45, 0.6] },
     );
     io.observe(el);
     return () => {
       io.disconnect();
+      clearTimeout(timer);
       document.documentElement.classList.remove("is-inverted");
     };
   }, []);
@@ -65,25 +67,25 @@ export function Footer({ buildYear }: { buildYear: number }) {
       </svg>
 
       <div className="flex flex-col items-center text-center">
-        <div data-board="portrait" className="footer-in relative h-[200px] w-[160px] overflow-hidden rounded-lg bg-tile" style={d(0)}>
+        <div className="footer-in relative h-[200px] w-[160px] overflow-hidden rounded-lg bg-tile" style={d(0)}>
           {/* eslint-disable-next-line @next/next/no-img-element */}
           <img src={asset("/images/profile.webp")} alt={SIGNATURE} width={160} height={200} loading="lazy" className="h-full w-full object-cover grayscale-[15%]" />
         </div>
 
-        <div data-board="signature" className="mt-10 flex h-[72px] items-center">
+        <div className="mt-10 flex h-[72px] items-center">
           <span className="signature block whitespace-nowrap text-[clamp(34px,10vw,64px)] text-ink" lang="en">
             {SIGNATURE}
           </span>
         </div>
         {name !== SIGNATURE && <p className="sr-only">{name}</p>}
 
-        <p className="footer-in mt-6" style={d(700)} data-board="email">
+        <p className="footer-in mt-6" style={d(700)}>
           <button type="button" onClick={copy} className="hand-link text-[16px]" aria-live="polite">
             {copied ? ui.copied : contact.email}
           </button>
         </p>
 
-        <p className="footer-in mt-4 flex flex-wrap items-center justify-center gap-x-4 gap-y-2 text-[15px] text-muted" style={d(800)} data-board="footer-links">
+        <p className="footer-in mt-4 flex flex-wrap items-center justify-center gap-x-4 gap-y-2 text-[15px] text-muted" style={d(800)}>
           <a href={contact.cv} target="_blank" rel="noopener noreferrer" aria-label={`${ui.downloadCv} (${ui.opensNewTab})`} className="transition-colors hover:text-ink">
             {ui.downloadCv}
           </a>
@@ -93,13 +95,9 @@ export function Footer({ buildYear }: { buildYear: number }) {
           <a href={`tel:${contact.phone}`} className="tabular-nums transition-colors hover:text-ink">
             {contact.phone}
           </a>
-          <button type="button" onClick={toggle} className="flex items-center gap-1.5 transition-colors hover:text-ink" aria-label={ui.board.tools}>
-            {ui.press}
-            <kbd className="grid h-[20px] min-w-[20px] place-items-center rounded-[5px] border border-line px-1 font-sans text-[13px] leading-none text-ink">E</kbd>
-          </button>
         </p>
 
-        <p className="footer-in mt-5 flex items-center gap-5 text-muted" style={d(900)} data-board="social">
+        <p className="footer-in mt-5 flex items-center gap-5 text-muted" style={d(900)}>
           {social.map((s) => (
             <a key={s.label} href={s.href} target="_blank" rel="noopener noreferrer" aria-label={`${s.label} (${ui.opensNewTab})`} className="transition-colors hover:text-ink">
               <IconSocial name={s.icon} size={18} />

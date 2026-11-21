@@ -13,7 +13,7 @@ export function Intro() {
     <section className="content-width section-gap">
       <div id="now">
         <SectionHeader title={ui.sections.now} id="now" />
-        <Reveal data-board="now-text">
+        <Reveal>
           <p className="leading-[1.5]">
             {now.lead} <CompanyBadge name={now.company} logo={treeo.logo} />
             {lang === "zh" ? "。" : "."}
@@ -28,7 +28,7 @@ export function Intro() {
         </Reveal>
       </div>
 
-      <Reveal data-board="products" className="mt-16">
+      <Reveal className="mt-16">
         <p className="max-w-[540px] text-[24px] leading-[1.3] sm:text-[26px]">
           <RichText segs={productsLine} />
         </p>

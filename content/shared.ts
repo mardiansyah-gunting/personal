@@ -74,13 +74,11 @@ export function toArtifacts(exps: Experience[]): Artifact[] {
   );
 }
 
-const automationFlow: Visual = { kind: "image", src: asset("/images/automation-flow.png"), alt: "Workflow automation diagram", fit: "contain" };
-
 const PROJECTS = [
-  { slug: "workflow-automation", tags: ["Python", "pandas", "openpyxl", "python-dotenv", "schedule", "logging"], cover: { kind: "pipeline" }, gallery: [{ kind: "pipeline" }, automationFlow] },
+  { slug: "workflow-automation", tags: ["Python", "pandas", "openpyxl", "python-dotenv", "schedule", "logging"], cover: { kind: "pipeline" }, gallery: [{ kind: "pipeline" }, { kind: "flow" }] },
   { slug: "treeo-website", tags: ["Web Development", "Animation", "Responsive Design"], cover: { kind: "browser" }, gallery: [{ kind: "browser" }, { kind: "phone", label: "TREEO" }], website: "https://treeo.id" },
-  { slug: "audio-transkript", tags: ["Python", "SpeechRecognition", "pydub", "python-docx"], cover: { kind: "transcript" }, gallery: [{ kind: "transcript" }], github: "https://github.com/mardiansyah-gunting/audio_transkript" },
-  { slug: "cad-converter", tags: ["Python", "GDAL", "GeoPandas", "GIS"], cover: { kind: "darkapp" }, gallery: [{ kind: "darkapp" }], github: "https://github.com/mardiansyah-gunting/CAD-converter" },
+  { slug: "audio-transkript", tags: ["Python", "SpeechRecognition", "pydub", "python-docx"], cover: { kind: "transcript" }, gallery: [{ kind: "transcript" }, { kind: "notebook" }], github: "https://github.com/mardiansyah-gunting/audio_transkript" },
+  { slug: "cad-converter", tags: ["Python", "GDAL", "GeoPandas", "GIS"], cover: { kind: "darkapp" }, gallery: [{ kind: "darkapp" }, { kind: "map" }], github: "https://github.com/mardiansyah-gunting/CAD-converter" },
 ] as const satisfies readonly {
   slug: string; tags: readonly string[]; cover: Visual; gallery: readonly Visual[];
   website?: string; github?: string;

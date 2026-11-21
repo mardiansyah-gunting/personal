@@ -57,7 +57,7 @@ export function SheetProvider({ children }: { children: ReactNode }) {
       closingRef.current = false;
       setCurrent(null);
       document.documentElement.classList.remove("has-sheet");
-      document.getElementById("board-root")?.removeAttribute("inert"); // before React's cleanup, so focus can land
+      document.getElementById("page")?.removeAttribute("inert"); // before React's cleanup, so focus can land
       returnFocusRef.current?.focus?.({ preventScroll: true });
     };
   }, []);

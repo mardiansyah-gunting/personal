@@ -47,7 +47,7 @@ export function Projects() {
   return (
     <section id="projects" className="content-width section-gap">
       <SectionHeader title={ui.sections.projects} id="projects" />
-      <Reveal data-board="projects-rail">
+      <Reveal>
         <CardRail
           label={ui.sections.projects}
           cardW="min(540px, 84vw)"

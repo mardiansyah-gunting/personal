@@ -9,7 +9,7 @@ export function Reveal({
   style,
   children,
   ...rest
-}: HTMLAttributes<HTMLDivElement> & { delay?: number; "data-board"?: string }) {
+}: HTMLAttributes<HTMLDivElement> & { delay?: number }) {
   const ref = useRef<HTMLDivElement>(null);
 
   useEffect(() => {

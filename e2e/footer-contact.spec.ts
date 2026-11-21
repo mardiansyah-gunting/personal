@@ -62,13 +62,25 @@ test("contact sheet: no references, validation and a successful (intercepted) se
   expect(posted).toEqual({ name: "Tester", email: "tester@example.org", message: "Hello" });
 });
 
-test("press E opens the translated draw toolbar, Escape closes it", async ({ page }) => {
-  await page.goto("/personal/id/");
+test("draw mode is gone: E does nothing and the footer has no press-E button", async ({ page }) => {
+  await page.goto("/personal/");
   await page.locator("body").click({ position: { x: 5, y: 5 } });
   await page.keyboard.press("e");
-  const bar = page.getByRole("toolbar", { name: "Alat papan" });
-  await expect(bar).toBeVisible();
-  await expect(bar.getByRole("button", { name: "Coret (D)" })).toBeVisible();
-  await page.keyboard.press("Escape");
-  await expect(bar).toBeHidden();
+  await expect(page.getByRole("toolbar")).toHaveCount(0);
+  await expect(page.locator("#contact kbd")).toHaveCount(0);
+});
+
+test("footer content waits for the page to turn dark", async ({ page }) => {
+  await page.goto("/personal/");
+  await page.evaluate(() => scrollTo(0, document.documentElement.scrollHeight));
+  await page.waitForTimeout(200);
+  await expect(page.locator("html")).toHaveClass(/is-inverted/);
+  await expect(page.locator("#contact.footer-on")).toHaveCount(0);
+  const portraitEarly = await page.locator("#contact .footer-in").first().evaluate((el) => Number(getComputedStyle(el).opacity));
+  expect(portraitEarly).toBeLessThan(0.2);
+  await expect(page.locator("#contact > div")).toBeVisible();
+  await page.waitForTimeout(1800);
+  expect(await page.locator("#contact .footer-in").first().evaluate((el) => Number(getComputedStyle(el).opacity))).toBe(1);
+  const galleryOpacity = await page.locator("#gallery [data-dive]").evaluateAll((els) => Math.max(...els.map((e) => Number(getComputedStyle(e).opacity))));
+  expect(galleryOpacity).toBe(0);
 });

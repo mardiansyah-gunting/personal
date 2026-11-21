@@ -5,13 +5,13 @@ import { useEffect, type RefObject } from "react";
 const FOCUSABLE = 'a[href], button:not([disabled]), input:not([disabled]), textarea:not([disabled]), select:not([disabled]), [tabindex]:not([tabindex="-1"])';
 
 /**
- * While `active`: the page behind (#board-root) is inert, and Tab / Shift+Tab
+ * While `active`: the page behind (#page) is inert, and Tab / Shift+Tab
  * cycle inside `ref` — so an aria-modal dialog really is modal.
  */
 export function useModal(ref: RefObject<HTMLElement | null>, active: boolean) {
   useEffect(() => {
     if (!active) return;
-    const root = document.getElementById("board-root");
+    const root = document.getElementById("page");
     root?.setAttribute("inert", "");
     const onKey = (e: KeyboardEvent) => {
       const box = ref.current;

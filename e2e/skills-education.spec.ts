@@ -16,7 +16,8 @@ test("education lists four entries, verbatim per language", async ({ page }) => 
   const items = page.locator("#education li");
   await expect(items).toHaveCount(4);
   await expect(items.first()).toContainText("Universitas Terbuka");
-  await expect(items.first()).toContainText("3.25");
+  await expect(items.first()).toContainText("2024 – Present");
+  await expect(items.first()).not.toContainText("3.25");
   await page.goto("/personal/zh/");
   await expect(page.locator("#education li").first()).toContainText("工商管理学士");
 });

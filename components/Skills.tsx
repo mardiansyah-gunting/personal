@@ -17,7 +17,7 @@ export function Skills() {
         {skills.map((s, i) => {
           const isOpen = open === i;
           return (
-            <Reveal key={s.title} delay={i * 70} data-board={`skill-${i}`}>
+            <Reveal key={s.title} delay={i * 70}>
               <div className={`service-row border-t border-line ${isOpen ? "is-open" : ""}`}>
                 <button
                   type="button"

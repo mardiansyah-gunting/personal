@@ -13,7 +13,7 @@ export function Experience() {
   return (
     <section id="experience" className="content-width section-gap">
       <SectionHeader title={ui.sections.experience} id="experience" />
-      <Reveal data-board="experience-rail">
+      <Reveal>
         <CardRail
           label={ui.sections.experience}
           cardW="min(340px, 78vw)"

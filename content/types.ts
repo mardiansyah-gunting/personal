@@ -41,16 +41,9 @@ export type UiStrings = {
   emailLabel: string;
   phoneLabel: string;
   rights: string;
-  press: string;
   language: string;
   moreProjects: string;
   form: Record<"title" | "name" | "email" | "message" | "send" | "incomplete" | "sending" | "sent" | "error", string>;
-  board: Record<
-    | "tools" | "move" | "draw" | "note" | "original" | "fall" | "zoom" | "link" | "text" | "reset" | "done"
-    | "welcome" | "shared" | "nothingUndo" | "nothingFall" | "linkCopied" | "clipboardFail" | "textCopied" | "resetDone"
-    | "notePlaceholder" | "noteDelete" | "noteLabel" | "notesHeading",
-    string
-  >;
 };
 
 export type Site = {
