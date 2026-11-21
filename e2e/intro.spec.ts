@@ -11,7 +11,7 @@ const ORG_HREFS = [
 test("identity, status and language switch are in the first viewport", async ({ page }) => {
   await page.goto("/personal/");
   await expect(page.getByRole("heading", { level: 1 })).toHaveText("Mardiansyah Gunting");
-  await expect(page.getByRole("navigation", { name: "Language" })).toBeInViewport();
+  await expect(page.locator("#about").getByRole("navigation", { name: "Language" })).toBeInViewport();
   await page.getByRole("button", { name: /Open to work/ }).click();
   await expect(page.locator("#now")).toBeInViewport();
   await expect(page.locator("#now")).toContainText("Technology & Customer Success Manager");

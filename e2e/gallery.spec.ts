@@ -28,7 +28,8 @@ test.describe("reduced motion", () => {
     await page.goto("/personal/id/");
     await page.locator("#gallery").scrollIntoViewIfNeeded();
     await expect(page.locator("#gallery h2")).toHaveText("Catatan lapangan");
-    const opacity = await page.locator("#gallery [data-dive]").first().evaluate((el) => Number(getComputedStyle(el).opacity));
-    expect(opacity).toBeGreaterThan(0);
+    await page.waitForTimeout(300);
+    const shown = await page.locator("#gallery [data-dive]").evaluateAll((els) => els.filter((el) => Number(getComputedStyle(el).opacity) > 0.5).length);
+    expect(shown).toBeGreaterThan(0);
   });
 });

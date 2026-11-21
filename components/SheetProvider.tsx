@@ -1,6 +1,6 @@
 "use client";
 
-import { createContext, useCallback, useContext, useEffect, useRef, useState, type ReactNode } from "react";
+import { createContext, useCallback, useContext, useEffect, useRef, useState, type FormEvent, type ReactNode } from "react";
 import { createPortal } from "react-dom";
 import type { Site } from "@/content/types";
 import { hashFor, parseHash, type SheetTarget } from "@/lib/sheet";
@@ -247,9 +247,100 @@ function ExperienceSheet({ slug }: { slug: string }) {
   );
 }
 
-/** Filled in by the Footer task. */
+type SendState = "idle" | "incomplete" | "sending" | "sent" | "error";
+
+/** The old site's form, same formsubmit endpoint and messages, plus contact info and references. */
 function ContactSheet() {
-  return null;
+  const { contact, ui } = useSite();
+  const [state, setState] = useState<SendState>("idle");
+
+  const submit = async (e: FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    const form = e.currentTarget;
+    const data = new FormData(form);
+    const body = {
+      name: String(data.get("name") ?? "").trim(),
+      email: String(data.get("email") ?? "").trim(),
+      message: String(data.get("message") ?? "").trim(),
+    };
+    if (!body.name || !body.email || !body.message) return setState("incomplete");
+    setState("sending");
+    try {
+      const res = await fetch(contact.endpoint, {
+        method: "POST",
+        headers: { "Content-Type": "application/json", Accept: "application/json" },
+        body: JSON.stringify(body),
+      });
+      const json = await res.json();
+      if (json?.success !== "true") throw new Error("send failed");
+      form.reset();
+      setState("sent");
+    } catch {
+      setState("error");
+    }
+  };
+
+  const field = "mt-1 block w-full border-0 border-b border-line bg-transparent py-2 text-[18px] text-ink outline-none transition-colors focus:border-ink";
+
+  return (
+    <article className="content-width pb-44 pt-[14vh]">
+      <h3 className="text-[30px] leading-tight">{ui.form.title}</h3>
+      <form onSubmit={submit} noValidate className="mt-10 space-y-6">
+        <label className="block text-[15px] text-muted">
+          {ui.form.name}
+          <input name="name" type="text" autoComplete="name" className={field} />
+        </label>
+        <label className="block text-[15px] text-muted">
+          {ui.form.email}
+          <input name="email" type="email" autoComplete="email" className={field} />
+        </label>
+        <label className="block text-[15px] text-muted">
+          {ui.form.message}
+          <textarea name="message" rows={5} className={`${field} resize-y`} />
+        </label>
+        <div className="flex flex-wrap items-center gap-4">
+          <button
+            type="submit"
+            disabled={state === "sending"}
+            className="rounded-full bg-[#181818] px-5 py-2.5 text-[16px] text-white transition-transform duration-300 hover:scale-[1.04] disabled:opacity-60"
+          >
+            {ui.form.send}
+          </button>
+          <p role="status" aria-live="polite" className={`text-[16px] ${state === "sent" ? "text-ink" : "text-muted"}`}>
+            {state === "idle" ? "" : ui.form[state]}
+          </p>
+        </div>
+      </form>
+
+      <div className="mt-16 space-y-1 text-[16px]">
+        <p>
+          <span className="text-muted">{ui.emailLabel}: </span>
+          <a href={`mailto:${contact.email}`} className="hand-link">
+            {contact.email}
+          </a>
+        </p>
+        <p>
+          <span className="text-muted">{ui.phoneLabel}: </span>
+          <a href={`tel:${contact.phone}`} className="hand-link tabular-nums">
+            {contact.phone}
+          </a>
+        </p>
+      </div>
+
+      <h4 className="mt-12 text-[18px] text-muted">{ui.referencesTitle}</h4>
+      <ul className="mt-3 space-y-3 text-[16px]">
+        {contact.references.map((r) => (
+          <li key={r.phone}>
+            {r.name}
+            <br />
+            <a href={`tel:${r.phone}`} className="tabular-nums text-muted hover:text-ink">
+              {r.phone}
+            </a>
+          </li>
+        ))}
+      </ul>
+    </article>
+  );
 }
 
 export function Highlighted({ text }: { text: string }) {

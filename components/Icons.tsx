@@ -102,7 +102,7 @@ export const IconExternal = ({ size, ...p }: P) => (
     <path d="M8 16 16.5 7.5M9.5 7H17v7.5" />
   </svg>
 );
-export const IconSocial = ({ name, size = 16 }: { name: string; size?: number }) => {
+export const IconSocial = ({ name, size = 16 }: { name: "linkedin" | "github"; size?: number }) => {
   const p = base(size, {});
   if (name === "linkedin")
     return (
@@ -111,25 +111,9 @@ export const IconSocial = ({ name, size = 16 }: { name: string; size?: number })
         <path d="M8 10.5V16M8 7.8v.01M11.5 16v-5.5M11.5 13a2.5 2.5 0 0 1 5 0v3" />
       </svg>
     );
-  if (name === "x")
-    return (
-      <svg {...p}>
-        <path d="m5 4.5 14 15M19 4.5 5 19.5" />
-      </svg>
-    );
-  if (name === "instagram")
-    return (
-      <svg {...p}>
-        <rect x="3.5" y="3.5" width="17" height="17" rx="5" />
-        <circle cx="12" cy="12" r="3.8" />
-        <path d="M17 7v.01" />
-      </svg>
-    );
   return (
     <svg {...p}>
-      {[0, 60, 120, 180, 240, 300].map((a) => (
-        <circle key={a} cx={12 + 6 * Math.cos((a * Math.PI) / 180)} cy={12 + 6 * Math.sin((a * Math.PI) / 180)} r="1.6" fill="currentColor" stroke="none" />
-      ))}
+      <path d="M9.5 19.5c-4 1.2-4-2-5.6-2.4M15 21.5v-3.4a3 3 0 0 0-.8-2.3c2.7-.3 5.6-1.3 5.6-6a4.6 4.6 0 0 0-1.3-3.2 4.3 4.3 0 0 0-.1-3.2s-1-.3-3.4 1.3a11.6 11.6 0 0 0-6 0C6.6 3.1 5.6 3.4 5.6 3.4a4.3 4.3 0 0 0-.1 3.2 4.6 4.6 0 0 0-1.3 3.2c0 4.6 2.8 5.7 5.6 6a3 3 0 0 0-.8 2.3v3.4" />
     </svg>
   );
 };

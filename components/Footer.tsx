@@ -1,20 +1,27 @@
 "use client";
 
 import { useEffect, useRef, useState, type CSSProperties } from "react";
-import { site } from "@/content/site";
+import { asset } from "@/lib/asset";
 import { IconSocial } from "./Icons";
+import { LangSwitch } from "./LangSwitch";
+import { useSheet } from "./SheetProvider";
+import { useSite } from "./SiteProvider";
 import { useBoard } from "./board/BoardProvider";
+
+/** The signature face has Latin glyphs only, so it always writes the Latin name. */
+const SIGNATURE = "Mardiansyah Gunting";
 
 /**
  * Footer: when it scrolls into view the whole page inverts to dark
  * (`html.is-inverted` swaps the colour tokens), the portrait and links
- * stagger in, and the signature "writes" itself (clip-path reveal +
- * a subtle turbulence filter for an ink edge).
+ * stagger in, and the signature "writes" itself.
  */
 export function Footer() {
+  const { name, contact, social, ui } = useSite();
   const ref = useRef<HTMLElement>(null);
   const [copied, setCopied] = useState(false);
   const { toggle } = useBoard();
+  const { open } = useSheet();
 
   useEffect(() => {
     const el = ref.current!;
@@ -35,20 +42,15 @@ export function Footer() {
 
   const copy = async () => {
     try {
-      await navigator.clipboard.writeText(site.footer.email);
+      await navigator.clipboard.writeText(contact.email);
       setCopied(true);
       setTimeout(() => setCopied(false), 1800);
     } catch {
-      location.href = `mailto:${site.footer.email}`;
+      location.href = `mailto:${contact.email}`;
     }
   };
 
   const d = (ms: number) => ({ ["--d" as string]: `${ms}ms` }) as CSSProperties;
-  const initials = site.name
-    .split(" ")
-    .map((w) => w[0])
-    .join("")
-    .slice(0, 2);
 
   return (
     <footer id="contact" ref={ref} className="relative grid min-h-[100svh] place-items-center px-5 py-32">
@@ -60,49 +62,52 @@ export function Footer() {
       </svg>
 
       <div className="flex flex-col items-center text-center">
-        {/* Portrait placeholder — replace with <img src="/portrait.jpg" …/> */}
-        <div
-          data-board="portrait"
-          className="footer-in relative grid h-[200px] w-[160px] place-items-center overflow-hidden rounded-lg"
-          style={{ ...d(0), background: "linear-gradient(160deg, #5a5a5a, #262626 60%, #1a1a1a)" }}
-        >
-          <span className="text-[44px] font-semibold tracking-[-0.04em] text-white/85">{initials}</span>
-          <svg className="absolute inset-0 h-full w-full opacity-30 mix-blend-overlay" aria-hidden>
-            <filter id="pgrain">
-              <feTurbulence type="fractalNoise" baseFrequency="0.9" numOctaves="2" />
-            </filter>
-            <rect width="100%" height="100%" filter="url(#pgrain)" />
-          </svg>
+        <div data-board="portrait" className="footer-in relative h-[200px] w-[160px] overflow-hidden rounded-lg bg-tile" style={d(0)}>
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img src={asset("/profile.jpg")} alt={SIGNATURE} width={160} height={200} loading="lazy" className="h-full w-full object-cover grayscale-[15%]" />
         </div>
 
         <div data-board="signature" className="mt-10 h-[72px]">
-          <span className="signature block text-[64px] text-ink">{site.name}</span>
+          <span className="signature block text-[64px] text-ink" lang="en">
+            {SIGNATURE}
+          </span>
         </div>
+        {name !== SIGNATURE && <p className="sr-only">{name}</p>}
 
         <p className="footer-in mt-6" style={d(700)} data-board="email">
-          <button type="button" onClick={copy} className="hand-link text-[14px]" aria-live="polite">
-            {copied ? "Copied to clipboard" : site.footer.email}
+          <button type="button" onClick={copy} className="hand-link text-[16px]" aria-live="polite">
+            {copied ? ui.copied : contact.email}
           </button>
         </p>
 
-        <p className="footer-in mt-4 flex flex-wrap items-center justify-center gap-x-4 gap-y-2 text-[13px] text-muted" style={d(800)} data-board="footer-links">
-          {site.footer.links.map((l) => (
-            <a key={l.label} href={l.href} className="transition-colors hover:text-ink">
-              {l.label}
-            </a>
-          ))}
-          <button type="button" onClick={toggle} className="flex items-center gap-1.5 transition-colors hover:text-ink" aria-label="Draw on this page (E)">
-            press
-            <kbd className="grid h-[18px] min-w-[18px] place-items-center rounded-[5px] border border-line px-1 font-sans text-[11px] leading-none text-ink">E</kbd>
+        <p className="footer-in mt-4 flex flex-wrap items-center justify-center gap-x-4 gap-y-2 text-[15px] text-muted" style={d(800)} data-board="footer-links">
+          <a href={contact.cv} target="_blank" rel="noopener noreferrer" aria-label={`${ui.downloadCv} (${ui.opensNewTab})`} className="transition-colors hover:text-ink">
+            {ui.downloadCv}
+          </a>
+          <button type="button" onClick={(e) => open({ type: "contact" }, e.currentTarget)} className="transition-colors hover:text-ink">
+            {ui.sendMessage}
+          </button>
+          <a href={`tel:${contact.phone}`} className="tabular-nums transition-colors hover:text-ink">
+            {contact.phone}
+          </a>
+          <button type="button" onClick={toggle} className="flex items-center gap-1.5 transition-colors hover:text-ink" aria-label={ui.board.tools}>
+            {ui.press}
+            <kbd className="grid h-[20px] min-w-[20px] place-items-center rounded-[5px] border border-line px-1 font-sans text-[13px] leading-none text-ink">E</kbd>
           </button>
         </p>
 
         <p className="footer-in mt-5 flex items-center gap-5 text-muted" style={d(900)} data-board="social">
-          {site.footer.social.map((s) => (
-            <a key={s.label} href={s.href} aria-label={s.label} className="transition-colors hover:text-ink">
-              <IconSocial name={s.icon} size={16} />
+          {social.map((s) => (
+            <a key={s.label} href={s.href} target="_blank" rel="noopener noreferrer" aria-label={`${s.label} (${ui.opensNewTab})`} className="transition-colors hover:text-ink">
+              <IconSocial name={s.icon} size={18} />
             </a>
           ))}
+        </p>
+
+        <LangSwitch className="footer-in mt-6" />
+
+        <p className="footer-in mt-8 text-[14px] text-muted" style={d(1000)}>
+          © {new Date().getFullYear()} {SIGNATURE} — {ui.rights}
         </p>
       </div>
     </footer>

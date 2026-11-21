@@ -3,6 +3,7 @@
 import { useEffect, useLayoutEffect, useRef, type PointerEvent as RPointerEvent } from "react";
 import { applyXf, useBoard, type Note } from "./BoardProvider";
 import { IconClose } from "../Icons";
+import { useSite } from "../SiteProvider";
 
 const ID = () => Math.random().toString(36).slice(2, 9);
 
@@ -137,6 +138,7 @@ function StickyNote({
   const ref = useRef<HTMLDivElement>(null);
   const taRef = useRef<HTMLTextAreaElement>(null);
   const { zoomRef } = useBoard();
+  const { ui } = useSite();
 
   useEffect(() => {
     if (!autoFocus) return;
@@ -185,7 +187,7 @@ function StickyNote({
         <button
           type="button"
           onClick={remove}
-          aria-label="Delete note"
+          aria-label={ui.board.noteDelete}
           className="absolute -right-2 -top-2 grid h-6 w-6 place-items-center rounded-full bg-[#181818] text-white opacity-0 transition-opacity group-hover:opacity-100 focus-visible:opacity-100"
         >
           <IconClose size={12} />
@@ -195,8 +197,8 @@ function StickyNote({
         ref={taRef}
         value={note.text}
         readOnly={!active}
-        placeholder="Write a note…"
-        aria-label="Note"
+        placeholder={ui.board.notePlaceholder}
+        aria-label={ui.board.noteLabel}
         onChange={(e) => update({ text: e.target.value })}
         onBlur={() => !note.text.trim() && setQuiet((s) => ({ ...s, notes: s.notes.filter((x) => x.id !== note.id) }))}
       />

@@ -1,7 +1,7 @@
 "use client";
 
 import { createContext, useCallback, useContext, useEffect, useLayoutEffect, useRef, useState, type ReactNode } from "react";
-import { site } from "@/content/site";
+import { useSite } from "../SiteProvider";
 import { Toolbar } from "./Toolbar";
 import { decodeBoard, encodeBoard } from "./codec";
 
@@ -54,6 +54,7 @@ export function applyXf(el: HTMLElement, t?: Xf) {
 }
 
 export function BoardProvider({ children }: { children: ReactNode }) {
+  const { name, ui } = useSite();
   const [active, setActive] = useState(false);
   const [tool, setTool] = useState<Tool>("move");
   const [state, setState] = useState<BoardState>(EMPTY);
@@ -96,7 +97,7 @@ export function BoardProvider({ children }: { children: ReactNode }) {
         try {
           if (!sessionStorage.getItem("board-hint")) {
             sessionStorage.setItem("board-hint", "1");
-            setTimeout(() => say("Draw, move things around, leave a note. E to exit."), 250);
+            setTimeout(() => say(ui.board.welcome), 250);
           }
         } catch {}
       }
@@ -112,7 +113,7 @@ export function BoardProvider({ children }: { children: ReactNode }) {
         const s = await decodeBoard(m[1]);
         if (s) {
           setState(s);
-          say("Viewing a shared board — press E to edit");
+          say(ui.board.shared);
           loaded.current = true;
           return;
         }
@@ -169,7 +170,7 @@ export function BoardProvider({ children }: { children: ReactNode }) {
   const undo = useCallback(() => {
     const prev = history.current.pop();
     if (prev) setState(prev);
-    else say("Nothing to undo");
+    else say(ui.board.nothingUndo);
   }, [say]);
 
   useEffect(() => {
@@ -312,7 +313,7 @@ export function BoardProvider({ children }: { children: ReactNode }) {
       return r.bottom > 0 && r.top < innerHeight && r.width > 0 && r.height > 0;
     });
     const set = all.filter((el) => !all.some((o) => o !== el && o.contains(el)));
-    if (!set.length) return say("Nothing in view to drop");
+    if (!set.length) return say(ui.board.nothingFall);
     commit((s) => s);
     const s = stateRef.current;
     const z = zoomRef.current;
@@ -398,9 +399,9 @@ export function BoardProvider({ children }: { children: ReactNode }) {
     const url = `${location.origin}${location.pathname}#board=${code}`;
     try {
       await navigator.clipboard.writeText(url);
-      say("Link to this board copied");
+      say(ui.board.linkCopied);
     } catch {
-      say("Couldn't access the clipboard");
+      say(ui.board.clipboardFail);
     }
   }, [say]);
 
@@ -408,19 +409,19 @@ export function BoardProvider({ children }: { children: ReactNode }) {
     const s = stateRef.current;
     const notes = s.notes.map((n) => n.text.trim()).filter(Boolean);
     const text = [
-      `Board — ${site.name}`,
+      `${ui.board.tools} — ${name}`,
       `${location.origin}${location.pathname}`,
       "",
-      "Notes",
+      ui.board.notesHeading,
       ...(notes.length ? notes.map((n) => `- ${n.replace(/\n+/g, " ")}`) : ["(none)"]),
       "",
       `${s.strokes.length} drawings · ${Object.keys(s.xf).length} moved elements · ${s.clones.length} duplicates`,
     ].join("\n");
     try {
       await navigator.clipboard.writeText(text);
-      say("Board copied as text");
+      say(ui.board.textCopied);
     } catch {
-      say("Couldn't access the clipboard");
+      say(ui.board.clipboardFail);
     }
   }, [say]);
 
@@ -428,7 +429,7 @@ export function BoardProvider({ children }: { children: ReactNode }) {
     commit(() => EMPTY);
     setZoom(1);
     if (location.hash.startsWith("#board=")) window.history.replaceState(null, "", location.pathname + location.search);
-    say("Everything is back in place");
+    say(ui.board.resetDone);
   }, [commit, say]);
 
   return (
