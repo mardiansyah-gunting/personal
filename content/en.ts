@@ -122,7 +122,7 @@ export const en: Site = {
   now: {
     lead: "Right now I'm Technology & Customer Success Manager at",
     company: "TREEO",
-    rest: "I visit partners in the field, watch the TREEO cloud day to day, refine the apps' UI/UX, and prepare the training and documentation partners rely on.",
+    rest: "I visit partners in the field, analyse operational data so decisions stay data-driven, refine the apps' UI/UX, and prepare the training and documentation partners rely on.",
     about: [
       "Most of that has meant automating data requests with Python and moving reporting out of spreadsheets and into systems people actually enjoy using. Whether I'm coordinating tree-planting programmes across Indonesia or shipping an Android app, the goal stays the same: something measurable and built to last.",
       "Working alongside startups, international NGOs, and government institutions has taught me to adapt quickly and communicate across cultures — and convinced me that the best outcomes come from pairing real domain knowledge with the right technology. I'm open to new roles and collaborations, and I'd be glad to talk.",
@@ -136,12 +136,8 @@ export const en: Site = {
     bps: { name: "Badan Pusat Statistik", note: "Statistics Indonesia · 2018" },
   }),
   productsLine: [
-    "Along the way I build tools, often with AI in the loop: ",
-    { text: "Workflow Automation", project: "workflow-automation" },
-    ", ",
-    { text: "Audio Transkript", project: "audio-transkript" },
-    " and ",
-    { text: "CAD Converter", project: "cad-converter" },
+    "Outside my day-to-day role, I build projects of my own — several of them are open on ",
+    { text: "GitHub", href: MORE_PROJECTS },
     ".",
   ],
   projects: projects(

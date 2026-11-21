@@ -15,11 +15,14 @@ test("the separate organisations section is gone", async ({ page }) => {
   await expect(page.locator("#about a[href='https://treeo.id/']")).toHaveAttribute("target", "_blank");
 });
 
-test("products line opens the project sheet", async ({ page }) => {
+test("products line points to GitHub, without project names or AI", async ({ page }) => {
   await page.goto("/personal/");
-  await page.getByRole("button", { name: "Audio Transkript", exact: true }).click();
-  await expect(page).toHaveURL(/#\/work\/audio-transkript$/);
-  await expect(page.getByRole("dialog")).toBeVisible();
+  const line = page.getByText("Outside my day-to-day role", { exact: false });
+  await expect(line).not.toContainText("AI");
+  await expect(line).not.toContainText("CAD Converter");
+  await expect(line.getByRole("link", { name: "GitHub" })).toHaveAttribute("href", "https://github.com/mardiansyah-gunting?tab=repositories");
+  await expect(page.locator("#now")).toContainText("data-driven");
+  await expect(page.locator("#now")).not.toContainText("TREEO cloud");
 });
 
 test.describe("without JavaScript", () => {
@@ -28,7 +31,7 @@ test.describe("without JavaScript", () => {
     await page.goto("/personal/");
     await expect(page.getByRole("heading", { level: 1 })).toBeVisible();
     await expect(page.getByText("operations, technology and strategy", { exact: false })).toBeVisible();
-    await expect(page.getByText("Along the way I build tools", { exact: false })).toBeVisible();
+    await expect(page.getByText("Outside my day-to-day role", { exact: false })).toBeVisible();
   });
 });
 

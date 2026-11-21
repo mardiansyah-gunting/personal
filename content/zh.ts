@@ -97,7 +97,7 @@ export const zh: Site = {
   now: {
     lead: "目前我担任技术与客户成功经理，就职于",
     company: "TREEO",
-    rest: "我实地走访合作伙伴，每天关注 TREEO 云平台，优化应用的 UI/UX，并为合作伙伴准备他们依赖的培训与文档。",
+    rest: "我实地走访合作伙伴，分析运营数据，让每个决策都以数据为依据，优化应用的 UI/UX，并为合作伙伴准备他们依赖的培训与文档。",
     about: [
       "这其中很大一部分，是用 Python 自动化数据请求，以及把报表从电子表格迁移到真正好用的系统中。无论是在印度尼西亚各地协调植树项目，还是发布一款 Android 应用，目标始终一致：做出可衡量、能长久延续的成果。",
       "与初创公司、国际非政府组织和政府机构共事的经历，让我学会了快速适应并跨文化沟通，也让我更加确信：真正出色的成果，来自扎实的领域理解与恰当技术的结合。我目前对新职位与合作持开放态度，也很乐意与您交流。",
@@ -111,13 +111,9 @@ export const zh: Site = {
     bps: { name: "Badan Pusat Statistik", note: "印尼中央统计局 · 2018" },
   }),
   productsLine: [
-    "此外，我也常借助 AI 打造工具：",
-    { text: "工作流自动化", project: "workflow-automation" },
-    "、",
-    { text: "Audio Transkript", project: "audio-transkript" },
-    " 和 ",
-    { text: "CAD Converter", project: "cad-converter" },
-    "。",
+    "工作之余，我也开发了一些自己的项目，部分可以在 ",
+    { text: "GitHub", href: MORE_PROJECTS },
+    " 上查看。",
   ],
   projects: projects(
     {

@@ -122,7 +122,7 @@ export const id: Site = {
   now: {
     lead: "Saat ini saya menjabat sebagai Technology & Customer Success Manager di",
     company: "TREEO",
-    rest: "Saya mengunjungi mitra di lapangan, memantau cloud TREEO setiap hari, menyempurnakan UI/UX aplikasi, dan menyiapkan pelatihan serta dokumentasi yang diandalkan mitra.",
+    rest: "Saya mengunjungi mitra di lapangan, menganalisis data operasional agar setiap keputusan berbasis data, menyempurnakan UI/UX aplikasi, dan menyiapkan pelatihan serta dokumentasi yang diandalkan mitra.",
     about: [
       "Sebagian besar dari itu berarti mengotomatiskan permintaan data dengan Python serta memindahkan pelaporan dari spreadsheet ke sistem yang benar-benar nyaman dipakai. Baik sedang mengoordinasikan program penanaman pohon di seluruh Indonesia atau merilis aplikasi Android, tujuannya tetap sama: hasil yang terukur dan bertahan lama.",
       "Bekerja bersama startup, NGO internasional, dan instansi pemerintah mengajarkan saya untuk cepat beradaptasi dan berkomunikasi lintas budaya — sekaligus meyakinkan saya bahwa hasil terbaik lahir dari perpaduan pemahaman domain yang nyata dengan teknologi yang tepat. Saya terbuka untuk peran dan kolaborasi baru, dan akan senang berdiskusi.",
@@ -136,12 +136,8 @@ export const id: Site = {
     bps: { name: "Badan Pusat Statistik", note: "2018" },
   }),
   productsLine: [
-    "Di sela itu saya membangun alat, sering kali dengan bantuan AI: ",
-    { text: "Automasi Workflow", project: "workflow-automation" },
-    ", ",
-    { text: "Audio Transkript", project: "audio-transkript" },
-    " dan ",
-    { text: "CAD Converter", project: "cad-converter" },
+    "Di luar pekerjaan sehari-hari, saya juga membangun beberapa proyek sendiri — sebagian bisa dilihat di ",
+    { text: "GitHub", href: MORE_PROJECTS },
     ".",
   ],
   projects: projects(
