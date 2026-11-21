@@ -19,7 +19,7 @@ test("footer inverts the page and shows portrait, signature and links", async ({
   await expect(footer.locator(".signature")).toHaveText("Mardiansyah Gunting");
   await expect(footer.getByRole("link", { name: /LinkedIn/ })).toHaveAttribute("href", "https://linkedin.com/in/mardiansyah-gunting");
   await expect(footer.getByRole("link", { name: /GitHub/ })).toHaveAttribute("href", "https://github.com/mardiansyah-gunting");
-  await expect(footer.locator('a[href="tel:+6287897434336"]')).toHaveCount(1);
+  await expect(page.locator('a[href^="tel:"]')).toHaveCount(0);
 });
 
 test("email copies to the clipboard", async ({ page, context }) => {
@@ -50,6 +50,7 @@ test("contact sheet: no references, validation and a successful (intercepted) se
   await expect(page).toHaveURL(/#\/contact$/);
   const dialog = page.getByRole("dialog");
   await expect(dialog).toContainText("mardiansyah.gunting@yahoo.com");
+  await expect(dialog.locator('a[href^="tel:"]')).toHaveCount(0);
   await expect(dialog).not.toContainText("Sebastian Lenz");
   await expect(dialog).not.toContainText("Owen James");
   await dialog.getByRole("button", { name: "Send Message" }).click();

@@ -114,7 +114,7 @@ export const en: Site = {
     company: "TREEO",
     rest: "I visit partners in the field, analyse operational data so decisions stay data-driven, refine the apps' UI/UX, and prepare the training and documentation partners rely on.",
     about: [
-      "I build applications that help people do their work with less friction — automating data requests with Python, moving reporting out of fragile spreadsheets and into systems teams actually enjoy using, and turning repetitive manual processes into reliable tools. Whether I'm coordinating tree-planting programmes across Indonesia or shipping an Android app, the aim stays the same: something measurable, useful, and built to last.",
+      "I build applications that help people do their work with less friction — automating data requests with the programming language that best fits each project's context, helping teams simplify the workflows behind data collection, and turning repetitive manual processes into reliable tools. Whether I'm coordinating tree-planting programmes across Indonesia or shipping an Android app, the aim stays the same: something measurable, useful, and built to last.",
       "Working alongside startups, international NGOs, and government institutions has taught me to adapt quickly and communicate across cultures — and convinced me that the best outcomes come from pairing real domain knowledge with the right technology. I'm open to new roles and collaborations, and I'd be glad to talk.",
     ],
   },
@@ -210,7 +210,6 @@ export const en: Site = {
     downloadCv: "Download CV",
     sendMessage: "Send a message",
     emailLabel: "Email",
-    phoneLabel: "Phone",
     rights: "All rights reserved.",
     language: "Language",
     moreProjects: "Want to see more? View all my projects on GitHub",

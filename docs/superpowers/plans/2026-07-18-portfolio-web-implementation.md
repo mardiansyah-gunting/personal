@@ -359,14 +359,11 @@ Run: `ls src/styles/global.css`
   "contact.message": "Message",
   "contact.send": "Send Message",
   "contact.info_title": "Contact Info",
-  "contact.phone": "(+62) 812 5008 8282",
   "contact.email_addr": "mardiansyah.gunting@gmail.com",
   "contact.location": "Palangka Raya, Indonesia",
   "contact.ref_title": "References",
   "contact.ref1": "Dr. Sebastian Lenz \u2013 Senior Consultant, Future Camp",
-  "contact.ref1_phone": "+491733713510",
   "contact.ref2": "Owen James \u2013 Investment Adviser, Austrade",
-  "contact.ref2_phone": "+61450961522",
   "footer.copyright": "\u00a9 2024 Mardiansyah Gunting. All rights reserved.",
   "theme.light": "Light",
   "theme.dark": "Dark"
@@ -453,14 +450,11 @@ Run: `ls src/styles/global.css`
   "contact.message": "Pesan",
   "contact.send": "Kirim Pesan",
   "contact.info_title": "Info Kontak",
-  "contact.phone": "(+62) 812 5008 8282",
   "contact.email_addr": "mardiansyah.gunting@gmail.com",
   "contact.location": "Palangka Raya, Indonesia",
   "contact.ref_title": "Referensi",
   "contact.ref1": "Dr. Sebastian Lenz \u2013 Konsultan Senior, Future Camp",
-  "contact.ref1_phone": "+491733713510",
   "contact.ref2": "Owen James \u2013 Penasihat Investasi, Austrade",
-  "contact.ref2_phone": "+61450961522",
   "footer.copyright": "\u00a9 2024 Mardiansyah Gunting. Hak cipta dilindungi.",
   "theme.light": "Terang",
   "theme.dark": "Gelap"
@@ -547,14 +541,11 @@ Run: `ls src/styles/global.css`
   "contact.message": "\u7559\u8a00",
   "contact.send": "\u53d1\u9001\u6d88\u606f",
   "contact.info_title": "\u8054\u7cfb\u4fe1\u606f",
-  "contact.phone": "(+62) 812 5008 8282",
   "contact.email_addr": "mardiansyah.gunting@gmail.com",
   "contact.location": "\u5370\u5ea6\u5c3c\u897f\u4e9a\u5df4\u52b3\u6d3b\u7279",
   "contact.ref_title": "\u53c2\u8003\u4eba",
   "contact.ref1": "Dr. Sebastian Lenz \u2013 \u9ad8\u7ea7\u987e\u95ee, Future Camp",
-  "contact.ref1_phone": "+491733713510",
   "contact.ref2": "Owen James \u2013 \u6295\u8d44\u987e\u95ee, Austrade",
-  "contact.ref2_phone": "+61450961522",
   "footer.copyright": "\u00a9 2024 Mardiansyah Gunting. \u7248\u6743\u6240\u6709\u3002",
   "theme.light": "\u6e05\u4eae",
   "theme.dark": "\u6df1\u8272"
@@ -1280,21 +1271,15 @@ const eduItems = [
           <span data-i18n="contact.email_addr"></span>
         </div>
         <div class="contact-item">
-          <strong>Phone:</strong>
-          <span data-i18n="contact.phone"></span>
-        </div>
-        <div class="contact-item">
           <strong>Location:</strong>
           <span data-i18n="contact.location"></span>
         </div>
         <h3 class="contact-ref-title" data-i18n="contact.ref_title">References</h3>
         <div class="contact-item">
-          <span data-i18n="contact.ref1"></span><br/>
-          <small data-i18n="contact.ref1_phone"></small>
+          <span data-i18n="contact.ref1"></span>
         </div>
         <div class="contact-item">
-          <span data-i18n="contact.ref2"></span><br/>
-          <small data-i18n="contact.ref2_phone"></small>
+          <span data-i18n="contact.ref2"></span>
         </div>
       </div>
     </div>

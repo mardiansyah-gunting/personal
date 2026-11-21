@@ -81,7 +81,7 @@ Dark mode inverts: `--bg → #0f172a`, `--bg-alt → #1e293b`, `--text → #f1f5
 
 ### 6. Contact
 - Left: contact form (name, email, message) — static/no backend
-- Right: email, phone, location
+- Right: email, location
 - References section at bottom (Dr. Sebastian Lenz, Owen James)
 
 ### Footer

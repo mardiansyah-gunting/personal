@@ -118,7 +118,7 @@ export type Artifact = { title: string; kind: string; visual: Visual; ratio: num
 export type UiStrings = {
   sections: Record<"now" | "organizations" | "projects" | "skills" | "experience" | "education" | "gallery", string>;
   readMore: string; visitSite: string; opensNewTab: string; galleryHint: string; close: string; previous: string; next: string;
-  copied: string; downloadCv: string; sendMessage: string; emailLabel: string; phoneLabel: string; referencesTitle: string;
+  copied: string; downloadCv: string; sendMessage: string; emailLabel: string; referencesTitle: string;
   rights: string; press: string; language: string; moreProjects: string;
   form: Record<"title" | "name" | "email" | "message" | "send" | "incomplete" | "sending" | "sent" | "error", string>;
   board: Record<"tools" | "move" | "draw" | "note" | "original" | "fall" | "zoom" | "link" | "text" | "reset" | "done" | "welcome" | "shared" | "nothingUndo" | "nothingFall" | "linkCopied" | "clipboardFail" | "textCopied" | "resetDone" | "notePlaceholder" | "noteDelete" | "noteLabel" | "notesHeading", string>;
@@ -130,7 +130,7 @@ export type Site = {
   organizations: Organization[]; productsLine: Seg[];
   projects: Project[]; moreProjectsHref: string;
   skills: SkillRow[]; experience: Experience[]; education: Education[]; artifacts: Artifact[];
-  contact: { email: string; phone: string; cv: string; endpoint: string; references: { name: string; phone: string }[] };
+  contact: { email: string; cv: string; endpoint: string };
   social: { label: string; href: string; icon: "linkedin" | "github" }[];
   ui: UiStrings;
 };
@@ -156,9 +156,8 @@ export type Site = {
     - `cad-converter`: tags Python, GDAL, GeoPandas, GIS; GitHub `https://github.com/mardiansyah-gunting/CAD-converter`.
     - `techmentoring`: tags Python, Mentoring, Teaching; GitHub `https://github.com/mardiansyah-gunting/TechMentoring`.
   - `MORE_PROJECTS = "https://github.com/mardiansyah-gunting?tab=repositories"`.
-  - `CONTACT = { email: "mardiansyah.gunting@yahoo.com", phone: "+6287897434336", endpoint: "https://formsubmit.co/ajax/mardiansyah.gunting@yahoo.com" }`.
+  - `CONTACT = { email: "mardiansyah.gunting@yahoo.com", endpoint: "https://formsubmit.co/ajax/mardiansyah.gunting@yahoo.com" }`.
   - `CV`, the WPS links per language from `git show 1168004:src/components/Hero.astro`.
-  - `REF_PHONES = ["+491733713510", "+61450961522"]`.
   - `SOCIAL`: LinkedIn `https://linkedin.com/in/mardiansyah-gunting`, GitHub `https://github.com/mardiansyah-gunting`.
   - `SKILL_TAGS`: the five groups' tag arrays from the old `Skills.astro`.
   - `STRENGTHS = [{key:"communication",count:7},{key:"fieldops",count:4},{key:"datamonitoring",count:4},{key:"training",count:3},{key:"uiux",count:3},{key:"opsmgmt",count:3}]` and `TOTAL_ROLES = 9`.
@@ -393,13 +392,13 @@ export type Site = {
   - The footer has an `img` with alt "Mardiansyah Gunting" and its src ending in `profile.jpg`, and the signature text "Mardiansyah Gunting".
   - With clipboard permissions granted, the email button copies `mardiansyah.gunting@yahoo.com` and shows `ui.copied`.
   - The CV link href equals `CV.en`; on `/personal/id/` it equals `CV.id`.
-  - LinkedIn and GitHub links are present. `tel:+6287897434336` is present.
+  - LinkedIn and GitHub links are present. No `tel:` link is present.
   - "Send a message" opens the dialog and sets hash `#/contact`, which shows the references.
   - Submitting empty shows the incomplete text. With `page.route("https://formsubmit.co/**", r => r.fulfill({ json: { success: "true" } }))`, a filled submit shows the sent text.
   - Pressing `e` shows the toolbar (`aria-label` = `ui.board.tools`). Escape hides it.
 - [ ] **Step 2: Run.** Expected: FAIL.
 - [ ] **Step 3: Implement.**
-  - **Footer:** portrait `<img src={asset("/profile.jpg")}>` 160×200 object-cover in the template's portrait box. Signature constant "Mardiansyah Gunting". Email copy. A links row: Download CV (external), Send a message, phone `tel:`, `press E`. Social icons. `LangSwitch`. `© {year} {name} — {ui.rights}`.
+  - **Footer:** portrait `<img src={asset("/profile.jpg")}>` 160×200 object-cover in the template's portrait box. Signature constant "Mardiansyah Gunting". Email copy. A links row: Download CV (external), Send a message, `press E`. Social icons. `LangSwitch`. `© {year} {name} — {ui.rights}`.
   - **ContactSheet:** the form in the template's sheet typography, plus contact info and references.
   - **Board files:** replace every hard-coded string listed in `grep -n '"[A-Z][a-z]' components/board/*.tsx` with `ui.board.*`.
   - Delete `content/site.ts`. `grep -rn "content/site\"" app components lib` must print nothing.

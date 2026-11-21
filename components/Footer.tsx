@@ -92,9 +92,6 @@ export function Footer({ buildYear }: { buildYear: number }) {
           <button type="button" onClick={(e) => open({ type: "contact" }, e.currentTarget)} className="transition-colors hover:text-ink">
             {ui.sendMessage}
           </button>
-          <a href={`tel:${contact.phone}`} className="tabular-nums transition-colors hover:text-ink">
-            {contact.phone}
-          </a>
         </p>
 
         <p className="footer-in mt-5 flex items-center gap-5 text-muted" style={d(900)}>

@@ -39,7 +39,6 @@ export type UiStrings = {
   downloadCv: string;
   sendMessage: string;
   emailLabel: string;
-  phoneLabel: string;
   rights: string;
   language: string;
   moreProjects: string;
@@ -62,7 +61,7 @@ export type Site = {
   experience: Experience[];
   education: Education[];
   artifacts: Artifact[];
-  contact: { email: string; phone: string; cv: string; endpoint: string };
+  contact: { email: string; cv: string; endpoint: string };
   social: { label: string; href: string; icon: "linkedin" | "github" }[];
   ui: UiStrings;
 };

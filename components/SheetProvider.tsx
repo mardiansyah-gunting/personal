@@ -322,12 +322,6 @@ function ContactSheet() {
             {contact.email}
           </a>
         </p>
-        <p>
-          <span className="text-muted">{ui.phoneLabel}: </span>
-          <a href={`tel:${contact.phone}`} className="hand-link tabular-nums">
-            {contact.phone}
-          </a>
-        </p>
       </div>
 
     </article>

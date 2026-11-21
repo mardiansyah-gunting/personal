@@ -114,7 +114,7 @@ export const id: Site = {
     company: "TREEO",
     rest: "Saya mengunjungi mitra di lapangan, menganalisis data operasional agar setiap keputusan berbasis data, menyempurnakan UI/UX aplikasi, dan menyiapkan pelatihan serta dokumentasi yang diandalkan mitra.",
     about: [
-      "Saya membangun aplikasi yang membantu orang bekerja tanpa hambatan yang tidak perlu — mengotomatiskan permintaan data dengan Python, memindahkan pelaporan dari spreadsheet yang rapuh ke sistem yang benar-benar nyaman dipakai tim, dan mengubah proses manual yang berulang menjadi perangkat yang andal. Baik sedang mengoordinasikan program penanaman pohon di seluruh Indonesia atau merilis aplikasi Android, tujuannya tetap sama: sesuatu yang terukur, berguna, dan bertahan lama.",
+      "Saya membangun aplikasi yang membantu orang bekerja tanpa hambatan yang tidak perlu — mengotomatiskan permintaan data dengan bahasa pemrograman yang paling sesuai dengan konteks setiap proyek, membantu tim menyederhanakan alur kerja pengambilan data, dan mengubah proses manual yang berulang menjadi perangkat yang andal. Baik sedang mengoordinasikan program penanaman pohon di seluruh Indonesia atau merilis aplikasi Android, tujuannya tetap sama: sesuatu yang terukur, berguna, dan bertahan lama.",
       "Bekerja bersama startup, NGO internasional, dan instansi pemerintah mengajarkan saya untuk cepat beradaptasi dan berkomunikasi lintas budaya — sekaligus meyakinkan saya bahwa hasil terbaik lahir dari perpaduan pemahaman domain yang nyata dengan teknologi yang tepat. Saya terbuka untuk peran dan kolaborasi baru, dan akan senang berdiskusi.",
     ],
   },
@@ -210,7 +210,6 @@ export const id: Site = {
     downloadCv: "Unduh CV",
     sendMessage: "Kirim pesan",
     emailLabel: "Email",
-    phoneLabel: "Telepon",
     rights: "Hak cipta dilindungi.",
     language: "Bahasa",
     moreProjects: "Mau lihat lebih banyak? Lihat semua project saya di GitHub",

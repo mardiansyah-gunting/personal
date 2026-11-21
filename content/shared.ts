@@ -151,7 +151,6 @@ export const CV: Record<Lang, string> = {
 export function contact(lang: Lang) {
   return {
     email: "mardiansyah.gunting@yahoo.com",
-    phone: "+6287897434336",
     cv: CV[lang],
     endpoint: "https://formsubmit.co/ajax/mardiansyah.gunting@yahoo.com",
   };
