@@ -1,0 +1,291 @@
+import { contact, education, experience, highlight, MORE_PROJECTS, organizations, projects, skills, SOCIAL, toArtifacts } from "./shared";
+import type { Site } from "./types";
+
+const exps = experience([
+  {
+    role: "Technology & Customer Success Manager",
+    company: "PT Solusi Hutan Digital",
+    period: "May 2026 – Present",
+    body: [
+      highlight(
+        "Manage TREEO customer success end-to-end: field visits to understand partner needs, monitoring daily activities on the TREEO cloud, refining the apps UI/UX, and preparing relevant training and documentation for partners.",
+        "Manage TREEO customer success end-to-end",
+      ),
+    ],
+  },
+  {
+    role: "Operations Manager",
+    company: "Fairventures Digital GmbH",
+    period: "May 2025 – May 2026",
+    body: [
+      highlight(
+        "Ran daily operations across five Tree Planting Partners, covering planning and monitoring of planting programs, acting as the single point of contact for each partner, and safeguarding data quality and reporting.",
+        "five Tree Planting Partners",
+      ),
+    ],
+  },
+  {
+    role: "Customer Success Manager",
+    company: "Fairventures Digital GmbH",
+    period: "May 2024 – May 2025",
+    body: [
+      highlight("Assessed and evaluated TREEO user experience in the field.", "TREEO user experience in the field"),
+      "Monitored daily system activity on the cloud platform.",
+      "Contributed to the improvement and development of the app UI/UX.",
+    ],
+  },
+  {
+    role: "Customer Success Engineer",
+    company: "Fairventures Digital GmbH",
+    period: "May 2023 – May 2024",
+    body: [
+      "Assessed and evaluated TREEO user experience in the field.",
+      "Monitored daily system activity on the cloud platform.",
+      "Contributed to the improvement and development of the app UI/UX.",
+      highlight("Provided direct technical support and training to users.", "direct technical support and training"),
+    ],
+  },
+  {
+    role: "Mobile Developer",
+    company: "Freelance Consultant",
+    period: "Oct 2022 – Apr 2023",
+    body: [
+      highlight(
+        "Designed and shipped Android applications with Kotlin and Java in Android Studio. Created wireframes and high-fidelity mockups for mobile and web platforms, and collaborated closely with stakeholders to translate business requirements into intuitive interfaces.",
+        "Android applications with Kotlin and Java",
+      ),
+    ],
+  },
+  {
+    role: "HPPS Project Coordinator Assistant",
+    company: "Fairventures Worldwide gGmbH",
+    period: "Feb 2022 – Mar 2023",
+    body: [
+      highlight(
+        "Prepared data flows and safety materials, managed the data collection and processing process, and ensured new safety procedures were consistently applied across all team members.",
+        "new safety procedures",
+      ),
+    ],
+  },
+  {
+    role: "General Affairs Officer",
+    company: "Fairventures Worldwide gGmbH",
+    period: "Oct 2019 – Feb 2022",
+    body: [
+      highlight(
+        "Managed all office operations, covering contract administration, asset handovers, coordination of security and driver teams, maintenance of the operational vehicle fleet, and inventorying all company assets.",
+        "all office operations",
+      ),
+    ],
+  },
+  {
+    role: "Demonstration Officer",
+    company: "CV Karya Hidup Sentosa",
+    period: "Jul 2019 – Sep 2019",
+    body: [
+      highlight(
+        "Managed end-to-end B2B communication and demonstrated the Quick Tractor product for oil palm plantations across Sumatra, Sulawesi, and Kalimantan.",
+        "Quick Tractor product",
+      ),
+    ],
+  },
+  {
+    role: "Intern",
+    company: "Badan Pusat Statistik",
+    period: "Jul 2018 – Dec 2018",
+    body: [
+      highlight(
+        "Designed the cover for the annual census publication and created visual assets such as posters and vector graphics to support the launch activities.",
+        "the cover for the annual census publication",
+      ),
+    ],
+  },
+]);
+
+export const en: Site = {
+  lang: "en",
+  meta: {
+    title: "Mardiansyah Gunting — Reliable Operator · Automation Builder",
+    description:
+      "Reliable operator and automation builder across project management, data automation and operations — bridging teams and building the tools they need.",
+  },
+  name: "Mardiansyah Gunting",
+  role: "Reliable Operator · Automation Builder",
+  status: { label: "Open to work", note: "Open to new roles and collaborations" },
+  hero: [
+    "I work where operations, technology and strategy meet — bridging teams, building ",
+    { text: "the tools they need", href: "#projects" },
+    ", and clearing away the repetitive work that quietly slows a business down. Today I do that at ",
+    { text: "TREEO Indonesia", href: "#organizations" },
+    ".",
+  ],
+  now: {
+    lead: "Right now I'm Technology & Customer Success Manager at",
+    company: "TREEO",
+    rest: "I visit partners in the field, watch the TREEO cloud day to day, refine the apps' UI/UX, and prepare the training and documentation partners rely on.",
+    about: [
+      "Most of that has meant automating data requests with Python and moving reporting out of spreadsheets and into systems people actually enjoy using. Whether I'm coordinating tree-planting programmes across Indonesia or shipping an Android app, the goal stays the same: something measurable and built to last.",
+      "Working alongside startups, international NGOs, and government institutions has taught me to adapt quickly and communicate across cultures — and convinced me that the best outcomes come from pairing real domain knowledge with the right technology. I'm open to new roles and collaborations, and I'd be glad to talk.",
+    ],
+  },
+  organizations: organizations({
+    "treeo-indonesia": { name: "PT Solusi Hutan Digital", note: "TREEO Indonesia · 2026 – now" },
+    "fairventures-digital": { name: "Fairventures Digital GmbH", note: "TREEO · 2023 – 2026" },
+    "fairventures-worldwide": { name: "Fairventures Worldwide gGmbH", note: "2019 – 2023" },
+    "karya-hidup-sentosa": { name: "CV Karya Hidup Sentosa", note: "Quick · 2019" },
+    bps: { name: "Badan Pusat Statistik", note: "2018" },
+  }),
+  productsLine: [
+    "Along the way I build tools and teaching material, often with AI in the loop: ",
+    { text: "Workflow Automation", project: "workflow-automation" },
+    ", ",
+    { text: "Tree Monitoring", project: "tree-monitoring" },
+    ", ",
+    { text: "CAD Converter", project: "cad-converter" },
+    " and ",
+    { text: "TechMentoring", project: "techmentoring" },
+    ".",
+  ],
+  projects: projects(
+    {
+      "akar-dmrv": {
+        title: "AKAR DMRV",
+        kind: "Internal · Flutter",
+        summary:
+          "Built an end-to-end internal application that digitizes the Measurement, Reporting & Verification (MRV) of tree-planting data. Managed a system already active in production and ready for full release in Q1 2027.",
+        captions: ["Tree-planting data, measured and reported in one system.", "Already running in production; full release planned for Q1 2027."],
+      },
+      "treeo-website": {
+        title: "TREEO Indonesia Website",
+        kind: "Website",
+        summary:
+          "Contributed to the TREEO Indonesia website development by optimizing animations and designing a responsive mobile layout to improve performance and user experience on mobile devices.",
+        captions: ["Smoother, optimised animations.", "A responsive layout built for phones."],
+      },
+      "workflow-automation": {
+        title: "Workflow Automation",
+        kind: "Internal · Python",
+        summary:
+          "Built internal Python scripts to automate data workflow pipelines (ETL: Extraction, Transformation, Loading) and data format updates. Improved the team daily operational efficiency through reliable and safe raw data processing.",
+        captions: ["How the automation works"],
+      },
+      "tree-monitoring": {
+        title: "Tree Monitoring",
+        kind: "Android app",
+        summary:
+          "Built a bilingual (ID/EN) native Android app for farmers and field officers. Facilitates plant species identification, tree health assessment, DBH measurement recording, and GPS-walk land mapping.",
+        captions: ["Species identification and tree health, right in the field.", "DBH measurements and GPS-walk land mapping."],
+      },
+      "cad-converter": {
+        title: "CAD Converter",
+        kind: "Python tool",
+        summary:
+          "Built a Python utility using GDAL and GeoPandas to convert CAD formats (DWG/DXF) to GIS (Esri Shapefile/GeoJSON). Facilitated API integration and prepared spatial data structures for GIS analysis needs.",
+        captions: ["DWG/DXF in, Esri Shapefile or GeoJSON out."],
+      },
+      techmentoring: {
+        title: "TechMentoring",
+        kind: "Mentoring",
+        summary:
+          "Put together curriculum modules and structured practical exercises for the tech mentoring program. Guided participants through technical topics including Python programming, data processing, and security log analysis.",
+        captions: ["Python, data processing and security log analysis."],
+      },
+    },
+    {
+      github: "View on GitHub",
+      website: "Visit website",
+      confidential: "Source is confidential — used every day in TREEO Indonesia production.",
+    },
+  ),
+  moreProjectsHref: MORE_PROJECTS,
+  skills: skills(
+    ["Software Engineering", "Customer Success & Client Relations", "Operations & Project Management", "Field, Research & Data", "Logistics & General Affairs"],
+    { title: "Languages", items: ["English (Professional)", "Indonesian (Native)", "Mandarin (Beginner)"] },
+    {
+      title: "Skill use across my roles",
+      labels: {
+        communication: "Communication & Stakeholder Relations",
+        fieldops: "Field Visits & On-site Operations",
+        datamonitoring: "Data Monitoring, Quality & Reporting",
+        training: "Training & User Documentation",
+        uiux: "UI/UX & Product Design",
+        opsmgmt: "Operations & Process Management",
+      },
+      of: (n, total) => `${n} of ${total} roles`,
+    },
+  ),
+  experience: exps,
+  education: education([
+    { school: "Universitas Terbuka", programme: "Bachelor of Business Administration - BBA, Business/Managerial Economics", period: "Nov 2020 – Jul 2025", grade: "Grade: 3.25" },
+    { school: "Binar Academy", programme: "Data Science Bootcamp", period: "Jun 2023 – Nov 2023" },
+    { school: "Binar Academy", programme: "Mobile Development Bootcamp", period: "Dec 2022 – May 2023" },
+    { school: "SMKN 1 Sampit", programme: "Information Technology Engineering", period: "Jul 2017 – Aug 2019" },
+  ]),
+  artifacts: toArtifacts(exps),
+  contact: contact("en", ["Dr. Sebastian Lenz – Senior Consultant, Future Camp", "Owen James – Investment Adviser, Austrade"]),
+  social: SOCIAL,
+  ui: {
+    sections: {
+      now: "Now",
+      organizations: "Organizations",
+      projects: "Projects",
+      skills: "Skills",
+      experience: "Experience",
+      education: "Education",
+      gallery: "Field notes",
+    },
+    readMore: "Read more",
+    visitSite: "Visit website",
+    opensNewTab: "opens in a new tab",
+    galleryHint: "Scroll to dive · Select to look closer",
+    close: "Close",
+    previous: "Previous",
+    next: "Next",
+    copied: "Copied to clipboard",
+    downloadCv: "Download CV",
+    sendMessage: "Send a message",
+    emailLabel: "Email",
+    phoneLabel: "Phone",
+    referencesTitle: "References",
+    rights: "All rights reserved.",
+    press: "press",
+    language: "Language",
+    moreProjects: "Want to see more? View all my projects on GitHub",
+    form: {
+      title: "Send a message",
+      name: "Name",
+      email: "Email",
+      message: "Message",
+      send: "Send Message",
+      incomplete: "Please fill in all fields.",
+      sending: "Sending…",
+      sent: "Message sent — thank you!",
+      error: "Failed to send. Try again or email me directly.",
+    },
+    board: {
+      tools: "Board tools",
+      move: "Move · ⇧ scroll to scale · ⌥ drag to duplicate (V)",
+      draw: "Draw (D)",
+      note: "Note (N)",
+      original: "Show the original page (O)",
+      fall: "Let everything in view fall",
+      zoom: "Zoom to 100% · ⌘/Ctrl + scroll to zoom",
+      link: "Copy a link to this board",
+      text: "Copy the board as text",
+      reset: "Put everything back",
+      done: "Done (E)",
+      welcome: "Draw, move things around, leave a note. E to exit.",
+      shared: "Viewing a shared board — press E to edit",
+      nothingUndo: "Nothing to undo",
+      nothingFall: "Nothing in view to drop",
+      linkCopied: "Link to this board copied",
+      clipboardFail: "Couldn't access the clipboard",
+      textCopied: "Board copied as text",
+      resetDone: "Everything is back in place",
+      notePlaceholder: "Write a note…",
+      noteDelete: "Delete note",
+      noteLabel: "Note",
+      notesHeading: "Notes",
+    },
+  },
+};
