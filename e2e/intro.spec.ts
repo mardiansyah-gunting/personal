@@ -1,11 +1,17 @@
 import { expect, test } from "@playwright/test";
 
-test("identity, status and language switch are in the first viewport", async ({ page }) => {
+test("identity, status and language switch are in the first viewport", async ({ page, context }) => {
+  await context.grantPermissions(["clipboard-read", "clipboard-write"]);
   await page.goto("/personal/");
   await expect(page.getByRole("heading", { level: 1 })).toHaveText("Mardiansyah Gunting");
   await expect(page.locator("#about").getByRole("navigation", { name: "Language" })).toBeInViewport();
-  await page.getByRole("button", { name: /^Available/ }).click();
-  await expect(page.locator("#now")).toBeInViewport();
+
+  const badge = page.getByRole("button", { name: /^Available/ });
+  await expect(badge).toContainText("Open to new collaborations");
+  await badge.click();
+  await expect(badge).toContainText("Copied to clipboard");
+  expect(await page.evaluate(() => navigator.clipboard.readText())).toBe("mardiansyah.gunting@yahoo.com");
+  expect(await page.evaluate(() => window.scrollY)).toBe(0);
   await expect(page.locator("#now")).toContainText("Technology & Customer Success Manager");
 });
 
