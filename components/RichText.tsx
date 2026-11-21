@@ -1,7 +1,7 @@
 "use client";
 
 import { Fragment, type ReactNode } from "react";
-import type { Seg } from "@/content/site";
+import type { Seg } from "@/content/types";
 import { useSheet } from "./SheetProvider";
 
 type Unit = { kind: "space" } | { kind: "word"; text: string } | { kind: "link"; seg: Exclude<Seg, string> };
@@ -59,21 +59,21 @@ export function RichText({ segs, animate = false, startDelay = 120, step = 38 }:
     const a = anim();
     const { seg } = u;
     const cls = `hand-link ${a.className ?? ""}`;
-    if (seg.project || seg.post) {
+    if (seg.project || seg.experience) {
       return (
         <button
           key={key}
           type="button"
           className={`${cls} cursor-pointer`}
           style={a.style}
-          onClick={(e) => open(seg.project ? { type: "project", slug: seg.project } : { type: "post", slug: seg.post! }, e.currentTarget)}
+          onClick={(e) => open(seg.project ? { type: "project", slug: seg.project } : { type: "experience", slug: seg.experience! }, e.currentTarget)}
         >
           {seg.text}
         </button>
       );
     }
     return (
-      <a key={key} href={seg.href} className={cls} style={a.style}>
+      <a key={key} href={seg.href} className={cls} style={a.style} {...(seg.href?.startsWith("http") ? { target: "_blank", rel: "noopener noreferrer" } : {})}>
         {seg.text}
       </a>
     );

@@ -97,6 +97,11 @@ export const IconKey = ({ size, ...p }: P) => (
 );
 
 /* social — simple generic glyphs */
+export const IconExternal = ({ size, ...p }: P) => (
+  <svg {...base(size, p)}>
+    <path d="M8 16 16.5 7.5M9.5 7H17v7.5" />
+  </svg>
+);
 export const IconSocial = ({ name, size = 16 }: { name: string; size?: number }) => {
   const p = base(size, {});
   if (name === "linkedin")

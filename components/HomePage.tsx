@@ -6,7 +6,7 @@ import { Footer } from "./Footer";
 import { Hero } from "./Hero";
 import { Intro } from "./Intro";
 import { LangSwitch } from "./LangSwitch";
-import { Projects, Thoughts } from "./Projects";
+import { Projects } from "./Projects";
 import { Services } from "./Services";
 import { SheetProvider } from "./SheetProvider";
 import { SiteProvider } from "./SiteProvider";
@@ -27,7 +27,6 @@ export function HomePage({ lang }: { lang: Lang }) {
             <Intro />
             <Projects />
             <Services />
-            <Thoughts />
             <DiveGallery />
             <Footer />
             <BoardLayer />

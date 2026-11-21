@@ -2,7 +2,8 @@
 
 import { useCallback, useEffect, useRef, useState } from "react";
 import { createPortal } from "react-dom";
-import { site, type Artifact } from "@/content/site";
+import type { Artifact } from "@/content/types";
+import { useSite } from "./SiteProvider";
 import { Visual } from "./visuals/Visual";
 import { IconArrow, IconClose } from "./Icons";
 
@@ -21,7 +22,7 @@ import { IconArrow, IconClose } from "./Icons";
 const FAR = 6.5;
 
 export function DiveGallery() {
-  const items = site.artifacts;
+  const items = useSite().artifacts;
   const N = items.length;
   const sectionRef = useRef<HTMLElement>(null);
   const stageRef = useRef<HTMLDivElement>(null);

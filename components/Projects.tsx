@@ -1,79 +1,64 @@
 "use client";
 
-import { site } from "@/content/site";
 import { CardRail } from "./CardRail";
+import { IconExternal } from "./Icons";
 import { Reveal } from "./Reveal";
 import { SectionHeader } from "./SectionHeader";
-import { useSheet, Highlighted } from "./SheetProvider";
+import { useSheet } from "./SheetProvider";
+import { useSite } from "./SiteProvider";
 import { Visual } from "./visuals/Visual";
 
 export function Projects() {
+  const { projects, moreProjectsHref, ui } = useSite();
   const { open } = useSheet();
+  const items = [
+    ...projects.map((p) => ({
+      key: p.slug,
+      label: `${p.title}, ${p.kind}`,
+      node: (
+        <>
+          <span data-card-media className={`relative block aspect-[3/2] overflow-hidden rounded-lg ${p.portrait ? "" : "bg-tile"}`}>
+            <Visual visual={p.cover} bare={p.portrait} />
+          </span>
+          <span className="card-foot mt-3 flex items-baseline justify-between gap-4 text-[16px]">
+            <span>{p.title}</span>
+            <span className="text-right text-muted">{p.kind}</span>
+          </span>
+        </>
+      ),
+    })),
+    {
+      key: "more",
+      label: `${ui.moreProjects} (${ui.opensNewTab})`,
+      node: (
+        <>
+          <span data-card-media className="relative grid aspect-[3/2] place-items-center overflow-hidden rounded-lg bg-tile px-8 text-center">
+            <span className="text-[22px] leading-snug">{ui.moreProjects}</span>
+          </span>
+          <span className="card-foot mt-3 flex items-baseline justify-between text-[16px]">
+            <span>GitHub</span>
+            <IconExternal size={15} className="text-muted" />
+          </span>
+        </>
+      ),
+    },
+  ];
+
   return (
     <section id="projects" className="content-width section-gap">
-      <SectionHeader title="Projects" id="projects" />
+      <SectionHeader title={ui.sections.projects} id="projects" />
       <Reveal data-board="projects-rail">
         <CardRail
-          label="Projects"
+          label={ui.sections.projects}
           cardW="min(540px, 84vw)"
-          onOpen={(i, el) => open({ type: "project", slug: site.projects[i].slug }, el.querySelector<HTMLElement>("[data-card-media]") ?? el)}
-          items={site.projects.map((p) => ({
-            key: p.slug,
-            label: `${p.title}, ${p.year}`,
-            node: (
-              <>
-                <span data-card-media className={`relative block aspect-[3/2] overflow-hidden rounded-lg ${p.portrait ? "" : "bg-tile"}`}>
-                  <Visual visual={p.cover} bare={p.portrait} />
-                </span>
-                <span className="card-foot mt-3 flex items-baseline justify-between text-[14px]">
-                  <span>{p.title}</span>
-                  <span className="text-muted">{p.year}</span>
-                </span>
-              </>
-            ),
-          }))}
-        />
-      </Reveal>
-    </section>
-  );
-}
-
-export function Thoughts() {
-  const { open } = useSheet();
-  return (
-    <section id="thoughts" className="content-width section-gap">
-      <SectionHeader title="Thoughts" id="thoughts" />
-      <Reveal data-board="thoughts-rail">
-        <CardRail
-          label="Thoughts"
-          cardW="min(320px, 76vw)"
-          gap={40}
-          onOpen={(i, el) => open({ type: "post", slug: site.posts[i].slug }, el.querySelector<HTMLElement>(".doc-page") ?? el)}
-          items={site.posts.map((p) => ({
-            key: p.slug,
-            label: `${p.title}, ${p.date}`,
-            node: (
-              <>
-                <span className="block h-[416px] max-h-[110vw]">
-                  <span className="doc-page block">
-                    <span className="block text-[20px] font-medium leading-[1.15] tracking-[-0.02em]">{p.title}</span>
-                    <span className="mt-2 block text-[12px] text-[#666]">{p.date}</span>
-                    <span className="mt-7 block space-y-3">
-                      {p.body.map((b, i) => (
-                        <span key={i} className={`block ${i ? "text-[#666]" : ""}`}>
-                          <Highlighted text={b} />
-                        </span>
-                      ))}
-                    </span>
-                  </span>
-                </span>
-                <span className="card-foot mt-3 flex items-baseline justify-between text-[14px]">
-                  <span className="text-muted">Read note</span>
-                  <span className="text-muted">{Math.max(1, Math.round(p.body.join(" ").split(" ").length / 200))} min</span>
-                </span>
-              </>
-            ),
-          }))}
+          onOpen={(i, el) => {
+            if (i === projects.length) {
+              window.open(moreProjectsHref, "_blank", "noopener,noreferrer");
+              return;
+            }
+            open({ type: "project", slug: projects[i].slug }, el.querySelector<HTMLElement>("[data-card-media]") ?? el);
+          }}
+          items={items}
         />
       </Reveal>
     </section>
