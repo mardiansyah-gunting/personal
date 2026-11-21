@@ -84,11 +84,11 @@ Source of truth for wording: `public/i18n/{en,id,zh}.json` (newer than the hard-
    - Left: `Mardiansyah Gunting` / muted line `Reliable Operator · Automation Builder` (`hero.tagline`).
    - Right: status pill **"Open to work"** with tooltip "Open to new roles and collaborations" (from `about.p2`); clicking scrolls to Now. Language switch sits with it.
    - Statement (word-reveal, hand underlines): built from `about.lead`, ending with where he does it today, e.g. "…clearing away the repetitive work that quietly slows a business down. Today I do that at <u>TREEO Indonesia</u>, for tree growers across <u>Indonesia</u>." Underlined words link to the Organisations section / the TREEO tile.
-2. **Now (`#now`)**: "Right now I'm Technology & Customer Success Manager at [TREEO logo badge]." + a one-line version of `exp.0.desc` (field visits, TREEO cloud, app UI/UX, partner training). Below it, in the same plain-paragraph style as the template's Now text (no new component), `about.p1` (Python automation, reporting out of spreadsheets) and `about.p2` (startups, NGOs, government; open to new roles) as two short muted paragraphs, lightly trimmed. `about.p1` is the evidence behind "Automation Builder", so it stays.
+2. **Now (`#now`)**: "Right now I'm Technology & Customer Success Manager at [TREEO logo badge]." + a one-line version of `exp.0.desc` (field visits, data-driven analysis, app UI/UX, partner training). Below it, in the same plain-paragraph style as the template's Now text (no new component), `about.p1` (Python automation, reporting out of spreadsheets) and `about.p2` (startups, NGOs, government; open to new roles) as two short muted paragraphs, lightly trimmed. `about.p1` is the evidence behind "Automation Builder", so it stays.
 3. **Organisations (`#organizations`)** — the user's explicit request. Template "Companies" tiles (grain glow following the cursor), each with the real logo from `public/images/logos/`, name, a muted note (years · role), and an external-link affordance. Whole tile is a link, `target="_blank" rel="noopener noreferrer"`:
    | Organisation | Note | Link |
    |---|---|---|
-   | PT Solusi Hutan Digital (TREEO Indonesia) | 2026 – now | https://treeo.id/ |
+   | TREEO Indonesia | 2026 – now | https://treeo.id/ |
    | Fairventures Digital GmbH (TREEO) | 2023 – 2026 | https://treeo.one/ |
    | Fairventures Worldwide gGmbH | 2019 – 2023 | https://www.fairventures.org/ |
    | CV Karya Hidup Sentosa (Quick) | 2019 | https://quick.co.id/ |
