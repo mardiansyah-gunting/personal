@@ -29,8 +29,10 @@ const schema = {
 /** The <html> shell shared by every language's root layout. */
 export function Document({ lang, children }: { lang: Lang; children: ReactNode }) {
   return (
-    <html lang={lang} style={{ ["--hand-line" as string]: handLine() } as CSSProperties}>
-      <head>{lang === "en" && <script dangerouslySetInnerHTML={{ __html: redirectScript() }} />}</head>
+    <html lang={lang} suppressHydrationWarning style={{ ["--hand-line" as string]: handLine() } as CSSProperties}>
+      <head>
+        <script dangerouslySetInnerHTML={{ __html: `document.documentElement.classList.add("js");${lang === "en" ? redirectScript() : ""}` }} />
+      </head>
       <body>
         {children}
         <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }} />

@@ -250,16 +250,15 @@ mark.hl {
 /* ------------------------------------------------------------------
    6. REVEAL ON SCROLL
 ------------------------------------------------------------------- */
+/* hidden-until-visible only when JS runs (html.js is set inline), so the page reads without JS */
 .reveal {
-  opacity: 0;
-  transform: translateY(16px);
   transition:
     opacity 900ms var(--ease-out) var(--reveal-delay, 0ms),
     transform 900ms var(--ease-out) var(--reveal-delay, 0ms);
 }
-.reveal.is-visible {
-  opacity: 1;
-  transform: none;
+html.js .reveal:not(.is-visible) {
+  opacity: 0;
+  transform: translateY(16px);
 }
 
 /* ------------------------------------------------------------------
@@ -291,10 +290,10 @@ mark.hl {
 .company-tile:hover .company-mark::after {
   opacity: 1;
 }
-.company-mark svg {
+.company-mark img {
   transition: transform 600ms var(--ease-out);
 }
-.company-tile:hover .company-mark svg {
+.company-tile:hover .company-mark img {
   transform: scale(1.06);
 }
 

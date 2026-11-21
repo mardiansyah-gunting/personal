@@ -5,7 +5,6 @@ import { Fog } from "./Fog";
 import { Footer } from "./Footer";
 import { Hero } from "./Hero";
 import { Intro } from "./Intro";
-import { LangSwitch } from "./LangSwitch";
 import { Projects } from "./Projects";
 import { Services } from "./Services";
 import { SheetProvider } from "./SheetProvider";
@@ -22,7 +21,6 @@ export function HomePage({ lang }: { lang: Lang }) {
           <Fog />
           {/* #board-root: everything the draw mode can touch lives in here */}
           <main id="board-root" className="relative">
-            <LangSwitch className="content-width pt-6" />
             <Hero />
             <Intro />
             <Projects />
