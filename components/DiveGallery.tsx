@@ -22,7 +22,7 @@ import { IconArrow, IconClose } from "./Icons";
 const FAR = 6.5;
 
 export function DiveGallery() {
-  const items = useSite().artifacts;
+  const { artifacts: items, ui } = useSite();
   const N = items.length;
   const sectionRef = useRef<HTMLElement>(null);
   const stageRef = useRef<HTMLDivElement>(null);
@@ -129,26 +129,26 @@ export function DiveGallery() {
   }, [items, N]);
 
   return (
-    <section id="artifacts" ref={sectionRef} className="section-gap relative" style={{ height: `${N * 16 + 120}vh` }} aria-label="Artifacts">
+    <section id="gallery" ref={sectionRef} className="section-gap relative" style={{ height: `${N * 16 + 120}vh` }} aria-label={ui.sections.gallery}>
       <div ref={stageRef} className="sticky top-0 h-[100svh] overflow-hidden" style={{ isolation: "isolate" }}>
         <div className="content-width pointer-events-none absolute inset-x-0 top-24 z-0">
-          <h2 className="text-muted">Artifacts</h2>
+          <h2 className="text-[18px] text-muted">{ui.sections.gallery}</h2>
         </div>
         {items.map((it, i) => (
           <button key={i} type="button" data-dive className="dive-item" aria-label={`${it.title} — ${it.kind}`} onClick={() => setLightbox(i)}>
             <Visual visual={it.visual} />
           </button>
         ))}
-        <p ref={hintRef} className="pointer-events-none absolute inset-x-0 bottom-8 z-[1100] text-center text-[12px] text-muted transition-opacity duration-500">
-          Scroll to dive · Select to look closer
+        <p ref={hintRef} className="pointer-events-none absolute inset-x-0 bottom-8 z-[1100] text-center text-[15px] text-muted transition-opacity duration-500">
+          {ui.galleryHint}
         </p>
       </div>
-      {lightbox !== null && <Lightbox items={items} index={lightbox} onChange={setLightbox} onClose={() => setLightbox(null)} />}
+      {lightbox !== null && <Lightbox items={items} labels={ui} index={lightbox} onChange={setLightbox} onClose={() => setLightbox(null)} />}
     </section>
   );
 }
 
-function Lightbox({ items, index, onChange, onClose }: { items: Artifact[]; index: number; onChange: (i: number) => void; onClose: () => void }) {
+function Lightbox({ items, labels, index, onChange, onClose }: { items: Artifact[]; labels: { previous: string; next: string; close: string }; index: number; onChange: (i: number) => void; onClose: () => void }) {
   const it = items[index];
   const go = useCallback((dir: number) => onChange((index + dir + items.length) % items.length), [index, items.length, onChange]);
 
@@ -179,20 +179,20 @@ function Lightbox({ items, index, onChange, onClose }: { items: Artifact[]; inde
         <div className="relative overflow-hidden rounded-xl bg-tile shadow-[var(--shadow-float)]" style={{ width: `min(86vw, ${72 * it.ratio}vh)`, aspectRatio: String(it.ratio) }}>
           <Visual visual={it.visual} />
         </div>
-        <figcaption className="mt-4 text-center text-[13px]">
+        <figcaption className="mt-4 text-center text-[15px]">
           {it.title} <span className="text-muted">— {it.kind}</span>
           <span className="ml-3 tabular-nums text-muted">
             {index + 1} / {items.length}
           </span>
         </figcaption>
       </figure>
-      <button onClick={() => go(-1)} aria-label="Previous" className="absolute left-4 top-1/2 grid h-10 w-10 -translate-y-1/2 place-items-center rounded-full bg-paper text-[#181818] shadow-[var(--shadow-card)] sm:left-8">
+      <button onClick={() => go(-1)} aria-label={labels.previous} className="absolute left-4 top-1/2 grid h-10 w-10 -translate-y-1/2 place-items-center rounded-full bg-paper text-[#181818] shadow-[var(--shadow-card)] sm:left-8">
         <IconArrow dir="left" size={16} />
       </button>
-      <button onClick={() => go(1)} aria-label="Next" className="absolute right-4 top-1/2 grid h-10 w-10 -translate-y-1/2 place-items-center rounded-full bg-paper text-[#181818] shadow-[var(--shadow-card)] sm:right-8">
+      <button onClick={() => go(1)} aria-label={labels.next} className="absolute right-4 top-1/2 grid h-10 w-10 -translate-y-1/2 place-items-center rounded-full bg-paper text-[#181818] shadow-[var(--shadow-card)] sm:right-8">
         <IconArrow size={16} />
       </button>
-      <button onClick={onClose} aria-label="Close" className="sheet-close">
+      <button onClick={onClose} aria-label={labels.close} className="sheet-close">
         <IconClose size={16} />
       </button>
     </div>,
