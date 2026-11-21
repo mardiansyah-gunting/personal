@@ -1,10 +1,10 @@
 import { en } from "./en";
+import { id } from "./id";
+import { zh } from "./zh";
 import type { Lang, Site } from "./types";
 
-const sites: Partial<Record<Lang, Site>> = { en };
+const sites: Record<Lang, Site> = { en, id, zh };
 
 export function getSite(lang: Lang): Site {
-  const site = sites[lang];
-  if (!site) throw new Error(`no content for language "${lang}"`);
-  return site;
+  return sites[lang];
 }

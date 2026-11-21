@@ -133,7 +133,7 @@ export const en: Site = {
     "fairventures-digital": { name: "Fairventures Digital GmbH", note: "TREEO · 2023 – 2026" },
     "fairventures-worldwide": { name: "Fairventures Worldwide gGmbH", note: "2019 – 2023" },
     "karya-hidup-sentosa": { name: "CV Karya Hidup Sentosa", note: "Quick · 2019" },
-    bps: { name: "Badan Pusat Statistik", note: "2018" },
+    bps: { name: "Badan Pusat Statistik", note: "Statistics Indonesia · 2018" },
   }),
   productsLine: [
     "Along the way I build tools and teaching material, often with AI in the loop: ",

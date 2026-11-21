@@ -1,0 +1,291 @@
+import { contact, education, experience, highlight, MORE_PROJECTS, organizations, projects, skills, SOCIAL, toArtifacts } from "./shared";
+import type { Site } from "./types";
+
+const exps = experience([
+  {
+    role: "Technology & Customer Success Manager",
+    company: "PT Solusi Hutan Digital",
+    period: "Mei 2026 – Sekarang",
+    body: [
+      highlight(
+        "Mengelola customer success TREEO secara end-to-end, meliputi kunjungan lapangan untuk memahami kebutuhan mitra, pemantauan aktivitas harian di cloud TREEO, penyempurnaan UI/UX aplikasi, serta penyusunan pelatihan dan dokumentasi yang relevan untuk mitra.",
+        "Mengelola customer success TREEO secara end-to-end",
+      ),
+    ],
+  },
+  {
+    role: "Operations Manager",
+    company: "Fairventures Digital GmbH",
+    period: "Mei 2025 – Mei 2026",
+    body: [
+      highlight(
+        "Menjalankan operasional harian bersama lima Tree Planting Partners yang mencakup perencanaan dan pemantauan program penanaman, berperan sebagai kontak utama (single point of contact) untuk setiap mitra, serta menjaga kualitas data dan pelaporan.",
+        "lima Tree Planting Partners",
+      ),
+    ],
+  },
+  {
+    role: "Customer Success Manager",
+    company: "Fairventures Digital GmbH",
+    period: "Mei 2024 – Mei 2025",
+    body: [
+      highlight("Menilai dan mengevaluasi pengalaman pengguna TREEO di lapangan.", "pengalaman pengguna TREEO di lapangan"),
+      "Memantau aktivitas harian sistem pada platform cloud.",
+      "Berkontribusi dalam peningkatan dan pengembangan UI/UX aplikasi.",
+    ],
+  },
+  {
+    role: "Customer Success Engineer",
+    company: "Fairventures Digital GmbH",
+    period: "Mei 2023 – Mei 2024",
+    body: [
+      "Menilai dan mengevaluasi pengalaman pengguna TREEO di lapangan.",
+      "Memantau aktivitas harian sistem pada platform cloud.",
+      "Berkontribusi dalam peningkatan dan pengembangan UI/UX aplikasi.",
+      highlight("Memberikan dukungan teknis serta pelatihan secara langsung kepada pengguna.", "dukungan teknis serta pelatihan"),
+    ],
+  },
+  {
+    role: "Mobile Developer",
+    company: "Konsultan Freelance",
+    period: "Okt 2022 – Apr 2023",
+    body: [
+      highlight(
+        "Merancang dan merilis aplikasi Android menggunakan Kotlin dan Java pada Android Studio. Membuat wireframe serta mockup beresolusi tinggi untuk platform mobile dan web, serta berkolaborasi erat dengan pemangku kepentingan untuk menerjemahkan kebutuhan bisnis menjadi antarmuka yang intuitif.",
+        "aplikasi Android menggunakan Kotlin dan Java",
+      ),
+    ],
+  },
+  {
+    role: "Asisten Koordinator Proyek HPPS",
+    company: "Fairventures Worldwide gGmbH",
+    period: "Feb 2022 – Mar 2023",
+    body: [
+      highlight(
+        "Menyusun alur data dan materi keselamatan, mengelola proses pengumpulan serta pemrosesan data, dan memastikan penerapan prosedur keselamatan baru secara konsisten di seluruh anggota tim.",
+        "prosedur keselamatan baru",
+      ),
+    ],
+  },
+  {
+    role: "General Affairs Officer",
+    company: "Fairventures Worldwide gGmbH",
+    period: "Okt 2019 – Feb 2022",
+    body: [
+      highlight(
+        "Mengelola seluruh operasional kantor, mencakup administrasi kontrak, serah terima aset, koordinasi tim keamanan dan pengemudi, pemeliharaan armada kendaraan operasional, serta inventarisasi seluruh aset perusahaan.",
+        "seluruh operasional kantor",
+      ),
+    ],
+  },
+  {
+    role: "Demonstration Officer",
+    company: "CV Karya Hidup Sentosa",
+    period: "Jul 2019 – Sep 2019",
+    body: [
+      highlight(
+        "Mengelola komunikasi B2B secara menyeluruh (end-to-end) serta melakukan demonstrasi produk Quick Tractor untuk area perkebunan kelapa sawit di wilayah Sumatera, Sulawesi, dan Kalimantan.",
+        "produk Quick Tractor",
+      ),
+    ],
+  },
+  {
+    role: "Intern",
+    company: "Badan Pusat Statistik",
+    period: "Jul 2018 – Des 2018",
+    body: [
+      highlight(
+        "Merancang desain sampul untuk publikasi Sensus tahunan serta membuat aset visual berupa poster dan grafik vektor guna mendukung kegiatan peluncuran.",
+        "desain sampul untuk publikasi Sensus tahunan",
+      ),
+    ],
+  },
+]);
+
+export const id: Site = {
+  lang: "id",
+  meta: {
+    title: "Mardiansyah Gunting — Operator Andal · Pembangun Automasi",
+    description:
+      "Operator andal dan pembangun automasi di bidang manajemen proyek, automasi data, dan operasional — menyambungkan tim dan membangun alat yang mereka butuhkan.",
+  },
+  name: "Mardiansyah Gunting",
+  role: "Operator Andal · Pembangun Automasi",
+  status: { label: "Terbuka untuk peluang", note: "Terbuka untuk peran dan kolaborasi baru" },
+  hero: [
+    "Saya bekerja di titik temu antara operasional, teknologi, dan strategi — menyambungkan tim, membangun ",
+    { text: "alat yang mereka butuhkan", href: "#projects" },
+    ", dan menyingkirkan pekerjaan berulang yang diam-diam memperlambat bisnis. Saat ini saya melakukannya di ",
+    { text: "TREEO Indonesia", href: "#organizations" },
+    ".",
+  ],
+  now: {
+    lead: "Saat ini saya menjabat sebagai Technology & Customer Success Manager di",
+    company: "TREEO",
+    rest: "Saya mengunjungi mitra di lapangan, memantau cloud TREEO setiap hari, menyempurnakan UI/UX aplikasi, dan menyiapkan pelatihan serta dokumentasi yang diandalkan mitra.",
+    about: [
+      "Sebagian besar dari itu berarti mengotomatiskan permintaan data dengan Python serta memindahkan pelaporan dari spreadsheet ke sistem yang benar-benar nyaman dipakai. Baik sedang mengoordinasikan program penanaman pohon di seluruh Indonesia atau merilis aplikasi Android, tujuannya tetap sama: hasil yang terukur dan bertahan lama.",
+      "Bekerja bersama startup, NGO internasional, dan instansi pemerintah mengajarkan saya untuk cepat beradaptasi dan berkomunikasi lintas budaya — sekaligus meyakinkan saya bahwa hasil terbaik lahir dari perpaduan pemahaman domain yang nyata dengan teknologi yang tepat. Saya terbuka untuk peran dan kolaborasi baru, dan akan senang berdiskusi.",
+    ],
+  },
+  organizations: organizations({
+    "treeo-indonesia": { name: "PT Solusi Hutan Digital", note: "TREEO Indonesia · 2026 – sekarang" },
+    "fairventures-digital": { name: "Fairventures Digital GmbH", note: "TREEO · 2023 – 2026" },
+    "fairventures-worldwide": { name: "Fairventures Worldwide gGmbH", note: "2019 – 2023" },
+    "karya-hidup-sentosa": { name: "CV Karya Hidup Sentosa", note: "Quick · 2019" },
+    bps: { name: "Badan Pusat Statistik", note: "2018" },
+  }),
+  productsLine: [
+    "Di sela itu saya membangun alat dan materi ajar, sering kali dengan bantuan AI: ",
+    { text: "Automasi Workflow", project: "workflow-automation" },
+    ", ",
+    { text: "Tree Monitoring", project: "tree-monitoring" },
+    ", ",
+    { text: "CAD Converter", project: "cad-converter" },
+    " dan ",
+    { text: "TechMentoring", project: "techmentoring" },
+    ".",
+  ],
+  projects: projects(
+    {
+      "akar-dmrv": {
+        title: "AKAR DMRV",
+        kind: "Internal · Flutter",
+        summary:
+          "Mengembangkan aplikasi internal end-to-end untuk mendigitalisasi proses Measurement, Reporting & Verification (MRV) data penanaman pohon. Mengelola sistem yang telah aktif digunakan pada tahap produksi dan siap dirilis secara penuh pada Q1 2027.",
+        captions: ["Data penanaman pohon, diukur dan dilaporkan dalam satu sistem.", "Sudah berjalan di produksi; rilis penuh direncanakan pada Q1 2027."],
+      },
+      "treeo-website": {
+        title: "Website TREEO Indonesia",
+        kind: "Website",
+        summary:
+          "Berkontribusi dalam pengembangan website TREEO Indonesia melalui optimalisasi animasi serta perancangan tata letak mobile yang responsif guna meningkatkan performa dan pengalaman pengguna di perangkat seluler.",
+        captions: ["Animasi yang lebih mulus dan teroptimasi.", "Tata letak responsif yang dirancang untuk ponsel."],
+      },
+      "workflow-automation": {
+        title: "Automasi Workflow",
+        kind: "Internal · Python",
+        summary:
+          "Mengembangkan skrip Python internal untuk otomatisasi alur kerja data (ETL: Extraction, Transformation, Loading) dan pembaruan format data. Meningkatkan efisiensi operasional harian tim melalui pemrosesan data mentah yang andal dan aman.",
+        captions: ["Cara kerja automasi"],
+      },
+      "tree-monitoring": {
+        title: "Tree Monitoring",
+        kind: "Aplikasi Android",
+        summary:
+          "Mengembangkan aplikasi Android native dwibahasa (ID/EN) untuk membantu petani dan petugas lapangan. Memfasilitasi identifikasi spesies tanaman, penilaian kesehatan pohon, pencatatan pengukuran DBH, serta pemetaan lahan berbasis GPS walk.",
+        captions: ["Identifikasi spesies dan kesehatan pohon, langsung di lapangan.", "Pengukuran DBH dan pemetaan lahan dengan GPS walk."],
+      },
+      "cad-converter": {
+        title: "CAD Converter",
+        kind: "Alat Python",
+        summary:
+          "Membangun utilitas Python menggunakan GDAL dan GeoPandas untuk mengonversi format CAD (DWG/DXF) ke GIS (Esri Shapefile/GeoJSON). Memfasilitasi integrasi API dan menyiapkan struktur data spasial untuk kebutuhan analisis GIS.",
+        captions: ["DWG/DXF masuk, Esri Shapefile atau GeoJSON keluar."],
+      },
+      techmentoring: {
+        title: "TechMentoring",
+        kind: "Mentoring",
+        summary:
+          "Menyusun modul kurikulum dan latihan praktis terstruktur untuk program tech mentoring. Membimbing peserta dalam topik teknis meliputi pemrograman Python, pengolahan data, serta analisis log keamanan.",
+        captions: ["Python, pengolahan data, dan analisis log keamanan."],
+      },
+    },
+    {
+      github: "Lihat di GitHub",
+      website: "Kunjungi website",
+      confidential: "Source bersifat rahasia — dipakai setiap hari di produksi TREEO Indonesia.",
+    },
+  ),
+  moreProjectsHref: MORE_PROJECTS,
+  skills: skills(
+    ["Rekayasa Perangkat Lunak", "Customer Success & Hubungan Klien", "Operasional & Manajemen Proyek", "Lapangan, Riset & Data", "Logistik & General Affairs"],
+    { title: "Bahasa", items: ["Inggris (Profesional)", "Indonesia (Native)", "Mandarin (Pemula)"] },
+    {
+      title: "Penggunaan keahlian per peran",
+      labels: {
+        communication: "Komunikasi & Relasi Pemangku Kepentingan",
+        fieldops: "Kunjungan Lapangan & Operasi On-site",
+        datamonitoring: "Pemantauan, Kualitas & Pelaporan Data",
+        training: "Pelatihan & Dokumentasi Pengguna",
+        uiux: "UI/UX & Desain Produk",
+        opsmgmt: "Operasi & Manajemen Proses",
+      },
+      of: (n, total) => `${n} dari ${total} peran`,
+    },
+  ),
+  experience: exps,
+  education: education([
+    { school: "Universitas Terbuka", programme: "Sarjana Administrasi Bisnis - BBA, Ekonomi Bisnis/Manajerial", period: "Nov 2020 – Jul 2025", grade: "IPK: 3,25" },
+    { school: "Binar Academy", programme: "Data Science Bootcamp", period: "Jun 2023 – Nov 2023" },
+    { school: "Binar Academy", programme: "Mobile Development Bootcamp", period: "Des 2022 – Mei 2023" },
+    { school: "SMKN 1 Sampit", programme: "Teknik Informatika", period: "Jul 2017 – Agu 2019" },
+  ]),
+  artifacts: toArtifacts(exps),
+  contact: contact("id", ["Dr. Sebastian Lenz – Konsultan Senior, Future Camp", "Owen James – Penasihat Investasi, Austrade"]),
+  social: SOCIAL,
+  ui: {
+    sections: {
+      now: "Sekarang",
+      organizations: "Organisasi",
+      projects: "Proyek",
+      skills: "Keahlian",
+      experience: "Pengalaman",
+      education: "Pendidikan",
+      gallery: "Catatan lapangan",
+    },
+    readMore: "Selengkapnya",
+    visitSite: "Kunjungi website",
+    opensNewTab: "terbuka di tab baru",
+    galleryHint: "Gulir untuk menyelam · Pilih untuk melihat lebih dekat",
+    close: "Tutup",
+    previous: "Sebelumnya",
+    next: "Berikutnya",
+    copied: "Tersalin ke clipboard",
+    downloadCv: "Unduh CV",
+    sendMessage: "Kirim pesan",
+    emailLabel: "Email",
+    phoneLabel: "Telepon",
+    referencesTitle: "Referensi",
+    rights: "Hak cipta dilindungi.",
+    press: "tekan",
+    language: "Bahasa",
+    moreProjects: "Mau lihat lebih banyak? Lihat semua project saya di GitHub",
+    form: {
+      title: "Kirim pesan",
+      name: "Nama",
+      email: "Email",
+      message: "Pesan",
+      send: "Kirim Pesan",
+      incomplete: "Mohon isi semua kolom.",
+      sending: "Mengirim…",
+      sent: "Pesan terkirim — terima kasih!",
+      error: "Gagal mengirim. Coba lagi atau kirim email langsung.",
+    },
+    board: {
+      tools: "Alat papan",
+      move: "Geser · ⇧ gulir untuk skala · ⌥ seret untuk duplikat (V)",
+      draw: "Coret (D)",
+      note: "Catatan (N)",
+      original: "Lihat halaman asli (O)",
+      fall: "Jatuhkan semua yang terlihat",
+      zoom: "Zoom ke 100% · ⌘/Ctrl + gulir untuk zoom",
+      link: "Salin link ke papan ini",
+      text: "Salin papan sebagai teks",
+      reset: "Kembalikan semuanya",
+      done: "Selesai (E)",
+      welcome: "Coret, geser elemen, tinggalkan catatan. Tekan E untuk keluar.",
+      shared: "Melihat papan yang dibagikan — tekan E untuk mengedit",
+      nothingUndo: "Tidak ada yang bisa dibatalkan",
+      nothingFall: "Tidak ada yang bisa dijatuhkan",
+      linkCopied: "Link papan tersalin",
+      clipboardFail: "Tidak bisa mengakses clipboard",
+      textCopied: "Papan tersalin sebagai teks",
+      resetDone: "Semuanya kembali ke tempatnya",
+      notePlaceholder: "Tulis catatan…",
+      noteDelete: "Hapus catatan",
+      noteLabel: "Catatan",
+      notesHeading: "Daftar catatan",
+    },
+  },
+};
