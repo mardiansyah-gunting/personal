@@ -4,9 +4,9 @@ import { expect, test } from "@playwright/test";
 const photos: Record<string, unknown[]> = JSON.parse(readFileSync("content/photos.json", "utf8"));
 const cards = "#experience [data-rail-card]";
 
-test("nine roles, newest first", async ({ page }) => {
+test("eight roles, newest first", async ({ page }) => {
   await page.goto("/personal/");
-  await expect(page.locator(cards)).toHaveCount(9);
+  await expect(page.locator(cards)).toHaveCount(8);
   await expect(page.locator(cards).first()).toContainText("Technology & Customer Success Manager");
   for (const card of await page.locator(cards).all()) await expect(card.locator("img").first()).toHaveAttribute("src", /\/images\/logos\//);
 });

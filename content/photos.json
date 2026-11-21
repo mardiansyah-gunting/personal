@@ -6,13 +6,6 @@
       "h": 1200
     }
   ],
-  "customer-success-manager": [
-    {
-      "src": "/images/jobs-web/customer-success-manager/1767448192604.webp",
-      "w": 902,
-      "h": 902
-    }
-  ],
   "customer-success-manager-2026": [
     {
       "src": "/images/jobs-web/customer-success-manager-2026/1767448015071.webp",
@@ -115,6 +108,11 @@
       "src": "/images/jobs-web/operations-manager/1767470404965.webp",
       "w": 1280,
       "h": 957
+    },
+    {
+      "src": "/images/jobs-web/operations-manager/1767448192604.webp",
+      "w": 902,
+      "h": 902
     }
   ]
 }

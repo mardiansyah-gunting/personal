@@ -2,17 +2,15 @@
 
 import { Reveal } from "./Reveal";
 import { RichText } from "./RichText";
-import { SectionHeader } from "./SectionHeader";
 import { useSite } from "./SiteProvider";
 
 /** "Now" statement + products line */
 export function Intro() {
-  const { lang, now, organizations, productsLine, ui } = useSite();
+  const { lang, now, organizations, productsLine } = useSite();
   const treeo = organizations[0];
   return (
     <section className="content-width section-gap">
       <div id="now">
-        <SectionHeader title={ui.sections.now} id="now" />
         <Reveal>
           <p className="leading-[1.5]">
             {now.lead} <CompanyBadge name={now.company} logo={treeo.logo} />

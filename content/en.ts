@@ -14,24 +14,14 @@ const exps = experience([
     ],
   },
   {
-    role: "Operations Manager",
+    role: "Operations & Customer Success Manager",
     company: "Fairventures Digital GmbH",
-    period: "May 2025 – May 2026",
+    period: "May 2024 – May 2026",
     body: [
       highlight(
-        "Ran daily operations across five Tree Planting Partners, covering planning and monitoring of planting programs, acting as the single point of contact for each partner, and safeguarding data quality and reporting.",
+        "Ran daily operations across five Tree Planting Partners — planning and monitoring planting programs, acting as the single point of contact for each partner, and safeguarding data quality and reporting — while owning customer success in the field: assessing TREEO user experience, monitoring daily system activity, and refining the app's UI/UX.",
         "five Tree Planting Partners",
       ),
-    ],
-  },
-  {
-    role: "Customer Success Manager",
-    company: "Fairventures Digital GmbH",
-    period: "May 2024 – May 2025",
-    body: [
-      highlight("Assessed and evaluated TREEO user experience in the field.", "TREEO user experience in the field"),
-      "Monitored daily system activity on the cloud platform.",
-      "Contributed to the improvement and development of the app UI/UX.",
     ],
   },
   {
@@ -105,12 +95,12 @@ const exps = experience([
 export const en: Site = {
   lang: "en",
   meta: {
-    title: "Mardiansyah Gunting — Reliable Operator · Automation Builder",
+    title: "Mardiansyah Gunting — Building tools that make operations run smoother",
     description:
-      "Reliable operator and automation builder across project management, data automation and operations — bridging teams and building the tools they need.",
+      "Building tools that make operations run smoother across project management, data automation and operations — bridging teams and clearing away repetitive work.",
   },
   name: "Mardiansyah Gunting",
-  role: "Reliable Operator · Automation Builder",
+  role: "Building tools that make operations run smoother",
   status: { label: "Available", note: "Open to new collaborations" },
   hero: [
     "I work where operations, technology and strategy meet — bridging teams, building ",
@@ -124,7 +114,7 @@ export const en: Site = {
     company: "TREEO Indonesia",
     rest: "I visit partners in the field, analyse operational data so decisions stay data-driven, refine the apps' UI/UX, and prepare the training and documentation partners rely on.",
     about: [
-      "Most of that has meant automating data requests with Python and moving reporting out of spreadsheets and into systems people actually enjoy using. Whether I'm coordinating tree-planting programmes across Indonesia or shipping an Android app, the goal stays the same: something measurable and built to last.",
+      "I build applications that help people do their work with less friction — automating data requests with Python, moving reporting out of fragile spreadsheets and into systems teams actually enjoy using, and turning repetitive manual processes into reliable tools. Whether I'm coordinating tree-planting programmes across Indonesia or shipping an Android app, the aim stays the same: something measurable, useful, and built to last.",
       "Working alongside startups, international NGOs, and government institutions has taught me to adapt quickly and communicate across cultures — and convinced me that the best outcomes come from pairing real domain knowledge with the right technology. I'm open to new roles and collaborations, and I'd be glad to talk.",
     ],
   },

@@ -14,24 +14,14 @@ const exps = experience([
     ],
   },
   {
-    role: "Operations Manager",
+    role: "Operations & Customer Success Manager",
     company: "Fairventures Digital GmbH",
-    period: "Mei 2025 – Mei 2026",
+    period: "Mei 2024 – Mei 2026",
     body: [
       highlight(
-        "Menjalankan operasional harian bersama lima Tree Planting Partners yang mencakup perencanaan dan pemantauan program penanaman, berperan sebagai kontak utama (single point of contact) untuk setiap mitra, serta menjaga kualitas data dan pelaporan.",
+        "Menjalankan operasional harian bersama lima Tree Planting Partners — perencanaan dan pemantauan program penanaman, kontak utama bagi setiap mitra, serta menjaga kualitas data dan pelaporan — sekaligus menangani customer success di lapangan: menilai pengalaman pengguna TREEO, memantau aktivitas harian sistem, dan menyempurnakan UI/UX aplikasi.",
         "lima Tree Planting Partners",
       ),
-    ],
-  },
-  {
-    role: "Customer Success Manager",
-    company: "Fairventures Digital GmbH",
-    period: "Mei 2024 – Mei 2025",
-    body: [
-      highlight("Menilai dan mengevaluasi pengalaman pengguna TREEO di lapangan.", "pengalaman pengguna TREEO di lapangan"),
-      "Memantau aktivitas harian sistem pada platform cloud.",
-      "Berkontribusi dalam peningkatan dan pengembangan UI/UX aplikasi.",
     ],
   },
   {
@@ -105,12 +95,12 @@ const exps = experience([
 export const id: Site = {
   lang: "id",
   meta: {
-    title: "Mardiansyah Gunting — Operator Andal · Pembangun Automasi",
+    title: "Mardiansyah Gunting — Membangun alat yang membuat operasional berjalan lebih mulus",
     description:
-      "Operator andal dan pembangun automasi di bidang manajemen proyek, automasi data, dan operasional — menyambungkan tim dan membangun alat yang mereka butuhkan.",
+      "Membangun alat yang membuat operasional berjalan lebih mulus di bidang manajemen proyek, automasi data, dan operasional — menyambungkan tim dan menghapus pekerjaan berulang.",
   },
   name: "Mardiansyah Gunting",
-  role: "Operator Andal · Pembangun Automasi",
+  role: "Membangun alat yang membuat operasional berjalan lebih mulus",
   status: { label: "Tersedia", note: "Terbuka untuk kolaborasi baru" },
   hero: [
     "Saya bekerja di titik temu antara operasional, teknologi, dan strategi — menyambungkan tim, membangun ",
@@ -124,7 +114,7 @@ export const id: Site = {
     company: "TREEO Indonesia",
     rest: "Saya mengunjungi mitra di lapangan, menganalisis data operasional agar setiap keputusan berbasis data, menyempurnakan UI/UX aplikasi, dan menyiapkan pelatihan serta dokumentasi yang diandalkan mitra.",
     about: [
-      "Sebagian besar dari itu berarti mengotomatiskan permintaan data dengan Python serta memindahkan pelaporan dari spreadsheet ke sistem yang benar-benar nyaman dipakai. Baik sedang mengoordinasikan program penanaman pohon di seluruh Indonesia atau merilis aplikasi Android, tujuannya tetap sama: hasil yang terukur dan bertahan lama.",
+      "Saya membangun aplikasi yang membantu orang bekerja tanpa hambatan yang tidak perlu — mengotomatiskan permintaan data dengan Python, memindahkan pelaporan dari spreadsheet yang rapuh ke sistem yang benar-benar nyaman dipakai tim, dan mengubah proses manual yang berulang menjadi perangkat yang andal. Baik sedang mengoordinasikan program penanaman pohon di seluruh Indonesia atau merilis aplikasi Android, tujuannya tetap sama: sesuatu yang terukur, berguna, dan bertahan lama.",
       "Bekerja bersama startup, NGO internasional, dan instansi pemerintah mengajarkan saya untuk cepat beradaptasi dan berkomunikasi lintas budaya — sekaligus meyakinkan saya bahwa hasil terbaik lahir dari perpaduan pemahaman domain yang nyata dengan teknologi yang tepat. Saya terbuka untuk peran dan kolaborasi baru, dan akan senang berdiskusi.",
     ],
   },

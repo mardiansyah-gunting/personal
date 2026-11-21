@@ -23,7 +23,7 @@ export function verbatimSuite(lang: "en" | "id" | "zh") {
 
   describe(`${lang}: content stays the user's`, () => {
     test("experience role, company, period are verbatim", () => {
-      expect(site.experience).toHaveLength(9);
+      expect(site.experience).toHaveLength(8);
       site.experience.forEach((e, i) => {
         expect(e.role).toBe(J[`exp.${i}.role`]);
         expect(e.company).toBe(J[`exp.${i}.company`]);

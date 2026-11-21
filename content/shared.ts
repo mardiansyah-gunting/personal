@@ -26,7 +26,6 @@ export function organizations(t: Record<OrgSlug, { name: string; note: string }>
 export const EXPERIENCE_SLUGS = [
   "customer-success-manager-2026",
   "operations-manager",
-  "customer-success-manager",
   "customer-success-engineer",
   "mobile-developer",
   "hpps-coordinator-assistant",
@@ -37,7 +36,6 @@ export const EXPERIENCE_SLUGS = [
 
 const EXPERIENCE_ORG: (OrgSlug | undefined)[] = [
   "treeo-indonesia",
-  "fairventures-digital",
   "fairventures-digital",
   "fairventures-digital",
   undefined, // freelance
@@ -118,15 +116,15 @@ const SKILL_TAGS = [
 ];
 
 const STRENGTHS = [
-  { key: "communication", count: 7 },
-  { key: "fieldops", count: 4 },
-  { key: "datamonitoring", count: 4 },
+  { key: "communication", count: 6 },
+  { key: "fieldops", count: 3 },
+  { key: "datamonitoring", count: 3 },
   { key: "training", count: 3 },
   { key: "uiux", count: 3 },
   { key: "opsmgmt", count: 3 },
 ] as const;
 export type StrengthKey = (typeof STRENGTHS)[number]["key"];
-export const TOTAL_ROLES = 9;
+export const TOTAL_ROLES = 8;
 
 export function skills(
   groupTitles: [string, string, string, string, string],
