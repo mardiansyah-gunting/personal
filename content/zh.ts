@@ -15,7 +15,7 @@ const exps = experience([
   },
   {
     role: "运营与客户成功经理",
-    company: "Fairventures Digital GmbH",
+    company: "TREEO",
     period: "2024年5月 – 2026年5月",
     body: [
       highlight(
@@ -26,7 +26,7 @@ const exps = experience([
   },
   {
     role: "客户成功工程师",
-    company: "Fairventures Digital GmbH",
+    company: "TREEO",
     period: "2023年5月 – 2024年5月",
     body: [
       "实地评估与考察 TREEO 的用户体验。",
@@ -85,12 +85,12 @@ export const zh: Site = {
     "我的工作落在运营、技术与战略的交汇处——连接团队，构建",
     { text: "他们真正需要的工具", href: "#projects" },
     "，并清除那些悄悄拖慢业务的重复性工作。目前我在 ",
-    { text: "TREEO Indonesia", href: "https://treeo.id/" },
+    { text: "TREEO", href: "https://treeo.id/" },
     " 做这件事。",
   ],
   now: {
     lead: "目前我担任技术与客户成功经理，就职于",
-    company: "TREEO Indonesia",
+    company: "TREEO",
     rest: "我实地走访合作伙伴，分析运营数据，让每个决策都以数据为依据，优化应用的 UI/UX，并为合作伙伴准备他们依赖的培训与文档。",
     about: [
       "我打造帮助人们减少不必要阻力的应用——用 Python 自动化数据请求，把报表从脆弱的电子表格迁移到团队真正好用的系统，并将重复的手工流程变成可靠的工具。无论是在印度尼西亚各地协调植树项目，还是发布一款 Android 应用，目标始终一致：可衡量、有用、能长久延续。",
@@ -98,8 +98,8 @@ export const zh: Site = {
     ],
   },
   organizations: organizations({
-    "treeo-indonesia": { name: "TREEO Indonesia", note: "2026 – 至今" },
-    "fairventures-digital": { name: "Fairventures Digital GmbH", note: "TREEO · 2023 – 2026" },
+    "treeo-indonesia": { name: "TREEO", note: "2026 – 至今" },
+    "fairventures-digital": { name: "TREEO", note: "TREEO · 2023 – 2026" },
     "fairventures-worldwide": { name: "Fairventures Worldwide gGmbH", note: "2019 – 2023" },
     "karya-hidup-sentosa": { name: "CV Karya Hidup Sentosa", note: "Quick · 2019" },
     bps: { name: "Badan Pusat Statistik", note: "印尼中央统计局 · 2018" },
@@ -118,9 +118,9 @@ export const zh: Site = {
         captions: ["原始数据输入，整洁报表输出——按计划完成抽取、转换与加载。", "自动化如何运作"],
       },
       "treeo-website": {
-        title: "TREEO Indonesia 网站",
+        title: "TREEO 网站",
         kind: "网站",
-        summary: "参与 TREEO Indonesia 网站的开发，优化动画并设计响应式移动端布局，以提升移动设备的性能与用户体验。",
+        summary: "参与 TREEO 网站的开发，优化动画并设计响应式移动端布局，以提升移动设备的性能与用户体验。",
         captions: ["更流畅、经过优化的动画。", "为手机打造的响应式布局。"],
       },
       "audio-transkript": {

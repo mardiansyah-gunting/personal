@@ -15,7 +15,7 @@ const exps = experience([
   },
   {
     role: "Operations & Customer Success Manager",
-    company: "Fairventures Digital GmbH",
+    company: "TREEO",
     period: "Mei 2024 – Mei 2026",
     body: [
       highlight(
@@ -26,7 +26,7 @@ const exps = experience([
   },
   {
     role: "Customer Success Engineer",
-    company: "Fairventures Digital GmbH",
+    company: "TREEO",
     period: "Mei 2023 – Mei 2024",
     body: [
       "Menilai dan mengevaluasi pengalaman pengguna TREEO di lapangan.",
@@ -106,12 +106,12 @@ export const id: Site = {
     "Saya bekerja di titik temu antara operasional, teknologi, dan strategi — menyambungkan tim, membangun ",
     { text: "alat yang mereka butuhkan", href: "#projects" },
     ", dan menyingkirkan pekerjaan berulang yang diam-diam memperlambat bisnis. Saat ini saya melakukannya di ",
-    { text: "TREEO Indonesia", href: "https://treeo.id/" },
+    { text: "TREEO", href: "https://treeo.id/" },
     ".",
   ],
   now: {
     lead: "Saat ini saya menjabat sebagai Technology & Customer Success Manager di",
-    company: "TREEO Indonesia",
+    company: "TREEO",
     rest: "Saya mengunjungi mitra di lapangan, menganalisis data operasional agar setiap keputusan berbasis data, menyempurnakan UI/UX aplikasi, dan menyiapkan pelatihan serta dokumentasi yang diandalkan mitra.",
     about: [
       "Saya membangun aplikasi yang membantu orang bekerja tanpa hambatan yang tidak perlu — mengotomatiskan permintaan data dengan Python, memindahkan pelaporan dari spreadsheet yang rapuh ke sistem yang benar-benar nyaman dipakai tim, dan mengubah proses manual yang berulang menjadi perangkat yang andal. Baik sedang mengoordinasikan program penanaman pohon di seluruh Indonesia atau merilis aplikasi Android, tujuannya tetap sama: sesuatu yang terukur, berguna, dan bertahan lama.",
@@ -119,8 +119,8 @@ export const id: Site = {
     ],
   },
   organizations: organizations({
-    "treeo-indonesia": { name: "TREEO Indonesia", note: "2026 – sekarang" },
-    "fairventures-digital": { name: "Fairventures Digital GmbH", note: "TREEO · 2023 – 2026" },
+    "treeo-indonesia": { name: "TREEO", note: "2026 – sekarang" },
+    "fairventures-digital": { name: "TREEO", note: "TREEO · 2023 – 2026" },
     "fairventures-worldwide": { name: "Fairventures Worldwide gGmbH", note: "2019 – 2023" },
     "karya-hidup-sentosa": { name: "CV Karya Hidup Sentosa", note: "Quick · 2019" },
     bps: { name: "Badan Pusat Statistik", note: "2018" },
@@ -140,10 +140,10 @@ export const id: Site = {
         captions: ["Data mentah masuk, laporan rapi keluar — diekstrak, ditransformasi, dan dimuat secara terjadwal.", "Cara kerja automasi"],
       },
       "treeo-website": {
-        title: "Website TREEO Indonesia",
+        title: "Website TREEO",
         kind: "Website",
         summary:
-          "Berkontribusi dalam pengembangan website TREEO Indonesia melalui optimalisasi animasi serta perancangan tata letak mobile yang responsif guna meningkatkan performa dan pengalaman pengguna di perangkat seluler.",
+          "Berkontribusi dalam pengembangan website TREEO melalui optimalisasi animasi serta perancangan tata letak mobile yang responsif guna meningkatkan performa dan pengalaman pengguna di perangkat seluler.",
         captions: ["Animasi yang lebih mulus dan teroptimasi.", "Tata letak responsif yang dirancang untuk ponsel."],
       },
       "audio-transkript": {

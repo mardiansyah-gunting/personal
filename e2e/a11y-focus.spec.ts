@@ -31,7 +31,7 @@ test("keyboard: Enter on a side card opens that card", async ({ page }) => {
   await page.keyboard.press("Tab");
   await expect(cards.nth(1)).toBeFocused();
   await page.keyboard.press("Enter");
-  await expect(page.getByRole("dialog").getByRole("heading", { name: "TREEO Indonesia Website" })).toBeVisible();
+  await expect(page.getByRole("dialog").getByRole("heading", { name: "TREEO Website" })).toBeVisible();
 });
 
 test("keyboard: arrow keys move focus with the rail", async ({ page }) => {
@@ -41,7 +41,7 @@ test("keyboard: arrow keys move focus with the rail", async ({ page }) => {
   await page.keyboard.press("ArrowRight");
   await expect(cards.nth(1)).toBeFocused();
   await page.keyboard.press("Enter");
-  await expect(page.getByRole("dialog").getByRole("heading", { name: "TREEO Indonesia Website" })).toBeVisible();
+  await expect(page.getByRole("dialog").getByRole("heading", { name: "TREEO Website" })).toBeVisible();
 });
 
 test.describe("after New Year", () => {

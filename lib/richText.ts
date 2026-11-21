@@ -57,7 +57,7 @@ export function toUnits(segs: Seg[]): Unit[] {
   return out;
 }
 
-/** Consecutive words/links form one unbreakable group, so "TREEO Indonesia." never splits from its full stop. */
+/** Consecutive words/links form one unbreakable group, so "TREEO." never splits from its full stop. */
 export function toGroups(units: Unit[]): Unit[][] {
   const groups: Unit[][] = [];
   let cur: Unit[] = [];
