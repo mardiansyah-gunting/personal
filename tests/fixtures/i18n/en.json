@@ -71,7 +71,7 @@
   "projects.private_note": "Source is confidential — used every day in TREEO Indonesia production.",
   "projects.view_github": "View on GitHub",
   "projects.automation.title": "Workflow Automation",
-  "projects.automation.desc": "Built internal Python scripts to automate data workflow pipelines (ETL: Extraction, Transformation, Loading) and data format updates. Improved the team daily operational efficiency through reliable and safe raw data processing.",
+  "projects.automation.desc": "Built internal automation to streamline data workflows (ETL: Extraction, Transformation, Loading) and format updates. Improved the team's daily operational efficiency through reliable, safe handling of raw data.",
   "projects.automation.zoom_hint": "Click to zoom",
   "projects.automation.modal_title": "How the automation works",
   "projects.0.title": "AKAR DMRV",

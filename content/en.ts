@@ -136,7 +136,7 @@ export const en: Site = {
         title: "Workflow Automation",
         kind: "Internal · Python",
         summary:
-          "Built internal Python scripts to automate data workflow pipelines (ETL: Extraction, Transformation, Loading) and data format updates. Improved the team daily operational efficiency through reliable and safe raw data processing.",
+          "Built internal automation to streamline data workflows (ETL: Extraction, Transformation, Loading) and format updates. Improved the team's daily operational efficiency through reliable, safe handling of raw data.",
         captions: ["Raw data in, a clean report out — extracted, transformed and loaded on a schedule.", "How the automation works"],
       },
       "treeo-website": {

@@ -71,7 +71,7 @@
   "projects.private_note": "源码为保密 — 每天用于 TREEO Indonesia 的生产环境。",
   "projects.view_github": "在 GitHub 查看",
   "projects.automation.title": "工作流自动化",
-  "projects.automation.desc": "开发内部 Python 脚本，实现数据工作流（ETL：抽取、转换、加载）自动化与数据格式更新。通过可靠且安全的数据处理，提升团队日常运营效率。",
+  "projects.automation.desc": "构建内部自动化流程，简化数据工作流（ETL：抽取、转换、加载）与格式更新。通过可靠、安全的数据处理，提升团队日常运营效率。",
   "projects.automation.zoom_hint": "点击放大",
   "projects.automation.modal_title": "自动化如何运作",
   "projects.0.title": "AKAR DMRV",
