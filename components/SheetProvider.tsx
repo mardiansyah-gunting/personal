@@ -204,10 +204,47 @@ function ProjectSheet({ slug }: { slug: string }) {
   );
 }
 
-/** Filled in by the Experience task. */
 function ExperienceSheet({ slug }: { slug: string }) {
-  void slug;
-  return null;
+  const { experience, organizations, ui } = useSite();
+  const e = experience.find((x) => x.slug === slug);
+  if (!e) return null;
+  const org = organizations.find((o) => o.slug === e.org);
+  return (
+    <article className="pb-44 pt-[14vh]">
+      <div className="content-width">
+        {/* eslint-disable-next-line @next/next/no-img-element */}
+        <img src={e.logo} alt="" width={40} height={40} className="mb-6 h-10 w-10 rounded-md object-contain" />
+        <h3 className="text-[30px] leading-tight">{e.role}</h3>
+        <p className="mt-1 text-muted">
+          {org ? (
+            <a href={org.href} target="_blank" rel="noopener noreferrer" className="hand-link" aria-label={`${e.company} (${ui.opensNewTab})`}>
+              {e.company}
+            </a>
+          ) : (
+            e.company
+          )}{" "}
+          · {e.period}
+        </p>
+        <div className="mt-10 space-y-4 leading-[1.65]">
+          {e.body.map((b, i) => (
+            <p key={i}>
+              <Highlighted text={b} />
+            </p>
+          ))}
+        </div>
+      </div>
+      {e.photos.length > 0 && (
+        <div className="mx-auto mt-16 grid w-[min(1000px,92vw)] gap-4 sm:grid-cols-2">
+          {e.photos.map((p) => (
+            <figure key={p.src} className="overflow-hidden rounded-xl bg-tile">
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img src={p.src} alt={p.alt} width={p.w} height={p.h} loading="lazy" className="h-full w-full object-cover" />
+            </figure>
+          ))}
+        </div>
+      )}
+    </article>
+  );
 }
 
 /** Filled in by the Footer task. */

@@ -2,6 +2,7 @@ import { getSite } from "@/content";
 import type { Lang } from "@/content/types";
 import { DiveGallery } from "./DiveGallery";
 import { Education } from "./Education";
+import { Experience } from "./Experience";
 import { Fog } from "./Fog";
 import { Footer } from "./Footer";
 import { Hero } from "./Hero";
@@ -26,6 +27,7 @@ export function HomePage({ lang }: { lang: Lang }) {
             <Intro />
             <Projects />
             <Skills />
+            <Experience />
             <Education />
             <DiveGallery />
             <Footer />
