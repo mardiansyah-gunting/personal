@@ -118,9 +118,9 @@ export const zh: Site = {
         captions: ["原始数据输入，整洁报表输出——按计划完成抽取、转换与加载。", "自动化如何运作"],
       },
       "treeo-website": {
-        title: "TREEO 网站",
+        title: "TREEO Indonesia 网站",
         kind: "网站",
-        summary: "参与 TREEO 网站的开发，优化动画并设计响应式移动端布局，以提升移动设备的性能与用户体验。",
+        summary: "参与 TREEO Indonesia 网站的开发，优化动画并设计响应式移动端布局，以提升移动设备的性能与用户体验。",
         captions: ["更流畅、经过优化的动画。", "为手机打造的响应式布局。"],
       },
       "audio-transkript": {

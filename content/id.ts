@@ -140,10 +140,10 @@ export const id: Site = {
         captions: ["Data mentah masuk, laporan rapi keluar — diekstrak, ditransformasi, dan dimuat secara terjadwal.", "Cara kerja automasi"],
       },
       "treeo-website": {
-        title: "Website TREEO",
+        title: "Website TREEO Indonesia",
         kind: "Website",
         summary:
-          "Berkontribusi dalam pengembangan website TREEO melalui optimalisasi animasi serta perancangan tata letak mobile yang responsif guna meningkatkan performa dan pengalaman pengguna di perangkat seluler.",
+          "Berkontribusi dalam pengembangan website TREEO Indonesia melalui optimalisasi animasi serta perancangan tata letak mobile yang responsif guna meningkatkan performa dan pengalaman pengguna di perangkat seluler.",
         captions: ["Animasi yang lebih mulus dan teroptimasi.", "Tata letak responsif yang dirancang untuk ponsel."],
       },
       "audio-transkript": {

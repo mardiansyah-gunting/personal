@@ -140,10 +140,10 @@ export const en: Site = {
         captions: ["Raw data in, a clean report out — extracted, transformed and loaded on a schedule.", "How the automation works"],
       },
       "treeo-website": {
-        title: "TREEO Website",
+        title: "TREEO Indonesia Website",
         kind: "Website",
         summary:
-          "Contributed to the TREEO website development by optimizing animations and designing a responsive mobile layout to improve performance and user experience on mobile devices.",
+          "Contributed to the TREEO Indonesia website development by optimizing animations and designing a responsive mobile layout to improve performance and user experience on mobile devices.",
         captions: ["Smoother, optimised animations.", "A responsive layout built for phones."],
       },
       "audio-transkript": {
