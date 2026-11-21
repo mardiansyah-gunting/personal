@@ -22,7 +22,7 @@ test("opening a role shows its photos and links the organisation", async ({ page
     await img.scrollIntoViewIfNeeded();
     await expect.poll(() => img.evaluate((el: HTMLImageElement) => el.complete && el.naturalWidth > 0)).toBe(true);
   }
-  const company = dialog.getByRole("link", { name: /PT Solusi Hutan Digital/ });
+  const company = dialog.getByRole("link", { name: /TREEO Indonesia/ });
   await expect(company).toHaveAttribute("href", "https://treeo.id/");
   await expect(company).toHaveAttribute("target", "_blank");
 });

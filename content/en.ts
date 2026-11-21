@@ -4,11 +4,11 @@ import type { Site } from "./types";
 const exps = experience([
   {
     role: "Technology & Customer Success Manager",
-    company: "PT Solusi Hutan Digital",
+    company: "TREEO Indonesia",
     period: "May 2026 – Present",
     body: [
       highlight(
-        "Manage TREEO customer success end-to-end: field visits to understand partner needs, monitoring daily activities on the TREEO cloud, refining the apps UI/UX, and preparing relevant training and documentation for partners.",
+        "Manage TREEO customer success end-to-end: field visits to understand partner needs, using data-analysis tools to turn field and platform data into data-driven decisions, refining the apps UI/UX, and preparing relevant training and documentation for partners.",
         "Manage TREEO customer success end-to-end",
       ),
     ],
@@ -121,7 +121,7 @@ export const en: Site = {
   ],
   now: {
     lead: "Right now I'm Technology & Customer Success Manager at",
-    company: "TREEO",
+    company: "TREEO Indonesia",
     rest: "I visit partners in the field, analyse operational data so decisions stay data-driven, refine the apps' UI/UX, and prepare the training and documentation partners rely on.",
     about: [
       "Most of that has meant automating data requests with Python and moving reporting out of spreadsheets and into systems people actually enjoy using. Whether I'm coordinating tree-planting programmes across Indonesia or shipping an Android app, the goal stays the same: something measurable and built to last.",
@@ -129,7 +129,7 @@ export const en: Site = {
     ],
   },
   organizations: organizations({
-    "treeo-indonesia": { name: "PT Solusi Hutan Digital", note: "TREEO Indonesia · 2026 – now" },
+    "treeo-indonesia": { name: "TREEO Indonesia", note: "2026 – now" },
     "fairventures-digital": { name: "Fairventures Digital GmbH", note: "TREEO · 2023 – 2026" },
     "fairventures-worldwide": { name: "Fairventures Worldwide gGmbH", note: "2019 – 2023" },
     "karya-hidup-sentosa": { name: "CV Karya Hidup Sentosa", note: "Quick · 2019" },

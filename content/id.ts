@@ -4,11 +4,11 @@ import type { Site } from "./types";
 const exps = experience([
   {
     role: "Technology & Customer Success Manager",
-    company: "PT Solusi Hutan Digital",
+    company: "TREEO Indonesia",
     period: "Mei 2026 – Sekarang",
     body: [
       highlight(
-        "Mengelola customer success TREEO secara end-to-end, meliputi kunjungan lapangan untuk memahami kebutuhan mitra, pemantauan aktivitas harian di cloud TREEO, penyempurnaan UI/UX aplikasi, serta penyusunan pelatihan dan dokumentasi yang relevan untuk mitra.",
+        "Mengelola customer success TREEO secara end-to-end, meliputi kunjungan lapangan untuk memahami kebutuhan mitra, analisis data lapangan dan platform dengan tools analisis data agar setiap keputusan berbasis data, penyempurnaan UI/UX aplikasi, serta penyusunan pelatihan dan dokumentasi yang relevan untuk mitra.",
         "Mengelola customer success TREEO secara end-to-end",
       ),
     ],
@@ -121,7 +121,7 @@ export const id: Site = {
   ],
   now: {
     lead: "Saat ini saya menjabat sebagai Technology & Customer Success Manager di",
-    company: "TREEO",
+    company: "TREEO Indonesia",
     rest: "Saya mengunjungi mitra di lapangan, menganalisis data operasional agar setiap keputusan berbasis data, menyempurnakan UI/UX aplikasi, dan menyiapkan pelatihan serta dokumentasi yang diandalkan mitra.",
     about: [
       "Sebagian besar dari itu berarti mengotomatiskan permintaan data dengan Python serta memindahkan pelaporan dari spreadsheet ke sistem yang benar-benar nyaman dipakai. Baik sedang mengoordinasikan program penanaman pohon di seluruh Indonesia atau merilis aplikasi Android, tujuannya tetap sama: hasil yang terukur dan bertahan lama.",
@@ -129,7 +129,7 @@ export const id: Site = {
     ],
   },
   organizations: organizations({
-    "treeo-indonesia": { name: "PT Solusi Hutan Digital", note: "TREEO Indonesia · 2026 – sekarang" },
+    "treeo-indonesia": { name: "TREEO Indonesia", note: "2026 – sekarang" },
     "fairventures-digital": { name: "Fairventures Digital GmbH", note: "TREEO · 2023 – 2026" },
     "fairventures-worldwide": { name: "Fairventures Worldwide gGmbH", note: "2019 – 2023" },
     "karya-hidup-sentosa": { name: "CV Karya Hidup Sentosa", note: "Quick · 2019" },
