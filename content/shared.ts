@@ -77,21 +77,19 @@ export function toArtifacts(exps: Experience[]): Artifact[] {
 const automationFlow: Visual = { kind: "image", src: asset("/images/automation-flow.png"), alt: "Workflow automation diagram", fit: "contain" };
 
 const PROJECTS = [
-  { slug: "akar-dmrv", tags: ["Flutter", "JavaScript", "C++"], cover: { kind: "chart", label: "MRV" }, gallery: [{ kind: "phone", label: "AKAR DMRV" }, { kind: "chart", tone: "#e9efe6", label: "MRV" }], confidential: true },
+  { slug: "workflow-automation", tags: ["Python", "pandas", "openpyxl", "python-dotenv", "schedule", "logging"], cover: { kind: "pipeline" }, gallery: [{ kind: "pipeline" }, automationFlow] },
   { slug: "treeo-website", tags: ["Web Development", "Animation", "Responsive Design"], cover: { kind: "browser" }, gallery: [{ kind: "browser" }, { kind: "phone", label: "TREEO" }], website: "https://treeo.id" },
-  { slug: "workflow-automation", tags: ["Python", "pandas", "openpyxl", "python-dotenv", "schedule", "logging"], cover: automationFlow, gallery: [automationFlow] },
-  { slug: "tree-monitoring", portrait: true, tags: ["Kotlin", "Jetpack Compose", "Material 3", "GPS"], cover: { kind: "phone" }, gallery: [{ kind: "phone" }, { kind: "chart", tone: "#e9efe6", label: "DBH" }], github: "https://github.com/mardiansyah-gunting/tree-monitoring" },
+  { slug: "audio-transkript", tags: ["Python", "SpeechRecognition", "pydub", "python-docx"], cover: { kind: "transcript" }, gallery: [{ kind: "transcript" }], github: "https://github.com/mardiansyah-gunting/audio_transkript" },
   { slug: "cad-converter", tags: ["Python", "GDAL", "GeoPandas", "GIS"], cover: { kind: "darkapp" }, gallery: [{ kind: "darkapp" }], github: "https://github.com/mardiansyah-gunting/CAD-converter" },
-  { slug: "techmentoring", tags: ["Python", "Mentoring", "Teaching"], cover: { kind: "specimen" }, gallery: [{ kind: "specimen" }], github: "https://github.com/mardiansyah-gunting/TechMentoring" },
 ] as const satisfies readonly {
   slug: string; tags: readonly string[]; cover: Visual; gallery: readonly Visual[];
-  portrait?: boolean; confidential?: boolean; website?: string; github?: string;
+  website?: string; github?: string;
 }[];
 export type ProjectSlug = (typeof PROJECTS)[number]["slug"];
 
 export function projects(
   t: Record<ProjectSlug, { title: string; kind: string; summary: string; captions: string[] }>,
-  labels: { github: string; website: string; confidential: string },
+  labels: { github: string; website: string },
 ): Project[] {
   return PROJECTS.map((p) => {
     const tr = t[p.slug];
@@ -101,13 +99,11 @@ export function projects(
       slug: p.slug,
       title: tr.title,
       kind: tr.kind,
-      portrait: "portrait" in p ? p.portrait : undefined,
       cover: p.cover,
       summary: tr.summary,
       body: [],
       tags: [...p.tags],
       cta,
-      confidential: "confidential" in p ? labels.confidential : undefined,
       gallery: p.gallery.map((visual, i) => ({ visual, caption: tr.captions[i] })),
     };
   });
@@ -156,15 +152,12 @@ export const CV: Record<Lang, string> = {
   zh: "https://ap.wps.com/cms/docs/d/cbPaedq51hh7xth3",
 };
 
-const REF_PHONES = ["+491733713510", "+61450961522"];
-
-export function contact(lang: Lang, referenceNames: [string, string]) {
+export function contact(lang: Lang) {
   return {
     email: "mardiansyah.gunting@yahoo.com",
     phone: "+6287897434336",
     cv: CV[lang],
     endpoint: "https://formsubmit.co/ajax/mardiansyah.gunting@yahoo.com",
-    references: referenceNames.map((name, i) => ({ name, phone: REF_PHONES[i] })),
   };
 }
 

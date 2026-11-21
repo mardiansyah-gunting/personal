@@ -18,7 +18,6 @@ export type Project = {
   body: string[];
   tags: string[];
   cta?: { label: string; href: string };
-  confidential?: string;
   gallery: { visual: Visual; caption: string }[];
 };
 export type SkillRow = { title: string; text: string };
@@ -28,7 +27,7 @@ export type Education = { school: string; programme: string; period: string; gra
 export type Artifact = { title: string; kind: string; visual: Visual; ratio: number };
 
 export type UiStrings = {
-  sections: Record<"now" | "organizations" | "projects" | "skills" | "experience" | "education" | "gallery", string>;
+  sections: Record<"now" | "projects" | "skills" | "experience" | "education" | "gallery", string>;
   readMore: string;
   visitSite: string;
   opensNewTab: string;
@@ -41,7 +40,6 @@ export type UiStrings = {
   sendMessage: string;
   emailLabel: string;
   phoneLabel: string;
-  referencesTitle: string;
   rights: string;
   press: string;
   language: string;
@@ -71,7 +69,7 @@ export type Site = {
   experience: Experience[];
   education: Education[];
   artifacts: Artifact[];
-  contact: { email: string; phone: string; cv: string; endpoint: string; references: { name: string; phone: string }[] };
+  contact: { email: string; phone: string; cv: string; endpoint: string };
   social: { label: string; href: string; icon: "linkedin" | "github" }[];
   ui: UiStrings;
 };

@@ -86,12 +86,12 @@ export const zh: Site = {
   },
   name: "吗尔迪按夏",
   role: "可靠的操作专家 · 自动化构建者",
-  status: { label: "开放机会", note: "对新职位与合作持开放态度" },
+  status: { label: "可联系", note: "欢迎新的合作" },
   hero: [
     "我的工作落在运营、技术与战略的交汇处——连接团队，构建",
     { text: "他们真正需要的工具", href: "#projects" },
     "，并清除那些悄悄拖慢业务的重复性工作。目前我在 ",
-    { text: "TREEO Indonesia", href: "#organizations" },
+    { text: "TREEO Indonesia", href: "https://treeo.id/" },
     " 做这件事。",
   ],
   now: {
@@ -111,23 +111,21 @@ export const zh: Site = {
     bps: { name: "Badan Pusat Statistik", note: "印尼中央统计局 · 2018" },
   }),
   productsLine: [
-    "此外，我也常借助 AI 打造工具与教学材料：",
+    "此外，我也常借助 AI 打造工具：",
     { text: "工作流自动化", project: "workflow-automation" },
     "、",
-    { text: "Tree Monitoring", project: "tree-monitoring" },
-    "、",
-    { text: "CAD Converter", project: "cad-converter" },
+    { text: "Audio Transkript", project: "audio-transkript" },
     " 和 ",
-    { text: "TechMentoring", project: "techmentoring" },
+    { text: "CAD Converter", project: "cad-converter" },
     "。",
   ],
   projects: projects(
     {
-      "akar-dmrv": {
-        title: "AKAR DMRV",
-        kind: "内部项目 · Flutter",
-        summary: "开发端到端内部应用，将植树数据的测量、报告与验证（MRV）流程数字化。该系统已投入生产使用，并计划于 2027 年第一季度全面发布。",
-        captions: ["植树数据的测量与报告，汇集于同一系统。", "已投入生产使用，计划于 2027 年第一季度全面发布。"],
+      "workflow-automation": {
+        title: "工作流自动化",
+        kind: "内部项目 · Python",
+        summary: "开发内部 Python 脚本，实现数据工作流（ETL：抽取、转换、加载）自动化与数据格式更新。通过可靠且安全的数据处理，提升团队日常运营效率。",
+        captions: ["原始数据输入，整洁报表输出——按计划完成抽取、转换与加载。", "自动化如何运作"],
       },
       "treeo-website": {
         title: "TREEO Indonesia 网站",
@@ -135,17 +133,12 @@ export const zh: Site = {
         summary: "参与 TREEO Indonesia 网站的开发，优化动画并设计响应式移动端布局，以提升移动设备的性能与用户体验。",
         captions: ["更流畅、经过优化的动画。", "为手机打造的响应式布局。"],
       },
-      "workflow-automation": {
-        title: "工作流自动化",
-        kind: "内部项目 · Python",
-        summary: "开发内部 Python 脚本，实现数据工作流（ETL：抽取、转换、加载）自动化与数据格式更新。通过可靠且安全的数据处理，提升团队日常运营效率。",
-        captions: ["自动化如何运作"],
-      },
-      "tree-monitoring": {
-        title: "Tree Monitoring",
-        kind: "Android 应用",
-        summary: "开发双语（印尼语/英语）原生 Android 应用，帮助农民和田间技术人员识别植物物种、评估树木健康、记录胸径（DBH）测量，并通过 GPS 步测进行土地测绘。",
-        captions: ["在田间直接识别物种、评估树木健康。", "胸径（DBH）测量与 GPS 步测土地测绘。"],
+      "audio-transkript": {
+        title: "Audio Transkript",
+        kind: "Python 工具",
+        summary:
+          "一个小型 Python 工具，把录音转成 Word 文字稿：用 pydub 读取音频，长录音按 45 秒切段，每段交给云端语音识别（默认印尼语，可用 --language 切换其他语言），再用 python-docx 写入 .docx。",
+        captions: ["输入音频，按 45 秒切段，语音识别，输出 Word 文档。"],
       },
       "cad-converter": {
         title: "CAD Converter",
@@ -154,14 +147,8 @@ export const zh: Site = {
           "使用 GDAL 和 GeoPandas 构建 Python 工具，将 CAD 格式（DWG/DXF）转换为 GIS 格式（Esri Shapefile/GeoJSON），支持 API 集成，并准备空间数据结构以满足 GIS 分析需求。",
         captions: ["输入 DWG/DXF，输出 Esri Shapefile 或 GeoJSON。"],
       },
-      techmentoring: {
-        title: "TechMentoring",
-        kind: "技术辅导",
-        summary: "为技术辅导项目编写课程模块和结构化的实操练习。指导学员学习 Python 编程、数据处理和安全日志分析等技术主题。",
-        captions: ["Python、数据处理与安全日志分析。"],
-      },
     },
-    { github: "在 GitHub 查看", website: "访问网站", confidential: "源码为保密 — 每天用于 TREEO Indonesia 的生产环境。" },
+    { github: "在 GitHub 查看", website: "访问网站" },
   ),
   moreProjectsHref: MORE_PROJECTS,
   skills: skills(
@@ -188,12 +175,11 @@ export const zh: Site = {
     { school: "SMKN 1 Sampit", programme: "信息技术工程", period: "2017年7月 – 2019年8月" },
   ]),
   artifacts: toArtifacts(exps),
-  contact: contact("zh", ["Dr. Sebastian Lenz – 高级顾问, Future Camp", "Owen James – 投资顾问, Austrade"]),
+  contact: contact("zh"),
   social: SOCIAL,
   ui: {
     sections: {
       now: "现在",
-      organizations: "任职机构",
       projects: "项目",
       skills: "技能",
       experience: "经历",
@@ -212,7 +198,6 @@ export const zh: Site = {
     sendMessage: "发送消息",
     emailLabel: "邮箱",
     phoneLabel: "电话",
-    referencesTitle: "推荐人",
     rights: "版权所有。",
     press: "按",
     language: "语言",

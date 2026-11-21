@@ -111,12 +111,12 @@ export const en: Site = {
   },
   name: "Mardiansyah Gunting",
   role: "Reliable Operator · Automation Builder",
-  status: { label: "Open to work", note: "Open to new roles and collaborations" },
+  status: { label: "Available", note: "Open to new collaborations" },
   hero: [
     "I work where operations, technology and strategy meet — bridging teams, building ",
     { text: "the tools they need", href: "#projects" },
     ", and clearing away the repetitive work that quietly slows a business down. Today I do that at ",
-    { text: "TREEO Indonesia", href: "#organizations" },
+    { text: "TREEO Indonesia", href: "https://treeo.id/" },
     ".",
   ],
   now: {
@@ -136,24 +136,22 @@ export const en: Site = {
     bps: { name: "Badan Pusat Statistik", note: "Statistics Indonesia · 2018" },
   }),
   productsLine: [
-    "Along the way I build tools and teaching material, often with AI in the loop: ",
+    "Along the way I build tools, often with AI in the loop: ",
     { text: "Workflow Automation", project: "workflow-automation" },
     ", ",
-    { text: "Tree Monitoring", project: "tree-monitoring" },
-    ", ",
-    { text: "CAD Converter", project: "cad-converter" },
+    { text: "Audio Transkript", project: "audio-transkript" },
     " and ",
-    { text: "TechMentoring", project: "techmentoring" },
+    { text: "CAD Converter", project: "cad-converter" },
     ".",
   ],
   projects: projects(
     {
-      "akar-dmrv": {
-        title: "AKAR DMRV",
-        kind: "Internal · Flutter",
+      "workflow-automation": {
+        title: "Workflow Automation",
+        kind: "Internal · Python",
         summary:
-          "Built an end-to-end internal application that digitizes the Measurement, Reporting & Verification (MRV) of tree-planting data. Managed a system already active in production and ready for full release in Q1 2027.",
-        captions: ["Tree-planting data, measured and reported in one system.", "Already running in production; full release planned for Q1 2027."],
+          "Built internal Python scripts to automate data workflow pipelines (ETL: Extraction, Transformation, Loading) and data format updates. Improved the team daily operational efficiency through reliable and safe raw data processing.",
+        captions: ["Raw data in, a clean report out — extracted, transformed and loaded on a schedule.", "How the automation works"],
       },
       "treeo-website": {
         title: "TREEO Indonesia Website",
@@ -162,19 +160,12 @@ export const en: Site = {
           "Contributed to the TREEO Indonesia website development by optimizing animations and designing a responsive mobile layout to improve performance and user experience on mobile devices.",
         captions: ["Smoother, optimised animations.", "A responsive layout built for phones."],
       },
-      "workflow-automation": {
-        title: "Workflow Automation",
-        kind: "Internal · Python",
+      "audio-transkript": {
+        title: "Audio Transkript",
+        kind: "Python tool",
         summary:
-          "Built internal Python scripts to automate data workflow pipelines (ETL: Extraction, Transformation, Loading) and data format updates. Improved the team daily operational efficiency through reliable and safe raw data processing.",
-        captions: ["How the automation works"],
-      },
-      "tree-monitoring": {
-        title: "Tree Monitoring",
-        kind: "Android app",
-        summary:
-          "Built a bilingual (ID/EN) native Android app for farmers and field officers. Facilitates plant species identification, tree health assessment, DBH measurement recording, and GPS-walk land mapping.",
-        captions: ["Species identification and tree health, right in the field.", "DBH measurements and GPS-walk land mapping."],
+          "A small Python utility that turns audio recordings into a Word transcript. pydub reads the file, long recordings are split into 45-second chunks, each chunk goes to a cloud speech recognizer (Indonesian by default, other languages via --language), and the text is written to a .docx with python-docx.",
+        captions: ["Audio in, 45-second chunks, speech recognition, a Word document out."],
       },
       "cad-converter": {
         title: "CAD Converter",
@@ -183,19 +174,8 @@ export const en: Site = {
           "Built a Python utility using GDAL and GeoPandas to convert CAD formats (DWG/DXF) to GIS (Esri Shapefile/GeoJSON). Facilitated API integration and prepared spatial data structures for GIS analysis needs.",
         captions: ["DWG/DXF in, Esri Shapefile or GeoJSON out."],
       },
-      techmentoring: {
-        title: "TechMentoring",
-        kind: "Mentoring",
-        summary:
-          "Put together curriculum modules and structured practical exercises for the tech mentoring program. Guided participants through technical topics including Python programming, data processing, and security log analysis.",
-        captions: ["Python, data processing and security log analysis."],
-      },
     },
-    {
-      github: "View on GitHub",
-      website: "Visit website",
-      confidential: "Source is confidential — used every day in TREEO Indonesia production.",
-    },
+    { github: "View on GitHub", website: "Visit website" },
   ),
   moreProjectsHref: MORE_PROJECTS,
   skills: skills(
@@ -222,12 +202,11 @@ export const en: Site = {
     { school: "SMKN 1 Sampit", programme: "Information Technology Engineering", period: "Jul 2017 – Aug 2019" },
   ]),
   artifacts: toArtifacts(exps),
-  contact: contact("en", ["Dr. Sebastian Lenz – Senior Consultant, Future Camp", "Owen James – Investment Adviser, Austrade"]),
+  contact: contact("en"),
   social: SOCIAL,
   ui: {
     sections: {
       now: "Now",
-      organizations: "Organizations",
       projects: "Projects",
       skills: "Skills",
       experience: "Experience",
@@ -246,7 +225,6 @@ export const en: Site = {
     sendMessage: "Send a message",
     emailLabel: "Email",
     phoneLabel: "Phone",
-    referencesTitle: "References",
     rights: "All rights reserved.",
     press: "press",
     language: "Language",

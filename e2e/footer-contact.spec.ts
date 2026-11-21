@@ -38,7 +38,7 @@ test("CV link follows the language", async ({ page }) => {
   await expect(page.locator("#contact").getByRole("link", { name: /Unduh CV/ })).toHaveAttribute("href", CV.id);
 });
 
-test("contact sheet: references, validation and a successful (intercepted) send", async ({ page }) => {
+test("contact sheet: no references, validation and a successful (intercepted) send", async ({ page }) => {
   let posted: unknown = null;
   await page.route("https://formsubmit.co/**", async (r) => {
     posted = r.request().postDataJSON();
@@ -49,7 +49,9 @@ test("contact sheet: references, validation and a successful (intercepted) send"
   await page.locator("#contact").getByRole("button", { name: "Send a message" }).click();
   await expect(page).toHaveURL(/#\/contact$/);
   const dialog = page.getByRole("dialog");
-  await expect(dialog).toContainText("Dr. Sebastian Lenz");
+  await expect(dialog).toContainText("mardiansyah.gunting@yahoo.com");
+  await expect(dialog).not.toContainText("Sebastian Lenz");
+  await expect(dialog).not.toContainText("Owen James");
   await dialog.getByRole("button", { name: "Send Message" }).click();
   await expect(dialog.getByRole("status")).toHaveText("Please fill in all fields.");
   await dialog.getByLabel("Name").fill("Tester");

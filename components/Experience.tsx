@@ -26,6 +26,8 @@ export function Experience() {
               <>
                 <span className="block h-[440px] max-h-[118vw]">
                   <span className="doc-page block text-left">
+                    {/* eslint-disable-next-line @next/next/no-img-element */}
+                    <img src={e.logo} alt="" width={36} height={36} loading="lazy" className="mb-4 h-9 w-9 rounded-md object-contain" />
                     <span className="block text-[22px] leading-[1.15]">{e.role}</span>
                     <span className="mt-2 block text-[14px] text-[#666]">{e.period}</span>
                     <span className="block text-[14px] text-[#666]">{e.company}</span>

@@ -5,7 +5,7 @@ import { hashFor, parseHash } from "@/lib/sheet";
 const site = getSite("en");
 
 test("project, experience and contact hashes round-trip", () => {
-  expect(parseHash("#/work/tree-monitoring", site)).toEqual({ type: "project", slug: "tree-monitoring" });
+  expect(parseHash("#/work/audio-transkript", site)).toEqual({ type: "project", slug: "audio-transkript" });
   expect(parseHash("#/experience/operations-manager", site)).toEqual({ type: "experience", slug: "operations-manager" });
   expect(parseHash("#/contact", site)).toEqual({ type: "contact" });
   expect(hashFor({ type: "project", slug: "cad-converter" })).toBe("#/work/cad-converter");

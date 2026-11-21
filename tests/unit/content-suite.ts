@@ -63,9 +63,9 @@ export function verbatimSuite(lang: "en" | "id" | "zh") {
 
     test("projects keep their titles and order", () => {
       expect(site.projects.map((p) => p.slug)).toEqual([
-        "akar-dmrv", "treeo-website", "workflow-automation", "tree-monitoring", "cad-converter", "techmentoring",
+        "workflow-automation", "treeo-website", "audio-transkript", "cad-converter",
       ]);
-      const titles = [J["projects.0.title"], J["projects.1.title"], J["projects.automation.title"], J["projects.5.title"], J["projects.4.title"], J["projects.8.title"]];
+      const titles = [J["projects.automation.title"], J["projects.1.title"], "Audio Transkript", J["projects.4.title"]];
       expect(site.projects.map((p) => p.title)).toEqual(titles);
       site.projects.forEach((p) => expect(p.gallery.length, p.slug).toBeGreaterThan(0));
     });

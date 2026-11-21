@@ -26,10 +26,10 @@ function render(v: VisualT, bare: boolean): ReactNode {
       return <Browser bare={bare} />;
     case "darkapp":
       return <Terminal bare={bare} label={v.label} />;
-    case "chart":
-      return <Chart tone={v.tone} bare={bare} label={v.label} />;
-    case "specimen":
-      return <Lesson />;
+    case "pipeline":
+      return <Pipeline bare={bare} />;
+    case "transcript":
+      return <Transcript bare={bare} />;
   }
 }
 
@@ -46,7 +46,7 @@ const GREEN = "#1f6b45";
 
 /* ───────────── phone: field app ───────────── */
 
-function Phone({ bare, label = "Tree Monitoring" }: { bare: boolean; label?: string }) {
+function Phone({ bare, label = "TREEO" }: { bare: boolean; label?: string }) {
   const rows = [
     ["Species", "62%"],
     ["Tree health", "78%"],
@@ -232,56 +232,120 @@ function Terminal({ bare, label = "cad-converter" }: { bare: boolean; label?: st
   );
 }
 
-/* ───────────── lesson card: mentoring ───────────── */
+/* ───────────── pipeline: ETL from raw files to a clean report ───────────── */
 
-function Lesson() {
-  const topics = ["Python", "Data processing", "Security logs"];
+const Card = ({ children, style }: { children: ReactNode; style?: CSSProperties }) => (
+  <div
+    style={{
+      background: "#fff",
+      borderRadius: "1.6cqmin",
+      boxShadow: "0 0 0 0.2cqmin rgb(0 0 0 / .05), 0 2cqmin 6cqmin -2cqmin rgb(0 0 0 / .18)",
+      padding: "2.2cqmin",
+      display: "flex",
+      flexDirection: "column",
+      gap: "1.2cqmin",
+      color: "#181818",
+      ...style,
+    }}
+  >
+    {children}
+  </div>
+);
+const Arrow = () => <span style={{ color: "#9a9a96", fontSize: "4cqmin", lineHeight: 1 }}>→</span>;
+const Sheet = ({ name, tone }: { name: string; tone: string }) => (
+  <span style={{ display: "flex", alignItems: "center", gap: "1cqmin", fontSize: "2.2cqmin" }}>
+    <i style={{ width: "2.6cqmin", height: "3.2cqmin", borderRadius: "0.4cqmin", background: tone, flexShrink: 0 }} />
+    {name}
+  </span>
+);
+
+function Pipeline({ bare }: { bare: boolean }) {
+  const steps = [
+    ["Extract", "read raw files"],
+    ["Transform", "clean · validate · reformat"],
+    ["Load", "write the report"],
+  ];
   return (
-    <div style={{ position: "absolute", inset: 0, background: "#f4f2ed", color: "#181818", display: "grid", gridTemplateColumns: "1fr 1.1fr", alignItems: "center", padding: "6cqmin", gap: "4cqmin" }}>
-      <span style={{ fontSize: "40cqmin", lineHeight: 0.8, color: GREEN }}>Py</span>
-      <div style={{ display: "flex", flexDirection: "column", gap: "2.2cqmin", fontSize: "3.2cqmin" }}>
-        <span style={{ fontSize: "5cqmin", fontWeight: 700 }}>TechMentoring</span>
-        {topics.map((t) => (
-          <span key={t} style={{ display: "flex", alignItems: "center", gap: "1.6cqmin" }}>
-            <i style={{ width: "2.6cqmin", height: "2.6cqmin", borderRadius: "0.6cqmin", border: "0.35cqmin solid #181818", display: "grid", placeItems: "center", fontStyle: "normal", fontSize: "2cqmin" }}>✓</i>
-            {t}
-          </span>
-        ))}
+    <Stage bare={bare} bg="#e9efe6">
+      <div style={{ width: "90cqw", height: "80cqh", display: "grid", gridTemplateRows: "1fr auto", gap: "2.4cqmin" }}>
+        <div style={{ display: "grid", gridTemplateColumns: "1fr auto 1.3fr auto 1fr", alignItems: "center", gap: "1.6cqmin", minHeight: 0 }}>
+          <Card>
+            <span style={{ fontSize: "2cqmin", color: "#8a8a86" }}>Input</span>
+            <Sheet name="field_data.csv" tone="#d5e4d8" />
+            <Sheet name="partners.xlsx" tone="#c4d9c9" />
+            <Sheet name="export_raw.csv" tone="#d5e4d8" />
+          </Card>
+          <Arrow />
+          <Card style={{ background: "#161616", color: "#e9e9e7" }}>
+            <span style={{ fontSize: "2cqmin", color: "#8b8b88" }}>python main.py</span>
+            {steps.map(([t, d], i) => (
+              <span key={t} style={{ display: "grid", gridTemplateColumns: "auto 1fr", gap: "1.2cqmin", alignItems: "baseline" }}>
+                <span style={{ color: "#7fc79a", fontSize: "2.2cqmin" }}>{i + 1}</span>
+                <span style={{ fontSize: "2.4cqmin" }}>
+                  {t}
+                  <span style={{ display: "block", color: "#8b8b88", fontSize: "1.9cqmin" }}>{d}</span>
+                </span>
+              </span>
+            ))}
+          </Card>
+          <Arrow />
+          <Card>
+            <span style={{ fontSize: "2cqmin", color: "#8a8a86" }}>Output</span>
+            <span style={{ fontSize: "2.6cqmin", fontWeight: 700, color: GREEN }}>report.xlsx</span>
+            {[80, 64, 72, 50].map((w, i) => (
+              <Line key={i} w={`${w}%`} h={1.1} c={i === 0 ? "#181818" : "#e3e3e0"} />
+            ))}
+            <span style={{ alignSelf: "flex-start", background: "#e4ede1", color: "#36603a", borderRadius: 99, padding: "0.4cqmin 1.4cqmin", fontSize: "1.8cqmin" }}>✓ ready</span>
+          </Card>
+        </div>
+        <div style={{ display: "flex", justifyContent: "center", gap: "2cqmin", fontSize: "2cqmin", color: "#6f6f6c" }}>
+          <span style={{ background: "#fff", borderRadius: 99, padding: "0.6cqmin 1.8cqmin" }}>⏱ schedule · every morning</span>
+          <span style={{ background: "#fff", borderRadius: 99, padding: "0.6cqmin 1.8cqmin" }}>logging · run.log</span>
+        </div>
       </div>
-    </div>
+    </Stage>
   );
 }
 
-/* ───────────── chart card ───────────── */
+/* ───────────── transcript: audio in, Word document out ───────────── */
 
-function Chart({ tone = "#f0efec", bare, label = "Field data" }: { tone?: string; bare: boolean; label?: string }) {
-  const bars = [38, 64, 52, 80, 44, 22, 30];
+function Transcript({ bare }: { bare: boolean }) {
+  const wave = [3, 6, 10, 5, 8, 12, 7, 4, 9, 13, 6, 3, 8, 11, 5, 7, 10, 4, 6, 9, 12, 5, 3, 7];
   return (
-    <Stage bare={bare} bg={tone}>
-      <div
-        style={{
-          width: "72cqw",
-          height: "74cqh",
-          background: "#fff",
-          borderRadius: "2.4cqmin",
-          boxShadow: "0 0 0 0.2cqmin rgb(0 0 0 / .05), 0 3cqmin 8cqmin -2cqmin rgb(0 0 0 / .16)",
-          padding: "4cqmin",
-          display: "flex",
-          flexDirection: "column",
-          color: "#181818",
-          fontSize: "2.8cqmin",
-        }}
-      >
-        <span style={{ color: "#8a8a86" }}>{label}</span>
-        <span style={{ display: "flex", gap: "1.2cqmin", marginTop: "1.6cqmin" }}>
-          <Line w="30%" h={1.4} c="#181818" />
-          <Line w="16%" h={1.4} />
-        </span>
-        <div style={{ flex: 1, display: "flex", alignItems: "flex-end", gap: "2cqmin", marginTop: "3cqmin" }}>
-          {bars.map((b, i) => (
-            <span key={i} style={{ flex: 1, height: `${b}%`, background: i === 3 ? GREEN : "#e7e7e4", borderRadius: "1cqmin" }} />
+    <Stage bare={bare} bg="#ecebe7">
+      <div style={{ width: "90cqw", height: "78cqh", display: "grid", gridTemplateColumns: "1fr auto 1fr auto 1.15fr", alignItems: "center", gap: "1.6cqmin" }}>
+        <Card>
+          <span style={{ fontSize: "2cqmin", color: "#8a8a86" }}>Input</span>
+          <span style={{ fontSize: "2.4cqmin", fontWeight: 700 }}>meeting.m4a</span>
+          <span style={{ display: "flex", alignItems: "center", gap: "0.4cqmin", height: "8cqmin" }}>
+            {wave.map((h, i) => (
+              <i key={i} style={{ flex: 1, height: `${h * 0.6}cqmin`, background: "#181818", borderRadius: 99 }} />
+            ))}
+          </span>
+          <span style={{ fontSize: "1.9cqmin", color: "#8a8a86" }}>pydub · ffmpeg</span>
+        </Card>
+        <Arrow />
+        <Card style={{ background: "#161616", color: "#e9e9e7" }}>
+          <span style={{ fontSize: "2cqmin", color: "#8b8b88" }}>45 s chunks</span>
+          {["00:00", "00:45", "01:30", "02:15"].map((t, i) => (
+            <span key={t} style={{ display: "flex", justifyContent: "space-between", fontSize: "2.1cqmin" }}>
+              <span>{t}</span>
+              <span style={{ color: i < 3 ? "#7fc79a" : "#6f6f6c" }}>{i < 3 ? "✓" : "…"}</span>
+            </span>
           ))}
-        </div>
+          <span style={{ fontSize: "1.9cqmin", color: "#8b8b88" }}>speech recognition · id-ID</span>
+        </Card>
+        <Arrow />
+        <Card style={{ aspectRatio: "0.78", justifyContent: "flex-start" }}>
+          <span style={{ display: "flex", justifyContent: "space-between", fontSize: "2cqmin", color: "#8a8a86" }}>
+            <span>Output</span>
+            <span style={{ color: "#2b579a", fontWeight: 700 }}>W</span>
+          </span>
+          <span style={{ fontSize: "2.4cqmin", fontWeight: 700 }}>transcript.docx</span>
+          {[92, 84, 96, 70, 88, 60, 90, 76].map((w, i) => (
+            <Line key={i} w={`${w}%`} h={0.9} c="#d9d9d6" />
+          ))}
+        </Card>
       </div>
     </Stage>
   );

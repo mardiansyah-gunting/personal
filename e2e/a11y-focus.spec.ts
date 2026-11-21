@@ -1,7 +1,7 @@
 import { expect, test } from "@playwright/test";
 
 test("Tab never leaves an open sheet", async ({ page }) => {
-  await page.goto("/personal/#/work/akar-dmrv");
+  await page.goto("/personal/#/work/audio-transkript");
   const dialog = page.getByRole("dialog");
   await expect(dialog).toBeVisible();
   for (let i = 0; i < 6; i++) {

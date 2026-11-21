@@ -8,6 +8,7 @@ test("nine roles, newest first", async ({ page }) => {
   await page.goto("/personal/");
   await expect(page.locator(cards)).toHaveCount(9);
   await expect(page.locator(cards).first()).toContainText("Technology & Customer Success Manager");
+  for (const card of await page.locator(cards).all()) await expect(card.locator("img").first()).toHaveAttribute("src", /\/images\/logos\//);
 });
 
 test("opening a role shows its photos and links the organisation", async ({ page }) => {

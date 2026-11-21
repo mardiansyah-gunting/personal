@@ -111,12 +111,12 @@ export const id: Site = {
   },
   name: "Mardiansyah Gunting",
   role: "Operator Andal · Pembangun Automasi",
-  status: { label: "Terbuka untuk peluang", note: "Terbuka untuk peran dan kolaborasi baru" },
+  status: { label: "Tersedia", note: "Terbuka untuk kolaborasi baru" },
   hero: [
     "Saya bekerja di titik temu antara operasional, teknologi, dan strategi — menyambungkan tim, membangun ",
     { text: "alat yang mereka butuhkan", href: "#projects" },
     ", dan menyingkirkan pekerjaan berulang yang diam-diam memperlambat bisnis. Saat ini saya melakukannya di ",
-    { text: "TREEO Indonesia", href: "#organizations" },
+    { text: "TREEO Indonesia", href: "https://treeo.id/" },
     ".",
   ],
   now: {
@@ -136,24 +136,22 @@ export const id: Site = {
     bps: { name: "Badan Pusat Statistik", note: "2018" },
   }),
   productsLine: [
-    "Di sela itu saya membangun alat dan materi ajar, sering kali dengan bantuan AI: ",
+    "Di sela itu saya membangun alat, sering kali dengan bantuan AI: ",
     { text: "Automasi Workflow", project: "workflow-automation" },
     ", ",
-    { text: "Tree Monitoring", project: "tree-monitoring" },
-    ", ",
-    { text: "CAD Converter", project: "cad-converter" },
+    { text: "Audio Transkript", project: "audio-transkript" },
     " dan ",
-    { text: "TechMentoring", project: "techmentoring" },
+    { text: "CAD Converter", project: "cad-converter" },
     ".",
   ],
   projects: projects(
     {
-      "akar-dmrv": {
-        title: "AKAR DMRV",
-        kind: "Internal · Flutter",
+      "workflow-automation": {
+        title: "Automasi Workflow",
+        kind: "Internal · Python",
         summary:
-          "Mengembangkan aplikasi internal end-to-end untuk mendigitalisasi proses Measurement, Reporting & Verification (MRV) data penanaman pohon. Mengelola sistem yang telah aktif digunakan pada tahap produksi dan siap dirilis secara penuh pada Q1 2027.",
-        captions: ["Data penanaman pohon, diukur dan dilaporkan dalam satu sistem.", "Sudah berjalan di produksi; rilis penuh direncanakan pada Q1 2027."],
+          "Mengembangkan skrip Python internal untuk otomatisasi alur kerja data (ETL: Extraction, Transformation, Loading) dan pembaruan format data. Meningkatkan efisiensi operasional harian tim melalui pemrosesan data mentah yang andal dan aman.",
+        captions: ["Data mentah masuk, laporan rapi keluar — diekstrak, ditransformasi, dan dimuat secara terjadwal.", "Cara kerja automasi"],
       },
       "treeo-website": {
         title: "Website TREEO Indonesia",
@@ -162,19 +160,12 @@ export const id: Site = {
           "Berkontribusi dalam pengembangan website TREEO Indonesia melalui optimalisasi animasi serta perancangan tata letak mobile yang responsif guna meningkatkan performa dan pengalaman pengguna di perangkat seluler.",
         captions: ["Animasi yang lebih mulus dan teroptimasi.", "Tata letak responsif yang dirancang untuk ponsel."],
       },
-      "workflow-automation": {
-        title: "Automasi Workflow",
-        kind: "Internal · Python",
+      "audio-transkript": {
+        title: "Audio Transkript",
+        kind: "Alat Python",
         summary:
-          "Mengembangkan skrip Python internal untuk otomatisasi alur kerja data (ETL: Extraction, Transformation, Loading) dan pembaruan format data. Meningkatkan efisiensi operasional harian tim melalui pemrosesan data mentah yang andal dan aman.",
-        captions: ["Cara kerja automasi"],
-      },
-      "tree-monitoring": {
-        title: "Tree Monitoring",
-        kind: "Aplikasi Android",
-        summary:
-          "Mengembangkan aplikasi Android native dwibahasa (ID/EN) untuk membantu petani dan petugas lapangan. Memfasilitasi identifikasi spesies tanaman, penilaian kesehatan pohon, pencatatan pengukuran DBH, serta pemetaan lahan berbasis GPS walk.",
-        captions: ["Identifikasi spesies dan kesehatan pohon, langsung di lapangan.", "Pengukuran DBH dan pemetaan lahan dengan GPS walk."],
+          "Utilitas Python kecil yang mengubah rekaman audio menjadi transkrip Word. pydub membaca file, rekaman panjang dipotong per 45 detik, setiap potongan dikirim ke layanan pengenalan suara berbasis cloud (bahasa Indonesia secara bawaan, bahasa lain lewat --language), lalu teksnya ditulis ke .docx dengan python-docx.",
+        captions: ["Audio masuk, dipotong per 45 detik, dikenali suaranya, dokumen Word keluar."],
       },
       "cad-converter": {
         title: "CAD Converter",
@@ -183,19 +174,8 @@ export const id: Site = {
           "Membangun utilitas Python menggunakan GDAL dan GeoPandas untuk mengonversi format CAD (DWG/DXF) ke GIS (Esri Shapefile/GeoJSON). Memfasilitasi integrasi API dan menyiapkan struktur data spasial untuk kebutuhan analisis GIS.",
         captions: ["DWG/DXF masuk, Esri Shapefile atau GeoJSON keluar."],
       },
-      techmentoring: {
-        title: "TechMentoring",
-        kind: "Mentoring",
-        summary:
-          "Menyusun modul kurikulum dan latihan praktis terstruktur untuk program tech mentoring. Membimbing peserta dalam topik teknis meliputi pemrograman Python, pengolahan data, serta analisis log keamanan.",
-        captions: ["Python, pengolahan data, dan analisis log keamanan."],
-      },
     },
-    {
-      github: "Lihat di GitHub",
-      website: "Kunjungi website",
-      confidential: "Source bersifat rahasia — dipakai setiap hari di produksi TREEO Indonesia.",
-    },
+    { github: "Lihat di GitHub", website: "Kunjungi website" },
   ),
   moreProjectsHref: MORE_PROJECTS,
   skills: skills(
@@ -222,12 +202,11 @@ export const id: Site = {
     { school: "SMKN 1 Sampit", programme: "Teknik Informatika", period: "Jul 2017 – Agu 2019" },
   ]),
   artifacts: toArtifacts(exps),
-  contact: contact("id", ["Dr. Sebastian Lenz – Konsultan Senior, Future Camp", "Owen James – Penasihat Investasi, Austrade"]),
+  contact: contact("id"),
   social: SOCIAL,
   ui: {
     sections: {
       now: "Sekarang",
-      organizations: "Organisasi",
       projects: "Proyek",
       skills: "Keahlian",
       experience: "Pengalaman",
@@ -246,7 +225,6 @@ export const id: Site = {
     sendMessage: "Kirim pesan",
     emailLabel: "Email",
     phoneLabel: "Telepon",
-    referencesTitle: "Referensi",
     rights: "Hak cipta dilindungi.",
     press: "tekan",
     language: "Bahasa",

@@ -182,7 +182,6 @@ function ProjectSheet({ slug }: { slug: string }) {
           </p>
         ))}
         <p className="mt-6 text-[16px] text-muted">{p.tags.join(" · ")}</p>
-        {p.confidential && <p className="mt-6 text-[16px] text-muted">{p.confidential}</p>}
       </div>
       {p.gallery.map((g, i) => (
         <figure key={i} className="mx-auto mt-24 w-[min(900px,92vw)]">
@@ -253,7 +252,7 @@ function ExperienceSheet({ slug }: { slug: string }) {
 
 type SendState = "idle" | "incomplete" | "sending" | "sent" | "error";
 
-/** The old site's form, same formsubmit endpoint and messages, plus contact info and references. */
+/** The old site's form, same formsubmit endpoint and messages, plus contact info. */
 function ContactSheet() {
   const { contact, ui } = useSite();
   const [state, setState] = useState<SendState>("idle");
@@ -331,18 +330,6 @@ function ContactSheet() {
         </p>
       </div>
 
-      <h4 className="mt-12 text-[18px] text-muted">{ui.referencesTitle}</h4>
-      <ul className="mt-3 space-y-3 text-[16px]">
-        {contact.references.map((r) => (
-          <li key={r.phone}>
-            {r.name}
-            <br />
-            <a href={`tel:${r.phone}`} className="tabular-nums text-muted hover:text-ink">
-              {r.phone}
-            </a>
-          </li>
-        ))}
-      </ul>
     </article>
   );
 }

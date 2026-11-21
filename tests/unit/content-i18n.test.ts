@@ -36,8 +36,7 @@ describe.each(["id", "zh"] as const)("%s mirrors English structure", (lang) => {
     expect(site.education).toHaveLength(en.education.length);
     expect(site.skills).toHaveLength(en.skills.length);
     expect(site.social).toEqual(en.social);
-    expect({ ...site.contact, cv: undefined, references: undefined }).toEqual({ ...en.contact, cv: undefined, references: undefined });
-    expect(site.contact.references.map((r) => r.phone)).toEqual(en.contact.references.map((r) => r.phone));
+    expect({ ...site.contact, cv: undefined }).toEqual({ ...en.contact, cv: undefined });
     expect(site.contact.cv).toBe(CV[lang]);
     expect(site.moreProjectsHref).toBe(en.moreProjectsHref);
   });
