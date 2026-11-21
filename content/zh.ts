@@ -4,7 +4,7 @@ import type { Site } from "./types";
 const exps = experience([
   {
     role: "技术与客户成功经理",
-    company: "TREEO Indonesia",
+    company: "TREEO",
     period: "2026年5月 – 至今",
     body: [
       highlight(
@@ -48,25 +48,25 @@ const exps = experience([
   },
   {
     role: "HPPS项目协调员助理",
-    company: "Fairventures Worldwide gGmbH",
+    company: "Fairventures Worldwide",
     period: "2022年2月 – 2023年3月",
     body: [highlight("编制数据流程与安全材料，管理数据收集与处理流程，并确保新的安全规程在整个团队中得到一致落实。", "新的安全规程")],
   },
   {
     role: "综合事务专员",
-    company: "Fairventures Worldwide gGmbH",
+    company: "Fairventures Worldwide",
     period: "2019年10月 – 2022年2月",
     body: [highlight("负责全部办公室运营，涵盖合同管理、资产交接、安保与司机团队协调、公务车辆维护，以及公司全部资产的盘点。", "全部办公室运营")],
   },
   {
     role: "产品演示专员",
-    company: "CV Karya Hidup Sentosa",
+    company: "Quick Tractor",
     period: "2019年7月 – 2019年9月",
     body: [highlight("全程负责 B2B 客户沟通，并在苏门答腊、苏拉威西和加里曼丹地区的油棕种植园演示 Quick Tractor 产品。", "Quick Tractor 产品")],
   },
   {
     role: "实习生",
-    company: "Badan Pusat Statistik",
+    company: "Indonesia Central Bureau of Statistics",
     period: "2018年7月 – 2018年12月",
     body: [highlight("为年度人口普查出版物设计封面，并制作海报与矢量图形等视觉素材，以支持发布活动。", "为年度人口普查出版物设计封面")],
   },

@@ -4,7 +4,7 @@ import type { Site } from "./types";
 const exps = experience([
   {
     role: "Technology & Customer Success Manager",
-    company: "TREEO Indonesia",
+    company: "TREEO",
     period: "May 2026 – Present",
     body: [
       highlight(
@@ -48,7 +48,7 @@ const exps = experience([
   },
   {
     role: "HPPS Project Coordinator Assistant",
-    company: "Fairventures Worldwide gGmbH",
+    company: "Fairventures Worldwide",
     period: "Feb 2022 – Mar 2023",
     body: [
       highlight(
@@ -59,7 +59,7 @@ const exps = experience([
   },
   {
     role: "General Affairs Officer",
-    company: "Fairventures Worldwide gGmbH",
+    company: "Fairventures Worldwide",
     period: "Oct 2019 – Feb 2022",
     body: [
       highlight(
@@ -70,7 +70,7 @@ const exps = experience([
   },
   {
     role: "Demonstration Officer",
-    company: "CV Karya Hidup Sentosa",
+    company: "Quick Tractor",
     period: "Jul 2019 – Sep 2019",
     body: [
       highlight(
@@ -81,7 +81,7 @@ const exps = experience([
   },
   {
     role: "Intern",
-    company: "Badan Pusat Statistik",
+    company: "Indonesia Central Bureau of Statistics",
     period: "Jul 2018 – Dec 2018",
     body: [
       highlight(
