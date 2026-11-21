@@ -5,6 +5,8 @@ import { asset } from "./asset";
 import { pathFor, SITE_URL } from "./lang";
 
 const OG_LOCALE: Record<Lang, string> = { en: "en_US", id: "id_ID", zh: "zh_CN" };
+/** Bump to make browsers refetch the branded icons instead of an old cached tab icon. */
+const ICON_VERSION = "?v=20261122";
 
 export function metadataFor(lang: Lang): Metadata {
   const site = getSite(lang);
@@ -30,8 +32,11 @@ export function metadataFor(lang: Lang): Metadata {
     },
     twitter: { card: "summary", title: site.meta.title, description: site.meta.description, images: [image] },
     icons: {
-      icon: [{ url: asset("/favicon.svg"), type: "image/svg+xml" }, { url: asset("/favicon.ico") }],
-      apple: asset("/apple-touch-icon.png"),
+      icon: [
+        { url: asset(`/favicon.svg${ICON_VERSION}`), type: "image/svg+xml" },
+        { url: asset(`/favicon.ico${ICON_VERSION}`) },
+      ],
+      apple: asset(`/apple-touch-icon.png${ICON_VERSION}`),
     },
   };
 }
