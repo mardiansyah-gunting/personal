@@ -79,7 +79,7 @@ const automationFlow: Visual = { kind: "image", src: asset("/images/automation-f
 const PROJECTS = [
   { slug: "akar-dmrv", tags: ["Flutter", "JavaScript", "C++"], cover: { kind: "chart", label: "MRV" }, gallery: [{ kind: "phone", label: "AKAR DMRV" }, { kind: "chart", tone: "#e9efe6", label: "MRV" }], confidential: true },
   { slug: "treeo-website", tags: ["Web Development", "Animation", "Responsive Design"], cover: { kind: "browser" }, gallery: [{ kind: "browser" }, { kind: "phone", label: "TREEO" }], website: "https://treeo.id" },
-  { slug: "workflow-automation", tags: ["Python", "pandas", "openpyxl", "python-dotenv", "schedule", "logging"], cover: automationFlow, gallery: [automationFlow], confidential: true },
+  { slug: "workflow-automation", tags: ["Python", "pandas", "openpyxl", "python-dotenv", "schedule", "logging"], cover: automationFlow, gallery: [automationFlow] },
   { slug: "tree-monitoring", portrait: true, tags: ["Kotlin", "Jetpack Compose", "Material 3", "GPS"], cover: { kind: "phone" }, gallery: [{ kind: "phone" }, { kind: "chart", tone: "#e9efe6", label: "DBH" }], github: "https://github.com/mardiansyah-gunting/tree-monitoring" },
   { slug: "cad-converter", tags: ["Python", "GDAL", "GeoPandas", "GIS"], cover: { kind: "darkapp" }, gallery: [{ kind: "darkapp" }], github: "https://github.com/mardiansyah-gunting/CAD-converter" },
   { slug: "techmentoring", tags: ["Python", "Mentoring", "Teaching"], cover: { kind: "specimen" }, gallery: [{ kind: "specimen" }], github: "https://github.com/mardiansyah-gunting/TechMentoring" },

@@ -15,7 +15,7 @@ test("footer inverts the page and shows portrait, signature and links", async ({
   await expect(page.locator("html")).toHaveClass(/is-inverted/);
   const footer = page.locator("#contact");
   const portrait = footer.getByRole("img", { name: "Mardiansyah Gunting" });
-  await expect(portrait).toHaveAttribute("src", /profile\.jpg$/);
+  await expect(portrait).toHaveAttribute("src", /profile\.webp$/);
   await expect(footer.locator(".signature")).toHaveText("Mardiansyah Gunting");
   await expect(footer.getByRole("link", { name: /LinkedIn/ })).toHaveAttribute("href", "https://linkedin.com/in/mardiansyah-gunting");
   await expect(footer.getByRole("link", { name: /GitHub/ })).toHaveAttribute("href", "https://github.com/mardiansyah-gunting");

@@ -67,7 +67,7 @@ export function Footer({ buildYear }: { buildYear: number }) {
       <div className="flex flex-col items-center text-center">
         <div data-board="portrait" className="footer-in relative h-[200px] w-[160px] overflow-hidden rounded-lg bg-tile" style={d(0)}>
           {/* eslint-disable-next-line @next/next/no-img-element */}
-          <img src={asset("/profile.jpg")} alt={SIGNATURE} width={160} height={200} loading="lazy" className="h-full w-full object-cover grayscale-[15%]" />
+          <img src={asset("/images/profile.webp")} alt={SIGNATURE} width={160} height={200} loading="lazy" className="h-full w-full object-cover grayscale-[15%]" />
         </div>
 
         <div data-board="signature" className="mt-10 flex h-[72px] items-center">

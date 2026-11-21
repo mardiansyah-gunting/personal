@@ -29,3 +29,9 @@ test("every web photo exists, has a size, is small and at most 1600px", () => {
     }
   }
 });
+
+test("the footer portrait has a small web copy", () => {
+  const file = "public/images/profile.webp";
+  expect(existsSync(file)).toBe(true);
+  expect(statSync(file).size).toBeLessThan(60 * 1024);
+});

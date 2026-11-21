@@ -26,5 +26,8 @@ for (const slug of (await readdir(SRC)).sort((a, b) => a.localeCompare(b))) {
     manifest[slug].push({ src: `/images/jobs-web/${slug}/${name}`, w: info.width, h: info.height });
   }
 }
+// footer portrait: 2× a 160×200 box
+await sharp("public/profile.jpg").resize({ width: 320, height: 400, fit: "cover", position: "attention" }).webp({ quality: 80 }).toFile("public/images/profile.webp");
+
 await writeFile("content/photos.json", `${JSON.stringify(manifest, null, 2)}\n`);
 console.log(`wrote ${Object.values(manifest).flat().length} photos`);
