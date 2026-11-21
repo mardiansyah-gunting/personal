@@ -155,13 +155,13 @@ export function CardRail({
   }, [scrollToIndex]);
 
   const onKey = (e: React.KeyboardEvent) => {
-    if (e.key === "ArrowRight") {
+    const move = (to: number) => {
       e.preventDefault();
-      scrollToIndex(Math.min(items.length - 1, currentRef.current + 1));
-    } else if (e.key === "ArrowLeft") {
-      e.preventDefault();
-      scrollToIndex(Math.max(0, currentRef.current - 1));
-    }
+      scrollToIndex(to);
+      cards()[to]?.focus({ preventScroll: true }); // focus follows the centred card
+    };
+    if (e.key === "ArrowRight") move(Math.min(items.length - 1, currentRef.current + 1));
+    else if (e.key === "ArrowLeft") move(Math.max(0, currentRef.current - 1));
   };
 
   return (
@@ -182,7 +182,8 @@ export function CardRail({
           className="rail-card"
           aria-label={it.label}
           onClick={(e) => {
-            if (i === currentRef.current) onOpen(i, e.currentTarget);
+            // e.detail === 0: Enter/Space on a focused card — open it even if it isn't centred yet
+            if (i === currentRef.current || e.detail === 0) onOpen(i, e.currentTarget);
             else scrollToIndex(i);
           }}
           onFocus={(e) => i !== currentRef.current && e.currentTarget.matches(":focus-visible") && scrollToIndex(i)}

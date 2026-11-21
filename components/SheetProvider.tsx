@@ -6,6 +6,7 @@ import type { Site } from "@/content/types";
 import { hashFor, parseHash, type SheetTarget } from "@/lib/sheet";
 import { IconClose, IconExternal } from "./Icons";
 import { useSite } from "./SiteProvider";
+import { useModal } from "./useModal";
 import { Visual } from "./visuals/Visual";
 
 export type { SheetTarget };
@@ -56,6 +57,7 @@ export function SheetProvider({ children }: { children: ReactNode }) {
       closingRef.current = false;
       setCurrent(null);
       document.documentElement.classList.remove("has-sheet");
+      document.getElementById("board-root")?.removeAttribute("inert"); // before React's cleanup, so focus can land
       returnFocusRef.current?.focus?.({ preventScroll: true });
     };
   }, []);
@@ -127,6 +129,8 @@ export function SheetProvider({ children }: { children: ReactNode }) {
     );
     el.focus({ preventScroll: true });
   }, [current]);
+
+  useModal(sheetRef, current !== null);
 
   // Esc to close
   useEffect(() => {

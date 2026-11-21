@@ -16,8 +16,11 @@ const SIGNATURE = "Mardiansyah Gunting";
  * (`html.is-inverted` swaps the colour tokens), the portrait and links
  * stagger in, and the signature "writes" itself.
  */
-export function Footer() {
+export function Footer({ buildYear }: { buildYear: number }) {
   const { name, contact, social, ui } = useSite();
+  // the static HTML carries the build year; the browser corrects it after hydration
+  const [year, setYear] = useState(buildYear);
+  useEffect(() => setYear(new Date().getFullYear()), []);
   const ref = useRef<HTMLElement>(null);
   const [copied, setCopied] = useState(false);
   const { toggle } = useBoard();
@@ -107,7 +110,7 @@ export function Footer() {
         <LangSwitch className="footer-in mt-6" />
 
         <p className="footer-in mt-8 text-[14px] text-muted" style={d(1000)}>
-          © {new Date().getFullYear()} {SIGNATURE} — {ui.rights}
+          © {year} {SIGNATURE} — {ui.rights}
         </p>
       </div>
     </footer>

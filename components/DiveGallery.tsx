@@ -4,6 +4,7 @@ import { useCallback, useEffect, useRef, useState } from "react";
 import { createPortal } from "react-dom";
 import type { Artifact } from "@/content/types";
 import { useSite } from "./SiteProvider";
+import { useModal } from "./useModal";
 import { Visual } from "./visuals/Visual";
 import { IconArrow, IconClose } from "./Icons";
 
@@ -150,6 +151,9 @@ export function DiveGallery() {
 
 function Lightbox({ items, labels, index, onChange, onClose }: { items: Artifact[]; labels: { previous: string; next: string; close: string }; index: number; onChange: (i: number) => void; onClose: () => void }) {
   const it = items[index];
+  const boxRef = useRef<HTMLDivElement>(null);
+  useModal(boxRef, true);
+  useEffect(() => boxRef.current?.querySelector<HTMLElement>("button")?.focus({ preventScroll: true }), []);
   const go = useCallback((dir: number) => onChange((index + dir + items.length) % items.length), [index, items.length, onChange]);
 
   useEffect(() => {
@@ -168,6 +172,7 @@ function Lightbox({ items, labels, index, onChange, onClose }: { items: Artifact
 
   return createPortal(
     <div
+      ref={boxRef}
       role="dialog"
       aria-modal="true"
       aria-label={it.title}

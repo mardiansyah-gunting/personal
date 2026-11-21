@@ -30,7 +30,7 @@ export function HomePage({ lang }: { lang: Lang }) {
             <Experience />
             <Education />
             <DiveGallery />
-            <Footer />
+            <Footer buildYear={new Date().getFullYear()} />
             <BoardLayer />
           </main>
         </BoardProvider>
