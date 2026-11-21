@@ -43,8 +43,8 @@
 }
 
 @theme inline {
-  --font-sans: "Inter Tight Variable", "Inter Tight", system-ui, -apple-system, sans-serif;
-  --font-sign: "Mrs Saint Delafield", "Brush Script MT", cursive;
+  --font-sans: "Kalam", "LXGW WenKai Screen", "Kaiti SC", "STKaiti", "KaiTi", cursive;
+  --font-sign: "Mrs Saint Delafield", cursive;
 
   --color-bg: var(--bg);
   --color-ink: var(--ink);
@@ -71,10 +71,10 @@ html {
 }
 body {
   font-family: var(--font-sans);
-  font-size: 15px;
-  font-weight: 500;
+  font-size: 18px;
+  font-weight: 400;
   line-height: 1.5;
-  letter-spacing: -0.005em;
+  letter-spacing: normal;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-rendering: optimizeLegibility;
@@ -356,7 +356,7 @@ mark.hl {
     0 0 0 1px var(--paper-edge),
     var(--shadow-card);
   padding: 2.8rem 2.4rem;
-  font-size: 0.8rem;
+  font-size: 15px;
   line-height: 1.6;
   overflow: hidden;
   height: 100%;
@@ -550,7 +550,7 @@ html.board-original [data-board] {
   box-shadow:
     0 1px 1px rgb(0 0 0 / 0.06),
     0 10px 24px -8px rgb(0 0 0 / 0.28);
-  font-size: 14px;
+  font-size: 16px;
   line-height: 1.4;
   pointer-events: auto;
 }
@@ -579,7 +579,7 @@ html.board-original [data-board] {
   border-radius: 6px;
   background: #181818;
   color: #fff;
-  font-size: 12px;
+  font-size: 14px;
   line-height: 1;
   opacity: 0;
   pointer-events: none;

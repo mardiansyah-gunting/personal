@@ -8,6 +8,7 @@ const nextConfig = {
   trailingSlash: true,
   images: { unoptimized: true },
   env: { NEXT_PUBLIC_BASE_PATH: basePath },
+  experimental: { globalNotFound: true },
 };
 
 export default nextConfig;
