@@ -1,6 +1,12 @@
 node_modules/
+.next/
+out/
+test-results/
+playwright-report/
+next-env.d.ts
 dist/
 .astro/
+*.tsbuildinfo
 .DS_Store
 *.local
 .env
