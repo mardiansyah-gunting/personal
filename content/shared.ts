@@ -143,9 +143,9 @@ export function education(rows: Education[]): Education[] {
 }
 
 export const CV: Record<Lang, string> = {
-  en: "https://ap.wps.com/cms/docs/d/cbPaes8mwZdX9lII",
-  id: "https://ap.wps.com/cms/docs/d/cbPaeocVk7PaNV6q",
-  zh: "https://ap.wps.com/cms/docs/d/cbPaedq51hh7xth3",
+  en: "https://ap.wps.com/cms/docs/d/cbPaemJp5Xal4fvU?platform=pc&refer=copylink",
+  id: "https://ap.wps.com/cms/docs/d/cbPaemJp5Xal4fvU?platform=pc&refer=copylink",
+  zh: "https://ap.wps.com/cms/docs/d/cbPaemJp5Xal4fvU?platform=pc&refer=copylink",
 };
 
 export function contact(lang: Lang) {
