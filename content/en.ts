@@ -8,8 +8,8 @@ const exps = experience([
     period: "May 2026 – Present",
     body: [
       highlight(
-        "Manage TREEO customer success end-to-end: field visits to understand partner needs, using data-analysis tools to turn field and platform data into data-driven decisions, refining the apps UI/UX, and preparing relevant training and documentation for partners.",
-        "Manage TREEO customer success end-to-end",
+        "Lead TREEO's Technology and Customer Success end-to-end — partnering closely with teams in the field to understand their needs, analyzing field and platform data to support data-driven decisions, building practical digital tools to streamline their workflows, and equipping partners with hands-on training and documentation.",
+        "Lead TREEO's Technology and Customer Success end-to-end",
       ),
     ],
   },
@@ -112,7 +112,7 @@ export const en: Site = {
   now: {
     lead: "Right now I'm Technology & Customer Success Manager at",
     company: "TREEO",
-    rest: "I visit partners in the field, analyse operational data so decisions stay data-driven, refine the apps' UI/UX, and prepare the training and documentation partners rely on.",
+    rest: "I visit partners in the field, analyze operational data to support data-driven decisions, build practical digital tools to streamline workflows, and prepare the training and documentation partners rely on.",
     about: [
       "I build applications that help people do their work with less friction — automating data requests with the programming language that best fits each project's context, helping teams simplify the workflows behind data collection, and turning repetitive manual processes into reliable tools. Whether I'm coordinating tree-planting programmes across Indonesia or shipping an Android app, the aim stays the same: something measurable, useful, and built to last.",
       "Working alongside startups, international NGOs, and government institutions has taught me to adapt quickly and communicate across cultures — and convinced me that the best outcomes come from pairing real domain knowledge with the right technology. I'm open to new roles and collaborations, and I'd be glad to talk.",

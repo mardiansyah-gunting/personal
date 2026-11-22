@@ -8,8 +8,8 @@ const exps = experience([
     period: "Mei 2026 – Sekarang",
     body: [
       highlight(
-        "Mengelola customer success TREEO secara menyeluruh: melakukan kunjungan lapangan untuk memahami kebutuhan mitra, memanfaatkan perangkat analisis data untuk mengolah data lapangan dan platform menjadi dasar pengambilan keputusan, menyempurnakan UI/UX aplikasi, serta menyiapkan pelatihan dan dokumentasi yang relevan bagi mitra.",
-        "Mengelola customer success TREEO secara menyeluruh",
+        "Mengelola fungsi Technology dan Customer Success TREEO secara menyeluruh — bekerja dekat dengan mitra di lapangan untuk memahami kebutuhan mereka, menganalisis data lapangan dan platform untuk mendukung keputusan berbasis data, mengembangkan solusi digital yang praktis untuk memperlancar alur kerja, serta membekali mitra dengan pelatihan dan dokumentasi yang aplikatif.",
+        "Mengelola fungsi Technology dan Customer Success TREEO secara menyeluruh",
       ),
     ],
   },
@@ -112,7 +112,7 @@ export const id: Site = {
   now: {
     lead: "Saat ini saya menjabat sebagai Technology & Customer Success Manager di",
     company: "TREEO",
-    rest: "Saya mengunjungi mitra di lapangan, menganalisis data operasional agar setiap keputusan tetap berbasis data, menyempurnakan UI/UX aplikasi, serta menyiapkan pelatihan dan dokumentasi yang menjadi pegangan para mitra.",
+    rest: "Saya mengunjungi mitra di lapangan, menganalisis data operasional untuk mendukung keputusan berbasis data, mengembangkan solusi digital yang praktis untuk memperlancar alur kerja, serta menyiapkan pelatihan dan dokumentasi yang menjadi pegangan para mitra.",
     about: [
       "Saya membangun aplikasi yang membantu orang menyelesaikan pekerjaannya dengan lebih mudah — mengotomatiskan permintaan data menggunakan bahasa pemrograman yang paling sesuai dengan konteks setiap proyek, membantu tim menyederhanakan alur kerja di balik pengumpulan data, serta mengubah proses manual yang berulang menjadi alat yang andal. Baik saat mengoordinasikan program penanaman pohon di berbagai wilayah Indonesia maupun saat merilis aplikasi Android, tujuan saya tetap sama: menghasilkan sesuatu yang terukur, bermanfaat, dan berkelanjutan.",
       "Pengalaman bekerja bersama startup, LSM internasional, dan lembaga pemerintah telah mengajarkan saya untuk cepat beradaptasi dan berkomunikasi lintas budaya — sekaligus meyakinkan saya bahwa hasil terbaik lahir dari perpaduan antara pemahaman mendalam di bidangnya dan teknologi yang tepat. Saya terbuka untuk peran maupun kolaborasi baru, dan dengan senang hati siap berdiskusi lebih lanjut.",
