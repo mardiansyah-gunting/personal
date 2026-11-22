@@ -1,0 +1,78 @@
+### Task 6: Hero Section
+
+**Files:**
+- Create: `src/components/Hero.astro`
+
+**Interfaces:**
+- Consumes: global CSS classes, i18n `data-i18n` attributes
+- Produces: full-viewport hero section
+
+- [ ] **Step 1: Create Hero.astro**
+
+```astro
+<section id="home" class="hero">
+  <div class="hero-content container">
+    <div class="hero-badge" data-i18n="hero.tagline">Dependable Task Manager | Eager Learner</div>
+    <h1 class="hero-name" data-i18n="hero.name">Mardiansyah Gunting</h1>
+    <p class="hero-subtitle" data-i18n="hero.subtitle">Project Management · AI · Operational Excellence</p>
+    <div class="hero-actions">
+      <a href="#contact" class="btn btn-primary" data-i18n="hero.cta_contact">Get in Touch</a>
+      <a href="#" class="btn btn-outline" data-i18n="hero.cta_cv">Download CV</a>
+    </div>
+  </div>
+</section>
+
+<style>
+  .hero {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding-top: 64px;
+  }
+
+  .hero-content {
+    max-width: 800px;
+  }
+
+  .hero-badge {
+    display: inline-block;
+    background: var(--accent);
+    color: #fff;
+    padding: 0.4rem 1rem;
+    border-radius: 20px;
+    font-size: 0.85rem;
+    font-weight: 600;
+    margin-bottom: 1.5rem;
+    letter-spacing: 0.02em;
+  }
+
+  .hero-name {
+    font-size: clamp(2.5rem, 6vw, 4.5rem);
+    font-weight: 800;
+    color: var(--primary);
+    line-height: 1.1;
+    margin-bottom: 1rem;
+  }
+
+  .hero-subtitle {
+    font-size: clamp(1rem, 2.5vw, 1.35rem);
+    color: var(--text-muted);
+    margin-bottom: 2.5rem;
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .hero-actions {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+</style>
+```
+
+- [ ] **Step 2: Verify build**
+

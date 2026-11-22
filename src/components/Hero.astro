@@ -1,0 +1,608 @@
+---
+const baseUrl = import.meta.env.BASE_URL.replace(/\/$/, '');
+---
+<section id="home" class="hero">
+  <div class="hero-bg" aria-hidden="true">
+    <svg class="hero-blob hero-blob-1" viewBox="0 0 400 400" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <circle cx="200" cy="200" r="200" fill="currentColor" opacity="0.04"/>
+    </svg>
+    <svg class="hero-blob hero-blob-2" viewBox="0 0 300 300" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <circle cx="150" cy="150" r="150" fill="currentColor" opacity="0.03"/>
+    </svg>
+    <svg class="hero-blob hero-blob-3" viewBox="0 0 200 200" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <circle cx="100" cy="100" r="100" fill="currentColor" opacity="0.05"/>
+    </svg>
+    <svg class="hero-dots" viewBox="0 0 200 200" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <circle cx="10" cy="10" r="3" fill="currentColor" opacity="0.12"/>
+      <circle cx="50" cy="30" r="2.5" fill="currentColor" opacity="0.1"/>
+      <circle cx="90" cy="10" r="3" fill="currentColor" opacity="0.08"/>
+      <circle cx="130" cy="40" r="2" fill="currentColor" opacity="0.1"/>
+      <circle cx="170" cy="15" r="3" fill="currentColor" opacity="0.12"/>
+      <circle cx="30" cy="60" r="2.5" fill="currentColor" opacity="0.08"/>
+      <circle cx="70" cy="80" r="2" fill="currentColor" opacity="0.1"/>
+      <circle cx="110" cy="90" r="3" fill="currentColor" opacity="0.08"/>
+      <circle cx="150" cy="70" r="2.5" fill="currentColor" opacity="0.12"/>
+      <circle cx="10" cy="110" r="2" fill="currentColor" opacity="0.1"/>
+      <circle cx="50" cy="130" r="3" fill="currentColor" opacity="0.08"/>
+      <circle cx="90" cy="150" r="2.5" fill="currentColor" opacity="0.12"/>
+      <circle cx="60" cy="170" r="2" fill="currentColor" opacity="0.1"/>
+      <circle cx="140" cy="120" r="3" fill="currentColor" opacity="0.08"/>
+      <circle cx="180" cy="160" r="2" fill="currentColor" opacity="0.1"/>
+    </svg>
+  </div>
+  <div class="hero-stage container">
+    <div class="hero-intro">
+      <div class="fade-in hero-badge" data-i18n="hero.tagline">Reliable Operator | Automation Builder</div>
+      <h1 class="fade-in hero-name" data-i18n="hero.name">Mardiansyah Gunting</h1>
+      <p class="fade-in hero-subtitle" data-i18n="hero.subtitle">Project Management · Data Automation · Operational Excellence</p>
+      <div class="fade-in hero-actions">
+        <a href="#contact" class="btn btn-primary" data-i18n="hero.cta_contact">Get in Touch</a>
+        <a href="https://ap.wps.com/cms/docs/d/cbPaeaeNPN9wxWMG" target="_blank" rel="noopener noreferrer" class="btn btn-outline" data-i18n="hero.cta_cv">Download CV</a>
+      </div>
+      <div class="fade-in hero-social">
+        <a href="https://github.com/mardiansyah-gunting" target="_blank" rel="noopener noreferrer" class="social-link" aria-label="GitHub">
+          <svg viewBox="0 0 24 24" fill="currentColor" width="22" height="22"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.3 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61-.546-1.385-1.335-1.755-1.335-1.755-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 21.795 24 17.295 24 12c0-6.63-5.37-12-12-12z"/></svg>
+        </a>
+        <a href="https://linkedin.com/in/mardiansyah-gunting" target="_blank" rel="noopener noreferrer" class="social-link" aria-label="LinkedIn">
+          <svg viewBox="0 0 24 24" fill="currentColor" width="22" height="22"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+        </a>
+        <a href="https://wa.me/628213105752" target="_blank" rel="noopener noreferrer" class="social-link" aria-label="WhatsApp">
+          <svg viewBox="0 0 24 24" fill="currentColor" width="22" height="22"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+        </a>
+        <a href="weixin://dl/chat?wxid_f4jlf94gw5p22" class="social-link" aria-label="WeChat" title="WeChat: wxid_f4jlf94gw5p22" id="wechatLink">
+          <svg viewBox="0 0 24 24" fill="currentColor" width="22" height="22"><path d="M8.691 2.188C3.891 2.188 0 5.476 0 9.53c0 2.212 1.17 4.203 3.002 5.55a.59.59 0 01.213.665l-.39 1.48c-.019.07-.048.141-.048.213 0 .163.13.295.29.295a.326.326 0 00.167-.054l1.903-1.114a.864.864 0 01.717-.098 10.16 10.16 0 002.837.403c.276 0 .543-.027.811-.05-.857-2.578.157-4.972 1.932-6.446 1.703-1.415 3.882-1.98 5.853-1.838-.576-3.583-4.196-6.348-8.596-6.348zM5.785 5.991c.642 0 1.162.529 1.162 1.18a1.17 1.17 0 01-1.162 1.178A1.17 1.17 0 014.623 7.17c0-.651.52-1.18 1.162-1.18zm5.813 0c.642 0 1.162.529 1.162 1.18a1.17 1.17 0 01-1.162 1.178 1.17 1.17 0 01-1.162-1.178c0-.651.52-1.18 1.162-1.18zm5.34 2.867c-1.797-.052-3.746.512-5.28 1.786-1.72 1.428-2.687 3.72-1.78 6.22.942 2.453 3.666 4.229 6.884 4.229.827 0 1.622-.12 2.361-.336a.722.722 0 01.598.082l1.584.926a.272.272 0 00.14.045c.134 0 .24-.11.24-.245 0-.06-.024-.12-.04-.178l-.325-1.233a.49.49 0 01.177-.554C23.028 18.48 24 16.82 24 14.98c0-3.21-2.931-5.76-7.062-6.122zm-2.18 2.91c.535 0 .969.44.969.982a.976.976 0 01-.969.983.976.976 0 01-.969-.983c0-.542.434-.982.97-.982zm4.845 0c.535 0 .969.44.969.982a.976.976 0 01-.969.983.976.976 0 01-.969-.983c0-.542.434-.982.97-.982z"/></svg>
+        </a>
+      </div>
+    </div>
+    <div class="hero-photo-wrap">
+      <img src={`${baseUrl}/profile.jpg`} alt="Mardiansyah Gunting" class="hero-photo-img" width="220" height="220" fetchpriority="high" data-zoom />
+    </div>
+    <div class="hero-desc">
+      <span class="hero-desc-label" data-i18n="about.subtitle">Who I Am</span>
+      <p class="hero-desc-text" data-i18n="about.body">I'm a results-driven professional who lives where operations, technology, and strategy meet. My career has been about bridging teams, building tools, and eliminating the repetitive work that quietly slows a business down — from automating data requests with Python scripts to digitizing reporting workflows that used to live in spreadsheets. Whether I'm coordinating tree-planting programs across Indonesia or shipping an Android app, I aim for the same outcome: measurable, lasting impact. I've worked across startups, international NGOs, and government institutions, and every role has deepened my ability to adapt fast and communicate across cultures. I believe the future belongs to people who connect real domain expertise with emerging technology — and I'm committed to being at that frontier. I'm currently open to new roles and collaborations: if you're looking for someone who will make your team measurably more productive, I'd love to talk.</p>
+      <div class="hero-about-mobile">
+        <h2 class="hero-about-title" data-i18n="about.title">About Me</h2>
+        <p class="hero-about-intro" data-i18n="about.intro">Results-driven professional at the intersection of operations, technology, and strategy — bridging teams, building tools, and removing the repetitive work that slows businesses down. From coordinating tree-planting programs across Indonesia to shipping Android apps, I work toward one outcome: measurable, lasting impact. Adaptable across startups, international NGOs, and government institutions, I connect hands-on domain expertise with emerging technology.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .hero {
+    min-height: 100vh;
+    position: sticky;
+    top: 0;
+    overflow: hidden;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .hero-bg {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    pointer-events: none;
+    color: var(--primary);
+  }
+
+  .hero-blob {
+    position: absolute;
+    animation: heroFloat 8s ease-in-out infinite;
+  }
+
+  .hero-blob-1 {
+    width: 500px;
+    height: 500px;
+    top: -100px;
+    right: -100px;
+    animation-delay: 0s;
+  }
+
+  .hero-blob-2 {
+    width: 350px;
+    height: 350px;
+    bottom: -50px;
+    left: -80px;
+    animation-delay: -3s;
+  }
+
+  .hero-blob-3 {
+    width: 200px;
+    height: 200px;
+    top: 40%;
+    left: 60%;
+    animation-delay: -6s;
+  }
+
+  .hero-dots {
+    position: absolute;
+    width: 250px;
+    height: 250px;
+    bottom: 20%;
+    right: 10%;
+    animation: heroFloat 10s ease-in-out infinite;
+    animation-delay: -4s;
+  }
+
+  @keyframes heroFloat {
+    0%, 100% { transform: translateY(0) translateY(var(--px, 0px)) rotate(0deg); }
+    50% { transform: translateY(-20px) translateY(var(--px, 0px)) rotate(2deg); }
+  }
+
+  .hero-stage {
+    max-width: 900px;
+    width: 100%;
+    margin: auto;
+    position: relative;
+    z-index: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 1.25rem;
+    padding: 6rem 1.5rem 4rem;
+  }
+  .hero-intro {
+    display: contents;
+  }
+  .hero-photo-wrap {
+    order: 3;
+    position: relative;
+    width: min(220px, 22vw);
+    aspect-ratio: 1;
+    margin: 0;
+    flex: 0 0 auto;
+    will-change: transform;
+  }
+
+  .hero-photo-wrap::before {
+    content: '';
+    position: absolute;
+    inset: -14px;
+    border-radius: 50%;
+    border: 2px solid var(--accent);
+    opacity: 0.25;
+  }
+
+  .hero-photo-wrap::after {
+    content: '';
+    position: absolute;
+    inset: -30px;
+    border-radius: 50%;
+    border: 1px dashed var(--accent);
+    opacity: 0.2;
+    animation: heroSpin 26s linear infinite;
+  }
+
+  .hero-desc {
+    order: 4;
+    width: 100%;
+    max-width: 760px;
+    text-align: left;
+    max-height: 0;
+    opacity: 0;
+    overflow: hidden;
+    padding: 0;
+    border-width: 0;
+    transition: max-height 0.7s ease, opacity 0.7s ease, transform 0.7s ease;
+  }
+  .hero-stage.is-revealed .hero-desc {
+    max-height: 1200px;
+    opacity: 1;
+  }
+  .hero-stage.is-revealed .hero-actions,
+  .hero-stage.is-revealed .hero-social {
+    display: none;
+  }
+  .hero-desc-label,
+  .hero-desc-text {
+    display: none;
+  }
+  .hero-about-mobile {
+    display: block;
+    background: var(--bg-alt);
+    border: 1px solid var(--border);
+    border-radius: 20px;
+    padding: 1.8rem 1.9rem;
+    box-shadow: 0 18px 44px rgba(15, 43, 76, 0.06);
+  }
+  .hero-about-title {
+    font-size: 1.15rem;
+    font-weight: 800;
+    color: var(--primary);
+    margin-bottom: 0.5rem;
+  }
+  .hero-about-intro {
+    font-size: 0.98rem;
+    line-height: 1.8;
+    color: var(--text-muted);
+    margin: 0;
+  }
+
+  @media (min-width: 769px) {
+    .hero-desc {
+      position: absolute;
+      right: 0;
+      top: 50%;
+      width: min(440px, 42vw);
+      background: var(--bg-alt);
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      box-shadow: 0 18px 44px rgba(15, 43, 76, 0.06);
+      padding: 1.8rem 1.9rem;
+      max-height: none;
+      opacity: 0;
+      transform: translateX(60px) translateY(-50%);
+      pointer-events: none;
+      will-change: transform, opacity;
+    }
+    .hero-about-mobile {
+      display: none;
+    }
+    .hero-desc-label {
+      display: block;
+      font-size: 1.15rem;
+      font-weight: 800;
+      color: var(--primary);
+      margin-bottom: 0.5rem;
+    }
+    .hero-desc-text {
+      display: block;
+      margin: 0;
+      font-size: 0.98rem;
+      line-height: 1.8;
+      color: var(--text-muted);
+    }
+  }
+
+  .hero-lb-overlay {
+    position: fixed;
+    inset: 0;
+    z-index: 9999;
+    background: rgba(0, 0, 0, 0.85);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.3s;
+    cursor: zoom-out;
+  }
+  .hero-lb-overlay.open {
+    opacity: 1;
+    pointer-events: auto;
+  }
+  .hero-lb-overlay img {
+    max-width: 90vw;
+    max-height: 90vh;
+    border-radius: 8px;
+    box-shadow: 0 8px 40px rgba(0, 0, 0, 0.5);
+    cursor: default;
+    user-select: none;
+  }
+  .hero-lb-close {
+    position: absolute;
+    top: 1rem;
+    right: 1.5rem;
+    color: #fff;
+    font-size: 2rem;
+    cursor: pointer;
+    width: 44px;
+    height: 44px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.1);
+    border: none;
+  }
+  .hero-lb-close:hover { background: rgba(255, 255, 255, 0.25); }
+
+  .hero-photo-img {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    aspect-ratio: 1 / 1;
+    border-radius: 50%;
+    object-fit: cover;
+    z-index: 1;
+    box-shadow: 0 18px 44px rgba(15, 43, 76, 0.2);
+    border: 4px solid #fff;
+    cursor: zoom-in;
+    transition: transform 0.3s ease;
+    animation: heroPhotoFloat 6s ease-in-out infinite;
+  }
+
+  .hero-photo-img:hover {
+    transform: scale(1.04);
+    animation-play-state: paused;
+  }
+
+  @keyframes heroPhotoFloat {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-10px); }
+  }
+
+  @keyframes heroSpin {
+    to { transform: rotate(360deg); }
+  }
+
+  .hero-badge {
+    order: 0;
+    display: inline-block;
+    background: var(--accent);
+    color: #fff;
+    padding: 0.4rem 1rem;
+    border-radius: 20px;
+    font-size: 0.85rem;
+    font-weight: 600;
+    margin-bottom: 0;
+    letter-spacing: 0.02em;
+  }
+
+  .hero-name {
+    order: 1;
+    font-size: clamp(2rem, 5.5vw, 3.4rem);
+    font-weight: 800;
+    color: var(--primary);
+    line-height: 1.1;
+    margin-bottom: 0;
+  }
+
+  .hero-subtitle {
+    order: 2;
+    font-size: clamp(1rem, 2.5vw, 1.25rem);
+    color: var(--text-muted);
+    margin-bottom: 0;
+    max-width: 560px;
+  }
+
+  .hero-actions {
+    order: 5;
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+  .hero-social {
+    order: 6;
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+  }
+  .social-link {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    background: var(--bg-alt);
+    color: var(--text-muted);
+    border: 1px solid var(--border);
+    transition: all 0.25s;
+  }
+  .social-link:hover {
+    color: var(--accent);
+    border-color: var(--accent);
+    background: rgba(59, 130, 246, 0.06);
+    transform: translateY(-2px);
+    text-decoration: none;
+  }
+
+  @media (max-width: 768px) {
+    .hero-stage {
+      gap: 1.1rem;
+      padding: 5.5rem 1.2rem 3.5rem;
+    }
+    .hero-badge {
+      font-size: 0.78rem;
+      padding: 0.35rem 0.9rem;
+    }
+    .hero-name {
+      font-size: clamp(1.8rem, 8vw, 2.4rem);
+    }
+    .hero-subtitle {
+      font-size: 0.95rem;
+      max-width: 92%;
+    }
+    .hero-photo-wrap {
+      width: min(42vw, 160px);
+    }
+    .hero-actions {
+      gap: 0.7rem;
+    }
+    .hero-actions .btn {
+      padding: 0.6rem 1.1rem;
+      font-size: 0.85rem;
+    }
+    .hero-social {
+      gap: 0.8rem;
+    }
+    .social-link {
+      width: 40px;
+      height: 40px;
+    }
+    .hero-about-mobile {
+      padding: 1.3rem 1.25rem;
+    }
+  }
+
+  @media (max-height: 800px) and (min-width: 769px) {
+    .hero-stage {
+      gap: 1rem;
+      padding-top: 4.5rem;
+      padding-bottom: 3rem;
+    }
+    .hero-photo-wrap {
+      width: min(160px, 20vw);
+    }
+    .hero-desc-label,
+    .hero-desc-text {
+      display: none;
+    }
+    .hero-about-mobile {
+      display: block;
+    }
+  }
+
+  @media (max-height: 640px) and (max-width: 768px) {
+    .hero-stage {
+      gap: 0.75rem;
+      padding-top: 5rem;
+      padding-bottom: 2.5rem;
+    }
+    .hero-name {
+      font-size: clamp(1.5rem, 6.5vw, 1.8rem);
+    }
+    .hero-subtitle {
+      font-size: 0.84rem;
+    }
+    .hero-photo-wrap {
+      width: min(32vw, 115px);
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .hero {
+      position: relative;
+      overflow: visible;
+    }
+    .hero-desc {
+      position: static !important;
+      opacity: 1 !important;
+      max-height: none !important;
+      transform: none !important;
+      padding: 1.8rem 1.9rem !important;
+    }
+  }
+</style>
+
+<div class="hero-lb-overlay" id="heroLightbox">
+  <button class="hero-lb-close" id="heroLbClose" aria-label="Close">&times;</button>
+  <img src="" alt="Mardiansyah Gunting" id="heroLbImg" />
+</div>
+
+<script>
+  (function () {
+    var hero = document.getElementById('home');
+    if (!hero) return;
+    var pin = hero.closest('.hero-pin') || hero;
+    var mq = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)');
+    if (mq && mq.matches) return;
+
+    var photo = hero.querySelector('.hero-photo-wrap');
+    var stage = hero.querySelector('.hero-stage');
+    var desc = hero.querySelector('.hero-desc');
+    if (!photo || !stage || !desc) return;
+
+    var isMobile = window.matchMedia && window.matchMedia('(max-width: 768px)');
+    var ticking = false;
+    var scrollStarted = false;
+
+    function clamp(v, a, b) { return v < a ? a : v > b ? b : v; }
+    function smooth(t) { return t * t * (3 - 2 * t); }
+
+    function update() {
+      ticking = false;
+      var vh = window.innerHeight;
+      var pinTop = pin.offsetTop;
+      var travel = Math.max(1, pin.offsetHeight - vh);
+      var p = clamp((window.pageYOffset - pinTop) / travel, 0, 1);
+      var ep = smooth(p);
+
+      var introEls = hero.querySelectorAll('.hero-badge, .hero-name, .hero-subtitle, .hero-social');
+      var actions = hero.querySelector('.hero-actions');
+
+      var blob1 = hero.querySelector('.hero-blob-1');
+      var blob2 = hero.querySelector('.hero-blob-2');
+      var blob3 = hero.querySelector('.hero-blob-3');
+      var dots = hero.querySelector('.hero-dots');
+
+      if (isMobile && isMobile.matches) {
+        var mO = String(1 - clamp(ep / 0.3, 0, 1));
+        [].forEach.call(introEls, function (el) { el.style.opacity = mO; });
+        if (actions) actions.style.opacity = mO;
+        photo.style.transform = 'translateY(' + (-14 * ep) + 'px)';
+
+        var dE = smooth(clamp((p - 0.55) / 0.18, 0, 1));
+        stage.classList.toggle('is-revealed', dE >= 0.5);
+        if (blob1) blob1.style.setProperty('--px', (-20 * ep) + 'px');
+        if (blob2) blob2.style.setProperty('--px', (30 * ep) + 'px');
+        if (blob3) blob3.style.setProperty('--px', (-35 * ep) + 'px');
+        if (dots) dots.style.setProperty('--px', (25 * ep) + 'px');
+      } else {
+        var m = smooth(clamp(p / 0.58, 0, 1));
+        var iO = clamp(m * 1.5, 0, 1);
+        var mD = String(1 - iO);
+        [].forEach.call(introEls, function (el) { el.style.opacity = mD; });
+        if (actions) { actions.style.opacity = mD; actions.style.transform = 'translateY(' + (14 * m) + 'px)'; }
+
+        photo.style.transform = 'translate(' + (-190 * m) + 'px, ' + (-14 * m) + 'px) scale(' + (1 - 0.04 * m) + ')';
+        desc.style.opacity = m;
+        desc.style.transform = 'translateX(' + (46 * (1 - m)) + 'px) translateY(-50%)';
+        stage.classList.remove('is-revealed');
+        if (blob1) blob1.style.setProperty('--px', (-30 * ep) + 'px');
+        if (blob2) blob2.style.setProperty('--px', (40 * ep) + 'px');
+        if (blob3) blob3.style.setProperty('--px', (-50 * ep) + 'px');
+        if (dots) dots.style.setProperty('--px', (60 * ep) + 'px');
+      }
+    }
+
+    function onScroll() {
+      if (!scrollStarted) {
+        scrollStarted = true;
+        [].forEach.call(hero.querySelectorAll('.hero-intro .fade-in'), function (el) {
+          el.style.transition = 'none';
+        });
+      }
+      if (!ticking) {
+        ticking = true;
+        requestAnimationFrame(update);
+      }
+    }
+
+    window.addEventListener('scroll', onScroll, { passive: true });
+    window.addEventListener('resize', onScroll, { passive: true });
+    if (isMobile && isMobile.addEventListener) {
+      isMobile.addEventListener('change', function () { onScroll(); });
+    }
+    update();
+
+    var lb = document.getElementById('heroLightbox');
+    var lbImg = document.getElementById('heroLbImg');
+    var lbClose = document.getElementById('heroLbClose');
+    if (lb && lbImg && lbClose) {
+      document.addEventListener('click', function (e) {
+        var t = e.target;
+        if (t && t.hasAttribute && t.hasAttribute('data-zoom')) {
+          lbImg.src = t.src;
+          lb.classList.add('open');
+          document.body.style.overflow = 'hidden';
+          e.preventDefault();
+        }
+      });
+      lbClose.addEventListener('click', function () {
+        lb.classList.remove('open');
+        document.body.style.overflow = '';
+      });
+      lb.addEventListener('click', function (e) {
+        if (e.target === lb) {
+          lb.classList.remove('open');
+          document.body.style.overflow = '';
+        }
+      });
+      document.addEventListener('keydown', function (e) {
+        if (lb.classList.contains('open') && e.key === 'Escape') {
+          lb.classList.remove('open');
+          document.body.style.overflow = '';
+        }
+      });
+    }
+  })();
+</script>

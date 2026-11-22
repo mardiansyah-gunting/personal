@@ -1,0 +1,674 @@
+---
+import fs from 'fs';
+import path from 'path';
+
+const baseUrl = import.meta.env.BASE_URL.replace(/\/$/, '');
+const imgDir = path.resolve('public/images/jobs');
+const imgExts = new Set(['.jpg', '.jpeg', '.png', '.webp', '.gif', '.avif', '.svg']);
+
+function getJobImages(slug) {
+  const dir = path.join(imgDir, slug);
+  try {
+    return fs.readdirSync(dir)
+      .filter(f => imgExts.has(path.extname(f).toLowerCase()))
+      .sort((a, b) => a.localeCompare(b))
+      .map(f => `${baseUrl}/images/jobs/${slug}/${f}`);
+  } catch {
+    return [];
+  }
+}
+
+const items = [
+  { date: "May 2026 – Present", company: "Fairventures Digital GmbH", slug: "customer-success-manager-2026", logo: "fairventures-digital.png", role: "Customer Success Manager", desc: "Conduct field visits to assess customer needs. Monitor daily activities on the TREEO cloud. Enhance UI/UX design of TREEO Apps. Provide training and user documentation." },
+  { date: "May 2025 – May 2026", company: "Fairventures Digital GmbH", slug: "operations-manager", logo: "fairventures-digital.png", role: "Operations Manager", desc: "Managed daily operations with 5 Tree Planting Partners. Planned and tracked tree-planting programs. Served as main contact for TPPs. Monitored data quality and reporting." },
+  { date: "May 2024 – May 2025", company: "Fairventures Digital GmbH", slug: "customer-success-manager", logo: "fairventures-digital.png", role: "Customer Success Manager", desc: "Managed relationships with tree-planting partners. Conducted field visits to evaluate user experience. Coordinated with the global Technology team. Delivered training and user documentation." },
+  { date: "May 2023 – May 2024", company: "Fairventures Digital GmbH", slug: "customer-success-engineer", logo: "fairventures-digital.png", role: "Customer Success Engineer", desc: "Conducted field visits assessing TREEO technology user experience. Monitored daily activities on TREEO cloud. Enhanced UI/UX of TREEO Apps. Provided comprehensive user support and training." },
+  { date: "Oct 2022 – Apr 2023", company: "Freelance Consultant", slug: "mobile-developer", logo: "konsultan-freelance.svg", role: "Mobile Developer", desc: "Developed and shipped Android applications using Kotlin and Java in Android Studio. Designed wireframes and high-fidelity mockups for mobile and web applications. Collaborated with stakeholders to translate business requirements into intuitive user interfaces." },
+  { date: "Feb 2022 – Mar 2023", company: "Fairventures Worldwide gGmbH", slug: "hpps-coordinator-assistant", logo: "fairventures-worldwide.jpg", role: "HPPS Project Coordinator Assistant", desc: "Prepared data flow and safety materials. Managed data collection and processing. Ensured safety procedures compliance across all staff." },
+  { date: "Oct 2019 – Feb 2022", company: "Fairventures Worldwide gGmbH", slug: "general-affairs-officer", logo: "fairventures-worldwide.jpg", role: "General Affairs Officer", desc: "Managed office contracts and asset handovers. Coordinated security and driver operations. Maintained fleet of four vehicles. Tracked all company assets." },
+  { date: "Jul 2019 – Sep 2019", company: "CV Karya Hidup Sentosa", slug: "demonstration-officer", logo: "cv-karya-hidup-sentosa.jpg", role: "Demonstration Officer", desc: "Handled B2B communication. Demonstrated Quick Tractor product to oil palm plantations across Sumatra, Sulawesi, and Borneo." },
+  { date: "Jul 2018 – Dec 2018", company: "Badan Pusat Statistik", slug: "intern-bps", logo: "bps.png", role: "Intern", desc: "Designed the cover for the annual census publication. Created posters and vector graphics to support the publication." },
+];
+---
+
+<div class="exp-pin" id="experience">
+  <section class="exp-stage">
+    <div class="exp-head">
+      <div class="exp-head-text">
+        <span class="exp-eyebrow" data-i18n="experience.title">Experience</span>
+        <h2 class="exp-title" data-i18n="experience.subtitle">My Professional Journey</h2>
+        <p class="exp-hint" data-i18n="experience.scroll_hint">Scroll to explore</p>
+      </div>
+      <div class="exp-count" aria-hidden="true">
+        <span id="expCur">01</span>
+        <span class="exp-count-total">/ {String(items.length).padStart(2, "0")}</span>
+      </div>
+    </div>
+
+    <div class="exp-scroller">
+      <div class="exp-track" id="expTrack">
+        {items.map((item, i) => {
+          const imgs = getJobImages(item.slug);
+          return (
+            <article class="exp-card">
+              <div class="exp-card-head">
+                <span class="exp-num" aria-hidden="true">{String(i + 1).padStart(2, "0")}</span>
+                <img src={`${baseUrl}/images/logos/${item.logo}`} alt="" class="exp-logo" loading="lazy" />
+                <div class="exp-id">
+                  <h3 class="exp-company" data-i18n={`exp.${i}.company`}>{item.company}</h3>
+                  <span class="exp-period" data-i18n={`exp.${i}.period`}>{item.date}</span>
+                </div>
+              </div>
+              <div class="exp-card-body">
+                <div class="exp-info">
+                  <h4 class="exp-role" data-i18n={`exp.${i}.role`}>{item.role}</h4>
+                  <p class="exp-desc" data-i18n={`exp.${i}.desc`}>{item.desc}</p>
+                </div>
+                {imgs.length > 0 ? (
+                  <div class="exp-media" data-gallery={item.slug}>
+                    <img src={imgs[0]} alt={`${item.company} photo 1`} class="exp-photo-main journey-photo-main" loading="lazy" data-index="0" width="800" height="600" />
+                    {imgs.length > 1 && (
+                      <div class="exp-thumbs journey-thumbs">
+                        {imgs.slice(1).map((src, j) => (
+                          <img src={src} alt={`${item.company} photo ${j + 2}`} class="exp-thumb journey-thumb" loading="lazy" data-index={j + 1} width="90" height="64" />
+                        ))}
+                      </div>
+                    )}
+                  </div>
+                ) : (
+                  <div class="exp-media exp-media-empty">
+                    <img src={`${baseUrl}/images/logos/${item.logo}`} alt="" class="exp-empty-logo" loading="lazy" />
+                  </div>
+                )}
+              </div>
+            </article>
+          );
+        })}
+      </div>
+    </div>
+
+    <div class="exp-progress" aria-hidden="true">
+      <div class="exp-progress-fill" id="expFill"></div>
+    </div>
+  </section>
+</div>
+
+<style>
+  .exp-pin {
+    position: relative;
+  }
+
+  .exp-stage {
+    position: sticky;
+    top: 0;
+    height: 100vh;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    background: var(--bg-alt);
+  }
+
+  .exp-head {
+    flex-shrink: 0;
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    gap: 1.5rem;
+    padding: 4.8rem max(6vw, 1.5rem) 0;
+  }
+
+  .exp-eyebrow {
+    display: block;
+    font-size: 0.78rem;
+    font-weight: 700;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--accent);
+  }
+
+  .exp-title {
+    font-size: clamp(1.7rem, 3.4vw, 2.5rem);
+    font-weight: 800;
+    color: var(--primary);
+    margin: 0.4rem 0 0.25rem;
+    line-height: 1.15;
+  }
+
+  .exp-hint {
+    margin: 0;
+    font-size: 0.95rem;
+    color: var(--text-muted);
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+
+  .exp-hint::before {
+    content: '';
+    width: 22px;
+    height: 1px;
+    background: var(--accent);
+  }
+
+  .exp-count {
+    flex-shrink: 0;
+    display: flex;
+    align-items: baseline;
+    gap: 0.3rem;
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: var(--text-muted);
+    background: #fff;
+    border: 1px solid var(--border);
+    padding: 0.4rem 0.95rem;
+    border-radius: 100px;
+  }
+
+  .exp-count #expCur {
+    font-size: 1.25rem;
+    font-weight: 800;
+    color: var(--accent);
+  }
+
+  .exp-scroller {
+    flex: 1 1 auto;
+    min-height: 0;
+    display: flex;
+    align-items: center;
+    padding: 0 max(6vw, 1.5rem);
+    overflow: hidden;
+  }
+
+  .exp-track {
+    display: flex;
+    align-items: stretch;
+    gap: clamp(1.6rem, 3vw, 2.6rem);
+    transform: translate3d(0, 0, 0);
+    will-change: transform;
+  }
+
+  .exp-card {
+    flex: 0 0 min(760px, 86vw);
+    height: calc(100vh - 15rem);
+    background: var(--bg);
+    border: 1px solid var(--border);
+    border-radius: 24px;
+    box-shadow: 0 12px 32px rgba(15, 43, 76, 0.08);
+    padding: clamp(1.4rem, 2.4vw, 2.2rem);
+    display: flex;
+    flex-direction: column;
+    gap: 1.3rem;
+  }
+
+  .exp-card-head {
+    display: flex;
+    align-items: center;
+    gap: 0.85rem;
+  }
+
+  .exp-num {
+    width: 38px;
+    height: 38px;
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #fff;
+    border: 2px solid var(--accent);
+    color: var(--accent);
+    font-weight: 800;
+    font-size: 0.82rem;
+    border-radius: 50%;
+    box-shadow: 0 0 0 5px rgba(59, 130, 246, 0.12);
+  }
+
+  .exp-logo {
+    width: 46px;
+    height: 46px;
+    flex-shrink: 0;
+    object-fit: contain;
+    border-radius: 12px;
+    border: 1px solid var(--border);
+    background: #fff;
+    padding: 4px;
+  }
+
+  .exp-id {
+    min-width: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 0.3rem;
+  }
+
+  .exp-company {
+    font-size: 1.08rem;
+    font-weight: 800;
+    color: var(--primary);
+    margin: 0;
+    line-height: 1.2;
+  }
+
+  .exp-period {
+    align-self: flex-start;
+    font-size: 0.72rem;
+    font-weight: 700;
+    color: #fff;
+    background: var(--accent);
+    padding: 0.28rem 0.7rem;
+    border-radius: 100px;
+    max-width: 100%;
+    white-space: normal;
+    overflow-wrap: anywhere;
+  }
+
+  .exp-card-body {
+    flex: 1 1 auto;
+    min-height: 0;
+    display: grid;
+    grid-template-columns: 1fr 1.15fr;
+    gap: clamp(1.2rem, 2.2vw, 2rem);
+    align-items: stretch;
+  }
+
+  .exp-info {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    min-width: 0;
+  }
+
+  .exp-role {
+    font-size: clamp(1.35rem, 2.3vw, 1.85rem);
+    font-weight: 800;
+    color: var(--primary);
+    margin: 0 0 0.7rem;
+    line-height: 1.25;
+  }
+
+  .exp-desc {
+    font-size: 1rem;
+    line-height: 1.75;
+    color: var(--text);
+    margin: 0;
+  }
+
+  .exp-media {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+    min-height: 0;
+    min-width: 0;
+  }
+
+  .exp-photo-main {
+    flex: 1 1 auto;
+    min-height: 0;
+    width: 100%;
+    object-fit: cover;
+    border-radius: 16px;
+    border: 1px solid var(--border);
+    cursor: zoom-in;
+    transition: transform 0.3s ease;
+    display: block;
+  }
+
+  .exp-photo-main:hover {
+    transform: scale(1.02);
+  }
+
+  .exp-thumbs {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 0.6rem;
+  }
+
+  .exp-thumb {
+    width: 100%;
+    height: 64px;
+    object-fit: cover;
+    border-radius: 10px;
+    border: 1px solid var(--border);
+    cursor: zoom-in;
+    transition: transform 0.2s ease;
+  }
+
+  .exp-thumb:hover {
+    transform: scale(1.05);
+  }
+
+  .exp-media-empty {
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(135deg, #f8fafc, #eef2f7);
+    border: 1px dashed var(--border);
+    border-radius: 16px;
+    gap: 0.9rem;
+    padding: 1rem;
+  }
+
+  .exp-empty-logo {
+    max-width: 150px;
+    opacity: 0.5;
+    filter: grayscale(1);
+  }
+
+  .exp-progress {
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    height: 4px;
+    background: rgba(226, 232, 240, 0.95);
+  }
+
+  .exp-progress-fill {
+    height: 100%;
+    width: 0%;
+    background: linear-gradient(90deg, var(--accent), var(--primary-light));
+  }
+
+  @media (max-width: 820px), (prefers-reduced-motion: reduce) {
+    .exp-stage {
+      position: static;
+      height: auto;
+      overflow: visible;
+      padding-bottom: 2.6rem;
+    }
+
+    .exp-head {
+      padding: 2.2rem 1.1rem 0;
+    }
+
+    .exp-count {
+      display: none;
+    }
+
+    .exp-scroller {
+      overflow: visible;
+      padding: 1.6rem 1.1rem 0;
+    }
+
+    .exp-track {
+      flex-direction: column;
+      gap: 1.5rem;
+      transform: none !important;
+    }
+
+    .exp-card {
+      flex: 0 0 auto;
+      width: 100%;
+      height: auto;
+    }
+
+    .exp-card-body {
+      grid-template-columns: 1fr;
+    }
+
+    .exp-info {
+      justify-content: flex-start;
+    }
+
+    .exp-photo-main {
+      flex: none;
+      aspect-ratio: 4 / 3;
+    }
+
+    .exp-progress {
+      display: none;
+    }
+  }
+
+  @media (max-width: 480px) {
+    .exp-hint {
+      display: none;
+    }
+  }
+
+  .lb-overlay {
+    position: fixed;
+    inset: 0;
+    z-index: 9999;
+    background: rgba(0, 0, 0, 0.85);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.3s;
+    cursor: zoom-out;
+  }
+  .lb-overlay.open {
+    opacity: 1;
+    pointer-events: auto;
+  }
+  .lb-overlay img {
+    max-width: 90vw;
+    max-height: 90vh;
+    border-radius: 8px;
+    box-shadow: 0 8px 40px rgba(0, 0, 0, 0.5);
+    cursor: default;
+    user-select: none;
+  }
+  .lb-close {
+    position: absolute;
+    top: 1rem;
+    right: 1.5rem;
+    color: #fff;
+    font-size: 2rem;
+    cursor: pointer;
+    width: 44px;
+    height: 44px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.1);
+    border: none;
+  }
+  .lb-close:hover { background: rgba(255, 255, 255, 0.25); }
+  .lb-nav {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #fff;
+    font-size: 2rem;
+    cursor: pointer;
+    width: 48px;
+    height: 48px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.1);
+    border: none;
+    user-select: none;
+  }
+  .lb-nav:hover { background: rgba(255, 255, 255, 0.25); }
+  .lb-prev { left: 1rem; }
+  .lb-next { right: 1rem; }
+  .lb-counter {
+    position: absolute;
+    bottom: 1.5rem;
+    left: 50%;
+    transform: translateX(-50%);
+    color: rgba(255, 255, 255, 0.7);
+    font-size: 0.9rem;
+    font-weight: 500;
+    background: rgba(0, 0, 0, 0.5);
+    padding: 0.3rem 0.8rem;
+    border-radius: 20px;
+  }
+</style>
+
+<div class="lb-overlay" id="lightbox">
+  <button class="lb-close" id="lbClose">&times;</button>
+  <button class="lb-nav lb-prev" id="lbPrev">&lsaquo;</button>
+  <img src="" alt="lightbox" id="lbImg" />
+  <button class="lb-nav lb-next" id="lbNext">&rsaquo;</button>
+  <div class="lb-counter" id="lbCounter"></div>
+</div>
+
+<script>
+(function() {
+  var overlay = document.getElementById('lightbox');
+  var imgEl = document.getElementById('lbImg');
+  var closeBtn = document.getElementById('lbClose');
+  var prevBtn = document.getElementById('lbPrev');
+  var nextBtn = document.getElementById('lbNext');
+  var counter = document.getElementById('lbCounter');
+  var currentImages = [];
+  var currentIndex = 0;
+
+  function openLb(index, images) {
+    currentImages = images;
+    currentIndex = index;
+    showLb();
+    overlay.classList.add('open');
+    document.body.style.overflow = 'hidden';
+  }
+  function closeLb() {
+    overlay.classList.remove('open');
+    document.body.style.overflow = '';
+  }
+  function showLb() {
+    if (currentImages.length === 0) return;
+    imgEl.src = currentImages[currentIndex];
+    counter.textContent = (currentIndex + 1) + ' / ' + currentImages.length;
+    prevBtn.style.display = currentImages.length > 1 ? 'flex' : 'none';
+    nextBtn.style.display = currentImages.length > 1 ? 'flex' : 'none';
+  }
+  function prevLb() {
+    if (currentImages.length < 2) return;
+    currentIndex = (currentIndex - 1 + currentImages.length) % currentImages.length;
+    showLb();
+  }
+  function nextLb() {
+    if (currentImages.length < 2) return;
+    currentIndex = (currentIndex + 1) % currentImages.length;
+    showLb();
+  }
+
+  document.addEventListener('click', function(e) {
+    var target = e.target;
+    if (target.classList.contains('journey-photo-main') || target.classList.contains('journey-thumb')) {
+      var media = target.closest('.exp-media');
+      if (!media) return;
+      var imgs = media.querySelectorAll('img');
+      var images = Array.from(imgs)
+        .filter(function(img) { return !img.classList.contains('exp-empty-logo'); })
+        .map(function(img) { return img.src; });
+      if (!images.length) return;
+      openLb(parseInt(target.dataset.index, 10), images);
+      e.preventDefault();
+    }
+  });
+  closeBtn.addEventListener('click', closeLb);
+  overlay.addEventListener('click', function(e) {
+    if (e.target === overlay) closeLb();
+  });
+  prevBtn.addEventListener('click', prevLb);
+  nextBtn.addEventListener('click', nextLb);
+  document.addEventListener('keydown', function(e) {
+    if (!overlay.classList.contains('open')) return;
+    if (e.key === 'Escape') closeLb();
+    if (e.key === 'ArrowLeft') prevLb();
+    if (e.key === 'ArrowRight') nextLb();
+  });
+
+  var touchStartX = 0;
+  overlay.addEventListener('touchstart', function(e) {
+    touchStartX = e.changedTouches[0].screenX;
+  }, { passive: true });
+  overlay.addEventListener('touchend', function(e) {
+    var diff = e.changedTouches[0].screenX - touchStartX;
+    if (Math.abs(diff) > 50) {
+      if (diff > 0) prevLb();
+      else nextLb();
+    }
+  }, { passive: true });
+
+  var pin = document.querySelector('.exp-pin');
+  var track = document.getElementById('expTrack');
+  var fill = document.getElementById('expFill');
+  var cur = document.getElementById('expCur');
+  var total = track.children.length;
+  var mediaQ = window.matchMedia('(max-width: 820px)');
+  var rmQ = window.matchMedia('(prefers-reduced-motion: reduce)');
+  var enabled = false;
+  var maxOff = 0;
+  var leadX = 0;
+  var scrollerW = 0;
+  var endPad = 0;
+  var rafId = 0;
+
+  function measure() {
+    enabled = !mediaQ.matches && !rmQ.matches;
+    if (enabled) {
+      pin.style.height = Math.round(window.innerHeight * (1 + total * 0.55)) + 'px';
+      scrollerW = track.parentElement.clientWidth;
+      maxOff = Math.max(0, track.scrollWidth - scrollerW);
+      leadX = Math.max(scrollerW, track.children[0].offsetWidth) + 40;
+      endPad = Math.round(Math.min(scrollerW * 0.12, 130));
+    } else {
+      pin.style.height = 'auto';
+      track.style.transform = '';
+      fill.style.width = '0%';
+      cur.textContent = '01';
+    }
+  }
+
+  function measureAfterLoads() {
+    var pending = 0;
+    var done = false;
+    [].forEach.call(document.querySelectorAll('.exp-card img'), function (img) {
+      if (img.complete && img.naturalWidth > 0) return;
+      pending++;
+      img.addEventListener('load', function () {
+        pending--;
+        if (pending === 0 && !done) { done = true; measure(); }
+      }, { once: true });
+    });
+    if (pending === 0 && !done) { done = true; measure(); }
+  }
+
+  measure();
+  measureAfterLoads();
+
+  function smooth(x) {
+    return x < 0.5 ? 4 * x * x * x : 1 - Math.pow(-2 * x + 2, 3) / 2;
+  }
+
+  function frame() {
+    if (enabled && pin && track) {
+      var vh = window.innerHeight;
+      var rectTop = pin.getBoundingClientRect().top;
+      var p = Math.min(1, Math.max(0, (vh - rectTop) / (pin.offsetHeight - vh)));
+      var s = smooth(p);
+      fill.style.width = (s * 100) + '%';
+      cur.textContent = String(1 + Math.round(p * (total - 1))).padStart(2, '0');
+
+      var leadP = 0.14;
+      var x;
+      if (p <= leadP) {
+        x = Math.round(leadX * (1 - smooth(p / leadP)));
+      } else {
+        x = -Math.round((maxOff + endPad) * smooth((p - leadP) / (1 - leadP)));
+      }
+      track.style.transform = 'translate3d(' + x + 'px,0,0)';
+      rafId = requestAnimationFrame(frame);
+    }
+  }
+
+  function start() {
+    cancelAnimationFrame(rafId);
+    if (enabled && pin && track) rafId = requestAnimationFrame(frame);
+  }
+  start();
+
+  var t0;
+  window.addEventListener('resize', function () {
+    clearTimeout(t0);
+    t0 = setTimeout(function () { measure(); start(); }, 150);
+  });
+})();
+</script>

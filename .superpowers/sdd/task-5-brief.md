@@ -1,0 +1,198 @@
+### Task 5: Header Component (Navigation + Language Switcher + Theme Toggle)
+
+**Files:**
+- Create: `src/components/Header.astro`
+
+**Interfaces:**
+- Consumes: global CSS, i18n script
+- Produces: fixed header rendered on all pages
+
+- [ ] **Step 1: Create Header.astro**
+
+```astro
+---
+const navItems = [
+  { key: 'home', href: '#home' },
+  { key: 'about', href: '#about' },
+  { key: 'experience', href: '#experience' },
+  { key: 'skills', href: '#skills' },
+  { key: 'education', href: '#education' },
+  { key: 'contact', href: '#contact' },
+];
+---
+
+<header class="header">
+  <div class="header-inner container">
+    <a href="#home" class="logo" data-i18n="hero.name">Mardiansyah Gunting</a>
+    <nav class="nav" id="nav">
+      <ul class="nav-list">
+        {navItems.map(item => (
+          <li><a href={item.href} class="nav-link" data-i18n={`nav.${item.key}`}>{item.key}</a></li>
+        ))}
+      </ul>
+    </nav>
+    <div class="header-actions">
+      <div class="lang-switch">
+        <button class="lang-btn" data-lang="en">EN</button>
+        <button class="lang-btn" data-lang="id">ID</button>
+        <button class="lang-btn" data-lang="zh">中文</button>
+      </div>
+      <button id="themeToggle" class="theme-btn" aria-label="Toggle theme">🌙</button>
+      <button id="menuToggle" class="menu-btn" aria-label="Toggle menu">☰</button>
+    </div>
+  </div>
+</header>
+
+<script>
+  document.querySelectorAll('.lang-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+      window.__setLanguage(btn.dataset.lang);
+    });
+  });
+
+  document.getElementById('themeToggle').addEventListener('click', () => {
+    const html = document.documentElement;
+    const current = html.getAttribute('data-theme');
+    const next = current === 'dark' ? 'light' : 'dark';
+    html.setAttribute('data-theme', next);
+    localStorage.setItem('theme', next);
+  });
+
+  document.getElementById('menuToggle').addEventListener('click', () => {
+    document.getElementById('nav').classList.toggle('open');
+  });
+
+  document.querySelectorAll('.nav-link').forEach(link => {
+    link.addEventListener('click', () => {
+      document.getElementById('nav').classList.remove('open');
+    });
+  });
+</script>
+
+<style>
+  .header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 100;
+    background: var(--bg);
+    border-bottom: 1px solid var(--border);
+    transition: background 0.3s;
+  }
+
+  .header-inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 64px;
+  }
+
+  .logo {
+    font-weight: 700;
+    font-size: 1.1rem;
+    color: var(--primary);
+    white-space: nowrap;
+  }
+
+  .logo:hover {
+    text-decoration: none;
+  }
+
+  .nav-list {
+    display: flex;
+    list-style: none;
+    gap: 1.75rem;
+  }
+
+  .nav-link {
+    color: var(--text);
+    font-size: 0.9rem;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+  }
+
+  .nav-link:hover {
+    color: var(--accent);
+    text-decoration: none;
+  }
+
+  .header-actions {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+  }
+
+  .lang-switch {
+    display: flex;
+    gap: 0.25rem;
+  }
+
+  .lang-btn {
+    background: none;
+    border: 1px solid var(--border);
+    border-radius: 4px;
+    padding: 0.25rem 0.5rem;
+    font-size: 0.75rem;
+    font-weight: 600;
+    cursor: pointer;
+    color: var(--text-muted);
+    transition: all 0.2s;
+  }
+
+  .lang-btn:hover {
+    color: var(--primary);
+    border-color: var(--primary);
+  }
+
+  .theme-btn, .menu-btn {
+    background: none;
+    border: none;
+    font-size: 1.2rem;
+    cursor: pointer;
+    padding: 0.25rem;
+  }
+
+  .menu-btn {
+    display: none;
+  }
+
+  @media (max-width: 768px) {
+    .nav {
+      position: fixed;
+      top: 64px;
+      left: 0;
+      right: 0;
+      background: var(--bg);
+      border-bottom: 1px solid var(--border);
+      padding: 1rem;
+      transform: translateY(-100%);
+      opacity: 0;
+      transition: all 0.3s;
+      pointer-events: none;
+    }
+
+    .nav.open {
+      transform: translateY(0);
+      opacity: 1;
+      pointer-events: auto;
+    }
+
+    .nav-list {
+      flex-direction: column;
+      gap: 1rem;
+    }
+
+    .menu-btn {
+      display: inline-block;
+    }
+  }
+</style>
+```
+
+- [ ] **Step 2: Verify build**
+
+Run: `npm run build`
+Expected: Build succeeds.
+

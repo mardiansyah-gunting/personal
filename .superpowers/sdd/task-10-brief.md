@@ -1,0 +1,68 @@
+### Task 10: Education Section
+
+**Files:**
+- Create: `src/components/Education.astro`
+
+- [ ] **Step 1: Create Education.astro**
+
+```astro
+---
+const eduItems = [
+  { index: 0 },
+  { index: 1 },
+  { index: 2 },
+  { index: 3 },
+];
+---
+
+<section id="education" class="section section-alt">
+  <div class="container">
+    <div class="section-title" data-i18n="education.title">Education</div>
+    <div class="section-subtitle" data-i18n="education.subtitle">My Learning Path</div>
+    <div class="edu-grid">
+      {eduItems.map(item => (
+        <div class="edu-card fade-in">
+          <div class="edu-period" data-i18n={`edu.${item.index}.period`}></div>
+          <h3 class="edu-school" data-i18n={`edu.${item.index}.school`}></h3>
+          <div class="edu-major" data-i18n={`edu.${item.index}.major`}></div>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
+
+<style>
+  .edu-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 1.5rem;
+  }
+
+  .edu-card {
+    background: var(--bg);
+    padding: 1.5rem;
+    border-radius: var(--radius);
+    border: 1px solid var(--border);
+  }
+
+  .edu-period {
+    font-size: 0.8rem;
+    font-weight: 600;
+    color: var(--accent);
+    margin-bottom: 0.5rem;
+  }
+
+  .edu-school {
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: var(--primary);
+    margin-bottom: 0.25rem;
+  }
+
+  .edu-major {
+    font-size: 0.9rem;
+    color: var(--text-muted);
+  }
+</style>
+```
+

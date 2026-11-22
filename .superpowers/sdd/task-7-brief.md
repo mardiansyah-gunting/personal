@@ -1,0 +1,65 @@
+### Task 7: About Section
+
+**Files:**
+- Create: `src/components/About.astro`
+
+- [ ] **Step 1: Create About.astro**
+
+```astro
+<section id="about" class="section">
+  <div class="container">
+    <div class="section-title" data-i18n="about.title">About Me</div>
+    <div class="section-subtitle" data-i18n="about.subtitle">Who I Am</div>
+    <div class="about-grid">
+      <div class="about-avatar">
+        <div class="avatar-placeholder">MG</div>
+      </div>
+      <div>
+        <p class="about-text" data-i18n="about.body">
+          I am a result-driven professional with a strong foundation in Project Management...
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .about-grid {
+    display: grid;
+    grid-template-columns: 200px 1fr;
+    gap: 3rem;
+    align-items: center;
+  }
+
+  .avatar-placeholder {
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+    background: var(--primary);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 3rem;
+    font-weight: 700;
+    color: #fff;
+  }
+
+  .about-text {
+    font-size: 1.05rem;
+    line-height: 1.8;
+    color: var(--text);
+  }
+
+  @media (max-width: 768px) {
+    .about-grid {
+      grid-template-columns: 1fr;
+      text-align: center;
+    }
+
+    .avatar-placeholder {
+      margin: 0 auto;
+    }
+  }
+</style>
+```
+
