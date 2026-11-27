@@ -4,7 +4,7 @@ import type { Site } from "./types";
 const exps = experience([
   {
     role: "技术与客户成功经理",
-    company: "TREEO",
+    company: "TREEO Indonesia",
     period: "2026年5月 – 至今",
     body: [
       highlight(
@@ -85,12 +85,12 @@ export const zh: Site = {
     "我的工作落在运营、技术与战略的交汇处——连接团队，构建",
     { text: "他们真正需要的工具", href: "#projects" },
     "，并清除那些悄悄拖慢业务的重复性工作。目前我在 ",
-    { text: "TREEO", href: "https://treeo.id/" },
+    { text: "TREEO Indonesia", href: "https://treeo.id/" },
     " 做这件事。",
   ],
   now: {
     lead: "目前我担任技术与客户成功经理，就职于",
-    company: "TREEO",
+    company: "TREEO Indonesia",
     rest: "我实地走访合作伙伴，分析运营数据以支持数据驱动决策，构建实用的数字化工具来优化工作流程，并为合作伙伴准备他们依赖的培训与文档。",
     about: [
       "我打造帮助人们减少不必要阻力的应用——根据每个项目的具体情境选用最合适的编程语言来实现数据请求自动化，帮助团队简化数据采集的工作流程，并将重复的手工流程变成可靠的工具。无论是在印度尼西亚各地协调植树项目，还是发布一款 Android 应用，目标始终一致：可衡量、有用、能长久延续。",
@@ -98,7 +98,7 @@ export const zh: Site = {
     ],
   },
   organizations: organizations({
-    "treeo-indonesia": { name: "TREEO", note: "2026 – 至今" },
+    "treeo-indonesia": { name: "TREEO Indonesia", note: "2026 – 至今" },
     "fairventures-digital": { name: "TREEO", note: "TREEO · 2023 – 2026" },
     "fairventures-worldwide": { name: "Fairventures Worldwide gGmbH", note: "2019 – 2023" },
     "karya-hidup-sentosa": { name: "CV Karya Hidup Sentosa", note: "Quick · 2019" },

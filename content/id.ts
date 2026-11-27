@@ -4,7 +4,7 @@ import type { Site } from "./types";
 const exps = experience([
   {
     role: "Technology & Customer Success Manager",
-    company: "TREEO",
+    company: "TREEO Indonesia",
     period: "Mei 2026 – Sekarang",
     body: [
       highlight(
@@ -106,12 +106,12 @@ export const id: Site = {
     "Saya bekerja di titik temu antara operasional, teknologi, dan strategi — menjembatani tim, membangun ",
     { text: "alat yang mereka butuhkan", href: "#projects" },
     ", serta menyingkirkan pekerjaan berulang yang diam-diam memperlambat laju bisnis. Saat ini, saya melakukannya di ",
-    { text: "TREEO", href: "https://treeo.id/" },
+    { text: "TREEO Indonesia", href: "https://treeo.id/" },
     ".",
   ],
   now: {
     lead: "Saat ini saya menjabat sebagai Technology & Customer Success Manager di",
-    company: "TREEO",
+    company: "TREEO Indonesia",
     rest: "Saya mengunjungi mitra di lapangan, menganalisis data operasional untuk mendukung keputusan berbasis data, mengembangkan solusi digital yang praktis untuk memperlancar alur kerja, serta menyiapkan pelatihan dan dokumentasi yang menjadi pegangan para mitra.",
     about: [
       "Saya membangun aplikasi yang membantu orang menyelesaikan pekerjaannya dengan lebih mudah — mengotomatiskan permintaan data menggunakan bahasa pemrograman yang paling sesuai dengan konteks setiap proyek, membantu tim menyederhanakan alur kerja di balik pengumpulan data, serta mengubah proses manual yang berulang menjadi alat yang andal. Baik saat mengoordinasikan program penanaman pohon di berbagai wilayah Indonesia maupun saat merilis aplikasi Android, tujuan saya tetap sama: menghasilkan sesuatu yang terukur, bermanfaat, dan berkelanjutan.",
@@ -119,7 +119,7 @@ export const id: Site = {
     ],
   },
   organizations: organizations({
-    "treeo-indonesia": { name: "TREEO", note: "2026 – sekarang" },
+    "treeo-indonesia": { name: "TREEO Indonesia", note: "2026 – sekarang" },
     "fairventures-digital": { name: "TREEO", note: "TREEO · 2023 – 2026" },
     "fairventures-worldwide": { name: "Fairventures Worldwide gGmbH", note: "2019 – 2023" },
     "karya-hidup-sentosa": { name: "CV Karya Hidup Sentosa", note: "Quick · 2019" },

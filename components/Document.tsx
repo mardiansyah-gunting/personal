@@ -19,7 +19,7 @@ const schema = {
       url: `${SITE_URL}/`,
       image: `${SITE_URL}/profile.jpg`,
       jobTitle: "Technology & Customer Success Manager",
-      worksFor: { "@type": "Organization", name: "TREEO", url: "https://treeo.id/" },
+      worksFor: { "@type": "Organization", name: "TREEO Indonesia", url: "https://treeo.id/" },
       sameAs: ["https://github.com/mardiansyah-gunting", "https://linkedin.com/in/mardiansyah-gunting"],
       knowsAbout: ["Operations", "Customer Success", "Python Automation", "Data Pipelines", "Android Development"],
     },
